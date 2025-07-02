@@ -3,18 +3,459 @@
 <head>
   <meta charset="UTF-8" />
   <title>Support Aza’ra — Donations</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+// ============================================
+// ✅ Navigation, Page Router, Scrollbars, Tables, Buttons
+// ============================================
 
-  <!-- ✅ Load style.css from GitHub for styling -->
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('header.site-header');
+  const nav = header?.querySelector('nav');
+  const hamburger = header?.querySelector('.hamburger');
+  const pages = document.querySelectorAll('.page');
+  const navButtons = header?.querySelectorAll('.nav-button');
+
+  function showPage(id) {
+    pages.forEach(p => p.classList.remove('active', 'glow'));
+    const page = document.getElementById(id);
+    if (page) {
+      page.classList.add('active', 'glow');
+      setTimeout(() => page.classList.remove('glow'), 3000);
+    }
+  }
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = [...btn.classList].find(cls => cls !== 'nav-button');
+      if (target) showPage(target);
+      if (window.innerWidth <= 768) header.classList.remove('open');
+    });
+  });
+
+  hamburger?.addEventListener('click', () => {
+    header.classList.toggle('open');
+  });
+
+  // Show first page by default
+  if (pages[0]) pages[0].classList.add('active');
+
+  console.log('✅ Navigation & Page Router Loaded');
+});
+
+// ============================================
+// ✅ Universal Scrollbar Styling (for body & pages)
+// ============================================
+
+const scrollCSS = `
+body, .page, table {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(3,144,144,0.5) transparent;
+}
+body::-webkit-scrollbar,
+.page::-webkit-scrollbar,
+table::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+body::-webkit-scrollbar-track,
+.page::-webkit-scrollbar-track,
+table::-webkit-scrollbar-track {
+  background: rgba(26, 17, 75, 0.4);
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb,
+.page::-webkit-scrollbar-thumb,
+table::-webkit-scrollbar-thumb {
+  background-color: #A63A2C;
+  border-radius: 10px;
+  border: 3px solid rgba(4, 13, 18, 0.6);
+}
+body::-webkit-scrollbar-thumb:hover,
+.page::-webkit-scrollbar-thumb:hover,
+table::-webkit-scrollbar-thumb:hover {
+  background-color: #D88EBA;
+}
+`;
+
+const styleTag = document.createElement('style');
+styleTag.textContent = scrollCSS;
+document.head.appendChild(styleTag);
+
+// ============================================
+// ✅ Example Table & Button Behavior (optional)
+// ============================================
+
+// If you need JS for custom buttons/tables, add here.
+// For standard HTML/CSS tables & buttons, your CSS covers styling.
+
+
+</script>
+  <!-- ✅ Load style.css from GitHub -->
   <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
-</head>
+
+  <!-- ✅ Load script.js from GitHub -->
+  <script src="https://raw.githubusercontent.com/thetransgendertrex/website/main/script.js"></script>
+
+  <!-- ✅ Load donations.js from GitHub -->
+  <!-- Removed invalid script block; donations.js is loaded via dynamic import below -->
+
+  <!-- External Moonpunk + Aza'raan Font Styles -->
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
+
+<!-- Cinzel Decorative -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+
+<!-- Pridi -->
+<link href="https://fonts.googleapis.com/css2?family=Pridi&display=swap" rel="stylesheet">
+
+<!-- Lato -->
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+<!-- Uncial Antiqua -->
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+<!-- Pacifico -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+/* ============== Universal Page Layout ============== */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.5in;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.page.active {
+  display: block;
+}
+
+.page.glow {
+  box-shadow: 0 0 20px 4px #00ffff;
+  border: 2px solid #00ffff;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* ============== Universal Scrollbars ============== */
+body, .page, table {
+  scrollbar-width: thin;
+  scrollbar-color: #A63A2C rgba(4, 13, 18, 0.6);
+}
+
+body::-webkit-scrollbar,
+.page::-webkit-scrollbar,
+table::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+body::-webkit-scrollbar-track,
+.page::-webkit-scrollbar-track,
+table::-webkit-scrollbar-track {
+  background: rgba(26, 17, 75, 0.4);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+.page::-webkit-scrollbar-thumb,
+table::-webkit-scrollbar-thumb {
+  background: #A63A2C;
+  border-radius: 10px;
+  border: 3px solid rgba(4, 13, 18, 0.6);
+}
+
+body::-webkit-scrollbar-thumb:hover,
+.page::-webkit-scrollbar-thumb:hover,
+table::-webkit-scrollbar-thumb:hover {
+  background: #D88EBA;
+}
+
+/* ============== Tables ============== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+}
+
+th {
+  font-family: serif;
+  font-size: 1.125rem;
+  padding: 0.75rem;
+  background: #014d4e;
+  color: #00FFFF;
+  text-align: left;
+}
+
+td {
+  font-family: "Times New Roman", serif;
+  font-size: 0.9375rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #2DC5B4;
+}
+
+/* Responsive table for small screens */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ============== Header & Navigation ============== */
+header.site-header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background: rgba(10, 10, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+header.site-header .hamburger {
+  position: absolute;
+  top: 50%; left: 1rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+header.site-header .hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #FFF;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+header.site-header nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; left: 0;
+  background: rgba(10, 10, 15, 0.95);
+  width: 100%;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+header.site-header.open nav {
+  display: flex;
+}
+
+header.site-header nav .nav-button {
+  font-family: 'Segoe UI', 'Times New Roman', sans-serif;
+  padding: 0.5em 1em;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+header.site-header nav .nav-button:hover {
+  background: currentColor;
+  color: #fff;
+}
+
+/* ============== Buttons ============== */
+.visit-download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 40px auto;
+  justify-content: center;
+  max-width: 90%;
+}
+
+.visit-download-buttons button {
+  background: #8FE9F0;
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: 2px solid #7A7C86;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px #014d4e;
+}
+
+.visit-download-buttons button:hover,
+.visit-download-buttons button:focus {
+  background: #000;
+  color: #8FE9F0;
+  outline: none;
+  transform: translateY(-2px);
+}
+/* ──────────────✦ Support Page ✦────────────── */ 
+#support.section-page {
+  position: relative;
+  width: 55%;
+  left: 35%; right: 10%;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  background-color: #FFF;
+  color: #000;
+  border-bottom: 3px solid rgba(250,250,250,0.25);
+}
+
+#support.section-page::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -2;
+  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).jpg")
+              no-repeat center/cover;
+  filter: brightness(0.85) contrast(1.05);
+}
+
+#support.section-page::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+  background: rgba(4, 13, 18, 0.3); /* 30% overlay */
+  pointer-events: none;
+}
+/* ──────────────✦ Support Headings & Title ✦────────────── */
+h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2.5rem;
+  color: #000;
+  text-shadow: 1px 1px #2DC5B4;
+}
+
+h2 {
+  font-family: 'Pridi', serif;
+  font-size: 2rem;
+  color: #000;
+  text-shadow: 1px 1px #8FE9F0;
+}
+
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.75rem;
+  color: #000;
+  text-shadow: 1px 1px #2DC5B4;
+}
+
+h4 {
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1.5rem;
+  color: #000;
+  text-shadow: 1px 1px #8FE9F0;
+}
+
+#support.section-page .section-heading {
+  text-align: center;
+  padding: 80px 45px;
+}
+
+#support.section-page .section-heading h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #342c61;
+}
+
+#support.section-page .section-heading .line-dec {
+  width: 60px; height: 3px;
+  margin: 10px auto;
+  background-color: #342c61;
+}
+
+#support.section-page .section-heading span {
+  display: block;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #2DC5B4;
+  letter-spacing: 0.5px;
+}
+
+/* ──────────────✦ Support Table Styling ✦────────────── */
+.table-container {
+  margin: 1in auto;
+  overflow-x: auto; overflow-y: auto;
+  max-width: calc(100% - 2in);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255,255,255,0.7);
+  border: 2px solid #342c61;
+  text-align: center;
+  font-size: 1rem;
+  color: #000;
+}
+
+th {
+  font-family: serif;
+  font-size: 1.125rem;
+  color: #000;
+  padding: 0.5rem 0.3rem;
+  border: 1px solid #342c61;
+  text-shadow: 1px 1px #8FE9F0;
+}
+
+td {
+  font-family: "Times New Roman", serif;
+  font-size: 0.9375rem;
+  color: #000;
+  padding: 0.5rem 0.3rem;
+  border: 1px solid #342c61;
+  background-color: rgba(255,255,255,0.7);
+}
+
+/* ──────────────✦ Support Footer Specific Links & Buttons ✦────────────── */
+a, footer a, .button-link {
+  display: inline-block;
+  margin: 0.3rem 0;
+  padding: 0.35em 0.75em;
+  font-family: 'Times New Roman', serif;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  background-color: #2DC5B4;
+  color: #000;
+  border: 2px solid #342c61;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+a:hover, a:focus, .button-link:hover {
+  background-color: #0A0A0F;
+  color: #8FE9F0;
+  border-color: #342c61;
+  box-shadow: 0 0 6px #8FE9F0;
+}
+</style>
 
 <body>
 
   <main>
-    <section id="support" class="module-support-module">
-      <div class="resizable-container">
-        <div class="drag-handle"></div>
+    <section id="support" class="page support-page">
+
         <h2>🌌 Thank You for Supporting Aza’ra</h2>
         <p>
           Your donations help maintain this project, its language, glyphs, and story.<br>
