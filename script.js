@@ -173,6 +173,75 @@ function setupPronunciationSelection() {
       });
     });
   }
+// Ensure the DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+
+  // Function to set module positions
+  function setModulePositions() {
+    // Only apply absolute positions on larger screens
+    const screenWidth = window.innerWidth;
+
+    const modules = [
+      { selector: '.module-navigation', top: 400, left: 340, maxWidth: '600px', altMaxWidth: '90%' },
+      { selector: '.module-lore', top: 550, left: 340, maxWidth: '600px', altMaxWidth: '90%' },
+      { selector: '.module-timekeeping', top: 740, left: 340, maxWidth: '600px', altMaxWidth: '90%' },
+      { selector: '.module-book-series', top: 920, left: 340, maxWidth: '600px', altMaxWidth: '90%' },
+      { selector: '.module-mmorpg', top: 1100, left: 340, maxWidth: '600px', altMaxWidth: '90%' },
+      { selector: '.module-font-project', top: 1280, left: 340, maxWidth: '600px', altMaxWidth: '90%' },
+
+      { selector: '.module-language-rules', top: 400, left: 1000, maxWidth: '300px', altMaxWidth: '90%' },
+      { selector: '.module-lexicon', top: 620, left: 1000, maxWidth: '300px', altMaxWidth: '90%' },
+      { selector: '.module-follow', top: 820, left: 1000, maxWidth: '180px', altMaxWidth: '90%' },
+      { selector: '.module-support', top: 960, left: 1000, maxWidth: '240px', altMaxWidth: '90%' }
+    ];
+
+    modules.forEach(mod => {
+      const el = document.querySelector(mod.selector);
+      if (el) {
+        if (screenWidth > 1024) {
+          el.style.position = 'absolute';
+          el.style.top = `${mod.top}px`;
+          el.style.left = `${mod.left}px`;
+          el.style.maxWidth = mod.maxWidth;
+        } else {
+          el.style.position = 'relative'; // Stack modules naturally on mobile
+          el.style.top = 'auto';
+          el.style.left = 'auto';
+          el.style.maxWidth = mod.altMaxWidth;
+          el.style.margin = '1rem auto';
+        }
+      }
+    });
+
+    // Adjust header padding for mobile
+    const header = document.querySelector('header.site-header');
+    if (header) {
+      if (screenWidth > 1024) {
+        header.style.paddingRight = '340px';
+      } else if (screenWidth > 768) {
+        header.style.paddingRight = '200px';
+      } else {
+        header.style.paddingRight = '1rem';
+      }
+    }
+  }
+
+  // Run on load
+  setModulePositions();
+
+  // Run on resize
+  window.addEventListener('resize', setModulePositions);
+
+  // Hamburger toggle for nav
+  const hamburger = document.querySelector('.hamburger');
+  const siteHeader = document.querySelector('header.site-header');
+  if (hamburger && siteHeader) {
+    hamburger.addEventListener('click', function() {
+      siteHeader.classList.toggle('open');
+    });
+  }
+
+});
 
   // === NAVIGATION & MODULE SCROLL ===
   function initNavRouter() {
@@ -427,3 +496,4 @@ document.head.appendChild(styleTag);
 //   }
   // ✅ Scrollwheels handled by CSS from style.css
 });
+
