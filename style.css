@@ -1,0 +1,776 @@
+/* ──────────────✦ Global Aesthetic with Moonpunk Image Background ✦──────────────
+Background replaced by AI-generated Moonpunk Settlement image,
+fitting desktop, tablet, and mobile with fixed position and 
+footer fixed at bottom All backgrounds are handled by individual sections..
+*/
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: #cceeff;
+  background: transparent;
+}
+
+/* ──────────────✦ Shared Module Heading Defaults ✦────────────── */
+.module-default h1,
+.module-default h2,
+.module-default h3,
+.module-default h4 {
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  line-height: 1.2;
+}
+.module-default h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.8rem;
+}
+.module-default h2 {
+  font-family: 'Pridi', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.module-default h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.25rem;
+}
+.module-default h4 {
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1rem;
+  font-weight: normal;
+}
+/* ────────────── MODULE SCROLL WHEELS ────────────── */
+.module-navigation,
+.module-lore,
+.module-timekeeping,
+.module-book-series,
+.module-mmorpg,
+.module-font-project,
+.module-language-rules,
+.module-lexicon,
+.module-follow,
+.module-support {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(3, 144, 144, 0.5) transparent;
+}
+
+.module-navigation::-webkit-scrollbar,
+.module-lore::-webkit-scrollbar,
+.module-timekeeping::-webkit-scrollbar,
+.module-book-series::-webkit-scrollbar,
+.module-mmorpg::-webkit-scrollbar,
+.module-font-project::-webkit-scrollbar,
+.module-language-rules::-webkit-scrollbar,
+.module-lexicon::-webkit-scrollbar,
+.module-follow::-webkit-scrollbar,
+.module-support::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+.module-navigation::-webkit-scrollbar-track,
+.module-lore::-webkit-scrollbar-track,
+.module-timekeeping::-webkit-scrollbar-track,
+.module-book-series::-webkit-scrollbar-track,
+.module-mmorpg::-webkit-scrollbar-track,
+.module-font-project::-webkit-scrollbar-track,
+.module-language-rules::-webkit-scrollbar-track,
+.module-lexicon::-webkit-scrollbar-track,
+.module-follow::-webkit-scrollbar-track,
+.module-support::-webkit-scrollbar-track {
+  background: rgba(26, 17, 75, 0.4);
+  border-radius: 10px;
+}
+
+.module-navigation::-webkit-scrollbar-thumb,
+.module-lore::-webkit-scrollbar-thumb,
+.module-timekeeping::-webkit-scrollbar-thumb,
+.module-book-series::-webkit-scrollbar-thumb,
+.module-mmorpg::-webkit-scrollbar-thumb,
+.module-font-project::-webkit-scrollbar-thumb,
+.module-language-rules::-webkit-scrollbar-thumb,
+.module-lexicon::-webkit-scrollbar-thumb,
+.module-follow::-webkit-scrollbar-thumb,
+.module-support::-webkit-scrollbar-thumb {
+  background-color: #A63A2C;
+  border-radius: 10px;
+  border: 3px solid rgba(4, 13, 18, 0.6);
+}
+
+.module-navigation::-webkit-scrollbar-thumb:hover,
+.module-lore::-webkit-scrollbar-thumb:hover,
+.module-timekeeping::-webkit-scrollbar-thumb:hover,
+.module-book-series::-webkit-scrollbar-thumb:hover,
+.module-mmorpg::-webkit-scrollbar-thumb:hover,
+.module-font-project::-webkit-scrollbar-thumb:hover,
+.module-language-rules::-webkit-scrollbar-thumb:hover,
+.module-lexicon::-webkit-scrollbar-thumb:hover,
+.module-follow::-webkit-scrollbar-thumb:hover,
+.module-support::-webkit-scrollbar-thumb:hover {
+  background-color: #D88EBA;
+}
+
+/* ────────────── PAGE-WIDE SCROLL WHEEL ────────────── */
+body {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(3, 144, 144, 0.5) transparent;
+}
+
+body::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+body::-webkit-scrollbar-track {
+  background: rgba(26, 17, 75, 0.4);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #A63A2C;
+  border-radius: 10px;
+  border: 3px solid rgba(4, 13, 18, 0.6);
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #D88EBA;
+}
+
+
+/* ──────────────✦ Site Header ✦────────────── */
+header.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  padding-right: 340px;
+  z-index: 1000;
+}
+
+/* ─────✦ Hamburger Menu — Always Visible ✦───── */
+header.site-header {
+  position: relative;
+}
+
+header.site-header .hamburger {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  z-index: 999; /* stays on top */
+}
+
+header.site-header .hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #FFF;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* ─────✦ Logo ✦───── */
+header.site-header .logo {
+  font-family: 'Segoe UI', 'Times New Roman', sans-serif;
+  font-size: 1.5rem;
+  color: #ECEEF1;
+}
+
+/* ─────✦ Nav Panel ✦───── */
+header.site-header nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(10, 10, 15, 0.95);
+  width: 100%;
+  padding: 1rem;
+  gap: 0.5rem;
+  z-index: 998; /* below hamburger */
+}
+
+header.site-header.open nav {
+  display: flex;
+}
+
+header.site-header nav .nav-button {
+  font-family: 'Segoe UI', 'Times New Roman', sans-serif;
+  padding: 0.75em 1em;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #FFF;
+  background: transparent;
+  transition: background 0.3s, color 0.3s;
+}
+
+header.site-header nav .nav-button:hover {
+  background-color: currentColor;
+  color: #000;
+}
+
+/* ─────✦ Module Glow Effect ✦───── */
+.module-glow {
+  box-shadow: 0 0 20px 5px rgba(255, 255, 200, 0.8);
+  transition: box-shadow 0.3s ease;
+}
+
+/* ─────✦ Module Color Variables ✦───── */
+:root {
+  --color-home:           #ECEEF1;
+  --color-lore:           #0075FF;
+  --color-navigation:     #C5ECFF;
+  --color-font-project:   #C1FF8A;
+  --color-mmorpg:         #FBC96D;
+  --color-book-series:    #D88EBA;
+  --color-timekeeping:    #DCE1E8;
+  --color-language-rules: #8FE9F0;
+  --color-lexicon:        #7A7C86;
+  --color-support:        #FBC96D;
+  --color-follow:         #9381FF;
+}
+
+/* ─────✦ Dark Mode Overrides ✦───── */
+body.dark-mode {
+  --color-home:           #1a114b;
+  --color-lore:           #0c4530;
+  --color-navigation:     #342c61;
+  --color-font-project:   #572a45;
+  --color-mmorpg:         #014d4e;
+  --color-book-series:    #78581f;
+  --color-timekeeping:    #A63A2C;
+  --color-language-rules: #7A7C86;
+  --color-lexicon:        #1a114b;
+  --color-support:        #342c61;
+  --color-follow:         #A63A2C;
+}
+
+/* ──────────────✦ Global Audio Module ✦────────────── */
+header.site-header .audio-module {
+  position: fixed;
+  top: 8px;
+  right: 24px;
+  z-index: 10000;
+  background: #fff;
+  color: #000;
+  padding: 18px 20px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  border: 2px solid #1a114b;
+  box-shadow: 0 6px 18px #2DC5B4;
+  font-family: serif;
+  backdrop-filter: blur(4px);
+}
+
+body.dark-mode header.site-header .audio-module {
+  background: #000;
+  color: #fff;
+}
+
+header.site-header .audio-module h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+header.site-header .audio-module p {
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+header.site-header .audio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+header.site-header .audio-controls button {
+  background-color: #2DC5B4;
+  color: #1a114b;
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 2px solid #342c61;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  min-width: 60px;
+  font-weight: bold;
+}
+
+header.site-header .audio-controls button:hover,
+header.site-header .audio-controls button:focus {
+  background-color: #9381FF;
+  color: #000;
+  outline: none;
+  transform: scale(1.05);
+}
+
+header.site-header .audio-controls button#speed-btn::after {
+  content: attr(data-speed) "×";
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+header.site-header .audio-controls button#play-btn::before {
+  content: "▶ ";
+}
+
+header.site-header .audio-controls button#stop-btn::before {
+  content: "■ ";
+}
+
+header.site-header .audio-controls button#replay-btn::before {
+  content: "↺ ";
+}
+
+header.site-header .audio-controls select#mood-selector {
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 2px solid #342c61;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  font-family: serif;
+  font-weight: 600;
+  min-width: 150px;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+  text-shadow: none;
+}
+
+header.site-header .audio-controls select#mood-selector:focus {
+  border-color: #000;
+  outline: none;
+}
+
+body.dark-mode header.site-header .audio-controls select#mood-selector {
+  background: #000;
+  color: #fff;
+}
+
+/* ─────✦ Mood Font Shadows ✦───── */
+
+/* Light Mode Shadows */
+header.site-header .audio-controls select#mood-selector option[value="happy"] { text-shadow: 1px 1px #014d4e; } /* Abyssal Teal */
+header.site-header .audio-controls select#mood-selector option[value="sad"] { text-shadow: 1px 1px #1a114b; } /* Astral Navy */
+header.site-header .audio-controls select#mood-selector option[value="excited"] { text-shadow: 1px 1px #A63A2C; } /* Duvaen Red */
+header.site-header .audio-controls select#mood-selector option[value="bored"] { text-shadow: 1px 1px #342c61; } /* Twilight Indigo */
+header.site-header .audio-controls select#mood-selector option[value="flirty"] { text-shadow: 1px 1px #78581f; } /* Relic Brass */
+header.site-header .audio-controls select#mood-selector option[value="authoritative"] { text-shadow: 1px 1px #7A7C86; } /* Arvalla Beta */
+header.site-header .audio-controls select#mood-selector option[value="silly"] { text-shadow: 1px 1px #572a45; } /* Leyline Plum */
+header.site-header .audio-controls select#mood-selector option[value="calm"] { text-shadow: 1px 1px #0c4530; } /* Moss-Vein Green */
+header.site-header .audio-controls select#mood-selector option[value="curious"] { text-shadow: 1px 1px #1a114b; } /* Astral Navy */
+header.site-header .audio-controls select#mood-selector option[value="surprised"] { text-shadow: 1px 1px #342c61; } /* Twilight Indigo */
+
+/* Dark Mode Shadows */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="happy"] { text-shadow: 1px 1px #0075FF; } /* Arvalla Prime */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="sad"] { text-shadow: 1px 1px #ECEEF1; } /* W’iosamn Silver */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="excited"] { text-shadow: 1px 1px #FBC96D; } /* Emberlight Gold */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="bored"] { text-shadow: 1px 1px #C5ECFF; } /* Crystalline Ice */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="flirty"] { text-shadow: 1px 1px #D88EBA; } /* Leyline Rose */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="authoritative"] { text-shadow: 1px 1px #8FE9F0; } /* Dreamlight Cyan */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="silly"] { text-shadow: 1px 1px #C1FF8A; } /* Verdant Glow */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="calm"] { text-shadow: 1px 1px #0075FF; } /* Arvalla Prime */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="curious"] { text-shadow: 1px 1px #9381FF; } /* Twilight Lavender */
+body.dark-mode header.site-header .audio-controls select#mood-selector option[value="surprised"] { text-shadow: 1px 1px #FBC96D; } /* Emberlight Gold */
+
+header.site-header .selected-pronunciation {
+  outline: 2px solid #00FFFF;
+  background-color: #014d4e;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+
+
+/* ──────────────✦ Background Layers & Page Layout ✦────────────── */
+
+/* Fixed background image behind everything with overlay and layout defaults */
+body {
+  position: relative;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0 0.5in;
+  box-sizing: border-box;
+  background-color: #000000;
+  font-family: 'Pridi', 'Cinzel Decorative', 'Segoe UI', sans-serif;
+  color: #ECEEF1;
+  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/Azaraanlanguage/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Fixed background image layer */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/Azaraanlanguage/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(0.85) contrast(1.05);
+}
+
+/* Subtle dark radial gradient overlay */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
+  pointer-events: none;
+}
+
+/* ──────────────✦ Typography and Element Alignment ✦────────────── */
+
+h1, h2, h3, h4,
+table, th, td,
+p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Paragraphs */
+p {
+  max-width: 100%;
+}
+
+/* Tables */
+table {
+  width: fit-content;
+  margin: 1rem auto;
+  border-collapse: collapse;
+}
+
+/* ──────────────✦ Universal Visit/Download Buttons ✦────────────── */
+
+.visit-download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 40px auto;
+  justify-content: center;
+  max-width: 90%;
+}
+
+.visit-download-buttons button {
+  background-color: #8FE9F0;
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: 2px solid #7A7C86;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px #014d4e;
+}
+
+.visit-download-buttons button:hover,
+.visit-download-buttons button:focus {
+  background-color: #000;
+  color: #8FE9F0;
+  outline: none;
+  transform: translateY(-2px);
+}
+
+/* ────────────── UNIVERSAL BASE ────────────── */
+h1, h2, h3, h4 {
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+/* ────────────── FOLLOW MODULE ────────────── */
+.module-follow {
+  background-color: #ECEEF1;
+  color: #1a114b;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #9381FF;
+
+  position: absolute;
+  top: 820px;
+  left: 1000px;
+  max-width: 180px;
+}
+
+/* ────────────── LORE MODULE ────────────── */
+.module-lore {
+  background-color: #0075FF;
+  color: #ECEEF1;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #0075FF;
+
+  position: absolute;
+  top: 550px;
+  left: 340px;
+}
+
+/* ────────────── FONT PROJECT MODULE ────────────── */
+.module-font-project {
+  background-color: #C1FF8A;
+  color: #572a45;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #572a45;
+
+  position: absolute;
+  top: 1280px;
+  left: 340px;
+}
+
+/* ────────────── MMORPG MODULE ────────────── */
+.module-mmorpg {
+  background-color: #FBC96D;
+  color: #014d4e;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #014d4e;
+
+  position: absolute;
+  top: 1100px;
+  left: 340px;
+}
+
+/* ────────────── BOOK SERIES MODULE ────────────── */
+.module-book-series {
+  background-color: #D88EBA;
+  color: #78581f;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #78581f;
+
+  position: absolute;
+  top: 920px;
+  left: 340px;
+}
+
+/* ────────────── TIMEKEEPING MODULE ────────────── */
+.module-timekeeping {
+  background-color: #DCE1E8;
+  color: #A63A2C;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #A63A2C;
+
+  position: absolute;
+  top: 740px;
+  left: 340px;
+}
+
+/* ────────────── LANGUAGE RULES MODULE ────────────── */
+.module-language-rules {
+  background-color: #8FE9F0;
+  color: #7A7C86;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #7A7C86;
+
+  position: absolute;
+  top: 400px;
+  left: 1000px;
+  max-width: 300px;
+}
+
+/* ────────────── LEXICON MODULE ────────────── */
+.module-lexicon {
+  background-color: #7A7C86;
+  color: #1a114b;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #1a114b;
+
+  position: absolute;
+  top: 620px;
+  left: 1000px;
+  max-width: 300px;
+}
+
+/* ────────────── SUPPORT MODULE ────────────── */
+.module-support {
+  background-color: #FBC96D;
+  color: #342c61;
+  border-radius: 15px;
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Pridi', serif;
+  font-size: 1.1rem;
+  box-shadow: 0 0 15px #342c61;
+
+  position: absolute;
+  top: 960px;
+  left: 1000px;
+  max-width: 240px;
+}
+
+/* ──────────────✦ 🧱 Header Area ✦────────────── */
+header.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-right: 340px;
+}
+
+header.site-header .hamburger {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+header.site-header .audio-module {
+  position: absolute;
+  top: 8px;
+  right: 24px;
+  width: 300px;
+}
+
+/* ──────────────✦ 🧭 Main Column Modules (Navigation) ✦────────────── */
+.module-navigation {
+  position: absolute;
+  top: 400px;
+  left: 340px;
+  max-width: 600px;
+}
+
+/* ──────────────✦ Responsive Adjustments ✦────────────── */
+@media (max-width: 1024px) {
+  header.site-header {
+    padding-right: 200px;
+  }
+
+  header.site-header .hamburger {
+    width: 18px;
+    height: 18px;
+  }
+
+  header.site-header .audio-module {
+    width: 240px;
+  }
+
+  .module-navigation,
+  .module-lore,
+  .module-timekeeping,
+  .module-book-series,
+  .module-mmorpg,
+  .module-font-project,
+  .module-language-rules,
+  .module-lexicon,
+  .module-follow,
+  .module-support {
+    max-width: 90%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  header.site-header {
+    padding-right: 1rem;
+  }
+
+  header.site-header .audio-module {
+    width: 100%;
+    right: 0;
+  }
+}
+
+/* ──────────────✦ Aza'raan Global Overrides (Merged into Module System) ✦────────────── */
+
+/* === Apply Comic Sans + Styling to Specific Modules via .module-default === */
+.module-lore,
+.module-font-project,
+.module-book-series,
+.module-timekeeping,
+.module-language-rules,
+.module-lexicon {
+  font-family: 'Comic Sans MS', cursive !important;
+  color: #014d4e;
+  text-shadow: 0 0 0.3px #8FE9F0;
+  font-size: 16px !important;
+}
+
+/* === Ensure Tables in These Modules Are Also Styled Consistently === */
+.module-lore table,
+.module-font-project table,
+.module-book-series table,
+.module-timekeeping table,
+.module-language-rules table,
+.module-lexicon table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-family: 'Comic Sans MS', cursive !important;
+  color: #014d4e;
+  text-shadow: 0 0 0.3px #8FE9F0;
+  font-size: 16px !important;
+}
+
+

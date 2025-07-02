@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Support Aza’ra — Donations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ Load style.css from GitHub for styling -->
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
+</head>
+
+<body>
+
+  <main>
+    <section id="support" class="module-support-module">
+      <div class="resizable-container">
+        <div class="drag-handle"></div>
+        <h2>🌌 Thank You for Supporting Aza’ra</h2>
+        <p>
+          Your donations help maintain this project, its language, glyphs, and story.<br>
+          Whether you’re a linguist, gamer, worldbuilder, or dreamer — your curiosity means everything.<br>
+          You’re now part of Aza’ra’s living legacy — a gift of story, structure, and survival.
+        </p>
+
+        <p>
+          💙 If you’d rather donate specific items I need instead of funds,<br>
+          you can visit my 
+          <a href="https://www.linktr.ee/thetransgendertrex" target="_blank" rel="noopener noreferrer">official wishlists here</a>.
+        </p>
+
+        <p>
+          💜 Support the creator and learn more about the lore, linguistic design, and metaphysical themes —<br>
+          <strong>William Blake Saville</strong> (aka <code>#TheTransgenderTRex</code>) — an autistic, low-income, bedridden trans man.
+        </p>
+
+        <noscript>
+          <p>JavaScript is required to process secure donations. Please enable JavaScript.</p>
+        </noscript>
+
+        <!-- ✅ donations.js will build the secure form here -->
+        <div id="donation-module-mount"></div>
+
+        <p>
+          <label>Donation Amount (USD): 
+            <input type="number" id="donation-amount" placeholder="Amount in USD" min="1" step="1" />
+          </label><br>
+          <label><input type="radio" name="interval" value="one_time" checked> One-time</label>
+          <label><input type="radio" name="interval" value="month"> Monthly</label>
+          <label><input type="radio" name="interval" value="year"> Yearly</label><br>
+          <button id="donate-btn">Donate & Support</button>
+          <div id="donation-status"></div>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ✅ Load donations.js from GitHub -->
+  <script type="module">
+    import { initDonations } from "https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js";
+    initDonations();
+  </script>
+
+</body>
+</html>
