@@ -427,4 +427,3 @@ document.head.appendChild(styleTag);
 //   }
   // ✅ Scrollwheels handled by CSS from style.css
 });
-
