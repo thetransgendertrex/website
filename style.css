@@ -1,0 +1,1090 @@
+/*
+Aza'ra Trademarked Projects
+
+Base Template: Reflux (https://templatemo.com/tm-531-reflux)
+Customized with layered Moonpunk background and custom fonts.
+*/
+
+/* ──────────────✦ Imports ✦────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+/* ──────────────✦ Layered Background ✦────────────── */
+
+/* Fixed background image behind everything */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  filter: brightness(0.85) contrast(1.05);
+}
+
+/* Subtle dark gradient overlay for readability — scrolls with content */
+body::after {
+  content: "";
+  position: absolute;   
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
+  pointer-events: none;
+}
+
+
+/* ──────────────✦ Typography & Basics ✦────────────── */
+
+body {
+  font-family: 'Pridi', serif; /* You can change to Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
+  overflow-x: hidden;
+  color: #fff;
+}
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
+
+h4 {
+  font-size: 26px;
+  font-weight: 700;
+  font-family: 'Cinzel Decorative', serif;
+  color: #fff;
+  letter-spacing: 0.25px;
+}
+
+input,
+select,
+textarea {
+  outline: none;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  overflow: hidden;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+ul li {
+  display: inline-block;
+}
+
+/* ──────────────✦ Box Sizing ✦────────────── */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* ──────────────✦ Utility Classes ✦────────────── */
+
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+/* ──────────────✦ Navigation ✦────────────── */
+
+.main-nav {
+  text-align: center;
+}
+
+.main-nav li {
+  display: block;
+}
+
+.main-nav li:last-child a {
+  border-bottom: 2px solid #fff;
+}
+
+.main-nav li a {
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Uncial Antiqua', cursive;
+  color: #fff;
+  width: 100%;
+  transition: all 0.5s;
+  border-top: 2px solid #fff;
+}
+
+.main-nav li:hover a,
+.main-nav li.active a {
+  background: #fff;
+  color: #36888c;
+}
+/* ──────────────✦ Sidebar Menu ✦────────────── */
+
+.menu {
+  text-align: center;
+  font-family: 'Uncial Antiqua', cursive;
+  left: 10%;
+  background-color: #fff; /* Light mode default */
+  color: #000; /* Light mode default */
+  box-sizing: border-box;
+  height: 100vh;
+  max-height: 100vh !important;
+  max-width: 80vw !important;
+  min-width: 45px !important;
+  outline: none;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 0;
+  position: fixed !important;
+  top: 0;
+  width: 20%;
+  z-index: 9999 !important;
+  will-change: transform;
+  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu a {
+  display: block;
+  text-decoration: none;
+  padding: 20px 0;
+  font-size: 18px;
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.menu a:hover {
+  filter: brightness(0.85);
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* ──────────────✦ Sidebar Toggle ✦────────────── */
+
+#menu-toggle,
+#menu-close {
+  cursor: pointer;
+  background-color: #fff; /* Light mode */
+  color: #000; /* Light mode */
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* ──────────────✦ Sections ✦────────────── */
+
+/* Each section link with text shadow for light/dark modes */
+
+.menu a.home {
+  text-shadow: 2px 2px #ECEEF1; /* W’iosamn Silver */
+}
+
+.menu a.lore {
+  text-shadow: 2px 2px #0075FF; /* Arvalla Prime */
+}
+
+.menu a.navigation {
+  text-shadow: 2px 2px #C5ECFF; /* Crystalline Ice */
+}
+
+.menu a.font-project {
+  text-shadow: 2px 2px #C1FF8A; /* Verdant Glow */
+}
+
+.menu a.mmorpg {
+  text-shadow: 2px 2px #FBC96D; /* Emberlight Gold */
+}
+
+.menu a.book-series {
+  text-shadow: 2px 2px #D88EBA; /* Leyline Rose */
+}
+
+.menu a.timekeeping {
+  text-shadow: 2px 2px #DCE1E8; /* Moonstone Silver */
+}
+
+.menu a.language-rules {
+  text-shadow: 2px 2px #8FE9F0; /* Dreamlight Cyan */
+}
+
+.menu a.lexicon {
+  text-shadow: 2px 2px #7A7C86; /* Arvalla Beta */
+}
+
+.menu a.support {
+  text-shadow: 2px 2px #FBC96D; /* Emberlight Gold */
+}
+
+/* ──────────────✦ Dark Mode ✦────────────── */
+
+@media (prefers-color-scheme: dark) {
+  .menu {
+    background-color: #000;
+    color: #fff;
+  }
+
+  #menu-toggle,
+  #menu-close {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .menu a.home {
+    text-shadow: 2px 2px #1a114b; /* Astral Navy */
+  }
+
+  .menu a.lore {
+    text-shadow: 2px 2px #0c4530; /* Moss-Vein Green */
+  }
+
+  .menu a.navigation {
+    text-shadow: 2px 2px #342c61; /* Twilight Indigo */
+  }
+
+  .menu a.font-project {
+    text-shadow: 2px 2px #572a45; /* Leyline Plum */
+  }
+
+  .menu a.mmorpg {
+    text-shadow: 2px 2px #014d4e; /* Abyssal Teal */
+  }
+
+  .menu a.book-series {
+    text-shadow: 2px 2px #78581f; /* Relic Brass */
+  }
+
+  .menu a.timekeeping {
+    text-shadow: 2px 2px #A63A2C; /* Duvaen Red */
+  }
+
+  .menu a.language-rules {
+    text-shadow: 2px 2px #7A7C86; /* Arvalla Beta */
+  }
+
+  .menu a.lexicon {
+    text-shadow: 2px 2px #1a114b; /* Astral Navy */
+  }
+
+  .menu a.support {
+    text-shadow: 2px 2px #342c61; /* Twilight Indigo */
+  }
+}
+/* ──────────────✦ Base Section Layout ✦────────────── */
+
+.section {
+  position: relative;
+  width: 55%;
+  right: 10%;
+  left: 35%;
+  min-height: 100vh;
+  padding: 80px 2.5% 80px 2.5%;
+  color: inherit;
+  text-align: center;
+  overflow: auto;
+  border-bottom: none;
+}
+
+/* Scrollbars always visible for whole page */
+html, body {
+  overflow: auto;
+}
+
+table {
+  margin-left: 0.25in;
+  margin-right: 0.25in;
+  opacity: 0.7;
+}
+
+/* Ensure subtle gradient overlay is behind content */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
+  pointer-events: none;
+}
+/* ──────────────✦ General Layout Rules ✦────────────── */
+
+body {
+  overflow: auto; /* Full page scrollbars */
+}
+
+.main-content {
+  position: relative;
+  left: 35%;
+  width: 55%;
+  right: 10%;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  overflow: auto;
+}
+
+.main-content table {
+  width: calc(100% - 0.5in);
+  margin: 0.25in auto;
+  background: #fff;
+  opacity: 0.7;
+  border-collapse: collapse;
+}
+
+.main-content table td,
+.main-content table th {
+  padding: 15px;
+}
+
+/* ──────────────✦ Universal Section Structure ✦────────────── */
+
+.section {
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  padding-bottom: 80px;
+}
+
+.section-heading {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.section-heading h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.section-heading .line-dec {
+  width: 60px;
+  height: 3px;
+  margin: 10px auto;
+}
+
+.section-heading span {
+  margin-top: 5px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* ──────────────✦ Section Specific Styles ✦────────────── */
+
+/* 🏠 Home */
+.section.home.light {
+  background: #ECEEF1;
+  color: #000;
+  font-family: 'Cinzel Decorative', serif;
+  box-shadow: 0 0 20px #ECEEF1;
+}
+
+.section.home.dark {
+  background: #1a114b;
+  color: #fff;
+  font-family: 'Cinzel Decorative', serif;
+  box-shadow: 0 0 20px #1a114b;
+}
+
+.section.home table {
+  border: 5px solid #ECEEF1;
+}
+
+.section.home.dark table {
+  border: 5px solid #1a114b;
+}
+
+/* 📖 Lore */
+.section.lore.light {
+  background: #0075FF;
+  color: #000;
+  font-family: 'Uncial Antiqua', cursive;
+  box-shadow: 0 0 20px #0075FF;
+}
+
+.section.lore.dark {
+  background: #0c4530;
+  color: #fff;
+  font-family: 'Uncial Antiqua', cursive;
+  box-shadow: 0 0 20px #0c4530;
+}
+
+.section.lore table {
+  border: 5px solid #0075FF;
+}
+
+.section.lore.dark table {
+  border: 5px solid #0c4530;
+}
+
+/* 🧭 Navigation */
+.section.navigation.light {
+  background: #C5ECFF;
+  color: #000;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #C5ECFF;
+}
+
+.section.navigation.dark {
+  background: #342c61;
+  color: #fff;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #342c61;
+}
+
+.section.navigation table {
+  border: 5px solid #C5ECFF;
+}
+
+.section.navigation.dark table {
+  border: 5px solid #342c61;
+}
+
+/* 🅰️ Font Project */
+.section.font-project.light {
+  background: #C1FF8A;
+  color: #000;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #C1FF8A;
+}
+
+.section.font-project.dark {
+  background: #572a45;
+  color: #fff;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #572a45;
+}
+
+.section.font-project table {
+  border: 5px solid #C1FF8A;
+}
+
+.section.font-project.dark table {
+  border: 5px solid #572a45;
+}
+
+/* 🗡️ MMORPG */
+.section.mmorpg.light {
+  background: #FBC96D;
+  color: #000;
+  font-family: 'Cinzel Decorative', serif;
+  box-shadow: 0 0 20px #FBC96D;
+}
+
+.section.mmorpg.dark {
+  background: #014d4e;
+  color: #fff;
+  font-family: 'Cinzel Decorative', serif;
+  box-shadow: 0 0 20px #014d4e;
+}
+
+.section.mmorpg table {
+  border: 5px solid #FBC96D;
+}
+
+.section.mmorpg.dark table {
+  border: 5px solid #014d4e;
+}
+
+/* 📚 Book Series */
+.section.book-series.light {
+  background: #D88EBA;
+  color: #000;
+  font-family: 'Uncial Antiqua', cursive;
+  box-shadow: 0 0 20px #D88EBA;
+}
+
+.section.book-series.dark {
+  background: #78581f;
+  color: #fff;
+  font-family: 'Uncial Antiqua', cursive;
+  box-shadow: 0 0 20px #78581f;
+}
+
+.section.book-series table {
+  border: 5px solid #D88EBA;
+}
+
+.section.book-series.dark table {
+  border: 5px solid #78581f;
+}
+
+/* 🕰️ Timekeeping */
+.section.timekeeping.light {
+  background: #DCE1E8;
+  color: #000;
+  font-family: 'Cinzel Decorative', serif;
+  box-shadow: 0 0 20px #DCE1E8;
+}
+
+.section.timekeeping.dark {
+  background: #A63A2C;
+  color: #fff;
+  font-family: 'Cinzel Decorative', serif;
+  box-shadow: 0 0 20px #A63A2C;
+}
+
+.section.timekeeping table {
+  border: 5px solid #DCE1E8;
+}
+
+.section.timekeeping.dark table {
+  border: 5px solid #A63A2C;
+}
+
+/* 📜 Language Rules */
+.section.language-rules.light {
+  background: #8FE9F0;
+  color: #000;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #8FE9F0;
+}
+
+.section.language-rules.dark {
+  background: #7A7C86;
+  color: #fff;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #7A7C86;
+}
+
+.section.language-rules table {
+  border: 5px solid #8FE9F0;
+}
+
+.section.language-rules.dark table {
+  border: 5px solid #7A7C86;
+}
+
+/* 🗂️ Lexicon */
+.section.lexicon.light {
+  background: #7A7C86;
+  color: #000;
+  font-family: 'Uncial Antiqua', cursive;
+  box-shadow: 0 0 20px #7A7C86;
+}
+
+.section.lexicon.dark {
+  background: #1a114b;
+  color: #fff;
+  font-family: 'Uncial Antiqua', cursive;
+  box-shadow: 0 0 20px #1a114b;
+}
+
+.section.lexicon table {
+  border: 5px solid #7A7C86;
+}
+
+.section.lexicon.dark table {
+  border: 5px solid #1a114b;
+}
+
+/* 🛡️ Support */
+.section.support.light {
+  background: #FBC96D;
+  color: #000;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #FBC96D;
+}
+
+.section.support.dark {
+  background: #342c61;
+  color: #fff;
+  font-family: 'Pridi', serif;
+  box-shadow: 0 0 20px #342c61;
+}
+
+.section.support table {
+  border: 5px solid #FBC96D;
+}
+
+.section.support.dark table {
+  border: 5px solid #342c61;
+}
+
+/* ──────────────✦ Gradient Overlay ✦────────────── */
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(11, 29, 38, 0.5) 0%,
+    rgba(4, 13, 18, 0.8) 100%
+  );
+  pointer-events: none;
+}
+/*!
+ * Customized FlexSlider v2.7.1
+ * Updated with site-specific navigation and sidebar styles
+ * Original: http://www.woothemes.com/flexslider/
+ * License: GPLv2 and later (http://www.gnu.org/licenses/gpl-2.0.html)
+ * Author: Tyler Smith (@mbmufffin)
+ */
+
+/* ====================================================================================================================
+ * FONT-FACE
+ * ====================================================================================================================*/
+@font-face {
+  font-family: 'flexslider-icon';
+  src: url('../fonts/flexslider-icon.eot');
+  src: url('../fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/flexslider-icon.woff') format('woff'),
+       url('../fonts/flexslider-icon.ttf') format('truetype'),
+       url('../fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ====================================================================================================================
+ * RESETS
+ * ====================================================================================================================*/
+.flex-container a:hover,
+.flex-slider a:hover {
+  outline: none;
+}
+
+.slides,
+.slides > li,
+.flex-control-nav,
+.flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flex-pauseplay span {
+  text-transform: capitalize;
+}
+
+/* ====================================================================================================================
+ * CUSTOM NAVIGATION (match site nav style)
+ * ====================================================================================================================*/
+
+.flex-direction-nav a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background: #fff; /* Light mode */
+  color: #000; /* Light mode */
+  text-align: center;
+  line-height: 60px;
+  font-family: 'Uncial Antiqua', cursive;
+  font-weight: 700;
+  font-size: 24px;
+  text-decoration: none;
+  transition: all 0.3s;
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+}
+
+.flex-direction-nav a.flex-prev {
+  left: 0;
+}
+
+.flex-direction-nav a.flex-next {
+  right: 0;
+}
+
+.flex-direction-nav a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.flex-control-nav {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.flex-control-nav li {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.flex-control-nav a {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  text-indent: -9999px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.flex-control-nav a.flex-active,
+.flex-control-nav a:hover {
+  background: #000;
+}
+
+/* ====================================================================================================================
+ * DARK MODE SUPPORT
+ * ====================================================================================================================*/
+@media (prefers-color-scheme: dark) {
+  .flex-direction-nav a {
+    background: #000;
+    color: #fff;
+  }
+  .flex-direction-nav a:hover {
+    background: #fff;
+    color: #000;
+  }
+  .flex-control-nav a {
+    background: #000;
+    border: 2px solid #fff;
+  }
+  .flex-control-nav a.flex-active,
+  .flex-control-nav a:hover {
+    background: #fff;
+  }
+}
+/* ===================================================================================================
+ * CLEAN BASE FLEX CONTAINER
+ * ===================================================================================================*/
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+/* Example child elements inside the flex container */
+.flex-container > * {
+  flex: 1 1 auto;
+}
+
+/* ===================================================================================================
+ * NAVIGATION
+ * ===================================================================================================*/
+
+.main-nav {
+  text-align: center;
+}
+
+.main-nav li {
+  display: block;
+}
+
+.main-nav li:last-child a {
+  border-bottom: 2px solid #fff;
+}
+
+.main-nav li a {
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Uncial Antiqua', cursive;
+  color: #fff;
+  width: 100%;
+  transition: all 0.5s;
+  border-top: 2px solid #fff;
+}
+
+.main-nav li:hover a,
+.main-nav li.active a {
+  background: #fff;
+  color: #36888c;
+}
+
+/* ===================================================================================================
+ * SIDEBAR MENU
+ * ===================================================================================================*/
+
+.menu {
+  text-align: center;
+  font-family: 'Uncial Antiqua', cursive;
+  left: 10%;
+  background-color: #fff;
+  color: #000;
+  box-sizing: border-box;
+  height: 100vh;
+  max-width: 80vw;
+  min-width: 45px;
+  overflow-y: auto;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 20%;
+  z-index: 9999;
+  will-change: transform;
+  transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu a {
+  display: block;
+  text-decoration: none;
+  padding: 20px 0;
+  font-size: 18px;
+  color: inherit;
+  transition: all 0.3s;
+}
+
+.menu a:hover {
+  filter: brightness(0.85);
+}
+
+.menu::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===================================================================================================
+ * SIDEBAR TOGGLE BUTTONS
+ * ===================================================================================================*/
+
+#menu-toggle,
+#menu-close {
+  cursor: pointer;
+  background-color: #fff;
+  color: #000;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+/* ===================================================================================================
+ * SECTION LINKS WITH TEXT SHADOWS
+ * ===================================================================================================*/
+
+.menu a.home { text-shadow: 2px 2px #ECEEF1; }
+.menu a.lore { text-shadow: 2px 2px #0075FF; }
+.menu a.navigation { text-shadow: 2px 2px #C5ECFF; }
+.menu a.font-project { text-shadow: 2px 2px #C1FF8A; }
+.menu a.mmorpg { text-shadow: 2px 2px #FBC96D; }
+.menu a.book-series { text-shadow: 2px 2px #D88EBA; }
+.menu a.timekeeping { text-shadow: 2px 2px #DCE1E8; }
+.menu a.language-rules { text-shadow: 2px 2px #8FE9F0; }
+.menu a.lexicon { text-shadow: 2px 2px #7A7C86; }
+.menu a.support { text-shadow: 2px 2px #FBC96D; }
+
+/* ===================================================================================================
+ * DARK MODE
+ * ===================================================================================================*/
+
+@media (prefers-color-scheme: dark) {
+  .menu {
+    background-color: #000;
+    color: #fff;
+  }
+
+  #menu-toggle,
+  #menu-close {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .menu a.home { text-shadow: 2px 2px #1a114b; }
+  .menu a.lore { text-shadow: 2px 2px #0c4530; }
+  .menu a.navigation { text-shadow: 2px 2px #342c61; }
+  .menu a.font-project { text-shadow: 2px 2px #572a45; }
+  .menu a.mmorpg { text-shadow: 2px 2px #014d4e; }
+  .menu a.book-series { text-shadow: 2px 2px #78581f; }
+  .menu a.timekeeping { text-shadow: 2px 2px #A63A2C; }
+  .menu a.language-rules { text-shadow: 2px 2px #7A7C86; }
+  .menu a.lexicon { text-shadow: 2px 2px #1a114b; }
+  .menu a.support { text-shadow: 2px 2px #342c61; }
+}
+/* === Comic Sans Override (Multiple HTML pages on GitHub) === */
+body[data-doc-name*="index"],
+body[data-doc-name*="lore"],
+body[data-doc-name*="font-project"],
+body[data-doc-name*="book-series"],
+body[data-doc-name*="language-rules"],
+body[data-doc-name*="home"],
+body[data-doc-name*="lexicon"] {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+/* === Aza'raan Font Substitution for Comic Sans Only === */
+.azaraan-word {
+  font-family: 'Azaraan', cursive;
+  color: #014d4e;
+  text-shadow: 0 0 2px var(--cyan);
+}
+/* Sidebar open state — slide in */
+.menu {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.menu:not(.open) {
+  transform: translateX(-100%);
+}
+
+/* Ensure toggle is hidden on large screens */
+@media (min-width: 846px) {
+  #menu-toggle, #menu-close {
+    display: none;
+  }
+
+  .menu {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Active nav link styling */
+.menu a.active {
+  background: #fff;
+  color: #000;
+  font-weight: 900;
+}
+
+/* Optional: transition for smoother nav link changes */
+.menu a {
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
+@media screen and (max-width: 1680px) {
+  .menu {
+    left: 5%;
+  }
+
+  .section, .main-content {
+    width: 65%;
+    left: 30%;
+    right: 5%;
+  }
+}
+
+/* ──────────────✦ Responsive: Medium Tablet ✦────────────── */
+@media screen and (max-width: 1280px) {
+  .menu {
+    left: 0%;
+    width: 25%;
+  }
+
+  .section, .main-content {
+    width: 70%;
+    left: 28%;
+    right: 2%;
+  }
+
+  table {
+    width: 95% !important;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ──────────────✦ Responsive: Small Tablet to Mobile ✦────────────── */
+@media screen and (max-width: 845px) {
+  /* Show toggle buttons */
+  #menu-toggle,
+  #menu-close {
+    display: inline-block;
+  }
+
+  /* Slide out menu by default */
+  .menu {
+    width: 280px;
+    transform: translateX(-100%) !important;
+    -webkit-transform: translateX(-100%) !important;
+    transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  }
+
+  .menu.open {
+    transform: translateX(0) !important;
+    -webkit-transform: translateX(0) !important;
+  }
+
+  .section, .main-content {
+    width: 94%;
+    left: 3%;
+    right: 3%;
+    padding: 30px 15px;
+  }
+
+  table {
+    width: 100% !important;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+
+  .main-nav li a {
+    font-size: 14px;
+    height: 50px;
+    line-height: 50px;
+  }
+
+  .menu a {
+    padding: 15px 0;
+    font-size: 16px;
+  }
+}
+
+/* ──────────────✦ Comic Sans Override for Small Screens ✦────────────── */
+@media screen and (max-width: 845px) {
+  body {
+    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  }
+  .section, .main-content, .menu, .main-nav li a {
+    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  }
+  table {
+    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  }
+}
+
+/* ──────────────✦ Responsive Scrollbars Always ✦────────────── */
+html, body {
+  overflow-x: auto;
+  overflow-y: auto;
+}
