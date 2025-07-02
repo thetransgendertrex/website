@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+// ============================================
+// ✅ Navigation, Page Router, Scrollbars, Tables, Buttons
+// ============================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('header.site-header');
+  const nav = header?.querySelector('nav');
+  const hamburger = header?.querySelector('.hamburger');
+  const pages = document.querySelectorAll('.page');
+  const navButtons = header?.querySelectorAll('.nav-button');
+
+  function showPage(id) {
+    pages.forEach(p => p.classList.remove('active', 'glow'));
+    const page = document.getElementById(id);
+    if (page) {
+      page.classList.add('active', 'glow');
+      setTimeout(() => page.classList.remove('glow'), 3000);
+    }
+  }
+
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = [...btn.classList].find(cls => cls !== 'nav-button');
+      if (target) showPage(target);
+      if (window.innerWidth <= 768) header.classList.remove('open');
+    });
+  });
+
+  hamburger?.addEventListener('click', () => {
+    header.classList.toggle('open');
+  });
+
+  // Show first page by default
+  if (pages[0]) pages[0].classList.add('active');
+
+  console.log('✅ Navigation & Page Router Loaded');
+});
+
+// ============================================
+// ✅ Universal Scrollbar Styling (for body & pages)
+// ============================================
+
+const scrollCSS = `
+body, .page, table {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(3,144,144,0.5) transparent;
+}
+body::-webkit-scrollbar,
+.page::-webkit-scrollbar,
+table::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+body::-webkit-scrollbar-track,
+.page::-webkit-scrollbar-track,
+table::-webkit-scrollbar-track {
+  background: rgba(26, 17, 75, 0.4);
+  border-radius: 10px;
+}
+body::-webkit-scrollbar-thumb,
+.page::-webkit-scrollbar-thumb,
+table::-webkit-scrollbar-thumb {
+  background-color: #A63A2C;
+  border-radius: 10px;
+  border: 3px solid rgba(4, 13, 18, 0.6);
+}
+body::-webkit-scrollbar-thumb:hover,
+.page::-webkit-scrollbar-thumb:hover,
+table::-webkit-scrollbar-thumb:hover {
+  background-color: #D88EBA;
+}
+`;
+
+const styleTag = document.createElement('style');
+styleTag.textContent = scrollCSS;
+document.head.appendChild(styleTag);
+
+// ============================================
+// ✅ Example Table & Button Behavior (optional)
+// ============================================
+
+// If you need JS for custom buttons/tables, add here.
+// For standard HTML/CSS tables & buttons, your CSS covers styling.
+
+
+</script>
+  <!-- ✅ Load style.css from GitHub -->
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
+
+  <!-- ✅ Load script.js from GitHub -->
+  <script src="https://raw.githubusercontent.com/thetransgendertrex/website/main/script.js"></script>
+
+  <!-- ✅ Load donations.js from GitHub -->
+  <!-- Removed invalid script block; donations.js is loaded via dynamic import below -->
+
+  <!-- External Moonpunk + Aza'raan Font Styles -->
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
+
+<!-- Cinzel Decorative -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap" rel="stylesheet">
+
+<!-- Pridi -->
+<link href="https://fonts.googleapis.com/css2?family=Pridi&display=swap" rel="stylesheet">
+
+<!-- Lato -->
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+<!-- Uncial Antiqua -->
+<link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+<!-- Pacifico -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+
+/* ============== Universal Page Layout ============== */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.5in;
+  overflow-x: hidden;
+}
+
+.page {
+  display: none;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.page.active {
+  display: block;
+}
+
+.page.glow {
+  box-shadow: 0 0 20px 4px #00ffff;
+  border: 2px solid #00ffff;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+/* ============== Universal Scrollbars ============== */
+body, .page, table {
+  scrollbar-width: thin;
+  scrollbar-color: #A63A2C rgba(4, 13, 18, 0.6);
+}
+
+body::-webkit-scrollbar,
+.page::-webkit-scrollbar,
+table::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+body::-webkit-scrollbar-track,
+.page::-webkit-scrollbar-track,
+table::-webkit-scrollbar-track {
+  background: rgba(26, 17, 75, 0.4);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+.page::-webkit-scrollbar-thumb,
+table::-webkit-scrollbar-thumb {
+  background: #A63A2C;
+  border-radius: 10px;
+  border: 3px solid rgba(4, 13, 18, 0.6);
+}
+
+body::-webkit-scrollbar-thumb:hover,
+.page::-webkit-scrollbar-thumb:hover,
+table::-webkit-scrollbar-thumb:hover {
+  background: #D88EBA;
+}
+
+/* ============== Tables ============== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem auto;
+  background: rgba(255, 255, 255, 0.7);
+  color: #000;
+}
+
+th {
+  font-family: serif;
+  font-size: 1.125rem;
+  padding: 0.75rem;
+  background: #014d4e;
+  color: #00FFFF;
+  text-align: left;
+}
+
+td {
+  font-family: "Times New Roman", serif;
+  font-size: 0.9375rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #2DC5B4;
+}
+
+/* Responsive table for small screens */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ============== Header & Navigation ============== */
+header.site-header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  background: rgba(10, 10, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  z-index: 1000;
+}
+
+header.site-header .hamburger {
+  position: absolute;
+  top: 50%; left: 1rem;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+header.site-header .hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #FFF;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+header.site-header nav {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; left: 0;
+  background: rgba(10, 10, 15, 0.95);
+  width: 100%;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+header.site-header.open nav {
+  display: flex;
+}
+
+header.site-header nav .nav-button {
+  font-family: 'Segoe UI', 'Times New Roman', sans-serif;
+  padding: 0.5em 1em;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+header.site-header nav .nav-button:hover {
+  background: currentColor;
+  color: #fff;
+}
+
+/* ============== Buttons ============== */
+.visit-download-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 40px auto;
+  justify-content: center;
+  max-width: 90%;
+}
+
+.visit-download-buttons button {
+  background: #8FE9F0;
+  color: #000;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border: 2px solid #7A7C86;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px #014d4e;
+}
+
+.visit-download-buttons button:hover,
+.visit-download-buttons button:focus {
+  background: #000;
+  color: #8FE9F0;
+  outline: none;
+  transform: translateY(-2px);
+}
+/* ──────────────✦ Navigation Page ✦────────────── */ 
+
+/* ──────────────✦ Navigation Headings & Title ✦────────────── */
+h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 2.5rem;
+  color: #000;
+  text-shadow: 1px 1px #78581f;
+}
+
+h2 {
+  font-family: 'Pridi', serif;
+  font-size: 2rem;
+  color: #000;
+  text-shadow: 1px 1px #C5ECFF;
+}
+
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.75rem;
+  color: #000;
+  text-shadow: 1px 1px #78581f;
+}
+
+h4 {
+  font-family: 'Uncial Antiqua', cursive;
+  font-size: 1.5rem;
+  color: #000;
+  text-shadow: 1px 1px #C5ECFF;
+}
+
+#navigation.section-page .section-heading {
+  text-align: center;
+  padding: 80px 45px;
+}
+
+#navigation.section-page .section-heading h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #342c61;
+}
+
+#navigation.section-page .section-heading .line-dec {
+  width: 60px; height: 3px;
+  margin: 10px auto;
+  background-color: #342c61;
+}
+
+#navigation.section-page .section-heading span {
+  display: block;
+  margin-top: 5px;
+  font-size: 16px;
+  color: #78581f;
+  letter-spacing: 0.5px;
+}
+
+/* ──────────────✦ Navigation Table Styling ✦────────────── */
+.table-container {
+  margin: 1in auto;
+  overflow-x: auto; overflow-y: auto;
+  max-width: calc(100% - 2in);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: rgba(255,255,255,0.7);
+  border: 2px solid #342c61;
+  text-align: center;
+  font-size: 1rem;
+  color: #000;
+}
+
+th {
+  font-family: serif;
+  font-size: 1.125rem;
+  color: #000;
+  padding: 0.5rem 0.3rem;
+  border: 1px solid #342c61;
+  text-shadow: 1px 1px #C5ECFF;
+}
+
+td {
+  font-family: "Times New Roman", serif;
+  font-size: 0.9375rem;
+  color: #000;
+  padding: 0.5rem 0.3rem;
+  border: 1px solid #342c61;
+  background-color: rgba(255,255,255,0.7);
+}
+
+/* ──────────────✦ Navigation Footer Specific Links & Buttons ✦────────────── */
+a, footer a, .button-link {
+  display: inline-block;
+  margin: 0.3rem 0;
+  padding: 0.35em 0.75em;
+  font-family: 'Times New Roman', serif;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  background-color: #78581f;
+  color: #000;
+  border: 2px solid #342c61;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+a:hover, a:focus, .button-link:hover {
+  background-color: #0A0A0F;
+  color: #C5ECFF;
+  border-color: #342c61;
+  box-shadow: 0 0 6px #C5ECFF;
+}
+</style>
+
+<body>
+
+  <section id="navigation" class="page navigation-page">
+  <h2>Navigation</h2>
+<h3>✨ The Shape of Aza’ra</h3>
+<p>
+  Aza’ra is a vast, disc-shaped world suspended in the cosmic Void. Beneath it narrows into a crystalline spear that anchors it to arcane ley currents, while above, fragments of broken land float as skyborne isles—ancient ruins and thriving ecosystems held aloft by the Veil’s magic.
+</p>
+<p>
+  The <strong>Veil</strong> spans 13,482 km above Aza’ra and governs more than atmosphere—it regulates gravity, time, and the arcane flow. At the disc’s center lies <strong>Eryndria Harbors</strong>, the planet’s cultural and navigational heart beneath the Veil’s zenith.
+</p>
+  <h3>Disclaimer</h3>
+  <p>
+    The settlement names used throughout this document are English translations of the original Aza'ra names.
+    They do not represent the actual names as spoken or written in the native Aza'raan language.
+  </p>
+</section>
+<h3>🗺️ Continental Overview</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Continent</th>
+      <th>Estimated Area (million km²)</th>
+      <th>Estimated Dimensions (km)</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Tzaphaer</strong></td>
+      <td>~230–250</td>
+      <td>~28,292 × 25,261</td>
+      <td>Balanced arcane currents, ancient ruins</td>
+    </tr>
+    <tr>
+      <td><strong>Dakaroth</strong></td>
+      <td>~225–240</td>
+      <td>~27,281 × 23,240</td>
+      <td>Mountain-locked terrain, warrior culture</td>
+    </tr>
+    <tr>
+      <td><strong>Arzuhan</strong></td>
+      <td>~250–270</td>
+      <td>~34,354 × 22,229</td>
+      <td>Lush landscapes, introspective traditions</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  The continents are separated by oceanic mists and airborne rifts. Above them float remnants of Aarak, now stabilized through arcane magnetism. These islands serve as sacred sites, arcane vaults, and homes to rare skyborne life.
+</p>
+
+<h2>🗺️ Major Locations, Cities, and Distances</h2>
+
+<h3>🌐 Planetary Scale Comparisons</h3>
+<table>
+  <thead>
+    <tr><th>Feature</th><th>Adjusted Distance / Estimate</th><th>World</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Earth Circumference</td><td>40,075 km</td><td>Earth</td><td>Standard terrestrial measure</td></tr>
+    <tr><td>Aza’ra Circumference Estimate</td><td>~85,000 km</td><td>Aza’ra</td><td>~2.1× Earth</td></tr>
+    <tr><td>Earth Diameter</td><td>12,742 km</td><td>Earth</td><td></td></tr>
+    <tr><td>Aza’ra Diameter Estimate</td><td>~27,000 km</td><td>Aza’ra</td><td>~2.1× Earth</td></tr>
+    <tr><td>Earth Surface Area</td><td>510 million km²</td><td>Earth</td><td></td></tr>
+    <tr><td>Aza’ra Surface Area Estimate</td><td>850–900 million km²</td><td>Aza’ra</td><td>~2.1× Earth</td></tr>
+  </tbody>
+</table>
+
+<h3>🧭 Distances from Eryndria Harbor</h3>
+<table>
+  <thead>
+    <tr><th>Location</th><th>Distance (km)</th><th>Hemisphere</th><th>Continent</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>City of Lytheris</td><td>~210,810</td><td>Western / Northern</td><td>Tzaphaer</td><td>Inland, NW coastal influence</td></tr>
+    <tr><td>The Shattered Sea</td><td>~94,195</td><td>Central / Southern</td><td>Arzuhan</td><td>SE of Eryndria, open sea</td></tr>
+    <tr><td>Mt. Vraekthos</td><td>~310,384</td><td>Western / Central</td><td>Tzaphaer</td><td>Volcanic interior</td></tr>
+    <tr><td>City of the Mourned Gods</td><td>~133,137</td><td>Western / Northern</td><td>Tzaphaer</td><td>Near Veilgate</td></tr>
+    <tr><td>The Nyxthorn Peaks</td><td>~277,261</td><td>Western / Central</td><td>Tzaphaer</td><td>Near Mt. Vraekthos</td></tr>
+    <tr><td>Vraekthos Mountains</td><td>~288,249</td><td>Western / Central</td><td>Tzaphaer</td><td>SE of Nyxthorn</td></tr>
+    <tr><td>Floating Capital (Phyra)</td><td>~177,504 (+2 km elevation)</td><td>Eastern / Northern</td><td>Arzuhan</td><td>Elevated from 16,167 base</td></tr>
+    <tr><td>Free City of Dakaroth</td><td>~260,463</td><td>Western / Northern</td><td>Dakaroth</td><td>Mountain-locked</td></tr>
+    <tr><td>Raethelia</td><td>~161,056</td><td>Eastern / Southern</td><td>Arzuhan</td><td>Coastal</td></tr>
+    <tr><td>Emberhold</td><td>~282,443</td><td>Western / Northern</td><td>Dakaroth</td><td>Near Mt. Raethelis</td></tr>
+  </tbody>
+</table>
+
+<h3>🏙️ Inter-City Distance Table (km)</h3>
+<p>Distances between major cities across Aza’ra. Useful for regional plotting, portal travel, or trade route planning.</p>
+<table>
+  <thead>
+    <tr>
+      <th>From \ To</th><th>Lytheris</th><th>Mourned Gods</th><th>Morrigaen</th><th>Nocturnis</th><th>Ashen Throne</th><th>Crimsonspire</th><th>Phyra</th><th>Raethelia</th><th>Dakaroth</th><th>Emberhold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>City of Lytheris</td><td>—</td><td>87,760</td><td>167,841</td><td>232,517</td><td>244,989</td><td>264,405</td><td>320,191</td><td>307,974</td><td>278,388</td><td>289,157</td></tr>
+    <tr><td>City of the Mourned Gods</td><td>87,760</td><td>—</td><td>137,125</td><td>196,942</td><td>207,667</td><td>229,411</td><td>290,063</td><td>276,108</td><td>251,796</td><td>264,002</td></tr>
+    <tr><td>Pirate City Morrigaen</td><td>167,841</td><td>137,125</td><td>—</td><td>164,538</td><td>172,206</td><td>198,253</td><td>263,881</td><td>248,927</td><td>225,519</td><td>237,793</td></tr>
+    <tr><td>Nocturnis</td><td>232,517</td><td>196,942</td><td>164,538</td><td>—</td><td>115,185</td><td>122,864</td><td>206,988</td><td>222,154</td><td>194,315</td><td>209,778</td></tr>
+    <tr><td>Ashen Throne</td><td>244,989</td><td>207,667</td><td>172,206</td><td>115,185</td><td>—</td><td>97,633</td><td>189,519</td><td>203,701</td><td>176,844</td><td>191,206</td></tr>
+    <tr><td>Crimsonspire</td><td>264,405</td><td>229,411</td><td>198,253</td><td>122,864</td><td>97,633</td><td>—</td><td>174,368</td><td>190,217</td><td>163,494</td><td>178,826</td></tr>
+    <tr><td>Phyra</td><td>320,191</td><td>290,063</td><td>263,881</td><td>206,988</td><td>189,519</td><td>174,368</td><td>—</td><td>206,154</td><td>189,771</td><td>200,865</td></tr>
+    <tr><td>Raethelia</td><td>307,974</td><td>276,108</td><td>248,927</td><td>222,154</td><td>203,701</td><td>190,217</td><td>206,154</td><td>—</td><td>167,644</td><td>180,483</td></tr>
+    <tr><td>Free City of Dakaroth</td><td>278,388</td><td>251,796</td><td>225,519</td><td>194,315</td><td>176,844</td><td>163,494</td><td>189,771</td><td>167,644</td><td>—</td><td>21,980</td></tr>
+    <tr><td>Emberhold</td><td>289,157</td><td>264,002</td><td>237,793</td><td>209,778</td><td>191,206</td><td>178,826</td><td>200,865</td><td>180,483</td><td>21,980</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<h3>🏚️ Regional Settlements (Selected Samples)</h3>
+<p>Distance from regional anchors (Nocturnis, Ashen Throne, Crimson Spire, Raethelia, Emberhold, and Phyra).</p>
+
+<details>
+  <summary><strong>Nyxara Settlements → Nocturnis</strong></summary>
+  <ul>
+    <li>Flamewatch – ~13,164 km</li>
+    <li>Twilightfield – ~20,843 km</li>
+    <li>Moonport – ~32,910 km</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>Vraekthos Settlements → Ashen Throne</strong></summary>
+  <ul>
+    <li>Emberglow – ~13,164 km</li>
+    <li>Veilhollow – ~24,134 km</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>Phalorra Settlements → Crimson Spire</strong></summary>
+  <ul>
+    <li>Veilwatch – ~12,067 km</li>
+    <li>Crimsonpeak – ~19,746 km</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>IronForge Settlements → Raethelia</strong></summary>
+  <ul>
+    <li>Stormgate – ~14,025 km</li>
+    <li>Zephyrstone – ~31,875 km</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>Vulkiris Settlements → Emberhold</strong></summary>
+  <ul>
+    <li>Steelwood – ~14,220 km</li>
+    <li>Carbonite Spire – ~68,730 km</li>
+  </ul>
+</details>
+
+<details>
+  <summary><strong>Zephyra Settlements → Phyra</strong></summary>
+  <ul>
+    <li>Breezewood – ~14,025 km</li>
+    <li>City of Vael’thwyn – ~26,775 km</li>
+  </ul>
+</details>
+
+<h3>🌊 Seas, Regions & Rivers</h3>
+<table>
+  <thead>
+    <tr><th>Feature</th><th>Dimension</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Gulf of Therion</td><td>~11,115 km (Width)</td><td>Horizontal Width</td></tr>
+    <tr><td>IronReach Bay</td><td>~7,073 km (Width)</td><td></td></tr>
+    <tr><td>Raethelia (Radius)</td><td>~24,250 km</td><td>From city center</td></tr>
+    <tr><td>Vaelrim Peaks</td><td>~16,167 × 14,651 km</td><td>Length × Width</td></tr>
+    <tr><td>Raethelis River</td><td>~23,240 km × 1,213 km</td><td>Length × Avg. Width</td></tr>
+    <tr><td>River of Mourning</td><td>~19,198 km × 1,010 km</td><td>Length × Avg. Width</td></tr>
+    <tr><td>Aetheric Expanse</td><td>~26,271 × 13,135 km</td><td>Expansive aether-affected region</td></tr>
+  </tbody>
+</table>
+  <h2>🌋 Tzaphaer — The Scarred Land</h2>
+  <p><strong>Pronunciation:</strong> Taz-af-airr (rolled “r”)</p>
+  <p><strong>Position:</strong> Westernmost continent, spanning part of the central worldband</p>
+  <p><strong>Primary Moon:</strong> W’iosamn (rises NW, arcs SW, orbits beneath)</p>
+  <p><strong>Environment:</strong> High radiation exposure</p>
+  <p>
+    Tzaphaer is a realm of twilight skies, elemental volatility, and mythic echoes—a continent scarred by tragedy and steeped in mystery. Born from cataclysmic destruction in 312 CE during the aftermath of a Dark Matter and antimatter hybrid bomb, its northern lands bear deep wounds that define its stark contrasts: twilight and flame, secrets and survival.
+  </p>
+  <p>
+    Fractured beauty marks this land where shattered timelines and unstable leylines ripple across its terrain. Arcane scars pulse with ancient energy—unpredictable, potent, and woven into the very fabric of the continent. Dense forests conceal psion-reactive zones and fractured magic fields, making the wilds both dangerous and wondrous.
+  </p>
+  <p>
+    The skies shimmer with residual dark matter, casting eerie twilight hues that hang over volcanic fury and fae upheaval. Tzaphaer’s lands are carved by elemental volatility, where ancient divine wars have left mythic echoes that resonate through time and space.
+  </p>
+  <p>
+    As the westernmost continent, Tzaphaer serves as a nexus for portals connecting Earth to Aza’ra, more so than any other landmass—especially through its fractured kingdoms of Phalorra, Vraekthos, and Nyxara. Despite the cataclysm’s devastation, hidden potential, ancient power, and enigmatic civilizations endure, thriving amid temporal instability and arcane resonance.
+  <footer>
+    <hr>
+    <p>© Aza’ra™ and Aza’raan™ Language System — Crafted with purpose by William Blake Saville (<code>#TheTransgenderTRex</code>)</p>
+  </footer>
+  </body>
+  </html>r>
+  </html>
