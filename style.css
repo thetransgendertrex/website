@@ -38,11 +38,7 @@ header.site-header .hamburger span {
   transition: transform 0.3s, opacity 0.3s;
 }
 
-header.site-header .logo {
-  font-family: 'Segoe UI', 'Times New Roman', sans-serif;
-  font-size: 1.5rem;
-  color: #ECEEF1;
-}
+
 
 header.site-header nav {
   display: none;
@@ -102,6 +98,25 @@ body.dark-mode header.site-header .nav-button.timekeeping    { color: #A63A2C; }
 body.dark-mode header.site-header .nav-button.language-rules { color: #7A7C86; }
 body.dark-mode header.site-header .nav-button.lexicon        { color: #1a114b; }
 body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
+/* ✨ Page Glow Effect ✨ */
+.page {
+  display: none; /* Hide all pages by default */
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.page.active {
+  display: block; /* Show active page */
+}
+
+.page.glow {
+  box-shadow: 0 0 20px 4px #00ffff; /* Cyan glow */
+  border: 2px solid #00ffff;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
 
 /* ──────────────✦ Background Layers ✦────────────── */
 
@@ -308,10 +323,7 @@ p {
     align-items: flex-start;
   }
 
-  header.site-header .logo {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
+
 
   header.site-header nav {
     display: none;
@@ -1668,4 +1680,5 @@ a:hover, a:focus, .button-link:hover {
   border-color: #342c61;
   box-shadow: 0 0 6px #8FE9F0;
 }
+
 
