@@ -223,6 +223,11 @@ Customized with layered Moonpunk background and custom fonts.
 
 /* ──────────────✦ Layered Background ✦────────────── */
 
+/* Make sure base body background is black so no gaps show */
+body {
+  background-color: #000;
+}
+
 /* Fixed background image behind everything */
 body::before {
   content: "";
@@ -232,23 +237,23 @@ body::before {
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)");
+  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   filter: brightness(0.85) contrast(1.05);
 }
 
-/* Subtle dark gradient overlay for readability — scrolls with content */
+/* Black overlay with 0.3 opacity — scrolls with content */
 body::after {
   content: "";
-  position: absolute;   
+  position: fixed;  /* Important: fixed makes it cover the viewport, stay in place while content scrolls over it */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
+  background: rgba(0, 0, 0, 0.3);
   pointer-events: none;
 }
 
@@ -256,22 +261,22 @@ body::after {
 /* ──────────────✦ Typography & Basics ✦────────────── */
 
 body {
-  font-family: 'Pridi', serif; /* You can change to Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
+  font-family: 'Pridi', serif; /* Or Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
   overflow-x: hidden;
-  color: #fff;
+  color: #000000; /* Light mode default */
 }
 
 p {
   font-size: 16px;
   line-height: 24px;
-  color: #fff;
+  color: #000000; /* Light mode default */
 }
 
 h4 {
   font-size: 26px;
   font-weight: 700;
   font-family: 'Cinzel Decorative', serif;
-  color: #fff;
+  color: #000000; /* Light mode default */
   letter-spacing: 0.25px;
 }
 
@@ -300,6 +305,22 @@ ul {
 
 ul li {
   display: inline-block;
+}
+
+/* ──────────────✦ Dark Mode Overrides ✦────────────── */
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #ffffff;
+  }
+
+  p {
+    color: #ffffff;
+  }
+
+  h4 {
+    color: #ffffff;
+  }
 }
 
 /* ──────────────✦ Box Sizing ✦────────────── */
@@ -345,7 +366,7 @@ html {
 }
 
 .main-nav li:last-child a {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #000; /* Light mode border color default */
 }
 
 .main-nav li a {
@@ -355,17 +376,18 @@ html {
   font-size: 16px;
   font-weight: 700;
   font-family: 'Uncial Antiqua', cursive;
-  color: #fff;
+  color: #000; /* Light mode text color */
   width: 100%;
   transition: all 0.5s;
-  border-top: 2px solid #fff;
+  border-top: 2px solid #000; /* Light mode border */
 }
 
 .main-nav li:hover a,
 .main-nav li.active a {
-  background: #fff;
-  color: #36888c;
+  background: #000;
+  color: #fff;
 }
+
 /* ──────────────✦ Sidebar Menu ✦────────────── */
 
 .menu {
@@ -373,7 +395,7 @@ html {
   font-family: 'Uncial Antiqua', cursive;
   left: 10%;
   background-color: #fff; /* Light mode default */
-  color: #000; /* Light mode default */
+  color: #000; /* Light mode text color */
   box-sizing: border-box;
   height: 100vh;
   max-height: 100vh !important;
@@ -398,7 +420,7 @@ html {
   text-decoration: none;
   padding: 20px 0;
   font-size: 18px;
-  color: inherit;
+  color: inherit; /* Use parent text color */
   transition: all 0.3s;
 }
 
@@ -428,9 +450,7 @@ html {
   z-index: 999;
 }
 
-/* ──────────────✦ Sections ✦────────────── */
-
-/* Each section link with text shadow for light/dark modes */
+/* ──────────────✦ Sections: Light Mode Text Shadows ✦────────────── */
 
 .menu a.home {
   text-shadow: 2px 2px #ECEEF1; /* W’iosamn Silver */
@@ -472,7 +492,7 @@ html {
   text-shadow: 2px 2px #FBC96D; /* Emberlight Gold */
 }
 
-/* ──────────────✦ Dark Mode ✦────────────── */
+/* ──────────────✦ Dark Mode Overrides ✦────────────── */
 
 @media (prefers-color-scheme: dark) {
   .menu {
@@ -484,6 +504,21 @@ html {
   #menu-close {
     background-color: #000;
     color: #fff;
+  }
+
+  .main-nav li a {
+    color: #fff;
+    border-top: 2px solid #fff;
+  }
+
+  .main-nav li:last-child a {
+    border-bottom: 2px solid #fff;
+  }
+
+  .main-nav li:hover a,
+  .main-nav li.active a {
+    background: #fff;
+    color: #000;
   }
 
   .menu a.home {
@@ -526,6 +561,7 @@ html {
     text-shadow: 2px 2px #342c61; /* Twilight Indigo */
   }
 }
+
 /* ──────────────✦ Base Section Layout ✦────────────── */
 
 .section {
@@ -1230,6 +1266,31 @@ body[data-doc-name*="lexicon"] {
 .menu a {
   transition: background 0.3s, color 0.3s;
 }
+/* ──────────────✦ Footer Base ✦────────────── */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3); /* 30% opacity black */
+  color: #fff;
+  text-align: center;
+  font-size: 0.75rem; /* Very small text */
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+
+/* Optional link styling inside footer */
+footer a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  text-decoration: none;
+}
+
 
 /* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
 @media screen and (max-width: 1680px) {
@@ -1373,7 +1434,19 @@ html, body {
     font-size: 1.1rem;
   }
 }
+@media (max-width: 1024px) {
+  footer {
+    font-size: 0.7rem; /* Slightly smaller on tablets */
+    padding: 0.4rem 0.8rem;
+  }
+}
 
+@media (max-width: 767px) {
+  footer {
+    font-size: 0.65rem; /* Extra small for mobile */
+    padding: 0.3rem 0.6rem;
+  }
+}
 </style>
 <!-- Sidebar Menu -->
 <div class="responsive-nav">
