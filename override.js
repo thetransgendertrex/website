@@ -11,11 +11,12 @@
 (function () {
   'use strict';
 
-  const fontURL = "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza%27raan%20Planet%20Language.ttf";
+const fontURL = "https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf";
+// ✅ Check if running on the correct domain
+if (window.location.hostname.includes('azara-trademarked-projects.com')) {
 
   // ✅ Inject @font-face for Aza'raan
   const style = document.createElement("style");
-  style.type = "text/css";
   style.textContent = `
     @font-face {
       font-family: 'AzaraanOverride';
@@ -59,8 +60,7 @@
   fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
     .then(res => res.text())
     .then(() => console.log('✅ index.html verified.'))
-    .catch(err => console.warn('⚠️ Could not fetch index.html'));
-
+    .catch(() => console.warn('⚠️ Could not fetch index.html'));
   // ✅ Replace Comic Sans with Aza'raan on website
   function overrideComicSans() {
     document.querySelectorAll('*').forEach(el => {
@@ -76,4 +76,5 @@
     new MutationObserver(overrideComicSans).observe(document.body, { childList: true, subtree: true });
   });
 
+}
 })();
