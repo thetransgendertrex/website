@@ -2,7 +2,7 @@
 // @name         Aza'raan Website Full Core Loader (GitHub Only)
 // @namespace    https://github.com/thetransgendertrex/website
 // @version      1.1
-// @description  FULL: Pages, Scrollwheels, Buttons, Nav, Hamburger Menu. Pulls GitHub files only.
+// @description  FULL: Pages, Scrollwheels, Buttons, Nav, Oscillator, Hamburger Menu. Pulls GitHub files only.
 // @match        https://www.azara-trademarked-projects.com/*
 // @grant        none
 // ==/UserScript==
