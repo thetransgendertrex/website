@@ -2,94 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Aza'raan Font Universal Override Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script>
-// ============================================
-// ✅ Navigation, Page Router, Scrollbars, Tables, Buttons
-// ============================================
-
-document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('header.site-header');
-  const nav = header?.querySelector('nav');
-  const hamburger = header?.querySelector('.hamburger');
-  const pages = document.querySelectorAll('.page');
-  const navButtons = header?.querySelectorAll('.nav-button');
-
-  function showPage(id) {
-    pages.forEach(p => p.classList.remove('active', 'glow'));
-    const page = document.getElementById(id);
-    if (page) {
-      page.classList.add('active', 'glow');
-      setTimeout(() => page.classList.remove('glow'), 3000);
-    }
-  }
-
-  navButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const target = [...btn.classList].find(cls => cls !== 'nav-button');
-      if (target) showPage(target);
-      if (window.innerWidth <= 768) header.classList.remove('open');
-    });
-  });
-
-  hamburger?.addEventListener('click', () => {
-    header.classList.toggle('open');
-  });
-
-  // Show first page by default
-  if (pages[0]) pages[0].classList.add('active');
-
-  console.log('✅ Navigation & Page Router Loaded');
-});
-
-// ============================================
-// ✅ Universal Scrollbar Styling (for body & pages)
-// ============================================
-
-const scrollCSS = `
-body, .page, table {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(3,144,144,0.5) transparent;
-}
-body::-webkit-scrollbar,
-.page::-webkit-scrollbar,
-table::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
-}
-body::-webkit-scrollbar-track,
-.page::-webkit-scrollbar-track,
-table::-webkit-scrollbar-track {
-  background: rgba(26, 17, 75, 0.4);
-  border-radius: 10px;
-}
-body::-webkit-scrollbar-thumb,
-.page::-webkit-scrollbar-thumb,
-table::-webkit-scrollbar-thumb {
-  background-color: #A63A2C;
-  border-radius: 10px;
-  border: 3px solid rgba(4, 13, 18, 0.6);
-}
-body::-webkit-scrollbar-thumb:hover,
-.page::-webkit-scrollbar-thumb:hover,
-table::-webkit-scrollbar-thumb:hover {
-  background-color: #D88EBA;
-}
-`;
-
-const styleTag = document.createElement('style');
-styleTag.textContent = scrollCSS;
-document.head.appendChild(styleTag);
-
-// ============================================
-// ✅ Example Table & Button Behavior (optional)
-// ============================================
-
-// If you need JS for custom buttons/tables, add here.
-// For standard HTML/CSS tables & buttons, your CSS covers styling.
-
-
-</script>
+  <!-- 👇 Load and run override.js FIRST -->
+  <script>
+    // Load remote override.js from GitHub and execute
+    fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}: Unable to load override.js`);
+        return res.text();
+      })
+      .then(code => {
+        const script = document.createElement('script');
+        script.textContent = code;
+        document.head.appendChild(script);
+      })
+      .catch(err => {
+        console.error('Failed to load Aza\'raan override script:', err);
+        const errorNotice = document.createElement('p');
+        errorNotice.style.color = 'red';
+        errorNotice.textContent = '⚠️ Failed to load override script. Check console for details.';
+        document.body.appendChild(errorNotice);
+      });
+  </script>
   <!-- ✅ Load style.css from GitHub -->
   <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
 
@@ -117,373 +53,121 @@ document.head.appendChild(styleTag);
 <!-- Pacifico -->
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
+
 <style>
-
-/* ============== Universal Page Layout ============== */
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0.5in;
-  overflow-x: hidden;
+/* === Comic Sans Override (GitHub index.html and lore.html only) === */
+body[data-doc-name*="index"],
+body[data-doc-name*="lore"] {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
 }
 
-.page {
-  display: none;
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  overflow: auto;
-  box-sizing: border-box;
+/* === Aza'raan Font Substitution for Individual Words or Phrases === */
+.azaraan-word {
+  font-family: 'Azaraan', cursive;
+  color: #014d4e;
+  text-shadow: 0 0 2px var(--cyan);
 }
 
-.page.active {
-  display: block;
-}
-
-.page.glow {
-  box-shadow: 0 0 20px 4px #00ffff;
-  border: 2px solid #00ffff;
-  transition: box-shadow 0.3s ease, border 0.3s ease;
-}
-
-/* ============== Universal Scrollbars ============== */
-body, .page, table {
-  scrollbar-width: thin;
-  scrollbar-color: #A63A2C rgba(4, 13, 18, 0.6);
-}
-
-body::-webkit-scrollbar,
-.page::-webkit-scrollbar,
-table::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-body::-webkit-scrollbar-track,
-.page::-webkit-scrollbar-track,
-table::-webkit-scrollbar-track {
-  background: rgba(26, 17, 75, 0.4);
-  border-radius: 10px;
-}
-
-body::-webkit-scrollbar-thumb,
-.page::-webkit-scrollbar-thumb,
-table::-webkit-scrollbar-thumb {
-  background: #A63A2C;
-  border-radius: 10px;
-  border: 3px solid rgba(4, 13, 18, 0.6);
-}
-
-body::-webkit-scrollbar-thumb:hover,
-.page::-webkit-scrollbar-thumb:hover,
-table::-webkit-scrollbar-thumb:hover {
-  background: #D88EBA;
-}
-
-/* ============== Tables ============== */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem auto;
-  background: rgba(255, 255, 255, 0.7);
-  color: #000;
-}
-
-th {
-  font-family: serif;
-  font-size: 1.125rem;
-  padding: 0.75rem;
-  background: #014d4e;
-  color: #00FFFF;
-  text-align: left;
-}
-
-td {
-  font-family: "Times New Roman", serif;
-  font-size: 0.9375rem;
-  padding: 0.75rem;
-  border-bottom: 1px solid #2DC5B4;
-}
-
-/* Responsive table for small screens */
-@media (max-width: 768px) {
-  table {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-}
-
-/* ============== Header & Navigation ============== */
-header.site-header {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  background: rgba(10, 10, 15, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
-  z-index: 1000;
-}
-
-header.site-header .hamburger {
-  position: absolute;
-  top: 50%; left: 1rem;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
-}
-
-header.site-header .hamburger span {
-  display: block;
-  width: 24px;
-  height: 3px;
-  background: #FFF;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-header.site-header nav {
-  display: none;
-  flex-direction: column;
-  position: absolute;
-  top: 100%; left: 0;
-  background: rgba(10, 10, 15, 0.95);
-  width: 100%;
-  padding: 1rem;
-  gap: 0.5rem;
-}
-
-header.site-header.open nav {
-  display: flex;
-}
-
-header.site-header nav .nav-button {
-  font-family: 'Segoe UI', 'Times New Roman', sans-serif;
-  padding: 0.5em 1em;
-  border: 2px solid currentColor;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background 0.3s, color 0.3s;
-}
-
-header.site-header nav .nav-button:hover {
-  background: currentColor;
-  color: #fff;
-}
-
-/* ============== Buttons ============== */
-.visit-download-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 40px auto;
-  justify-content: center;
-  max-width: 90%;
-}
-
-.visit-download-buttons button {
-  background: #8FE9F0;
-  color: #000;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 12px 20px;
-  border: 2px solid #7A7C86;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px #014d4e;
-}
-
-.visit-download-buttons button:hover,
-.visit-download-buttons button:focus {
-  background: #000;
-  color: #8FE9F0;
-  outline: none;
-  transform: translateY(-2px);
-}
-/* ──────────────✦ Home Page ✦────────────── */ 
-
-/* ──────────────✦ Home Headings & Title ✦────────────── */
-h1 {
-  font-family: 'Cinzel Decorative', cursive;
-  font-size: 2.5rem;
-  color: #000;
-  text-shadow: 1px 1px #9381FF;
-}
-
-h2 {
-  font-family: 'Pridi', serif;
-  font-size: 2rem;
-  color: #000;
-  text-shadow: 1px 1px #7A7C86;
-}
-
-h3 {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.75rem;
-  color: #000;
-  text-shadow: 1px 1px #9381FF;
-}
-
-h4 {
-  font-family: 'Uncial Antiqua', cursive;
-  font-size: 1.5rem;
-  color: #000;
-  text-shadow: 1px 1px #7A7C86;
-}
-
-#home.section-page .section-heading {
-  text-align: center;
-  padding: 80px 45px;
-}
-
-#home.section-page .section-heading h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #0075FF;
-}
-
-#home.section-page .section-heading .line-dec {
-  width: 60px; height: 3px;
-  margin: 10px auto;
-  background-color: #0075FF;
-}
-
-#home.section-page .section-heading span {
-  display: block;
-  margin-top: 5px;
-  font-size: 16px;
-  color: #9381FF;
-  letter-spacing: 0.5px;
-}
-
-/* ──────────────✦ Home Table Styling ✦────────────── */
-.table-container {
-  margin: 1in auto;
-  overflow-x: auto; overflow-y: auto;
-  max-width: calc(100% - 2in);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: rgba(255,255,255,0.7);
-  border: 2px solid #0075FF;
-  text-align: center;
-  font-size: 1rem;
-  color: #000;
-}
-
-th {
-  font-family: serif;
-  font-size: 1.125rem;
-  color: #000;
-  padding: 0.5rem 0.3rem;
-  border: 1px solid #0075FF;
-  text-shadow: 1px 1px #7A7C86;
-}
-
-td {
-  font-family: "Times New Roman", serif;
-  font-size: 0.9375rem;
-  color: #000;
-  padding: 0.5rem 0.3rem;
-  border: 1px solid #0075FF;
-  background-color: rgba(255,255,255,0.7);
-}
-
-
-/* ──────────────✦ Home Footer Specific Links & Buttons ✦────────────── */
-a, footer a, .button-link {
-  display: inline-block;
-  margin: 0.3rem 0;
-  padding: 0.35em 0.75em;
-  font-family: 'Times New Roman', serif;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 1rem;
-  background-color: #9381FF;
-  color: #000;
-  border: 2px solid #0075FF;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-a:hover, a:focus, .button-link:hover {
-  background-color: #0A0A0F;
-  color: #7A7C86;
-  border-color: #0075FF;
-  box-shadow: 0 0 6px #7A7C86;
+/* === Google Apps: Replace Pacifico with Aza'raan in Font Dropdown === */
+/* Affects visible Pacifico items so "Aza'raan" appears in its glyph form */
+div[aria-label="Font"] span[style*="Pacifico"],
+div[aria-label="Font"] div[style*="Pacifico"] {
+  font-family: 'Azaraan', cursive !important;
+  font-size: 18px !important;
+  color: #000000;
 }
 </style>
-
+</head>
 <body>
+  <header class="site-header">
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <button class="nav-button home">Home</button>
+      <button class="nav-button lore">Lore</button>
+      <button class="nav-button navigation">Navigation</button>
+      <button class="nav-button font-project">Font Project</button>
+      <button class="nav-button mmorpg">MMORPG</button>
+      <button class="nav-button book-series">Book Series</button>
+      <button class="nav-button timekeeping">Timekeeping</button>
+      <button class="nav-button language-rules">Language Rules</button>
+      <button class="nav-button lexicon">Lexicon</button>
+      <button class="nav-button support">Support</button>
+    </nav>
+  </header>
 
- <section id="home" class="page home-page">
-      <h2>Follow On Facebook</h2>
-
-      <ul>
-        <li><a href="https://www.facebook.com/WorldOfAzara/" target="_blank" rel="noopener noreferrer">Follow On Facebook</a></li>
-      </ul>
-      <p>
-        Get updates and connect with the Aza'ra Facebook community.  
-        Your engagement helps keep the spirit of Aza’ra alive and thriving.
-      </p>
-  <h2>The World of Aza’ra</h2>
-  <h3>A Fusion of Aarak and Aramaic</h3>
-  <p>Compiled & Created by <br> William Blake Saville AKA #TheTransgenderTRex</p>
-
-  <h4>Introduction: The Voice of Aza’ra</h4>
-  <p>
-    Language is more than just sound—it is history, identity, and the bridge between worlds. Aza’raan is the living tongue of Aza’ra, forged through the fusion of ancient phonetics, celestial traditions, and interwoven cultures.
-  </p>
-  <p>
-    Born from fluidity and elegance, Aza’raan breathes in vowels, dances with rhythm, and refuses the rigidity of harsh consonants. It carries the musicality of the stars and the precision of scholars, embracing both structured form and lyrical expression.
-  </p>
-  <p>
-    Aza’raan is not merely spoken—it is felt, remembered, and woven into the very essence of its people. It is a language where names are reaffirmed daily, ensuring identity remains a choice, not a constraint. It is a system where the glottal stop <span style="font-family: 'Comic Sans MS', cursive;">
- ' </span>echoes spiritual significance, where the Na’lu <span style="font-family: 'Comic Sans MS', cursive;">
- ^ </span> lifts meaning by emphasizing the following syllable, and the Ra’ama <span style="font-family: 'Comic Sans MS', cursive;">
- ` </span> grounds it with strength by emphasizing the previous syllable.
-  </p>
-  <p>
-    It is a language of inclusivity, designed not only for speech but for identity. Aza’raan ensures that every voice is heard, every soul recognized, and every word is given the space to evolve.
-  </p>
-  <p>
-    This website is not just a guide—it is an invitation to explore, refine, and expand the world within Aza’raan. May its sounds shape stories, its structures build civilizations, and its melodies echo beyond time. 
-  </p>
-
-  <h4>Contents of the Aza’raan Compendium</h4>
-  <p>
-    The Aza'raan language is a unique blend of the phonetic richness of Aarak and the structured grammar of Aramaic. This fusion reflects the cultural and historical integration of the two peoples, creating a language that is both expressive and functional.
-  </p>
-  <h2>The Shattered Realm of Aza’ra</h2>
-  <h3><span style="font-family: 'Comic Sans MS', cursive;">
-Aza'ra</span></h3>
-  <p>
-    Once a thriving world bathed in the radiance of its sun, Aarak was a beacon of life and magic—until its fate was sealed by desperate outsiders. Seeking survival, an alien race drained Aarak’s sun of its energy, unleashing violent solar flares that shattered the planet’s crust, breaking landmasses into drifting fragments and plunging entire civilizations into ruin.
-  </p>
-  <p>
-    In the final days before the catastrophe, three nomadic magicians from Earth—the Aramaics—arrived through experimental portal magic. Though met with wariness, they forged a fragile alliance with Aarak’s native people, learning and exchanging arcane knowledge. When disaster struck, the Aramaics answered with desperate ingenuity. Harnessing ancient reserves of Earth’s magic, they conjured The Veil, a luminous barrier encasing the largest fragments of Aarak, stabilizing its shattered remains and shielding it from the cosmic Void. Though salvation came at great cost—the Veil must continuously siphon Earth’s arcane essence, slowly weakening magic on the Aramaics’ homeworld—the bond forged in tragedy became unbreakable. In honor of their unity and sacrifices, the survivors renamed their reborn world Aza’ra, meaning “to help” in the Aramaic tongue.
-  </p>
-
-  <h3>Aza’ra and the Veil</h3>
-  <p>
-    What remains of Aarak has coalesced into a vast, disc-shaped world, suspended in the Void and held together by magical stasis. Beneath the disc, Aza’ra narrows into a crystalline spear that pierces the depths of the cosmos, acting as an arcane anchor stabilizing the realm. High above, fragments of the broken world float as skyborne isles—ruins, sanctuaries, and living ecosystems—suspended by energy wells linked to the Veil’s enchantment.
-  </p>
-  <p>
-    The Veil extends 13,482 km above Aza’ra, regulating more than just atmosphere—it governs gravity, reality, and even time itself. Eryndria Harbors, lying beneath the Veil’s zenith, became the arcane and cultural nexus of this new world, where scholars and mystics would lay the foundation for Aza’ra’s first kingdom.
-  </p>
-</section>
-</section>
-  <footer>
-    <hr>
-    <p>© Aza’ra™ and Aza’raan™ Language System — Crafted with purpose by William Blake Saville (<code>#TheTransgenderTRex</code>)</p>
+  <main>
+    <section id="home" class="page home-page"><main id="home-content"></main></section>
+    <section id="lore" class="page lore-page"><main id="lore-content"></main></section>
+    <section id="navigation" class="page navigation-page"><main id="navigation-content"></main></section>
+  <main>
+    <section id="home" class="page home-page"><div id="home-content"></div></section>
+    <section id="lore" class="page lore-page"><div id="lore-content"></div></section>
+    <section id="navigation" class="page navigation-page"><div id="navigation-content"></div></section>
+    <section id="font-project" class="page font-project-page"><div id="font-project-content"></div></section>
+    <section id="mmorpg" class="page mmorpg-page"><div id="mmorpg-content"></div></section>
+    <section id="book-series" class="page book-series-page"><div id="book-series-content"></div></section>
+    <section id="timekeeping" class="page timekeeping-page"><div id="timekeeping-content"></div></section>
+    <section id="language-rules" class="page language-rules-page"><div id="language-rules-content"></div></section>
+    <section id="lexicon" class="page lexicon-page"><div id="lexicon-content"></div></section>
+    <section id="support" class="page support-page"><div id="support-content"></div></section>
+  </main>
   </footer>
+
+  <!-- ✅ Load pages dynamically -->
+  <script type="module">
+    const pages = [
+      { id: 'home', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/home.html' },
+      { id: 'lore', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Lore.html' },
+      { id: 'navigation', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Navigation.html' },
+      { id: 'font-project', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/font-project.html' },
+      { id: 'mmorpg', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/mmorpg.html' },
+      { id: 'book-series', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/book-series.html' },
+      { id: 'timekeeping', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/timekeeping.html' },
+      { id: 'language-rules', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/language-rules.html' },
+      { id: 'lexicon', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/lexicon.html' },
+      { id: 'support', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/donations.html' }
+    ];
+
+    pages.forEach(page => {
+      fetch(`https://raw.githubusercontent.com/thetransgendertrex/website/main/${page.url}`)
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById(`${page.id}-content`).innerHTML = html;
+        });
+    });
+
+    // Load donations JS
+    import('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js')
+      .then(m => m.initDonations())
+      .catch(console.error);
+
+    // Router + Glow
+    const header = document.querySelector('header.site-header');
+    const nav = header.querySelector('nav');
+    const hamburger = header.querySelector('.hamburger');
+    const navButtons = header.querySelectorAll('.nav-button');
+
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active', 'glow'));
+      const page = document.getElementById(id);
+      if (page) {
+        page.classList.add('active', 'glow');
+        setTimeout(() => page.classList.remove('glow'), 3000);
+      }
+    }
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = [...btn.classList].find(cls => cls !== 'nav-button');
+        if (id) showPage(id);
+        if (window.innerWidth <= 768) header.classList.remove('open');
+      });
+    });
+
+    hamburger.addEventListener('click', () => header.classList.toggle('open'));
+    showPage('home');
+  </script>
 </body>
 </html>
