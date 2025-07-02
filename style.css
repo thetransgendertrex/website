@@ -3,6 +3,173 @@ Background replaced by AI-generated Moonpunk Settlement image,
 fitting desktop, tablet, and mobile with fixed position and 
 footer fixed at bottom All backgrounds are handled by individual sections..
 */
+/* ──────────────✦ FONT-FACE ✦────────────── */
+@font-face {
+  font-family: 'AzaraanOverride';
+  src: url('https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* ──────────────✦ REPLACEMENT RULE ✦────────────── */
+
+/* If you can add a class .comic-sans-override to spans you want to replace */
+span.comic-sans-override {
+  font-family: 'AzaraanOverride', sans-serif !important;
+}
+
+/* Or: generic override for all spans that might still use Comic Sans in CSS */
+span {
+  font-family: 'AzaraanOverride', sans-serif;
+}
+
+/* If you want to target spans inside a container */
+.my-container span {
+  font-family: 'AzaraanOverride', sans-serif !important;
+}
+
+/* ──────────────✦ SITE HEADER ✦────────────── */
+header.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 10, 15, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  padding-right: 340px;
+  z-index: 1000;
+}
+
+header.site-header .hamburger {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+header.site-header .audio-module {
+  position: absolute;
+  top: 8px;
+  right: 24px;
+  width: 300px;
+}
+
+/* ──────────────✦ MAIN COLUMN MODULES ✦────────────── */
+.module-navigation {
+  position: absolute;
+  top: 400px;
+  left: 340px;
+  max-width: 600px;
+}
+
+.module-lore {
+  position: absolute;
+  top: 550px; /* 150px below navigation */
+  left: 340px;
+  max-width: 600px;
+}
+
+.module-timekeeping {
+  position: absolute;
+  top: 740px; /* 190px below lore */
+  left: 340px;
+  max-width: 600px;
+}
+
+.module-book-series {
+  position: absolute;
+  top: 920px;
+  left: 340px;
+  max-width: 600px;
+}
+
+.module-mmorpgg {
+  position: absolute;
+  top: 1100px;
+  left: 340px;
+  max-width: 600px;
+}
+
+.module-font-project {
+  position: absolute;
+  top: 1280px;
+  left: 340px;
+  max-width: 600px;
+}
+
+/* ──────────────✦ SIDE COLUMN MODULES ✦────────────── */
+.module-language-rules {
+  position: absolute;
+  top: 400px;
+  left: 1000px;
+  max-width: 300px;
+}
+
+.module-lexicon {
+  position: absolute;
+  top: 620px; /* 220px below language rules */
+  left: 1000px;
+  max-width: 300px;
+}
+
+.module-follow {
+  position: absolute;
+  top: 820px; /* 200px below lexicon */
+  left: 1000px;
+  max-width: 180px;
+}
+
+.module-support {
+  position: absolute;
+  top: 960px; /* 140px below follow */
+  left: 1000px;
+  max-width: 240px;
+}
+
+/* ──────────────✦ RESPONSIVE ✦────────────── */
+@media (max-width: 1024px) {
+  header.site-header {
+    padding-right: 200px;
+  }
+
+  header.site-header .hamburger {
+    width: 18px;
+    height: 18px;
+  }
+
+  header.site-header .audio-module {
+    width: 240px;
+  }
+
+  .module-navigation,
+  .module-lore,
+  .module-timekeeping,
+  .module-book-series,
+  .module-mmorpgg,
+  .module-font-project,
+  .module-language-rules,
+  .module-lexicon,
+  .module-follow,
+  .module-support {
+    max-width: 90%;
+    left: 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  header.site-header {
+    padding-right: 1rem;
+  }
+
+  header.site-header .audio-module {
+    width: 100%;
+    right: 0;
+  }
+}
+/* ──────────────✦ Global Styles ✦────────────── */
 html, body {
   margin: 0;
   padding: 0;
