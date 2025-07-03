@@ -40,21 +40,17 @@ Customized with layered Moonpunk background and custom fonts.
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
 
 
-/* ===================================================================================================
- * OVERLAY
- * ===================================================================================================*/
-/* === Base Styles === */
+/* === Fixed Page Background === */
 #page-wraper {
-    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100%;
+  background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg") no-repeat center center fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
 
- #overlay {
-  background: rgba(0, 0, 0, 0.3);
+/* === Semi-Transparent Overlay === */
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;
@@ -63,54 +59,294 @@ Customized with layered Moonpunk background and custom fonts.
   overflow-y: auto;
 }
 
-/* Basic */
-
+/* === Base Body === */
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
+  font-family: "Times New Roman", serif;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px black;
+  word-break: break-word;
 }
 
-input,
-select,
-textarea {
-    outline: none;
+h1, h3 {
+  font-family: "Cinzel", serif;
 }
 
-a,
-a:hover {
-    text-decoration: none;
+h2, h4 {
+  font-family: "Pridi", serif;
+}
+
+input, select, textarea {
+  outline: none;
+}
+
+a, a:hover {
+  text-decoration: none;
 }
 
 p {
-    font-size: 16px;
-    line-height: 24px;
-}
-
-h4 {
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 0.25px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 img {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 ul li {
-    display: inline-block;
+  display: inline-block;
 }
 
 html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* === Unified Section Base === */
+.section {
+  position: relative;
+  margin-left: 30%;
+  width: 60%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+}
+
+.section h1,
+.section h2,
+.section h3,
+.section h4,
+.section p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 90%;
+}
+
+/* === Home === */
+.section.home {
+  border-bottom: 3px solid #ECEEF1;
+}
+
+.section.home h1,
+.section.home h2,
+.section.home h3,
+.section.home h4 {
+  color: #ECEEF1;
+  text-shadow: 1px 1px #1a114b;
+}
+
+.section.home::-webkit-scrollbar-thumb {
+  background: #1a114b;
+}
+.section.home::-webkit-scrollbar-track {
+  background: #ECEEF1;
+}
+
+/* === Lore === */
+.section.lore {
+  border-bottom: 3px solid #0075FF;
+}
+
+.section.lore h1,
+.section.lore h2,
+.section.lore h3,
+.section.lore h4 {
+  color: #0075FF;
+  text-shadow: 1px 1px #0c4530;
+}
+
+.section.lore::-webkit-scrollbar-thumb {
+  background: #0c4530;
+}
+.section.lore::-webkit-scrollbar-track {
+  background: #0075FF;
+}
+
+/* === Navigation === */
+.section.navigation {
+  border-bottom: 3px solid #C5ECFF;
+}
+
+.section.navigation h1,
+.section.navigation h2,
+.section.navigation h3,
+.section.navigation h4 {
+  color: #C5ECFF;
+  text-shadow: 1px 1px #342c61;
+}
+
+.section.navigation::-webkit-scrollbar-thumb {
+  background: #342c61;
+}
+.section.navigation::-webkit-scrollbar-track {
+  background: #C5ECFF;
+}
+
+/* === Font Project === */
+.section.font-project {
+  border-bottom: 3px solid #C1FF8A;
+}
+
+.section.font-project h1,
+.section.font-project h2,
+.section.font-project h3,
+.section.font-project h4 {
+  color: #C1FF8A;
+  text-shadow: 1px 1px #572a45;
+}
+
+.section.font-project::-webkit-scrollbar-thumb {
+  background: #572a45;
+}
+.section.font-project::-webkit-scrollbar-track {
+  background: #C1FF8A;
+}
+
+/* === MMORPG === */
+.section.mmorpg {
+  border-bottom: 3px solid #FBC96D;
+}
+
+.section.mmorpg h1,
+.section.mmorpg h2,
+.section.mmorpg h3,
+.section.mmorpg h4 {
+  color: #FBC96D;
+  text-shadow: 1px 1px #014d4e;
+}
+
+.section.mmorpg::-webkit-scrollbar-thumb {
+  background: #014d4e;
+}
+.section.mmorpg::-webkit-scrollbar-track {
+  background: #FBC96D;
+}
+
+/* === Book Series === */
+.section.book-series {
+  border-bottom: 3px solid #D88EBA;
+}
+
+.section.book-series h1,
+.section.book-series h2,
+.section.book-series h3,
+.section.book-series h4 {
+  color: #D88EBA;
+  text-shadow: 1px 1px #78581f;
+}
+
+.section.book-series::-webkit-scrollbar-thumb {
+  background: #78581f;
+}
+.section.book-series::-webkit-scrollbar-track {
+  background: #D88EBA;
+}
+
+/* === Timekeeping === */
+.section.timekeeping {
+  border-bottom: 3px solid #DCE1E8;
+}
+
+.section.timekeeping h1,
+.section.timekeeping h2,
+.section.timekeeping h3,
+.section.timekeeping h4 {
+  color: #DCE1E8;
+  text-shadow: 1px 1px #A63A2C;
+}
+
+.section.timekeeping::-webkit-scrollbar-thumb {
+  background: #A63A2C;
+}
+.section.timekeeping::-webkit-scrollbar-track {
+  background: #DCE1E8;
+}
+
+/* === Language Rules === */
+.section.language-rules {
+  border-bottom: 3px solid #8FE9F0;
+}
+
+.section.language-rules h1,
+.section.language-rules h2,
+.section.language-rules h3,
+.section.language-rules h4 {
+  color: #8FE9F0;
+  text-shadow: 1px 1px #7A7C86;
+}
+
+.section.language-rules::-webkit-scrollbar-thumb {
+  background: #7A7C86;
+}
+.section.language-rules::-webkit-scrollbar-track {
+  background: #8FE9F0;
+}
+
+/* === Lexicon === */
+.section.lexicon {
+  border-bottom: 3px solid #7A7C86;
+}
+
+.section.lexicon h1,
+.section.lexicon h2,
+.section.lexicon h3,
+.section.lexicon h4 {
+  color: #7A7C86;
+  text-shadow: 1px 1px #1a114b;
+}
+
+.section.lexicon::-webkit-scrollbar-thumb {
+  background: #1a114b;
+}
+.section.lexicon::-webkit-scrollbar-track {
+  background: #7A7C86;
+}
+
+/* === Support === */
+.section.support {
+  border-bottom: 3px solid #FBC96D;
+}
+
+.section.support h1,
+.section.support h2,
+.section.support h3,
+.section.support h4 {
+  color: #FBC96D;
+  text-shadow: 1px 1px #342c61;
+}
+
+.section.support::-webkit-scrollbar-thumb {
+  background: #342c61;
+}
+.section.support::-webkit-scrollbar-track {
+  background: #FBC96D;
+}
+
+/* === Footer (if needed) === */
+footer {
+  color: #9381FF;
+  text-shadow: 1px 1px #A63A2C;
+}
+
 
 /* ===============================
    ✅ CUSTOM MAIN NAV (Reflux Fit)
@@ -156,7 +392,7 @@ html {
   text-align: center;
   font-family: 'Times New Roman', serif;
   background-color: black;
-  color: white;
+  color: rgb(0, 0, 0, 0.5);
   box-sizing: border-box;
   height: 100vh;
   max-height: 100vh !important;
@@ -362,535 +598,199 @@ html {
   background: cyan;
 }
 
-
-/* === Home Section === */
-.section.home {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.home h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.home p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.home table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
+/* === Unified Table Style === */
+.section table {
+  width: 40%;
+  max-width: 40%;
+  margin: 40px 0;
   background: rgba(255, 255, 255, 0.7);
   border-collapse: collapse;
   overflow-x: auto;
   display: block;
-  padding: 20px;
+  padding: 0;
   text-align: center;
+  position: relative;
+  left: 45%;
 }
 
+.section table th,
+.section table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  word-break: break-word;
+  border: 1px solid transparent;
+}
+
+/* === Scrollbars for overflow === */
+.section table {
+  overflow-x: auto;
+}
+
+/* === Table headers serif === */
+.section table th {
+  font-family: serif;
+}
+/* === Home === */
 .section.home table th,
 .section.home table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #ECEEF1; /* W’iosamn Silver */
+}
+
+.section.home table th {
+  color: #ECEEF1; /* W’iosamn Silver */
+  text-shadow: 1px 1px #1a114b; /* Astral Navy */
+}
+
+.section.home table td {
+  color: #1a114b; /* Astral Navy */
 }
 
 
-/* === Lore Section === */
-.section.lore {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.lore h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.lore p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.lore table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Lore === */
 .section.lore table th,
 .section.lore table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #0075FF; /* Arvalla Prime */
+}
+
+.section.lore table th {
+  color: #0075FF; /* Arvalla Prime */
+  text-shadow: 1px 1px #0c4530; /* Moss-Vein Green */
+}
+
+.section.lore table td {
+  color: #0c4530; /* Moss-Vein Green */
 }
 
 
-/* === Navigation Section === */
-.section.navigation {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.navigation h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.navigation p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.navigation table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Navigation === */
 .section.navigation table th,
 .section.navigation table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #C5ECFF; /* Crystalline Ice */
+}
+
+.section.navigation table th {
+  color: #C5ECFF; /* Crystalline Ice */
+  text-shadow: 1px 1px #342c61; /* Twilight Indigo */
+}
+
+.section.navigation table td {
+  color: #342c61; /* Twilight Indigo */
 }
 
 
-/* === Font-project Section === */
-.section.font-project {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.font-project h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.font-project p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.font-project table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Font Project === */
 .section.font-project table th,
 .section.font-project table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #C1FF8A; /* Verdant Glow */
+}
+
+.section.font-project table th {
+  color: #C1FF8A; /* Verdant Glow */
+  text-shadow: 1px 1px #572a45; /* Leyline Plum */
+}
+
+.section.font-project table td {
+  color: #572a45; /* Leyline Plum */
 }
 
 
-/* === Mmorpg Section === */
-.section.mmorpg {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.mmorpg h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.mmorpg p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.mmorpg table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === MMORPG === */
 .section.mmorpg table th,
 .section.mmorpg table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #FBC96D; /* Emberlight Gold */
+}
+
+.section.mmorpg table th {
+  color: #FBC96D; /* Emberlight Gold */
+  text-shadow: 1px 1px #014d4e; /* Abyssal Teal */
+}
+
+.section.mmorpg table td {
+  color: #014d4e; /* Abyssal Teal */
 }
 
 
-/* === Book-series Section === */
-.section.book-series {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.book-series h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.book-series p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.book-series table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Book Series === */
 .section.book-series table th,
 .section.book-series table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #D88EBA; /* Leyline Rose */
+}
+
+.section.book-series table th {
+  color: #D88EBA; /* Leyline Rose */
+  text-shadow: 1px 1px #78581f; /* Relic Brass */
+}
+
+.section.book-series table td {
+  color: #78581f; /* Relic Brass */
 }
 
 
-/* === Timekeeping Section === */
-.section.timekeeping {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.timekeeping h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.timekeeping p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.timekeeping table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Timekeeping === */
 .section.timekeeping table th,
 .section.timekeeping table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #DCE1E8; /* Moonstone Silver */
+}
+
+.section.timekeeping table th {
+  color: #DCE1E8; /* Moonstone Silver */
+  text-shadow: 1px 1px #A63A2C; /* Duvaen Red */
+}
+
+.section.timekeeping table td {
+  color: #A63A2C; /* Duvaen Red */
 }
 
 
-/* === Language-rules Section === */
-.section.language-rules {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.language-rules h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.language-rules p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.language-rules table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Language Rules === */
 .section.language-rules table th,
 .section.language-rules table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #8FE9F0; /* Dreamlight Cyan */
+}
+
+.section.language-rules table th {
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-shadow: 1px 1px #7A7C86; /* Arvalla Beta */
+}
+
+.section.language-rules table td {
+  color: #7A7C86; /* Arvalla Beta */
 }
 
 
-/* === Lexicon Section === */
-.section.lexicon {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.lexicon h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.lexicon p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.lexicon table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Lexicon === */
 .section.lexicon table th,
 .section.lexicon table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #7A7C86; /* Arvalla Beta */
+}
+
+.section.lexicon table th {
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow: 1px 1px #1a114b; /* Astral Navy */
+}
+
+.section.lexicon table td {
+  color: #1a114b; /* Astral Navy */
 }
 
 
-/* === Support Section === */
-.section.support {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.section.support h2 {
-  text-align: center;
-  margin: 20px auto;
-}
-
-.section.support p {
-  text-align: center;
-  margin: 20px auto;
-  max-width: 900px;
-}
-
-.section.support table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-  text-align: center;
-}
-
+/* === Support === */
 .section.support table th,
 .section.support table td {
-  font-family: "Times New Roman", serif;
-  text-align: center;
-  vertical-align: middle;
-  padding: 10px;
-  color: black;
+  border-color: #FBC96D; /* Emberlight Gold */
 }
+
+.section.support table th {
+  color: #FBC96D; /* Emberlight Gold */
+  text-shadow: 1px 1px #342c61; /* Twilight Indigo */
+}
+
+.section.support table td {
+  color: #342c61; /* Twilight Indigo */
+}
+
 
 /* ===================================================================================================
  * FOOTER
@@ -1098,6 +998,7 @@ span[style*="Comic Sans MS"],
 .button {
   touch-action: manipulation;
 }
+
 
 
 `;
