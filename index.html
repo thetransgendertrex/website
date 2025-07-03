@@ -227,7 +227,7 @@ Customized with layered Moonpunk background and custom fonts.
 /* === Base Styles === */
 body {
     font-family: "Times New Roman";
-    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)") no-repeat center center fixed;
+    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg") no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
     position: relative;
@@ -244,15 +244,17 @@ body {
 }
 
 /* ===================================================================================================
- * BOX SIZING & UTILITIES
+ * BOX SIZING & UTILITIES (With Explicit Scrollbars)
  * ===================================================================================================*/
 html {
   box-sizing: border-box;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 body {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 *,
@@ -274,9 +276,8 @@ body {
 .container {
   margin: 0 auto;
 }
-
 /* ===================================================================================================
- * MAIN CONTENT
+ * MAIN CONTENT (Fixed Overflow with Scrollbars)
  * ===================================================================================================*/
 .main-content {
   position: relative;
@@ -286,11 +287,12 @@ body {
   min-height: 100vh;
   padding: 40px;
   text-align: center;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 /* ===================================================================================================
- * UNIVERSAL SECTION LAYOUT
+ * UNIVERSAL SECTION LAYOUT (Fixed Overflow with Scrollbars)
  * ===================================================================================================*/
 .section {
   position: relative;
@@ -300,7 +302,8 @@ body {
   min-height: 100vh;
   padding: 80px 2.5%;
   text-align: center;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   border-bottom: 3px solid rgba(250, 250, 250, 0.25);
   background: transparent;
 }
@@ -333,12 +336,16 @@ body {
 /* ===================================================================================================
  * TABLES
  * ===================================================================================================*/
+
 table,
 .main-content table {
   width: calc(100% - 0.5in);
   margin: 0.25in auto;
   background: rgba(255, 255, 255, 0.7);
   border-collapse: collapse;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: block; /* Needed to allow overflow on tables */
 }
 
 table td,
@@ -761,26 +768,34 @@ footer {
     color: black !important;
     text-shadow: none !important;
 }
-
-/* ──────────────✦ Section Styles ✦────────────── */
-
+/* === Standardized Section Layout === */
 .section {
+  position: relative;
   background: transparent;
   color: white;
   font-family: "Times New Roman", serif;
+  /* Position and sizing */
+  left: 20%; /* same as sidebar width to not overlap */
+  width: 80%; /* rest of viewport */
+  min-height: 100vh;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 80px 2.5%;
+  box-sizing: border-box;
 }
 
 /* === Section Headers === */
-.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b, 0 0 2px #1a114b, 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
-.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530, 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
-.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61, 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
-.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45, 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
-.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e, 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
-.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f, 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
-.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C, 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
-.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86, 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
-.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b, 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
-.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61, 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
+.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
+.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
+.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
+.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
+.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
+.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
+.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
+.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
+.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
+.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
 
 /* === Tables === */
 .section table {
@@ -804,7 +819,7 @@ footer {
   text-shadow: none;
 }
 
-/* === Table Header Colors & Outlines === */
+/* === Table Header Colors === */
 .section.home table th { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
 .section.lore table th { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
 .section.navigation table th { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
@@ -831,27 +846,38 @@ footer {
 
 /* === Responsive === */
 @media screen and (max-width: 1024px) {
-    nav {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    footer {
-        position: relative;
-    }
+  .section {
+    left: 0;
+    width: 100%;
+  }
 }
-/* === Comic Sans Override (INDEX.HTML page on GitHub) === */
+
+/* === Comic Sans Override for index.html === */
 body[data-doc-name*="index"] {
-  font-family: 'Comic Sans MS', !important;
+  font-family: 'Comic Sans MS', cursive !important;
 }
 
-/* === Aza'raan Font Substitution for Comic Sans Only === */
+/* === Force Comic Sans size on all spans or elements === */
+span[style*="Comic Sans MS"],
+*[style*="Comic Sans MS"] {
+  font-family: 'Comic Sans MS', cursive !important;
+  font-size: 18px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  span[style*="Comic Sans MS"],
+  *[style*="Comic Sans MS"] {
+    font-size: 16px !important;
+  }
+}
+
+/* === Aza'raan Font Substitution === */
 .azaraan-word {
   font-family: 'Azaraan', cursive;
   color: #014d4e;
   text-shadow: 0 0 2px var(--cyan);
 }
+
 /* Sidebar open state — slide in */
 .menu {
   transform: translateX(0);
@@ -982,7 +1008,6 @@ html, body {
   overflow-x: auto;
   overflow-y: auto;
 }
-
 
 </style>
 <!-- Sidebar Menu -->
@@ -1973,45 +1998,57 @@ Aza'ra</span></h3>
     </div>
   </div>
 </section>
-  <h2>🧪 Demo Area: Font Behavior Preview</h2>
 
-    <p><strong>This section shows a side-by-side comparison of how text looks in <a href="https://fonts.google.com/specimen/Pacifico" target="_blank">Pacifico</a> vs. how it appears after being overridden with the custom Aza’raan font I created.</strong> This helps visualize the transformation within Google Docs and related apps.</p>
+<h2>🧪 Demo Area: Font Behavior Preview</h2>
 
-    <h3>🌸 Original Pacifico Example</h3>
+<p>
+  <strong>
+    I have developed a custom Google Application that replaces the 
+    <a href="https://fonts.google.com/specimen/Pacifico" target="_blank">Pacifico</a> font with my own 
+    Aza’raan font across all Google services — including Drive, Docs, Drawings, Slides, Sheets, and Forms.
+  </strong>
+  The Aza’raan font fully replaces Pacifico wherever it appears in the dropdown menu, and it will display as 
+  <span style="font-family: 'Comic Sans MS', cursive;">“Aza’raan”</span> directly in the dropdown list, rendered in the custom Aza’raan glyph font.
+</p>
+
+<h3>🌸 Original Pacifico Example</h3>
 <p class="pacifico" style="font-family: 'Pacifico', cursive !important; font-size: 1.6em; color: #840000;">
-  This is what Pacifico looked like before override.
+  This is what Pacifico looked like before the override.
 </p>
 
 <h3>🔮 Aza'raan Font Preview (Overrides Pacifico)</h3>
 <p style="font-family: 'Comic Sans MS', cursive;">
-  Aza’ralo hue ni tsurayaka laha sa’lai miil'las - yani~hue baneyaka laha p’dai’ra yani.
+  Aza’ralo hue ni tsurayaka laha sa’lai miil'las - yani~hue baneyaka laha p’dai’ra yani</span>.
 </p>
 
-    <p><em>This line is written in the custom <a href="https://github.com/thetransgendertrex/Azaraanlanguage/blob/main/Aza%27raan%20Planet%20Language.ttf" target="_blank">Aza’raan font</a> I designed to fully replace Pacifico in supported Google Drive applications.</em></p>
+<p>
+  <em>This line shows the Aza’raan font, which automatically replaces Pacifico in your Google applications.</em>
+</p>
 
-    <p>Translated, it means: <strong>“Aza’raan is not designed to dominate speech - it’s built to liberate it.” Which is the quote from above.</strong></p> 
+<p>
+  Translated, it means: <strong>“Aza’raan is not designed to dominate speech — it’s built to liberate it.”</strong>
+</p>
 
-    <!-- Final Demonstration Lines -->
-    <div class="closing-lines">
-      <p style="font-family: 'Comic Sans MS', cursive;">
-        Yui Ranam rakhemaeri Ranthnami
-      </p>
-      <p>  — "The demi-male loved himself"</p>
+<!-- Final Demonstration Lines -->
+<div class="closing-lines">
+  <p style="font-family: 'Comic Sans MS', cursive;">Yui Ranam rakhemaeri Ranthnami</span></p>
+  <p>— "The demi-male loved himself"</p>
 
-      <p style="font-family: 'Comic Sans MS', cursive;">
-        Anoki~itelei
-      </p>
-      <p> — "I have"</p>
-    </div>
+  <p style="font-family: 'Comic Sans MS', cursive;">Anoki~itelei</span></p>
+  <p>— "I have"</p>
+</div>
+
 <h3>📦 Aza’raan Font and Program Resources</h3>
 <ul>
-  <li><a href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza%27raan%20Planet%20Language.ttf" target="_blank">Download Aza'raan.ttf</a></li>
-  <li><a href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectstyle.css" target="_blank">Font CSS</a></li>
-  <li><a href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectjava.js" target="_blank">Font JS</a></li>
-  <li><a href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectoverride.js" target="_blank">Override Script</a></li>
-  <li><a href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Manifest.json" target="_blank">Manifest.json</a></li>
+  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza%27raan%20Planet%20Language.ttf" target="_blank">Download Aza'raan.ttf</a></li>
+  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectstyle.css" target="_blank">Font CSS</a></li>
+  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectjava.js" target="_blank">Font JS</a></li>
+  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectoverride.js" target="_blank">Override Script</a></li>
+  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Manifest.json" target="_blank">Manifest.json</a></li>
 </ul>
- </section>
+
+</section>
+
 
 <!-- 🗡️ MMORPG -->
 <section class="section mmorpg" data-section="mmorpg">
@@ -5835,12 +5872,16 @@ rakhemalo</span></td>
       Whether you’re a linguist, gamer, worldbuilder, or dreamer — your curiosity means everything.<br>
       You’re now part of Aza’ra’s living legacy — a gift of story, structure, and survival.
     </p>
-        <p>
-          💙 If you’d rather donate specific items I need instead of funds,<br>
-          you can visit my 
-          <a href="https://www.linktr.ee/thetransgendertrex" target="_blank" rel="noopener noreferrer">official wishlists here</a>.
-        </p>
-
+<p>
+  💙 If you’d rather donate specific items I need instead of funds,<br>
+  you can visit my
+  <a href="https://www.linktr.ee/thetransgendertrex" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="button">
+     Official Wishlists
+  </a>.
+</p>
         <p>
           💜 Support the creator and learn more about the lore, linguistic design, and metaphysical themes —<br>
           <strong>William Blake Saville</strong> (aka <code>#TheTransgenderTRex</code>) — an autistic, low-income, bedridden trans man.
@@ -5853,20 +5894,25 @@ rakhemalo</span></td>
         <!-- ✅ donations.js will build the secure form here -->
         <div id="donation-module-mount"></div>
 
-        <p>
-          <label>Donation Amount (USD): 
-            <input type="number" id="donation-amount" placeholder="Amount in USD" min="1" step="1" />
-          </label><br>
-          <label><input type="radio" name="interval" value="one_time" checked> One-time</label>
-          <label><input type="radio" name="interval" value="month"> Monthly</label>
-          <label><input type="radio" name="interval" value="year"> Yearly</label><br>
-          <button id="donate-btn">Donate & Support</button>
-          <div id="donation-status"></div>
-        </p>
-      </div>
-    </section>
-  </main>
+<p>
+  <label>Donation Amount (USD): 
+    <input type="number" id="donation-amount" placeholder="Amount in USD" min="1" step="1" />
+  </label>
+</p>
 
+<div class="donation-intervals">
+  <button type="button" class="button interval-btn" data-interval="one_time">One-time</button>
+  <button type="button" class="button interval-btn" data-interval="weekly">Weekly</button>
+  <button type="button" class="button interval-btn" data-interval="monthly">Monthly</button>
+  <button type="button" class="button interval-btn" data-interval="3months">Every 3 Months</button>
+  <button type="button" class="button interval-btn" data-interval="6months">Every 6 Months</button>
+  <button type="button" class="button interval-btn" data-interval="yearly">Yearly</button>
+</div>
+
+<p>
+  <button id="donate-btn" class="button">Donate & Support</button>
+  <div id="donation-status"></div>
+</p>
   <!-- ✅ Load donations.js from GitHub -->
   <script type="module">
     import { initDonations } from "https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js";
