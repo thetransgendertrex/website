@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Aza'raan Font Universal Override Demo</title>
+  <title>Welcome To The World Of © Aza’ra™</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- 👇 Load and run override.js FIRST -->
@@ -256,7 +256,7 @@ body::after {
 /* ──────────────✦ Typography & Basics ✦────────────── */
 
 body {
-  font-family: 'Pridi', serif; /* You can change to Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
+  font-family: 'Pridi', 'Times New Roman'; 
   overflow-x: hidden;
   color: #fff;
 }
@@ -334,10 +334,11 @@ html {
   margin: 0 auto;
 }
 
-/* ──────────────✦ Navigation ✦────────────── */
+/* ──────────────✦ Main Nav Bar ✦────────────── */
 
 .main-nav {
   text-align: center;
+  font-family: 'Times New Roman';
 }
 
 .main-nav li {
@@ -345,62 +346,56 @@ html {
 }
 
 .main-nav li:last-child a {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #000;
 }
 
 .main-nav li a {
+  display: inline-block;
+  width: 100%;
   height: 70px;
   line-height: 70px;
-  display: inline-block;
   font-size: 16px;
   font-weight: 700;
-  font-family: 'Times New Roman', serif;
-  color: #fff;
-  width: 100%;
-  transition: all 0.5s;
-  border-top: 2px solid #fff;
+  color: #000;
   background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
+  border-top: 2px solid #fff;
+  transition: all 0.5s;
 }
 
 .main-nav li:hover a,
 .main-nav li.active a {
-  background: #000; /* Fully black on hover */
+  background: #000; /* Solid black on hover */
   color: #fff;
 }
 
 /* ──────────────✦ Sidebar Menu ✦────────────── */
 
 .menu {
-  text-align: center;
-  font-family: 'Times New Roman', serif;
-  left: 10%;
-  background-color: rgba(0, 0, 0, 0.3); /* Always black with 30% opacity */
-  color: #fff;
-  box-sizing: border-box;
-  height: 100vh;
-  max-height: 100vh !important;
-  max-width: 80vw !important;
-  min-width: 45px !important;
-  outline: none;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  padding: 0;
   position: fixed !important;
   top: 0;
+  left: 10%;
   width: 20%;
-  z-index: 9999 !important;
+  height: 100vh;
+  max-width: 80vw;
+  min-width: 45px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
+  color: #fff;
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+  z-index: 9999;
   will-change: transform;
-  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
   transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
   -webkit-overflow-scrolling: touch;
 }
 
 .menu a {
   display: block;
-  text-decoration: none;
   padding: 20px 0;
   font-size: 18px;
-  color: inherit;
+  text-decoration: none;
+  color: inherit; /* Uses section-specific color below */
   transition: all 0.3s;
 }
 
@@ -412,37 +407,294 @@ html {
   display: none;
 }
 
-/* ──────────────✦ Sidebar Toggle ✦────────────── */
+/* ──────────────✦ Sidebar Toggle Buttons ✦────────────── */
 
 #menu-toggle,
 #menu-close {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
-  display: inline-block;
   position: fixed;
   top: 0;
   left: 0;
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  text-align: center;
+  line-height: 60px;
+  display: inline-block;
+  cursor: pointer;
   z-index: 999;
 }
 
-/* ──────────────✦ Section Link Shadows ✦────────────── */
+/* ──────────────✦ Section-specific Link Colors & Outline Shadows ✦────────────── */
 
-.menu a.home { text-shadow: 2px 2px #1a114b; color: #ECEEF1; }
-.menu a.lore { text-shadow: 2px 2px #0c4530; color: #0075FF; }
-.menu a.navigation { text-shadow: 2px 2px #342c61; color: #C5ECFF; }
-.menu a.font-project { text-shadow: 2px 2px #572a45; color: #C1FF8A; }
-.menu a.mmorpg { text-shadow: 2px 2px #014d4e; color: #FBC96D; }
-.menu a.book-series { text-shadow: 2px 2px #78581f; color: #D88EBA; }
-.menu a.timekeeping { text-shadow: 2px 2px #A63A2C; color: #DCE1E8; }
-.menu a.language-rules { text-shadow: 2px 2px #7A7C86; color: #8FE9F0; }
-.menu a.lexicon { text-shadow: 2px 2px #1a114b; color: #7A7C86; }
-.menu a.support { text-shadow: 2px 2px #342c61; color: #FBC96D; }
+.menu a.home {
+  color: #ECEEF1;
+  text-shadow: -0.5px -0.5px #1a114b, 0.5px -0.5px #1a114b, -0.5px 0.5px #1a114b, 0.5px 0.5px #1a114b;
+}
 
+.menu a.lore {
+  color: #0075FF;
+  text-shadow: -0.5px -0.5px #0c4530, 0.5px -0.5px #0c4530, -0.5px 0.5px #0c4530, 0.5px 0.5px #0c4530;
+}
+
+.menu a.navigation {
+  color: #C5ECFF;
+  text-shadow: -0.5px -0.5px #342c61, 0.5px -0.5px #342c61, -0.5px 0.5px #342c61, 0.5px 0.5px #342c61;
+}
+
+.menu a.font-project {
+  color: #C1FF8A;
+  text-shadow: -0.5px -0.5px #572a45, 0.5px -0.5px #572a45, -0.5px 0.5px #572a45, 0.5px 0.5px #572a45;
+}
+
+.menu a.mmorpg {
+  color: #FBC96D;
+  text-shadow: -0.5px -0.5px #014d4e, 0.5px -0.5px #014d4e, -0.5px 0.5px #014d4e, 0.5px 0.5px #014d4e;
+}
+
+.menu a.book-series {
+  color: #D88EBA;
+  text-shadow: -0.5px -0.5px #78581f, 0.5px -0.5px #78581f, -0.5px 0.5px #78581f, 0.5px 0.5px #78581f;
+}
+
+.menu a.timekeeping {
+  color: #DCE1E8;
+  text-shadow: -0.5px -0.5px #A63A2C, 0.5px -0.5px #A63A2C, -0.5px 0.5px #A63A2C, 0.5px 0.5px #A63A2C;
+}
+
+.menu a.language-rules {
+  color: #8FE9F0;
+  text-shadow: -0.5px -0.5px #7A7C86, 0.5px -0.5px #7A7C86, -0.5px 0.5px #7A7C86, 0.5px 0.5px #7A7C86;
+}
+
+.menu a.lexicon {
+  color: #7A7C86;
+  text-shadow: -0.5px -0.5px #1a114b, 0.5px -0.5px #1a114b, -0.5px 0.5px #1a114b, 0.5px 0.5px #1a114b;
+}
+
+.menu a.support {
+  color: #FBC96D;
+  text-shadow: -0.5px -0.5px #342c61, 0.5px -0.5px #342c61, -0.5px 0.5px #342c61, 0.5px 0.5px #342c61;
+}
+
+/*! * Customized FlexSlider v2.7.1 */
+}
+
+.menu a.home {
+  color: #ECEEF1;
+  text-shadow: 
+    -0.5px -0.5px #1a114b,
+     0.5px -0.5px #1a114b,
+    -0.5px  0.5px #1a114b,
+     0.5px  0.5px #1a114b;
+}
+.menu a.home:hover {
+  color: #1a114b;
+  text-shadow: 
+    -0.5px -0.5px #ECEEF1,
+     0.5px -0.5px #ECEEF1,
+    -0.5px  0.5px #ECEEF1,
+     0.5px  0.5px #ECEEF1;
+}
+
+.menu a.lore {
+  color: #0075FF;
+  text-shadow: 
+    -0.5px -0.5px #0c4530,
+     0.5px -0.5px #0c4530,
+    -0.5px  0.5px #0c4530,
+     0.5px  0.5px #0c4530;
+}
+.menu a.lore:hover {
+  color: #0c4530;
+  text-shadow: 
+    -0.5px -0.5px #0075FF,
+     0.5px -0.5px #0075FF,
+    -0.5px  0.5px #0075FF,
+     0.5px  0.5px #0075FF;
+}
+
+.menu a.navigation {
+  color: #C5ECFF;
+  text-shadow: 
+    -0.5px -0.5px #342c61,
+     0.5px -0.5px #342c61,
+    -0.5px  0.5px #342c61,
+     0.5px  0.5px #342c61;
+}
+.menu a.navigation:hover {
+  color: #342c61;
+  text-shadow: 
+    -0.5px -0.5px #C5ECFF,
+     0.5px -0.5px #C5ECFF,
+    -0.5px  0.5px #C5ECFF,
+     0.5px  0.5px #C5ECFF;
+}
+
+.menu a.font-project {
+  color: #C1FF8A;
+  text-shadow: 
+    -0.5px -0.5px #572a45,
+     0.5px -0.5px #572a45,
+    -0.5px  0.5px #572a45,
+     0.5px  0.5px #572a45;
+}
+.menu a.font-project:hover {
+  color: #572a45;
+  text-shadow: 
+    -0.5px -0.5px #C1FF8A,
+     0.5px -0.5px #C1FF8A,
+    -0.5px  0.5px #C1FF8A,
+     0.5px  0.5px #C1FF8A;
+}
+
+.menu a.mmorpg {
+  color: #FBC96D;
+  text-shadow: 
+    -0.5px -0.5px #014d4e,
+     0.5px -0.5px #014d4e,
+    -0.5px  0.5px #014d4e,
+     0.5px  0.5px #014d4e;
+}
+.menu a.mmorpg:hover {
+  color: #014d4e;
+  text-shadow: 
+    -0.5px -0.5px #FBC96D,
+     0.5px -0.5px #FBC96D,
+    -0.5px  0.5px #FBC96D,
+     0.5px  0.5px #FBC96D;
+}
+
+.menu a.book-series {
+  color: #D88EBA;
+  text-shadow: 
+    -0.5px -0.5px #78581f,
+     0.5px -0.5px #78581f,
+    -0.5px  0.5px #78581f,
+     0.5px  0.5px #78581f;
+}
+.menu a.book-series:hover {
+  color: #78581f;
+  text-shadow: 
+    -0.5px -0.5px #D88EBA,
+     0.5px -0.5px #D88EBA,
+    -0.5px  0.5px #D88EBA,
+     0.5px  0.5px #D88EBA;
+}
+
+.menu a.timekeeping {
+  color: #DCE1E8;
+  text-shadow: 
+    -0.5px -0.5px #A63A2C,
+     0.5px -0.5px #A63A2C,
+    -0.5px  0.5px #A63A2C,
+     0.5px  0.5px #A63A2C;
+}
+.menu a.timekeeping:hover {
+  color: #A63A2C;
+  text-shadow: 
+    -0.5px -0.5px #DCE1E8,
+     0.5px -0.5px #DCE1E8,
+    -0.5px  0.5px #DCE1E8,
+     0.5px  0.5px #DCE1E8;
+}
+
+.menu a.language-rules {
+  color: #8FE9F0;
+  text-shadow: 
+    -0.5px -0.5px #7A7C86,
+     0.5px -0.5px #7A7C86,
+    -0.5px  0.5px #7A7C86,
+     0.5px  0.5px #7A7C86;
+}
+.menu a.language-rules:hover {
+  color: #7A7C86;
+  text-shadow: 
+    -0.5px -0.5px #8FE9F0,
+     0.5px -0.5px #8FE9F0,
+    -0.5px  0.5px #8FE9F0,
+     0.5px  0.5px #8FE9F0;
+}
+
+.menu a.lexicon {
+  color: #7A7C86;
+  text-shadow: 
+    -0.5px -0.5px #1a114b,
+     0.5px -0.5px #1a114b,
+    -0.5px  0.5px #1a114b,
+     0.5px  0.5px #1a114b;
+}
+.menu a.lexicon:hover {
+  color: #1a114b;
+  text-shadow: 
+    -0.5px -0.5px #7A7C86,
+     0.5px -0.5px #7A7C86,
+    -0.5px  0.5px #7A7C86,
+     0.5px  0.5px #7A7C86;
+}
+
+.menu a.support {
+  color: #FBC96D;
+  text-shadow: 
+    -0.5px -0.5px #342c61,
+     0.5px -0.5px #342c61,
+    -0.5px  0.5px #342c61,
+     0.5px  0.5px #342c61;
+}
+.menu a.support:hover {
+  color: #342c61;
+  text-shadow: 
+    -0.5px -0.5px #FBC96D,
+     0.5px -0.5px #FBC96D,
+    -0.5px  0.5px #FBC96D,
+     0.5px  0.5px #FBC96D;
+}
+
+
+
+/* === Comic Sans Override (index.HTML page on GitHub) === */
+body[data-doc-name*="index"], {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+/* === Aza'raan Font Substitution for Comic Sans Only === */
+.azaraan-word {
+  font-family: 'Azaraan', cursive;
+  color: #014d4e;
+  text-shadow: 0 0 2px var(--cyan);
+}
+/* Sidebar open state — slide in */
+.menu {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+.menu:not(.open) {
+  transform: translateX(-100%);
+}
+
+/* Ensure toggle is hidden on large screens */
+@media (min-width: 846px) {
+  #menu-toggle, #menu-close {
+    display: none;
+  }
+
+  .menu {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Active nav link styling */
+.menu a.active {
+  background: #fff;
+  color: #000;
+  font-weight: 900;
+}
+
+/* Optional: transition for smoother nav link changes */
+.menu a {
+  transition: background 0.3s, color 0.3s;
+}
 /* ──────────────✦ Base Section Layout ✦────────────── */
 
 .section {
@@ -706,297 +958,7 @@ body::after {
   );
   pointer-events: none;
 }
-/*!
- * Customized FlexSlider v2.7.1
- * Updated with site-specific navigation and sidebar styles
- * Original: http://www.woothemes.com/flexslider/
- * License: GPLv2 and later (http://www.gnu.org/licenses/gpl-2.0.html)
- * Author: Tyler Smith (@mbmufffin)
- */
 
-/* ====================================================================================================================
- * FONT-FACE
- * ====================================================================================================================*/
-@font-face {
-  font-family: 'flexslider-icon';
-  src: url('../fonts/flexslider-icon.eot');
-  src: url('../fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'),
-       url('../fonts/flexslider-icon.woff') format('woff'),
-       url('../fonts/flexslider-icon.ttf') format('truetype'),
-       url('../fonts/flexslider-icon.svg#flexslider-icon') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-/* ====================================================================================================================
- * RESETS
- * ====================================================================================================================*/
-.flex-container a:hover,
-.flex-slider a:hover {
-  outline: none;
-}
-
-.slides,
-.slides > li,
-.flex-control-nav,
-.flex-direction-nav {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.flex-pauseplay span {
-  text-transform: capitalize;
-}
-
-/* ====================================================================================================================
- * CUSTOM NAVIGATION (match site nav style)
- * ====================================================================================================================*/
-
-.flex-direction-nav a {
-  display: block;
-  width: 60px;
-  height: 60px;
-  background: #fff; /* Light mode */
-  color: #000; /* Light mode */
-  text-align: center;
-  line-height: 60px;
-  font-family: 'Uncial Antiqua', cursive;
-  font-weight: 700;
-  font-size: 24px;
-  text-decoration: none;
-  transition: all 0.3s;
-  position: absolute;
-  top: 50%;
-  z-index: 10;
-}
-
-.flex-direction-nav a.flex-prev {
-  left: 0;
-}
-
-.flex-direction-nav a.flex-next {
-  right: 0;
-}
-
-.flex-direction-nav a:hover {
-  background: #000;
-  color: #fff;
-}
-
-.flex-control-nav {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.flex-control-nav li {
-  display: inline-block;
-  margin: 0 5px;
-}
-
-.flex-control-nav a {
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: #fff;
-  border: 2px solid #000;
-  border-radius: 50%;
-  text-indent: -9999px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.flex-control-nav a.flex-active,
-.flex-control-nav a:hover {
-  background: #000;
-}
-
-/* ====================================================================================================================
- * DARK MODE SUPPORT
- * ====================================================================================================================*/
-@media (prefers-color-scheme: dark) {
-  .flex-direction-nav a {
-    background: #000;
-    color: #fff;
-  }
-  .flex-direction-nav a:hover {
-    background: #fff;
-    color: #000;
-  }
-  .flex-control-nav a {
-    background: #000;
-    border: 2px solid #fff;
-  }
-  .flex-control-nav a.flex-active,
-  .flex-control-nav a:hover {
-    background: #fff;
-  }
-}
-/* ===================================================================================================
- * CLEAN BASE FLEX CONTAINER
- * ===================================================================================================*/
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  padding: 0;
-}
-
-/* Example child elements inside the flex container */
-.flex-container > * {
-  flex: 1 1 auto;
-}
-
-/* ──────────────✦ Navigation ✦────────────── */
-
-.main-nav {
-  text-align: center;
-  font-family: 'Times New Roman', serif;
-}
-
-.main-nav li {
-  display: block;
-}
-
-.main-nav li:last-child a {
-  border-bottom: 2px solid #fff;
-}
-
-.main-nav li a {
-  height: 70px;
-  line-height: 70px;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 700;
-  font-family: 'Times New Roman', serif;
-  color: #fff;
-  width: 100%;
-  transition: all 0.5s;
-  border-top: 2px solid #fff;
-  background: rgba(0, 0, 0, 0.3); /* Black nav bar with 30% opacity */
-}
-
-.main-nav li:hover a,
-.main-nav li.active a {
-  background: #fff;
-  color: #000;
-}
-
-/* ──────────────✦ Sidebar Menu ✦────────────── */
-
-.menu {
-  text-align: center;
-  font-family: 'Times New Roman', serif;
-  left: 10%;
-  background: rgba(0, 0, 0, 0.3); /* Always black with 30% opacity */
-  color: #fff;
-  box-sizing: border-box;
-  height: 100vh;
-  max-width: 80vw;
-  min-width: 45px;
-  overflow-y: auto;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  width: 20%;
-  z-index: 9999;
-  will-change: transform;
-  transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
-  -webkit-overflow-scrolling: touch;
-}
-
-.menu a {
-  display: block;
-  text-decoration: none;
-  padding: 20px 0;
-  font-size: 18px;
-  color: inherit;
-  transition: all 0.3s;
-}
-
-.menu a:hover {
-  filter: brightness(0.85);
-}
-
-.menu::-webkit-scrollbar {
-  display: none;
-}
-
-/* ──────────────✦ Sidebar Toggle Buttons ✦────────────── */
-
-#menu-toggle,
-#menu-close {
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  width: 60px;
-  height: 60px;
-  text-align: center;
-  line-height: 60px;
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-}
-
-/* ──────────────✦ Section Links with Text Shadows ✦────────────── */
-
-.menu a.home { text-shadow: 2px 2px #1a114b; color: #ECEEF1; }
-.menu a.lore { text-shadow: 2px 2px #0c4530; color: #0075FF; }
-.menu a.navigation { text-shadow: 2px 2px #342c61; color: #C5ECFF; }
-.menu a.font-project { text-shadow: 2px 2px #572a45; color: #C1FF8A; }
-.menu a.mmorpg { text-shadow: 2px 2px #014d4e; color: #FBC96D; }
-.menu a.book-series { text-shadow: 2px 2px #78581f; color: #D88EBA; }
-.menu a.timekeeping { text-shadow: 2px 2px #A63A2C; color: #DCE1E8; }
-.menu a.language-rules { text-shadow: 2px 2px #7A7C86; color: #8FE9F0; }
-.menu a.lexicon { text-shadow: 2px 2px #1a114b; color: #7A7C86; }
-.menu a.support { text-shadow: 2px 2px #342c61; color: #FBC96D; }
-
-/* === Comic Sans Override (index.HTML page on GitHub) === */
-body[data-doc-name*="index"], {
-  font-family: 'Comic Sans MS', cursive, sans-serif !important;
-}
-
-/* === Aza'raan Font Substitution for Comic Sans Only === */
-.azaraan-word {
-  font-family: 'Azaraan', cursive;
-  color: #014d4e;
-  text-shadow: 0 0 2px var(--cyan);
-}
-/* Sidebar open state — slide in */
-.menu {
-  transform: translateX(0);
-  transition: transform 0.3s ease;
-}
-
-.menu:not(.open) {
-  transform: translateX(-100%);
-}
-
-/* Ensure toggle is hidden on large screens */
-@media (min-width: 846px) {
-  #menu-toggle, #menu-close {
-    display: none;
-  }
-
-  .menu {
-    transform: translateX(0) !important;
-  }
-}
-
-/* Active nav link styling */
-.menu a.active {
-  background: #fff;
-  color: #000;
-  font-weight: 900;
-}
-
-/* Optional: transition for smoother nav link changes */
-.menu a {
-  transition: background 0.3s, color 0.3s;
-}
 
 /* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
 @media screen and (max-width: 1680px) {
@@ -1095,6 +1057,7 @@ html, body {
   overflow-x: auto;
   overflow-y: auto;
 }
+
 </style>
 <!-- Sidebar Menu -->
 <div class="responsive-nav">
@@ -5991,38 +5954,6 @@ rakhemalo</span></td>
   <hr>
   <p>© Aza’ra™ and Aza’raan™ Language System — Crafted with purpose by William Blake Saville (<code>#TheTransgenderTRex</code>)</p>
 </footer>
-
-  <!-- ✅ Load pages dynamically -->
-  <script type="module">
-    const pages = [
-      { id: 'home', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/home.html' },
-
-      { id: 'lore', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Lore.html' },
-
-      { id: 'navigation', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Navigation.html' },
-
-      { id: 'font-project', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/font-project.html' },
-
-      { id: 'mmorpg', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/mmorpg.html' },
-
-      { id: 'book-series', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/book-series.html' },
-
-      { id: 'timekeeping', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/timekeeping.html' },
-
-      { id: 'language-rules', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/language-rules.html' },
-
-      { id: 'lexicon', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/lexicon.html' },
-      
-      { id: 'support', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/donations.html' }
-    ];
-
-    pages.forEach(page => {
-      fetch(`https://raw.githubusercontent.com/thetransgendertrex/website/main/${page.url}`)
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById(`${page.id}-content`).innerHTML = html;
-        });
-    });
 
     // Load donations JS
     import('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js')
