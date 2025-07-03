@@ -395,12 +395,13 @@ Customized with layered Moonpunk background and custom fonts.
  * OVERLAY
  * ===================================================================================================*/
 /* === Base Styles === */
-body {
-    font-family: "Times New Roman";
-    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg") no-repeat center center fixed;
+#page-wraper {
+    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
-    overflow-x: hidden;
-    position: relative;
+    width: 100%;
 }
 
  #overlay {
@@ -413,1687 +414,55 @@ body {
   overflow-y: auto;
 }
 
-/* ──────────────✦ HOME SECTION BASE ✦────────────── */
-.section.home {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.home h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #ECEEF1;
-  text-shadow: 
-    -0.5px -0.5px #1a114b,
-     0.5px -0.5px #1a114b,
-    -0.5px  0.5px #1a114b,
-     0.5px  0.5px #1a114b;
-  border-bottom: 2px solid #ECEEF1;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.home p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.home::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.home::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.home::-webkit-scrollbar-thumb {
-  background: #ECEEF1;
-  border: 2px solid #1a114b;
-  border-radius: 6px;
-}
-
-.section.home::-webkit-scrollbar-thumb:hover {
-  background: #1a114b;
-  border-color: #ECEEF1;
-}
-
-/* Firefox */
-.section.home {
-  scrollbar-width: thin;
-  scrollbar-color: #ECEEF1 rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.home .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.home .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.home .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.home .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #ECEEF1;
-  border: 2px solid #1a114b;
-  border-radius: 6px;
-}
-
-.section.home .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #1a114b;
-  border-color: #ECEEF1;
-}
-
-/* Firefox horizontal box */
-.section.home .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #ECEEF1 rgba(0, 0, 0, 0.3);
-}
-
-/* Example items */
-.section.home .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #ECEEF1;
-  color: #ECEEF1;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.home .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.home .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.home .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.home .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #ECEEF1;
-  border: 2px solid #1a114b;
-  border-radius: 6px;
-}
-
-.section.home .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #1a114b;
-  border-color: #ECEEF1;
-}
-
-/* Firefox vertical box */
-.section.home .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #ECEEF1 rgba(0, 0, 0, 0.3);
-}
-
-.section.home .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #ECEEF1;
-  color: #ECEEF1;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ LORE SECTION BASE ✦────────────── */
-.section.lore {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.lore h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #0075FF;
-  text-shadow: 
-    -0.5px -0.5px #0c4530,
-     0.5px -0.5px #0c4530,
-    -0.5px  0.5px #0c4530,
-     0.5px  0.5px #0c4530;
-  border-bottom: 2px solid #0075FF;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.lore p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ TABLE STYLES ✦────────────── */
-.section.lore table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-}
-
-.section.lore table th {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 10px;
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
-  border-bottom: 2px solid #0075FF;
-}
-
-.section.lore table td {
-  font-family: "Times New Roman", serif;
-  color: black;
-  padding: 10px;
-  text-shadow: none;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.lore::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.lore::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.lore::-webkit-scrollbar-thumb {
-  background: #0075FF;
-  border: 2px solid #0c4530;
-  border-radius: 6px;
-}
-
-.section.lore::-webkit-scrollbar-thumb:hover {
-  background: #0c4530;
-  border-color: #0075FF;
-}
-
-/* Firefox */
-.section.lore {
-  scrollbar-width: thin;
-  scrollbar-color: #0075FF rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.lore .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.lore .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.lore .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.lore .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #0075FF;
-  border: 2px solid #0c4530;
-  border-radius: 6px;
-}
-
-.section.lore .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #0c4530;
-  border-color: #0075FF;
-}
-
-.section.lore .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #0075FF rgba(0, 0, 0, 0.3);
-}
-
-.section.lore .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #0075FF;
-  color: #0075FF;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.lore .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.lore .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.lore .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.lore .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #0075FF;
-  border: 2px solid #0c4530;
-  border-radius: 6px;
-}
-
-.section.lore .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #0c4530;
-  border-color: #0075FF;
-}
-
-.section.lore .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #0075FF rgba(0, 0, 0, 0.3);
-}
-
-.section.lore .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #0075FF;
-  color: #0075FF;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ NAVIGATION SECTION BASE ✦────────────── */
-.section.navigation {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.navigation h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #C5ECFF;
-  text-shadow: 
-    -0.5px -0.5px #342c61,
-     0.5px -0.5px #342c61,
-    -0.5px  0.5px #342c61,
-     0.5px  0.5px #342c61;
-  border-bottom: 2px solid #C5ECFF;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.navigation p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ TABLE STYLES ✦────────────── */
-.section.navigation table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-}
-
-.section.navigation table th {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 10px;
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
-  border-bottom: 2px solid #C5ECFF;
-}
-
-.section.navigation table td {
-  font-family: "Times New Roman", serif;
-  color: black;
-  padding: 10px;
-  text-shadow: none;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.navigation::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.navigation::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.navigation::-webkit-scrollbar-thumb {
-  background: #C5ECFF;
-  border: 2px solid #342c61;
-  border-radius: 6px;
-}
-
-.section.navigation::-webkit-scrollbar-thumb:hover {
-  background: #342c61;
-  border-color: #C5ECFF;
-}
-
-/* Firefox */
-.section.navigation {
-  scrollbar-width: thin;
-  scrollbar-color: #C5ECFF rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.navigation .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.navigation .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.navigation .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.navigation .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #C5ECFF;
-  border: 2px solid #342c61;
-  border-radius: 6px;
-}
-
-.section.navigation .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #342c61;
-  border-color: #C5ECFF;
-}
-
-.section.navigation .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #C5ECFF rgba(0, 0, 0, 0.3);
-}
-
-.section.navigation .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #C5ECFF;
-  color: #C5ECFF;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.navigation .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.navigation .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.navigation .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.navigation .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #C5ECFF;
-  border: 2px solid #342c61;
-  border-radius: 6px;
-}
-
-.section.navigation .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #342c61;
-  border-color: #C5ECFF;
-}
-
-.section.navigation .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #C5ECFF rgba(0, 0, 0, 0.3);
-}
-
-.section.navigation .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #C5ECFF;
-  color: #C5ECFF;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ FONT PROJECT SECTION BASE ✦────────────── */
-.section.font-project {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.font-project h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #C1FF8A;
-  text-shadow: 
-    -0.5px -0.5px #572a45,
-     0.5px -0.5px #572a45,
-    -0.5px  0.5px #572a45,
-     0.5px  0.5px #572a45;
-  border-bottom: 2px solid #C1FF8A;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.font-project p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.font-project::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.font-project::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.font-project::-webkit-scrollbar-thumb {
-  background: #C1FF8A;
-  border: 2px solid #572a45;
-  border-radius: 6px;
-}
-
-.section.font-project::-webkit-scrollbar-thumb:hover {
-  background: #572a45;
-  border-color: #C1FF8A;
-}
-
-/* Firefox */
-.section.font-project {
-  scrollbar-width: thin;
-  scrollbar-color: #C1FF8A rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.font-project .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.font-project .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.font-project .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.font-project .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #C1FF8A;
-  border: 2px solid #572a45;
-  border-radius: 6px;
-}
-
-.section.font-project .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #572a45;
-  border-color: #C1FF8A;
-}
-
-.section.font-project .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #C1FF8A rgba(0, 0, 0, 0.3);
-}
-
-.section.font-project .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #C1FF8A;
-  color: #C1FF8A;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.font-project .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.font-project .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.font-project .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.font-project .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #C1FF8A;
-  border: 2px solid #572a45;
-  border-radius: 6px;
-}
-
-.section.font-project .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #572a45;
-  border-color: #C1FF8A;
-}
-
-.section.font-project .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #C1FF8A rgba(0, 0, 0, 0.3);
-}
-
-.section.font-project .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #C1FF8A;
-  color: #C1FF8A;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ MMORPG SECTION BASE ✦────────────── */
-.section.mmorpg {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.mmorpg h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #FBC96D;
-  text-shadow: 
-    -0.5px -0.5px #014d4e,
-     0.5px -0.5px #014d4e,
-    -0.5px  0.5px #014d4e,
-     0.5px  0.5px #014d4e;
-  border-bottom: 2px solid #FBC96D;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.mmorpg p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.mmorpg::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.mmorpg::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.mmorpg::-webkit-scrollbar-thumb {
-  background: #FBC96D;
-  border: 2px solid #014d4e;
-  border-radius: 6px;
-}
-
-.section.mmorpg::-webkit-scrollbar-thumb:hover {
-  background: #014d4e;
-  border-color: #FBC96D;
-}
-
-/* Firefox */
-.section.mmorpg {
-  scrollbar-width: thin;
-  scrollbar-color: #FBC96D rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.mmorpg .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.mmorpg .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.mmorpg .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.mmorpg .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #FBC96D;
-  border: 2px solid #014d4e;
-  border-radius: 6px;
-}
-
-.section.mmorpg .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #014d4e;
-  border-color: #FBC96D;
-}
-
-.section.mmorpg .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #FBC96D rgba(0, 0, 0, 0.3);
-}
-
-.section.mmorpg .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #FBC96D;
-  color: #FBC96D;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.mmorpg .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.mmorpg .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.mmorpg .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.mmorpg .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #FBC96D;
-  border: 2px solid #014d4e;
-  border-radius: 6px;
-}
+/* Basic */
 
-.section.mmorpg .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #014d4e;
-  border-color: #FBC96D;
+body {
+    overflow-x: hidden;
 }
 
-.section.mmorpg .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #FBC96D rgba(0, 0, 0, 0.3);
+input,
+select,
+textarea {
+    outline: none;
 }
 
-.section.mmorpg .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #FBC96D;
-  color: #FBC96D;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+a,
+a:hover {
+    text-decoration: none;
 }
-/* ──────────────✦ BOOK SERIES SECTION BASE ✦────────────── */
-.section.book-series {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.book-series h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #D88EBA;
-  text-shadow: 
-    -0.5px -0.5px #78581f,
-     0.5px -0.5px #78581f,
-    -0.5px  0.5px #78581f,
-     0.5px  0.5px #78581f;
-  border-bottom: 2px solid #D88EBA;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.book-series p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.book-series::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.book-series::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.book-series::-webkit-scrollbar-thumb {
-  background: #D88EBA;
-  border: 2px solid #78581f;
-  border-radius: 6px;
-}
-
-.section.book-series::-webkit-scrollbar-thumb:hover {
-  background: #78581f;
-  border-color: #D88EBA;
-}
-
-/* Firefox */
-.section.book-series {
-  scrollbar-width: thin;
-  scrollbar-color: #D88EBA rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.book-series .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.book-series .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.book-series .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.book-series .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #D88EBA;
-  border: 2px solid #78581f;
-  border-radius: 6px;
-}
-
-.section.book-series .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #78581f;
-  border-color: #D88EBA;
-}
-
-.section.book-series .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #D88EBA rgba(0, 0, 0, 0.3);
-}
-
-.section.book-series .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #D88EBA;
-  color: #D88EBA;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.book-series .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.book-series .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.book-series .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.book-series .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #D88EBA;
-  border: 2px solid #78581f;
-  border-radius: 6px;
-}
-
-.section.book-series .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #78581f;
-  border-color: #D88EBA;
-}
-
-.section.book-series .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #D88EBA rgba(0, 0, 0, 0.3);
-}
-
-.section.book-series .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #D88EBA;
-  color: #D88EBA;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ TIMEKEEPING SECTION BASE ✦────────────── */
-.section.timekeeping {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.timekeeping h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #DCE1E8;
-  text-shadow:
-    -0.5px -0.5px #A63A2C,
-     0.5px -0.5px #A63A2C,
-    -0.5px  0.5px #A63A2C,
-     0.5px  0.5px #A63A2C;
-  border-bottom: 2px solid #DCE1E8;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.timekeeping p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* === Tables === */
-.section.timekeeping table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-}
-
-.section.timekeeping table th {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 10px;
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-  border-bottom: 2px solid #DCE1E8;
-}
-
-.section.timekeeping table td {
-  font-family: "Times New Roman", serif;
-  color: black;
-  padding: 10px;
-  text-shadow: none;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.timekeeping::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.timekeeping::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.timekeeping::-webkit-scrollbar-thumb {
-  background: #DCE1E8;
-  border: 2px solid #A63A2C;
-  border-radius: 6px;
-}
-
-.section.timekeeping::-webkit-scrollbar-thumb:hover {
-  background: #A63A2C;
-  border-color: #DCE1E8;
-}
-
-/* Firefox */
-.section.timekeeping {
-  scrollbar-width: thin;
-  scrollbar-color: #DCE1E8 rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.timekeeping .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.timekeeping .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.timekeeping .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.timekeeping .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #DCE1E8;
-  border: 2px solid #A63A2C;
-  border-radius: 6px;
-}
-
-.section.timekeeping .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #A63A2C;
-  border-color: #DCE1E8;
-}
-
-.section.timekeeping .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #DCE1E8 rgba(0, 0, 0, 0.3);
-}
-
-.section.timekeeping .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #DCE1E8;
-  color: #DCE1E8;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.timekeeping .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.timekeeping .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.timekeeping .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.timekeeping .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #DCE1E8;
-  border: 2px solid #A63A2C;
-  border-radius: 6px;
-}
-
-.section.timekeeping .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #A63A2C;
-  border-color: #DCE1E8;
-}
-
-.section.timekeeping .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #DCE1E8 rgba(0, 0, 0, 0.3);
-}
-
-.section.timekeeping .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid #DCE1E8;
-  color: #DCE1E8;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ LANGUAGE RULES SECTION ✦────────────── */
-.section.language-rules {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.language-rules h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #8FE9F0;
-  text-shadow:
-    -0.5px -0.5px #7A7C86,
-     0.5px -0.5px #7A7C86,
-    -0.5px  0.5px #7A7C86,
-     0.5px  0.5px #7A7C86;
-  border-bottom: 2px solid #8FE9F0;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.language-rules p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* === Tables === */
-.section.language-rules table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-}
-
-.section.language-rules table th {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 10px;
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-  border-bottom: 2px solid #8FE9F0;
-}
-
-.section.language-rules table td {
-  font-family: "Times New Roman", serif;
-  color: black;
-  padding: 10px;
-  text-shadow: none;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.language-rules::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.language-rules::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.language-rules::-webkit-scrollbar-thumb {
-  background: #8FE9F0;
-  border: 2px solid #7A7C86;
-  border-radius: 6px;
-}
-
-.section.language-rules::-webkit-scrollbar-thumb:hover {
-  background: #7A7C86;
-  border-color: #8FE9F0;
-}
 
-/* Firefox */
-.section.language-rules {
-  scrollbar-width: thin;
-  scrollbar-color: #8FE9F0 rgba(0, 0, 0, 0.3);
+p {
+    font-size: 16px;
+    line-height: 24px;
 }
 
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.language-rules .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
+h4 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 0.25px;
 }
 
-.section.language-rules .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
+img {
+    width: 100%;
+    overflow: hidden;
 }
 
-.section.language-rules .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
-.section.language-rules .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #8FE9F0;
-  border: 2px solid #7A7C86;
-  border-radius: 6px;
+ul li {
+    display: inline-block;
 }
 
-.section.language-rules .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #7A7C86;
-  border-color: #8FE9F0;
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.section.language-rules .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #8FE9F0 rgba(0, 0, 0, 0.3);
-}
-
-.section.language-rules .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #8FE9F0;
-  color: #8FE9F0;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.language-rules .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.language-rules .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.language-rules .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.language-rules .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #8FE9F0;
-  border: 2px solid #7A7C86;
-  border-radius: 6px;
-}
-
-.section.language-rules .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #7A7C86;
-  border-color: #8FE9F0;
-}
-
-.section.language-rules .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #8FE9F0 rgba(0, 0, 0, 0.3);
-}
-
-.section.language-rules .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #8FE9F0;
-  color: #8FE9F0;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ LEXICON SECTION ✦────────────── */
-.section.lexicon {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* Heading style */
-.section.lexicon h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #7A7C86;
-  text-shadow:
-    -0.5px -0.5px #1a114b,
-     0.5px -0.5px #1a114b,
-    -0.5px  0.5px #1a114b,
-     0.5px  0.5px #1a114b;
-  border-bottom: 2px solid #7A7C86;
-  padding-bottom: 10px;
-}
-
-/* Body text style */
-.section.lexicon p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* === Tables === */
-.section.lexicon table {
-  width: 100%;
-  max-width: 100%;
-  margin: 40px auto;
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  overflow-x: auto;
-  display: block;
-  padding: 20px;
-}
-
-.section.lexicon table th {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 10px;
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
-  border-bottom: 2px solid #7A7C86;
-}
-
-.section.lexicon table td {
-  font-family: "Times New Roman", serif;
-  color: black;
-  padding: 10px;
-  text-shadow: none;
-}
-
-/* ──────────────✦ SCROLLBAR STYLES ✦────────────── */
-/* Chrome, Edge, Safari */
-.section.lexicon::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.lexicon::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.lexicon::-webkit-scrollbar-thumb {
-  background: #7A7C86;
-  border: 2px solid #1a114b;
-  border-radius: 6px;
-}
-
-.section.lexicon::-webkit-scrollbar-thumb:hover {
-  background: #1a114b;
-  border-color: #7A7C86;
-}
-
-/* Firefox */
-.section.lexicon {
-  scrollbar-width: thin;
-  scrollbar-color: #7A7C86 rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ HORIZONTAL BOX ✦────────────── */
-.section.lexicon .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.lexicon .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.lexicon .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.lexicon .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #7A7C86;
-  border: 2px solid #1a114b;
-  border-radius: 6px;
-}
-
-.section.lexicon .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #1a114b;
-  border-color: #7A7C86;
-}
-
-.section.lexicon .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #7A7C86 rgba(0, 0, 0, 0.3);
-}
-
-.section.lexicon .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #7A7C86;
-  color: #7A7C86;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ VERTICAL BOX ✦────────────── */
-.section.lexicon .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.lexicon .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.lexicon .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.lexicon .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #7A7C86;
-  border: 2px solid #1a114b;
-  border-radius: 6px;
-}
-
-.section.lexicon .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #1a114b;
-  border-color: #7A7C86;
-}
-
-.section.lexicon .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #7A7C86 rgba(0, 0, 0, 0.3);
-}
-
-.section.lexicon .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #7A7C86;
-  color: #7A7C86;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-/* ──────────────✦ SUPPORT SECTION ✦────────────── */
-.section.support {
-  position: relative;
-  margin-left: 20%;
-  width: 80%;
-  min-height: 100vh;
-  padding: 80px 5%;
-  text-align: center;
-  overflow-x: auto;
-  overflow-y: auto;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  background: transparent;
-  font-family: "Times New Roman", serif;
-  color: white;
-}
-
-/* === Support Heading === */
-.section.support h2 {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61, 0 0 4px #342c61;
-  border-bottom: 2px solid #FBC96D;
-  padding-bottom: 10px;
-}
-
-/* === Body Text === */
-.section.support p {
-  font-size: 1.2em;
-  line-height: 1.6em;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  text-align: left;
-}
-
-/* ──────────────✦ SUPPORT SCROLLBAR ✦────────────── */
-/* Webkit */
-.section.support::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-
-.section.support::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.support::-webkit-scrollbar-thumb {
-  background: #FBC96D;
-  border: 2px solid #342c61;
-  border-radius: 6px;
-}
-
-.section.support::-webkit-scrollbar-thumb:hover {
-  background: #342c61;
-  border-color: #FBC96D;
-}
-
-/* Firefox */
-.section.support {
-  scrollbar-width: thin;
-  scrollbar-color: #FBC96D rgba(0, 0, 0, 0.3);
-}
-
-/* ──────────────✦ SUPPORT HORIZONTAL SCROLL BOX ✦────────────── */
-.section.support .scroll-horizontal {
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 20px;
-  padding-bottom: 20px;
-}
-
-.section.support .scroll-horizontal::-webkit-scrollbar {
-  height: 10px;
-}
-
-.section.support .scroll-horizontal::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.support .scroll-horizontal::-webkit-scrollbar-thumb {
-  background: #FBC96D;
-  border: 2px solid #342c61;
-  border-radius: 6px;
-}
-
-.section.support .scroll-horizontal::-webkit-scrollbar-thumb:hover {
-  background: #342c61;
-  border-color: #FBC96D;
-}
-
-.section.support .scroll-horizontal {
-  scrollbar-width: thin;
-  scrollbar-color: #FBC96D rgba(0, 0, 0, 0.3);
-}
-
-.section.support .scroll-horizontal .item {
-  flex: 0 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #FBC96D;
-  color: #FBC96D;
-  padding: 40px;
-  min-width: 250px;
-  border-radius: 5px;
-}
-
-/* ──────────────✦ SUPPORT VERTICAL SCROLL BOX ✦────────────── */
-.section.support .scroll-vertical {
-  max-height: 400px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding-right: 10px;
-  margin: 40px 0;
-}
-
-.section.support .scroll-vertical::-webkit-scrollbar {
-  width: 10px;
-}
-
-.section.support .scroll-vertical::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.section.support .scroll-vertical::-webkit-scrollbar-thumb {
-  background: #FBC96D;
-  border: 2px solid #342c61;
-  border-radius: 6px;
-}
-
-.section.support .scroll-vertical::-webkit-scrollbar-thumb:hover {
-  background: #342c61;
-  border-color: #FBC96D;
-}
-
-.section.support .scroll-vertical {
-  scrollbar-width: thin;
-  scrollbar-color: #FBC96D rgba(0, 0, 0, 0.3);
-}
-
-.section.support .scroll-vertical .item {
-  background: rgba(255, 255, 255, 0.05);
-  border: 2px solid #FBC96D;
-  color: #FBC96D;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-}
-
-/* ===================================================================================================
- * FOOTER
- * ===================================================================================================*/
-footer {
-  background: rgba(0, 0, 0, 0.3);
-  color: #A63A2C;
-  text-shadow:
-    -0.5px -0.5px #141223,
-     0.5px -0.5px #141223,
-    -0.5px  0.5px #141223,
-     0.5px  0.5px #141223;
-  text-align: center;
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-}
 /* ===============================
    ✅ CUSTOM MAIN NAV (Reflux Fit)
    =============================== */
@@ -2116,7 +485,7 @@ footer {
   display: inline-block;
   font-size: 20px;
   font-weight: 700;
-  font-family: 'Times New Roman', bold;
+  font-family: 'Times New Roman', serif;
   color: white;
   width: 100%;
   transition: all 0.5s;
@@ -2136,7 +505,7 @@ footer {
 
 .menu {
   text-align: center;
-  font-family: 'Times New Roman', bold;
+  font-family: 'Times New Roman', serif;
   background-color: black;
   color: white;
   box-sizing: border-box;
@@ -2220,11 +589,11 @@ footer {
 /* ===============================
    ✅ UNIQUE LINK COLORS & SHADOWS
    =============================== */
+
 .menu a.home {
   color: #ECEEF1;
   text-shadow: -0.5px -0.5px #1a114b, 0.5px -0.5px #1a114b, -0.5px 0.5px #1a114b, 0.5px 0.5px #1a114b;
 }
-
 .menu a.home:hover {
   color: #1a114b;
   text-shadow: -0.5px -0.5px #ECEEF1, 0.5px -0.5px #ECEEF1, -0.5px 0.5px #ECEEF1, 0.5px 0.5px #ECEEF1;
@@ -2234,7 +603,6 @@ footer {
   color: #0075FF;
   text-shadow: -0.5px -0.5px #0c4530, 0.5px -0.5px #0c4530, -0.5px 0.5px #0c4530, 0.5px 0.5px #0c4530;
 }
-
 .menu a.lore:hover {
   color: #0c4530;
   text-shadow: -0.5px -0.5px #0075FF, 0.5px -0.5px #0075FF, -0.5px 0.5px #0075FF, 0.5px 0.5px #0075FF;
@@ -2244,7 +612,6 @@ footer {
   color: #C5ECFF;
   text-shadow: -0.5px -0.5px #342c61, 0.5px -0.5px #342c61, -0.5px 0.5px #342c61, 0.5px 0.5px #342c61;
 }
-
 .menu a.navigation:hover {
   color: #342c61;
   text-shadow: -0.5px -0.5px #C5ECFF, 0.5px -0.5px #C5ECFF, -0.5px 0.5px #C5ECFF, 0.5px 0.5px #C5ECFF;
@@ -2254,7 +621,6 @@ footer {
   color: #C1FF8A;
   text-shadow: -0.5px -0.5px #572a45, 0.5px -0.5px #572a45, -0.5px 0.5px #572a45, 0.5px 0.5px #572a45;
 }
-
 .menu a.font-project:hover {
   color: #572a45;
   text-shadow: -0.5px -0.5px #C1FF8A, 0.5px -0.5px #C1FF8A, -0.5px 0.5px #C1FF8A, 0.5px 0.5px #C1FF8A;
@@ -2264,7 +630,6 @@ footer {
   color: #FBC96D;
   text-shadow: -0.5px -0.5px #014d4e, 0.5px -0.5px #014d4e, -0.5px 0.5px #014d4e, 0.5px 0.5px #014d4e;
 }
-
 .menu a.mmorpg:hover {
   color: #014d4e;
   text-shadow: -0.5px -0.5px #FBC96D, 0.5px -0.5px #FBC96D, -0.5px 0.5px #FBC96D, 0.5px 0.5px #FBC96D;
@@ -2274,7 +639,6 @@ footer {
   color: #D88EBA;
   text-shadow: -0.5px -0.5px #78581f, 0.5px -0.5px #78581f, -0.5px 0.5px #78581f, 0.5px 0.5px #78581f;
 }
-
 .menu a.book-series:hover {
   color: #78581f;
   text-shadow: -0.5px -0.5px #D88EBA, 0.5px -0.5px #D88EBA, -0.5px 0.5px #D88EBA, 0.5px 0.5px #D88EBA;
@@ -2284,7 +648,6 @@ footer {
   color: #DCE1E8;
   text-shadow: -0.5px -0.5px #A63A2C, 0.5px -0.5px #A63A2C, -0.5px 0.5px #A63A2C, 0.5px 0.5px #A63A2C;
 }
-
 .menu a.timekeeping:hover {
   color: #A63A2C;
   text-shadow: -0.5px -0.5px #DCE1E8, 0.5px -0.5px #DCE1E8, -0.5px 0.5px #DCE1E8, 0.5px 0.5px #DCE1E8;
@@ -2294,7 +657,6 @@ footer {
   color: #8FE9F0;
   text-shadow: -0.5px -0.5px #7A7C86, 0.5px -0.5px #7A7C86, -0.5px 0.5px #7A7C86, 0.5px 0.5px #7A7C86;
 }
-
 .menu a.language-rules:hover {
   color: #7A7C86;
   text-shadow: -0.5px -0.5px #8FE9F0, 0.5px -0.5px #8FE9F0, -0.5px 0.5px #8FE9F0, 0.5px 0.5px #8FE9F0;
@@ -2304,7 +666,6 @@ footer {
   color: #7A7C86;
   text-shadow: -0.5px -0.5px #1a114b, 0.5px -0.5px #1a114b, -0.5px 0.5px #1a114b, 0.5px 0.5px #1a114b;
 }
-
 .menu a.lexicon:hover {
   color: #1a114b;
   text-shadow: -0.5px -0.5px #7A7C86, 0.5px -0.5px #7A7C86, -0.5px 0.5px #7A7C86, 0.5px 0.5px #7A7C86;
@@ -2314,10 +675,589 @@ footer {
   color: #FBC96D;
   text-shadow: -0.5px -0.5px #342c61, 0.5px -0.5px #342c61, -0.5px 0.5px #342c61, 0.5px 0.5px #342c61;
 }
-
 .menu a.support:hover {
   color: #342c61;
   text-shadow: -0.5px -0.5px #FBC96D, 0.5px -0.5px #FBC96D, -0.5px 0.5px #FBC96D, 0.5px 0.5px #FBC96D;
+}
+
+/* === Social (Facebook) === */
+.menu .social-network {
+  margin-top: 40px;
+}
+
+.menu .social-network ul {
+  padding: 0;
+}
+
+.menu .social-network ul li {
+  display: inline-block;
+}
+
+.menu .social-network ul li a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.menu .social-network ul li a img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu .social-network ul li a:hover {
+  background: cyan;
+}
+
+
+/* === Home Section === */
+.section.home {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.home h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.home p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.home table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.home table th,
+.section.home table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Lore Section === */
+.section.lore {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.lore h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.lore p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.lore table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.lore table th,
+.section.lore table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Navigation Section === */
+.section.navigation {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.navigation h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.navigation p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.navigation table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.navigation table th,
+.section.navigation table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Font-project Section === */
+.section.font-project {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.font-project h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.font-project p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.font-project table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.font-project table th,
+.section.font-project table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Mmorpg Section === */
+.section.mmorpg {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.mmorpg h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.mmorpg p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.mmorpg table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.mmorpg table th,
+.section.mmorpg table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Book-series Section === */
+.section.book-series {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.book-series h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.book-series p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.book-series table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.book-series table th,
+.section.book-series table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Timekeeping Section === */
+.section.timekeeping {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.timekeeping h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.timekeeping p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.timekeeping table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.timekeeping table th,
+.section.timekeeping table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Language-rules Section === */
+.section.language-rules {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.language-rules h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.language-rules p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.language-rules table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.language-rules table th,
+.section.language-rules table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Lexicon Section === */
+.section.lexicon {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.lexicon h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.lexicon p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.lexicon table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.lexicon table th,
+.section.lexicon table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+
+/* === Support Section === */
+.section.support {
+  position: relative;
+  margin-left: 20%;
+  width: 80%;
+  min-height: 100vh;
+  padding: 80px 5%;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section.support h2 {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.section.support p {
+  text-align: center;
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+.section.support table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  padding: 20px;
+  text-align: center;
+}
+
+.section.support table th,
+.section.support table td {
+  font-family: "Times New Roman", serif;
+  text-align: center;
+  vertical-align: middle;
+  padding: 10px;
+  color: black;
+}
+
+/* ===================================================================================================
+ * FOOTER
+ * ===================================================================================================*/
+footer {
+  background: rgba(0, 0, 0, 0.3);
+  color: #A63A2C;
+  text-shadow:
+    -0.5px -0.5px #141223,
+     0.5px -0.5px #141223,
+    -0.5px  0.5px #141223,
+     0.5px  0.5px #141223;
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
 }
 
 
@@ -2338,24 +1278,6 @@ footer {
   width: 50%;        /* Width of divider line */
   border: none;
   border-top: 2px solid #8FE9F0; /* Cyan line to match your theme */
-}
-
-/* === Site Non-Nav Buttons === */
-.button {
-  display: inline-block;
-  background-color: black;
-  color: cyan;
-  border: 2px solid cyan;
-  padding: 10px 20px;
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.button:hover {
-  background-color: cyan;
-  color: black;
-  border: 2px solid black;
 }
 
 
@@ -2386,28 +1308,6 @@ span[style*="Comic Sans MS"],
   text-shadow: 0 0 2px var(--cyan);
 }
 
-/* Sidebar open state — slide in */
-.menu {
-  transform: translateX(0);
-  transition: transform 0.3s ease;
-}
-
-.menu:not(.open) {
-  transform: translateX(-100%);
-}
-
-
-/* Active nav link styling */
-.menu a.active {
-  background: #fff;
-  color: #000;
-  font-weight: 900;
-}
-
-/* Optional: transition for smoother nav link changes */
-.menu a {
-  transition: background 0.3s, color 0.3s;
-}
 /* =======================
    Universal Responsive
    ======================= */
@@ -2557,6 +1457,17 @@ span[style*="Comic Sans MS"],
   <i class="fa fa-bars" id="menu-toggle"></i>
   <div id="menu" class="menu">
     <i class="fa fa-times" id="menu-close"></i>
+
+<div class="social-network">
+  <ul>
+    <li>
+      <a href="https://www.facebook.com/WorldOfAzara/" target="_blank">
+        <img src="https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/facebook-logo.jpg" alt="Facebook">
+      </a>
+    </li>
+  </ul>
+</div>
+
     <nav class="main-nav" role="navigation">
       <ul class="main-menu">
         <li><a href="#home-content" class="home">Home</a></li>
@@ -2573,8 +1484,7 @@ span[style*="Comic Sans MS"],
     </nav>
   </div>
 </div>
-  <main>
-<body>
+<main>
 
 <!-- 🏠 Home -->
 <section class="section home" data-section="home">
@@ -2974,7 +1884,7 @@ Aza'ra</span></h3>
       Beneath the shrine where gods no longer wake,<br>
       The soul descends through obsidian gate,<br>
       To face the light, the fire, the fate.
-    </blockquote>
+    </blockquote> 
   </article>
   <h2>🌬️ Arzuhan — Continent of Sky Kingdoms, Arcane Winds, and Floating Legacies</h2>
   <p>
