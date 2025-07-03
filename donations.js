@@ -1,7 +1,9 @@
 // ✅ Aza'ra Donations — Unified for azara-trademarked-projects.com
 
 export function initDonations() {
-  // ✅ Load style.css from GitHub for styling
+  console.log("✅ Aza'ra Donations script loaded.");
+
+  // ✅ Load site-wide CSS (optional, skip if already linked in <head>)
   const styleLink = document.createElement('link');
   styleLink.rel = 'stylesheet';
   styleLink.href = 'https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css';
@@ -9,66 +11,58 @@ export function initDonations() {
   styleLink.onerror = () => console.error('❌ style.css failed to load.');
   document.head.appendChild(styleLink);
 
-  // ✅ Pull donations.html content from GitHub
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.html')
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.text();
-    })
-    .then(html => {
-      const mount = document.getElementById('donations-module-mount');
-      if (mount) {
-        mount.innerHTML = html;
-        console.log('✅ donations.html loaded into placeholder.');
-        setupDonationsLogic();
-      } else {
-        console.warn('⚠️ donations-module-mount not found.');
-      }
-    })
-    .catch(err => console.error('❌ Failed to load donations.html:', err));
+  // ✅ DOM elements
+  const amountInput = document.getElementById('donation-amount');
+  const donateBtn = document.getElementById('donate-btn');
+  const statusEl = document.getElementById('donation-status');
+  const intervalButtons = document.querySelectorAll('.interval-btn');
 
-  // ✅ Pull index.html (optional verify)
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
-    .then(res => {
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      return res.text();
-    })
-    .then(() => console.log('✅ index.html verified (GitHub).'))
-    .catch(err => console.warn('⚠️ Could not verify index.html:', err));
+  let selectedInterval = 'one_time'; // default
 
-  function setupDonationsLogic() {
-    const donateBtn = document.getElementById('donate-btn');
+  if (!donateBtn || !amountInput || intervalButtons.length === 0) {
+    console.warn('⚠️ Missing donation elements.');
+    return;
+  }
 
-    if (!donateBtn) {
-      console.warn('⚠️ donate-btn not found.');
+  // ✅ Interval button logic
+  intervalButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove .active from all
+      intervalButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedInterval = btn.dataset.interval;
+      console.log(`✅ Interval selected: ${selectedInterval}`);
+    });
+  });
+
+  // ✅ Default active on load
+  intervalButtons[0].classList.add('active');
+
+  // ✅ Donation click
+  donateBtn.addEventListener('click', () => {
+    const amount = parseFloat(amountInput.value);
+
+    if (isNaN(amount) || amount < 1) {
+      alert('Minimum donation is $1.');
       return;
     }
 
-    donateBtn.addEventListener('click', () => {
-      const amount = parseFloat(document.getElementById('donation-amount').value);
-      const frequency = document.getElementById('donation-frequency').value;
+    donateBtn.disabled = true;
+    setStatus('Redirecting to secure Stripe payment...');
 
-      if (amount < 1) {
-        alert('Minimum donation is $1.');
-        return;
-      }
-
-      donateBtn.disabled = true;
-      setStatus('Redirecting to secure Stripe payment...');
-
-      // ✅ Use your published Stripe Checkout link
-      if (frequency === 'one-time') {
-        window.location.href = 'https://buy.stripe.com/8x24gz18oaCEgIc7kg0x200';
-      } else {
-        window.location.href = 'https://buy.stripe.com/test_fZu3cx0GUfbw9jGaXp4wM01';
-      }
-    });
-
-    function setStatus(msg) {
-      document.getElementById('donation-status').textContent = msg;
+    if (selectedInterval === 'one_time') {
+      // ✅ One-time link
+      window.location.href = 'https://buy.stripe.com/8x24gz18oaCEgIc7kg0x200';
+    } else {
+      // ✅ Subscription link (same for all recurring)
+      window.location.href = 'https://donate.stripe.com/cNifZhdVa268ajOeMI0x201';
     }
+  });
+
+  function setStatus(msg) {
+    statusEl.textContent = msg;
   }
 }
 
-// ✅ Immediately initialize if needed:
+// ✅ Auto-run
 initDonations();
