@@ -145,212 +145,211 @@ html {
   margin: 0 auto;
 }
 
-/* ──────────────✦ Navigation ✦────────────── */
-
-.main-nav {
-  text-align: center;
+/* 🏠 Home */
+.section.home {
+  background: transparent;
+  color: #ECEEF1;
+  text-shadow: 2px 2px #1a114b;
+  font-family: 'Cinzel Decorative', serif;
+  border-bottom: 2px solid #ECEEF1;
 }
 
-.main-nav li {
-  display: block;
+.section.home table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #1a114b;
 }
 
-.main-nav li:last-child a {
-  border-bottom: 2px solid #000; /* Light mode border color default */
-}
-
-.main-nav li a {
-  height: 70px;
-  line-height: 70px;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 700;
+/* 📖 Lore */
+.section.lore {
+  background: transparent;
+  color: #0075FF;
+  text-shadow: 2px 2px #0c4530;
   font-family: 'Uncial Antiqua', cursive;
-  color: #000; /* Light mode text color */
-  width: 100%;
-  transition: all 0.5s;
-  border-top: 2px solid #000; /* Light mode border */
+  border-bottom: 2px solid #0075FF;
 }
 
-.main-nav li:hover a,
-.main-nav li.active a {
-  background: #000;
-  color: #fff;
+.section.lore table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #0c4530;
 }
 
-/* ──────────────✦ Sidebar Menu ✦────────────── */
+/* 🧭 Navigation */
+.section.navigation {
+  background: transparent;
+  color: #C5ECFF;
+  text-shadow: 2px 2px #342c61;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #C5ECFF;
+}
 
-.menu {
-  text-align: center;
+.section.navigation table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #342c61;
+}
+
+/* 🅰️ Font Project */
+.section.font-project {
+  background: transparent;
+  color: #C1FF8A;
+  text-shadow: 2px 2px #572a45;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #C1FF8A;
+}
+
+.section.font-project table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #572a45;
+}
+
+/* 🗡️ MMORPG */
+.section.mmorpg {
+  background: transparent;
+  color: #FBC96D;
+  text-shadow: 2px 2px #014d4e;
+  font-family: 'Cinzel Decorative', serif;
+  border-bottom: 2px solid #FBC96D;
+}
+
+.section.mmorpg table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #014d4e;
+}
+
+/* 📚 Book Series */
+.section.book-series {
+  background: transparent;
+  color: #D88EBA;
+  text-shadow: 2px 2px #78581f;
   font-family: 'Uncial Antiqua', cursive;
-  left: 10%;
-  background-color: #fff; /* Light mode default */
-  color: #000; /* Light mode text color */
-  box-sizing: border-box;
-  height: 100vh;
-  max-height: 100vh !important;
-  max-width: 80vw !important;
-  min-width: 45px !important;
-  outline: none;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  padding: 0;
-  position: fixed !important;
-  top: 0;
-  width: 20%;
-  z-index: 9999 !important;
-  will-change: transform;
-  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
-  transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
-  -webkit-overflow-scrolling: touch;
+  border-bottom: 2px solid #D88EBA;
 }
 
-.menu a {
-  display: block;
-  text-decoration: none;
-  padding: 20px 0;
-  font-size: 18px;
-  color: inherit; /* Use parent text color */
-  transition: all 0.3s;
+.section.book-series table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #78581f;
 }
 
-.menu a:hover {
-  filter: brightness(0.85);
+/* 🕰️ Timekeeping */
+.section.timekeeping {
+  background: transparent;
+  color: #DCE1E8;
+  text-shadow: 2px 2px #A63A2C;
+  font-family: 'Cinzel Decorative', serif;
+  border-bottom: 2px solid #DCE1E8;
 }
 
-.menu::-webkit-scrollbar {
-  display: none;
+.section.timekeeping table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #A63A2C;
 }
 
-/* ──────────────✦ Sidebar Toggle ✦────────────── */
+/* 📜 Language Rules */
+.section.language-rules {
+  background: transparent;
+  color: #8FE9F0;
+  text-shadow: 2px 2px #7A7C86;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #8FE9F0;
+}
 
-#menu-toggle,
-#menu-close {
-  cursor: pointer;
-  background-color: #fff; /* Light mode */
-  color: #000; /* Light mode */
-  width: 60px;
-  height: 60px;
+.section.language-rules table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #7A7C86;
+}
+
+/* 🗂️ Lexicon */
+.section.lexicon {
+  background: transparent;
+  color: #7A7C86;
+  text-shadow: 2px 2px #1a114b;
+  font-family: 'Uncial Antiqua', cursive;
+  border-bottom: 2px solid #7A7C86;
+}
+
+.section.lexicon table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #1a114b;
+}
+
+/* 🛡️ Support */
+.section.support {
+  background: transparent;
+  color: #FBC96D;
+  text-shadow: 2px 2px #342c61;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #FBC96D;
+}
+
+.section.support table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #342c61;
+}
+
+/* Footer (text only) */
+footer {
+  background: rgba(0, 0, 0, 0.3);
+  color: #9381FF;
+  text-shadow: 2px 2px #A63A2C;
   text-align: center;
-  line-height: 60px;
-  display: inline-block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
 }
 
-/* ──────────────✦ Sections: Light Mode Text Shadows ✦────────────── */
+/* ──────────────✦ Sections: Link Colors + Shadow Accent ✦────────────── */
 
 .menu a.home {
-  text-shadow: 2px 2px #ECEEF1; /* W’iosamn Silver */
+  color: #ECEEF1;
+  text-shadow: 2px 2px #1a114b;
 }
 
 .menu a.lore {
-  text-shadow: 2px 2px #0075FF; /* Arvalla Prime */
+  color: #0075FF;
+  text-shadow: 2px 2px #0c4530;
 }
 
 .menu a.navigation {
-  text-shadow: 2px 2px #C5ECFF; /* Crystalline Ice */
+  color: #C5ECFF;
+  text-shadow: 2px 2px #342c61;
 }
 
 .menu a.font-project {
-  text-shadow: 2px 2px #C1FF8A; /* Verdant Glow */
+  color: #C1FF8A;
+  text-shadow: 2px 2px #572a45;
 }
 
 .menu a.mmorpg {
-  text-shadow: 2px 2px #FBC96D; /* Emberlight Gold */
+  color: #FBC96D;
+  text-shadow: 2px 2px #014d4e;
 }
 
 .menu a.book-series {
-  text-shadow: 2px 2px #D88EBA; /* Leyline Rose */
+  color: #D88EBA;
+  text-shadow: 2px 2px #78581f;
 }
 
 .menu a.timekeeping {
-  text-shadow: 2px 2px #DCE1E8; /* Moonstone Silver */
+  color: #DCE1E8;
+  text-shadow: 2px 2px #A63A2C;
 }
 
 .menu a.language-rules {
-  text-shadow: 2px 2px #8FE9F0; /* Dreamlight Cyan */
+  color: #8FE9F0;
+  text-shadow: 2px 2px #7A7C86;
 }
 
 .menu a.lexicon {
-  text-shadow: 2px 2px #7A7C86; /* Arvalla Beta */
+  color: #7A7C86;
+  text-shadow: 2px 2px #1a114b;
 }
 
 .menu a.support {
-  text-shadow: 2px 2px #FBC96D; /* Emberlight Gold */
+  color: #FBC96D;
+  text-shadow: 2px 2px #342c61;
 }
 
-/* ──────────────✦ Dark Mode Overrides ✦────────────── */
 
-@media (prefers-color-scheme: dark) {
-  .menu {
-    background-color: #000;
-    color: #fff;
-  }
 
-  #menu-toggle,
-  #menu-close {
-    background-color: #000;
-    color: #fff;
-  }
-
-  .main-nav li a {
-    color: #fff;
-    border-top: 2px solid #fff;
-  }
-
-  .main-nav li:last-child a {
-    border-bottom: 2px solid #fff;
-  }
-
-  .main-nav li:hover a,
-  .main-nav li.active a {
-    background: #fff;
-    color: #000;
-  }
-
-  .menu a.home {
-    text-shadow: 2px 2px #1a114b; /* Astral Navy */
-  }
-
-  .menu a.lore {
-    text-shadow: 2px 2px #0c4530; /* Moss-Vein Green */
-  }
-
-  .menu a.navigation {
-    text-shadow: 2px 2px #342c61; /* Twilight Indigo */
-  }
-
-  .menu a.font-project {
-    text-shadow: 2px 2px #572a45; /* Leyline Plum */
-  }
-
-  .menu a.mmorpg {
-    text-shadow: 2px 2px #014d4e; /* Abyssal Teal */
-  }
-
-  .menu a.book-series {
-    text-shadow: 2px 2px #78581f; /* Relic Brass */
-  }
-
-  .menu a.timekeeping {
-    text-shadow: 2px 2px #A63A2C; /* Duvaen Red */
-  }
-
-  .menu a.language-rules {
-    text-shadow: 2px 2px #7A7C86; /* Arvalla Beta */
-  }
-
-  .menu a.lexicon {
-    text-shadow: 2px 2px #1a114b; /* Astral Navy */
-  }
-
-  .menu a.support {
-    text-shadow: 2px 2px #342c61; /* Twilight Indigo */
-  }
-}
 
 /* ──────────────✦ Base Section Layout ✦────────────── */
 
@@ -479,235 +478,6 @@ body {
 }
 /* ──────────────✦ Section Specific Styles ✦────────────── */
 
-/* 🏠 Home */
-.section.home.light {
-  background: #ECEEF1;
-  color: #000;
-  font-family: 'Cinzel Decorative', serif;
-  box-shadow: 0 0 20px #ECEEF1;
-}
-
-.section.home.dark {
-  background: #1a114b;
-  color: #fff;
-  font-family: 'Cinzel Decorative', serif;
-  box-shadow: 0 0 20px #1a114b;
-}
-
-.section.home table {
-  border: 5px solid #ECEEF1;
-}
-
-.section.home.dark table {
-  border: 5px solid #1a114b;
-}
-
-/* 📖 Lore */
-.section.lore.light {
-  background: #0075FF;
-  color: #000;
-  font-family: 'Uncial Antiqua', cursive;
-  box-shadow: 0 0 20px #0075FF;
-}
-
-.section.lore.dark {
-  background: #0c4530;
-  color: #fff;
-  font-family: 'Uncial Antiqua', cursive;
-  box-shadow: 0 0 20px #0c4530;
-}
-
-.section.lore table {
-  border: 5px solid #0075FF;
-}
-
-.section.lore.dark table {
-  border: 5px solid #0c4530;
-}
-
-/* 🧭 Navigation */
-.section.navigation.light {
-  background: #C5ECFF;
-  color: #000;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #C5ECFF;
-}
-
-.section.navigation.dark {
-  background: #342c61;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #342c61;
-}
-
-.section.navigation table {
-  border: 5px solid #C5ECFF;
-}
-
-.section.navigation.dark table {
-  border: 5px solid #342c61;
-}
-
-/* 🅰️ Font Project */
-.section.font-project.light {
-  background: #C1FF8A;
-  color: #000;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #C1FF8A;
-}
-
-.section.font-project.dark {
-  background: #572a45;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #572a45;
-}
-
-.section.font-project table {
-  border: 5px solid #C1FF8A;
-}
-
-.section.font-project.dark table {
-  border: 5px solid #572a45;
-}
-
-/* 🗡️ MMORPG */
-.section.mmorpg.light {
-  background: #FBC96D;
-  color: #000;
-  font-family: 'Cinzel Decorative', serif;
-  box-shadow: 0 0 20px #FBC96D;
-}
-
-.section.mmorpg.dark {
-  background: #014d4e;
-  color: #fff;
-  font-family: 'Cinzel Decorative', serif;
-  box-shadow: 0 0 20px #014d4e;
-}
-
-.section.mmorpg table {
-  border: 5px solid #FBC96D;
-}
-
-.section.mmorpg.dark table {
-  border: 5px solid #014d4e;
-}
-
-/* 📚 Book Series */
-.section.book-series.light {
-  background: #D88EBA;
-  color: #000;
-  font-family: 'Uncial Antiqua', cursive;
-  box-shadow: 0 0 20px #D88EBA;
-}
-
-.section.book-series.dark {
-  background: #78581f;
-  color: #fff;
-  font-family: 'Uncial Antiqua', cursive;
-  box-shadow: 0 0 20px #78581f;
-}
-
-.section.book-series table {
-  border: 5px solid #D88EBA;
-}
-
-.section.book-series.dark table {
-  border: 5px solid #78581f;
-}
-
-/* 🕰️ Timekeeping */
-.section.timekeeping.light {
-  background: #DCE1E8;
-  color: #000;
-  font-family: 'Cinzel Decorative', serif;
-  box-shadow: 0 0 20px #DCE1E8;
-}
-
-.section.timekeeping.dark {
-  background: #A63A2C;
-  color: #fff;
-  font-family: 'Cinzel Decorative', serif;
-  box-shadow: 0 0 20px #A63A2C;
-}
-
-.section.timekeeping table {
-  border: 5px solid #DCE1E8;
-}
-
-.section.timekeeping.dark table {
-  border: 5px solid #A63A2C;
-}
-
-/* 📜 Language Rules */
-.section.language-rules.light {
-  background: #8FE9F0;
-  color: #000;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #8FE9F0;
-}
-
-.section.language-rules.dark {
-  background: #7A7C86;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #7A7C86;
-}
-
-.section.language-rules table {
-  border: 5px solid #8FE9F0;
-}
-
-.section.language-rules.dark table {
-  border: 5px solid #7A7C86;
-}
-
-/* 🗂️ Lexicon */
-.section.lexicon.light {
-  background: #7A7C86;
-  color: #000;
-  font-family: 'Uncial Antiqua', cursive;
-  box-shadow: 0 0 20px #7A7C86;
-}
-
-.section.lexicon.dark {
-  background: #1a114b;
-  color: #fff;
-  font-family: 'Uncial Antiqua', cursive;
-  box-shadow: 0 0 20px #1a114b;
-}
-
-.section.lexicon table {
-  border: 5px solid #7A7C86;
-}
-
-.section.lexicon.dark table {
-  border: 5px solid #1a114b;
-}
-
-/* 🛡️ Support */
-.section.support.light {
-  background: #FBC96D;
-  color: #000;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #FBC96D;
-}
-
-.section.support.dark {
-  background: #342c61;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  box-shadow: 0 0 20px #342c61;
-}
-
-.section.support table {
-  border: 5px solid #FBC96D;
-}
-
-.section.support.dark table {
-  border: 5px solid #342c61;
-}
 
 /* ──────────────✦ Gradient Overlay ✦────────────── */
 
@@ -911,8 +681,7 @@ body::after {
   text-align: center;
   font-family: 'Uncial Antiqua', cursive;
   left: 10%;
-  background-color: #fff;
-  color: #000;
+  background-color: #000000;
   box-sizing: border-box;
   height: 100vh;
   max-width: 80vw;
@@ -952,8 +721,7 @@ body::after {
 #menu-toggle,
 #menu-close {
   cursor: pointer;
-  background-color: #fff;
-  color: #000;
+  background-color: #000000;
   width: 60px;
   height: 60px;
   text-align: center;
@@ -1007,14 +775,8 @@ body::after {
   .menu a.lexicon { text-shadow: 2px 2px #1a114b; }
   .menu a.support { text-shadow: 2px 2px #342c61; }
 }
-/* === Comic Sans Override (Multiple HTML pages on GitHub) === */
-body[data-doc-name*="index"],
-body[data-doc-name*="lore"],
-body[data-doc-name*="font-project"],
-body[data-doc-name*="book-series"],
-body[data-doc-name*="language-rules"],
-body[data-doc-name*="home"],
-body[data-doc-name*="lexicon"] {
+/* === Comic Sans Override ( HTML page on GitHub) === */
+body[data-doc-name*="index"] {
   font-family: 'Comic Sans MS', cursive, sans-serif !important;
 }
 
@@ -1056,30 +818,7 @@ body[data-doc-name*="lexicon"] {
 .menu a {
   transition: background 0.3s, color 0.3s;
 }
-/* ──────────────✦ Footer Base ✦────────────── */
 
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3); /* 30% opacity black */
-  color: #fff;
-  text-align: center;
-  font-size: 0.75rem; /* Very small text */
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-}
-
-/* Optional link styling inside footer */
-footer a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-footer a:hover {
-  text-decoration: none;
-}
 
 
 /* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
@@ -1160,7 +899,14 @@ footer a:hover {
     font-size: 16px;
   }
 }
-
+@media (max-width: 845px) {
+  footer {
+    left: 0;  /* sidebar becomes overlay on mobile */
+    width: 100%;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
 /* ──────────────✦ Comic Sans Override for Small Screens ✦────────────── */
 @media screen and (max-width: 845px) {
   body {
@@ -1224,16 +970,4 @@ html, body {
     font-size: 1.1rem;
   }
 }
-@media (max-width: 1024px) {
-  footer {
-    font-size: 0.7rem; /* Slightly smaller on tablets */
-    padding: 0.4rem 0.8rem;
-  }
-}
 
-@media (max-width: 767px) {
-  footer {
-    font-size: 0.65rem; /* Extra small for mobile */
-    padding: 0.3rem 0.6rem;
-  }
-}
