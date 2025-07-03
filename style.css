@@ -421,8 +421,8 @@ footer {
 #menu-toggle,
 #menu-close {
   cursor: pointer;
-  background-color: #fff;
-  color: #000;
+  background-color: #000000;
+  color: #ffffff;
   width: 60px;
   height: 60px;
   text-align: center;
@@ -438,8 +438,8 @@ footer {
 
 #menu-toggle:hover,
 #menu-close:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 /* ===============================
@@ -578,11 +578,27 @@ footer {
   border-collapse: collapse;
   overflow-x: auto;
   display: block;
-  padding: 0;
   text-align: center;
-  position: relative;
-  left: 45%;
+  padding: 20px; /* full table box padding */
 }
+
+/* === Table headers serif === */
+.section table th {
+  font-family: serif;
+}
+
+/* === Table cells remain Times New Roman === */
+.section table td {
+  font-family: "Times New Roman", serif;
+  padding: 10px;
+  word-break: break-word;
+}
+
+/* === Scrollbars for overflow === */
+.section table {
+  overflow-x: auto;
+}
+
 
 .section table th,
 .section table td {
@@ -594,15 +610,6 @@ footer {
   border: 1px solid transparent;
 }
 
-/* === Scrollbars for overflow === */
-.section table {
-  overflow-x: auto;
-}
-
-/* === Table headers serif === */
-.section table th {
-  font-family: serif;
-}
 /* === Home === */
 .section.home table th,
 .section.home table td {
@@ -764,9 +771,10 @@ footer {
 
 
 /* ===================================================================================================
- * FOOTER
+ * FOOTER (Updated)
  * ===================================================================================================*/
 footer {
+  position: relative;
   background: rgba(0, 0, 0, 0.3);
   color: #A63A2C;
   text-shadow:
@@ -777,8 +785,12 @@ footer {
   text-align: center;
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
+  width: 55%;           /* 100% - (35% left + 10% right) */
+  margin-left: 35%;
+  margin-right: 10%;
   z-index: 1000;
 }
+
 
 
 /* === Button List & Wrappers === */
@@ -811,7 +823,7 @@ body[data-doc-name*="index"] {
 span[style*="Comic Sans MS"],
 *[style*="Comic Sans MS"] {
   font-family: 'Comic Sans MS', cursive !important;
-  font-size: 22x !important;
+  font-size: 22px !important;
 }
 
 @media screen and (max-width: 1024px) {
@@ -969,4 +981,3 @@ span[style*="Comic Sans MS"],
 .button {
   touch-action: manipulation;
 }
-
