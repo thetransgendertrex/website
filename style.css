@@ -5,97 +5,44 @@ Base Template: Reflux (https://templatemo.com/tm-531-reflux)
 Customized with layered Moonpunk background and custom fonts.
 */
 
-/* ──────────────✦ Imports ✦────────────── */
+/* === Google Fonts === */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-/* ──────────────✦ Layered Background ✦────────────── */
 
-/* Fixed background image behind everything */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  filter: brightness(0.85) contrast(1.05);
+/* ===================================================================================================
+ * OVERLAY
+ * ===================================================================================================*/
+/* === Base Styles === */
+body {
+    font-family: "Times New Roman";
+    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)") no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* Subtle dark gradient overlay for readability — scrolls with content */
-body::after {
-  content: "";
-  position: absolute;   
+ #overlay {
+  background: rgba(0, 0, 0, 0.3);
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
-  pointer-events: none;
+  overflow-y: auto;
 }
 
-
-/* ──────────────✦ Typography & Basics ✦────────────── */
-
-body {
-  font-family: 'Pridi', 'Times New Roman'; 
-  overflow-x: hidden;
-  color: #fff;
-}
-
-p {
-  font-size: 16px;
-  line-height: 24px;
-  color: #fff;
-}
-
-h4 {
-  font-size: 26px;
-  font-weight: 700;
-  font-family: 'Cinzel Decorative', serif;
-  color: #fff;
-  letter-spacing: 0.25px;
-}
-
-input,
-select,
-textarea {
-  outline: none;
-}
-
-a,
-a:hover {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  width: 100%;
-  overflow: hidden;
-}
-
-ul {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-ul li {
-  display: inline-block;
-}
-
-/* ──────────────✦ Box Sizing ✦────────────── */
-
+/* ===================================================================================================
+ * BOX SIZING & UTILITIES
+ * ===================================================================================================*/
 html {
   box-sizing: border-box;
+  overflow: auto;
+}
+
+body {
+  overflow: auto;
 }
 
 *,
@@ -104,19 +51,13 @@ html {
   box-sizing: inherit;
 }
 
-/* ──────────────✦ Utility Classes ✦────────────── */
-
-.clearfix {
-  zoom: 1;
-}
-
-.clearfix:before,
-.clearfix:after {
+.clearfix::before,
+.clearfix::after {
   content: "";
   display: table;
 }
 
-.clearfix:after {
+.clearfix::after {
   clear: both;
 }
 
@@ -124,11 +65,123 @@ html {
   margin: 0 auto;
 }
 
-/* ──────────────✦ Main Nav Bar ✦────────────── */
+/* ===================================================================================================
+ * MAIN CONTENT
+ * ===================================================================================================*/
+.main-content {
+  position: relative;
+  left: 35%;
+  right: 10%;
+  width: 55%;
+  min-height: 100vh;
+  padding: 40px;
+  text-align: center;
+  overflow: auto;
+}
 
+/* ===================================================================================================
+ * UNIVERSAL SECTION LAYOUT
+ * ===================================================================================================*/
+.section {
+  position: relative;
+  left: 35%;
+  right: 10%;
+  width: 55%;
+  min-height: 100vh;
+  padding: 80px 2.5%;
+  text-align: center;
+  overflow: auto;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  background: transparent;
+}
+
+/* ===================================================================================================
+ * HEADINGS
+ * ===================================================================================================*/
+.section-heading {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.section-heading h2 {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.section-heading .line-dec {
+  width: 60px;
+  height: 3px;
+  margin: 10px auto;
+}
+
+.section-heading span {
+  margin-top: 5px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* ===================================================================================================
+ * TABLES
+ * ===================================================================================================*/
+table,
+.main-content table {
+  width: calc(100% - 0.5in);
+  margin: 0.25in auto;
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+}
+
+table td,
+table th,
+.main-content table td,
+.main-content table th {
+  padding: 15px;
+}
+
+/* ===================================================================================================
+ * FLEX SLIDER UTILITY
+ * ===================================================================================================*/
+.flex-container a:hover,
+.flex-slider a:hover {
+  outline: none;
+}
+
+.slides,
+.slides > li,
+.flex-control-nav,
+.flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flex-pauseplay span {
+  text-transform: capitalize;
+}
+
+/* ===================================================================================================
+ * FOOTER
+ * ===================================================================================================*/
+footer {
+  background: rgba(0, 0, 0, 0.3);
+  color: #A63A2C;
+  text-shadow:
+    -0.5px -0.5px #9381FF,
+     0.5px -0.5px #9381FF,
+    -0.5px  0.5px #9381FF,
+     0.5px  0.5px #9381FF;
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
+/* ===================================================================================================
+ * NAVIGATION & SIDEBAR 
+ * ===================================================================================================*/
+
+/* === Main Nav === */
 .main-nav {
   text-align: center;
-  font-family: 'Times New Roman';
 }
 
 .main-nav li {
@@ -136,138 +189,90 @@ html {
 }
 
 .main-nav li:last-child a {
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid cyan;
 }
 
 .main-nav li a {
-  display: inline-block;
-  width: 100%;
   height: 70px;
   line-height: 70px;
+  display: inline-block;
   font-size: 16px;
   font-weight: 700;
-  color: #000;
-  background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
-  border-top: 2px solid #fff;
+  font-family: 'Uncial Antiqua', cursive;
+  color: white;
+  width: 100%;
   transition: all 0.5s;
+  border-top: 2px solid cyan;
+  text-decoration: none;
 }
 
 .main-nav li:hover a,
 .main-nav li.active a {
-  background: #000; /* Solid black on hover */
-  color: #fff;
+  background: white;
+  color: black;
 }
 
-/* ──────────────✦ Sidebar Menu ✦────────────── */
-
+/* === Sidebar Menu === */
 .menu {
+  text-align: center;
+  font-family: 'Uncial Antiqua', cursive;
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  height: 100vh;
+  max-height: 100vh !important;
+  max-width: 80vw !important;
+  min-width: 45px !important;
+  outline: none;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 0;
   position: fixed !important;
   top: 0;
   left: 10%;
   width: 20%;
-  height: 100vh;
-  max-width: 80vw;
-  min-width: 45px;
-  overflow-y: auto;
-  box-sizing: border-box;
-  background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
-  color: #fff;
-  text-align: center;
-  font-family: 'Times New Roman', serif;
-  z-index: 9999;
+  z-index: 9999 !important;
   will-change: transform;
+  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
   transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
   -webkit-overflow-scrolling: touch;
 }
 
 .menu a {
   display: block;
+  text-decoration: none;
   padding: 20px 0;
   font-size: 18px;
-  text-decoration: none;
-  color: inherit; /* Uses section-specific color below */
+  color: white;
   transition: all 0.3s;
 }
 
 .menu a:hover {
-  filter: brightness(0.85);
+  background-color: cyan;
+  color: black;
 }
 
 .menu::-webkit-scrollbar {
   display: none;
 }
 
-/* ──────────────✦ Sidebar Toggle Buttons ✦────────────── */
+
+/* ──────────────✦ Sidebar Toggle ✦────────────── */
 
 #menu-toggle,
 #menu-close {
-  position: fixed;
-  top: 0;
-  left: 0;
+  cursor: pointer;
+  background-color: #fff; 
+  color: #000; 
   width: 60px;
   height: 60px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
   text-align: center;
   line-height: 60px;
   display: inline-block;
-  cursor: pointer;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 999;
-}
-
-/* ──────────────✦ Section-specific Link Colors & Outline Shadows ✦────────────── */
-
-.menu a.home {
-  color: #ECEEF1;
-  text-shadow: -0.5px -0.5px #1a114b, 0.5px -0.5px #1a114b, -0.5px 0.5px #1a114b, 0.5px 0.5px #1a114b;
-}
-
-.menu a.lore {
-  color: #0075FF;
-  text-shadow: -0.5px -0.5px #0c4530, 0.5px -0.5px #0c4530, -0.5px 0.5px #0c4530, 0.5px 0.5px #0c4530;
-}
-
-.menu a.navigation {
-  color: #C5ECFF;
-  text-shadow: -0.5px -0.5px #342c61, 0.5px -0.5px #342c61, -0.5px 0.5px #342c61, 0.5px 0.5px #342c61;
-}
-
-.menu a.font-project {
-  color: #C1FF8A;
-  text-shadow: -0.5px -0.5px #572a45, 0.5px -0.5px #572a45, -0.5px 0.5px #572a45, 0.5px 0.5px #572a45;
-}
-
-.menu a.mmorpg {
-  color: #FBC96D;
-  text-shadow: -0.5px -0.5px #014d4e, 0.5px -0.5px #014d4e, -0.5px 0.5px #014d4e, 0.5px 0.5px #014d4e;
-}
-
-.menu a.book-series {
-  color: #D88EBA;
-  text-shadow: -0.5px -0.5px #78581f, 0.5px -0.5px #78581f, -0.5px 0.5px #78581f, 0.5px 0.5px #78581f;
-}
-
-.menu a.timekeeping {
-  color: #DCE1E8;
-  text-shadow: -0.5px -0.5px #A63A2C, 0.5px -0.5px #A63A2C, -0.5px 0.5px #A63A2C, 0.5px 0.5px #A63A2C;
-}
-
-.menu a.language-rules {
-  color: #8FE9F0;
-  text-shadow: -0.5px -0.5px #7A7C86, 0.5px -0.5px #7A7C86, -0.5px 0.5px #7A7C86, 0.5px 0.5px #7A7C86;
-}
-
-.menu a.lexicon {
-  color: #7A7C86;
-  text-shadow: -0.5px -0.5px #1a114b, 0.5px -0.5px #1a114b, -0.5px 0.5px #1a114b, 0.5px 0.5px #1a114b;
-}
-
-.menu a.support {
-  color: #FBC96D;
-  text-shadow: -0.5px -0.5px #342c61, 0.5px -0.5px #342c61, -0.5px 0.5px #342c61, 0.5px 0.5px #342c61;
-}
-
-/*! * Customized FlexSlider v2.7.1 */
 }
 
 .menu a.home {
@@ -439,12 +444,196 @@ html {
     -0.5px  0.5px #FBC96D,
      0.5px  0.5px #FBC96D;
 }
+.menu a.home {
+  text-shadow: 
+    -0.5px -0.5px #1a114b,
+     0.5px -0.5px #1a114b,
+    -0.5px  0.5px #1a114b,
+     0.5px  0.5px #1a114b;
+}
+
+.menu a.lore {
+  text-shadow: 
+    -0.5px -0.5px #0c4530,
+     0.5px -0.5px #0c4530,
+    -0.5px  0.5px #0c4530,
+     0.5px  0.5px #0c4530;
+}
+
+.menu a.navigation {
+  text-shadow: 
+    -0.5px -0.5px #342c61,
+     0.5px -0.5px #342c61,
+    -0.5px  0.5px #342c61,
+     0.5px  0.5px #342c61;
+}
+
+.menu a.font-project {
+  text-shadow: 
+    -0.5px -0.5px #572a45,
+     0.5px -0.5px #572a45,
+    -0.5px  0.5px #572a45,
+     0.5px  0.5px #572a45;
+}
+
+.menu a.mmorpg {
+  text-shadow: 
+    -0.5px -0.5px #014d4e,
+     0.5px -0.5px #014d4e,
+    -0.5px  0.5px #014d4e,
+     0.5px  0.5px #014d4e;
+}
+
+.menu a.book-series {
+  text-shadow: 
+    -0.5px -0.5px #78581f,
+     0.5px -0.5px #78581f,
+    -0.5px  0.5px #78581f,
+     0.5px  0.5px #78581f;
+}
+
+.menu a.timekeeping {
+  text-shadow: 
+    -0.5px -0.5px #A63A2C,
+     0.5px -0.5px #A63A2C,
+    -0.5px  0.5px #A63A2C,
+     0.5px  0.5px #A63A2C;
+}
+
+.menu a.language-rules {
+  text-shadow: 
+    -0.5px -0.5px #7A7C86,
+     0.5px -0.5px #7A7C86,
+    -0.5px  0.5px #7A7C86,
+     0.5px  0.5px #7A7C86;
+}
+
+.menu a.lexicon {
+  text-shadow: 
+    -0.5px -0.5px #1a114b,
+     0.5px -0.5px #1a114b,
+    -0.5px  0.5px #1a114b,
+     0.5px  0.5px #1a114b;
+}
+
+.menu a.support {
+  text-shadow: 
+    -0.5px -0.5px #342c61,
+     0.5px -0.5px #342c61,
+    -0.5px  0.5px #342c61,
+     0.5px  0.5px #342c61;
+}
 
 
+/* === Site Non-Nav Buttons === */
+.button {
+    background-color: black;
+    color: cyan;
+    border: 2px solid cyan;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
 
-/* === Comic Sans Override (index.HTML page on GitHub) === */
-body[data-doc-name*="index"], {
-  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+.button:hover {
+    background-color: cyan;
+    color: black;
+    border: 2px solid black;
+}
+
+/* === FlexSlider Overrides === */
+.flexslider nav {
+    background: white !important;
+}
+
+.flexslider nav a {
+    color: black !important;
+    text-shadow: none !important;
+}
+
+/* ──────────────✦ Section Styles ✦────────────── */
+
+.section {
+  background: transparent;
+  color: white;
+  font-family: "Times New Roman", serif;
+}
+
+/* === Section Headers === */
+.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b, 0 0 2px #1a114b, 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
+.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530, 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
+.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61, 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
+.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45, 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
+.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e, 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
+.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f, 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
+.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C, 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
+.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86, 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
+.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b, 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
+.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61, 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
+
+/* === Tables === */
+.section table {
+  background: rgba(255, 255, 255, 0.7);
+  border-collapse: collapse;
+  width: 100%;
+  padding: 20px;
+}
+
+.section table th {
+  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
+  font-size: 1.2em;
+  text-align: left;
+  padding: 10px;
+}
+
+.section table td {
+  font-family: "Times New Roman", serif;
+  color: black;
+  padding: 10px;
+  text-shadow: none;
+}
+
+/* === Table Header Colors & Outlines === */
+.section.home table th { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
+.section.lore table th { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
+.section.navigation table th { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
+.section.font-project table th { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
+.section.mmorpg table th { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
+.section.book-series table th { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
+.section.timekeeping table th { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
+.section.language-rules table th { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
+.section.lexicon table th { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
+.section.support table th { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
+
+/* === Dividers === */
+.divider-home { border-bottom: 2px solid #ECEEF1; }
+.divider-lore { border-bottom: 2px solid #0075FF; }
+.divider-navigation { border-bottom: 2px solid #C5ECFF; }
+.divider-font-project { border-bottom: 2px solid #C1FF8A; }
+.divider-mmorpg { border-bottom: 2px solid #FBC96D; }
+.divider-book-series { border-bottom: 2px solid #D88EBA; }
+.divider-timekeeping { border-bottom: 2px solid #DCE1E8; }
+.divider-language-rules { border-bottom: 2px solid #8FE9F0; }
+.divider-lexicon { border-bottom: 2px solid #7A7C86; }
+.divider-support { border-bottom: 2px solid #FBC96D; }
+.divider-footer { border-bottom: 2px solid #9381FF; }
+
+/* === Responsive === */
+@media screen and (max-width: 1024px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    footer {
+        position: relative;
+    }
+}
+/* === Comic Sans Override (INDEX.HTML page on GitHub) === */
+body[data-doc-name*="index"] {
+  font-family: 'Comic Sans MS', !important;
 }
 
 /* === Aza'raan Font Substitution for Comic Sans Only === */
@@ -485,270 +674,6 @@ body[data-doc-name*="index"], {
 .menu a {
   transition: background 0.3s, color 0.3s;
 }
-/* ──────────────✦ Base Section Layout ✦────────────── */
-
-.section {
-  position: relative;
-  width: 55%;
-  right: 10%;
-  left: 35%;
-  min-height: 100vh;
-  padding: 80px 2.5% 80px 2.5%;
-  color: inherit;
-  text-align: center;
-  overflow: auto;
-  border-bottom: none;
-}
-
-/* Scrollbars always visible for whole page */
-html, body {
-  overflow: auto;
-}
-
-table {
-  margin-left: 0.25in;
-  margin-right: 0.25in;
-  opacity: 0.7;
-}
-
-/* Ensure subtle gradient overlay is behind content */
-body::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
-  pointer-events: none;
-}
-/* ──────────────✦ General Layout Rules ✦────────────── */
-
-body {
-  overflow: auto; /* Full page scrollbars */
-}
-
-.main-content {
-  position: relative;
-  left: 35%;
-  width: 55%;
-  right: 10%;
-  min-height: 100vh;
-  padding: 40px;
-  text-align: center;
-  overflow: auto;
-}
-
-.main-content table {
-  width: calc(100% - 0.5in);
-  margin: 0.25in auto;
-  background: #fff;
-  opacity: 0.7;
-  border-collapse: collapse;
-}
-
-.main-content table td,
-.main-content table th {
-  padding: 15px;
-}
-
-/* ──────────────✦ Universal Section Structure ✦────────────── */
-
-.section {
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
-  padding-bottom: 80px;
-}
-
-.section-heading {
-  text-align: center;
-  padding: 60px 30px;
-}
-
-.section-heading h2 {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.section-heading .line-dec {
-  width: 60px;
-  height: 3px;
-  margin: 10px auto;
-}
-
-.section-heading span {
-  margin-top: 5px;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-}
-
-/* 🏠 Home */
-.section.home {
-  background: transparent;
-  color: #ECEEF1;
-  text-shadow: 2px 2px #1a114b;
-  font-family: 'Cinzel Decorative', serif;
-  border-bottom: 2px solid #ECEEF1;
-}
-
-.section.home table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #1a114b;
-}
-
-/* 📖 Lore */
-.section.lore {
-  background: transparent;
-  color: #0075FF;
-  text-shadow: 2px 2px #0c4530;
-  font-family: 'Uncial Antiqua', cursive;
-  border-bottom: 2px solid #0075FF;
-}
-
-.section.lore table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #0c4530;
-}
-
-/* 🧭 Navigation */
-.section.navigation {
-  background: transparent;
-  color: #C5ECFF;
-  text-shadow: 2px 2px #342c61;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #C5ECFF;
-}
-
-.section.navigation table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #342c61;
-}
-
-/* 🅰️ Font Project */
-.section.font-project {
-  background: transparent;
-  color: #C1FF8A;
-  text-shadow: 2px 2px #572a45;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #C1FF8A;
-}
-
-.section.font-project table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #572a45;
-}
-
-/* 🗡️ MMORPG */
-.section.mmorpg {
-  background: transparent;
-  color: #FBC96D;
-  text-shadow: 2px 2px #014d4e;
-  font-family: 'Cinzel Decorative', serif;
-  border-bottom: 2px solid #FBC96D;
-}
-
-.section.mmorpg table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #014d4e;
-}
-
-/* 📚 Book Series */
-.section.book-series {
-  background: transparent;
-  color: #D88EBA;
-  text-shadow: 2px 2px #78581f;
-  font-family: 'Uncial Antiqua', cursive;
-  border-bottom: 2px solid #D88EBA;
-}
-
-.section.book-series table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #78581f;
-}
-
-/* 🕰️ Timekeeping */
-.section.timekeeping {
-  background: transparent;
-  color: #DCE1E8;
-  text-shadow: 2px 2px #A63A2C;
-  font-family: 'Cinzel Decorative', serif;
-  border-bottom: 2px solid #DCE1E8;
-}
-
-.section.timekeeping table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #A63A2C;
-}
-
-/* 📜 Language Rules */
-.section.language-rules {
-  background: transparent;
-  color: #8FE9F0;
-  text-shadow: 2px 2px #7A7C86;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #8FE9F0;
-}
-
-.section.language-rules table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #7A7C86;
-}
-
-/* 🗂️ Lexicon */
-.section.lexicon {
-  background: transparent;
-  color: #7A7C86;
-  text-shadow: 2px 2px #1a114b;
-  font-family: 'Uncial Antiqua', cursive;
-  border-bottom: 2px solid #7A7C86;
-}
-
-.section.lexicon table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #1a114b;
-}
-
-/* 🛡️ Support */
-.section.support {
-  background: transparent;
-  color: #FBC96D;
-  text-shadow: 2px 2px #342c61;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #FBC96D;
-}
-
-.section.support table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #342c61;
-}
-
-/* Footer (text only) */
-footer {
-  background: rgba(0, 0, 0, 0.3);
-  color: #9381FF;
-  text-shadow: 2px 2px #A63A2C;
-  text-align: center;
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem;
-  z-index: 1000;
-}
-
-/* ──────────────✦ Gradient Overlay ✦────────────── */
-
-body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(11, 29, 38, 0.5) 0%,
-    rgba(4, 13, 18, 0.8) 100%
-  );
-  pointer-events: none;
-}
-
 
 /* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
 @media screen and (max-width: 1680px) {
@@ -838,7 +763,7 @@ body::after {
     font-family: 'Comic Sans MS', cursive, sans-serif !important;
   }
   table {
-    font-family: 'Comic Sans MS', cursive, sans-serif !important;
+    font-family: 'Comic Sans MS', cursive, !important;
   }
 }
 
