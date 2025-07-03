@@ -26,10 +26,10 @@
         document.body.appendChild(errorNotice);
       });
 // ==UserScript==
-// @name         Aza'raan Website Core Loader (Complete, Merged)
+// @name         Aza'raan Website Core Loader (Sections Only, Cleaned)
 // @namespace    https://github.com/thetransgendertrex/website
-// @version      3.2
-// @description  Loads style, override.js, donations.js; handles nav scroll, sidebar toggle, background, tables, dark/light mode, and visit/download buttons.
+// @version      2.1
+// @description  Loads style, override.js, donations.js, and swaps sections dynamically on nav click.
 // @match        https://www.azara-trademarked-projects.com/*
 // @grant        none
 // ==/UserScript==
@@ -37,7 +37,7 @@
 (function () {
   'use strict';
 
-  console.log('✨ Aza\'raan Core Script initializing...');
+  console.log('✨ Aza\'raan Site Script initializing...');
 
   // ✅ Load style.css
   const styleLink = document.createElement('link');
@@ -58,6 +58,17 @@
     })
     .catch(err => console.error('❌ Failed to load override.js:', err));
 
+  // ✅ Load script.js
+  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/script.js')
+    .then(res => res.text())
+    .then(code => {
+      const script = document.createElement('script');
+      script.textContent = code;
+      document.head.appendChild(script);
+      console.log('✅ script.js loaded.');
+    })
+    .catch(err => console.error('❌ Failed to load script.js:', err));
+
   // ✅ Load donations.js
   fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js')
     .then(res => res.text())
@@ -69,7 +80,15 @@
     })
     .catch(err => console.error('❌ Failed to load donations.js:', err));
 
-  // ✅ After DOM ready
+  // ✅ Verify index.html & donations.html
+  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
+    .then(() => console.log('✅ index.html verified.'))
+    .catch(() => console.warn('⚠️ Could not verify index.html'));
+  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.html')
+    .then(() => console.log('✅ donations.html verified.'))
+    .catch(() => console.warn('⚠️ Could not verify donations.html'));
+
+  // ✅ Main DOM logic
   document.addEventListener('DOMContentLoaded', () => {
     console.log('✅ DOM fully loaded.');
 
@@ -79,21 +98,48 @@
     const toggle = document.getElementById('menu-toggle');
     const close = document.getElementById('menu-close');
 
-    // ✅ Nav click scroll
+    const sectionIds = [
+      'home', 'lore', 'navigation', 'font-project',
+      'mmorpg', 'book-series', 'timekeeping',
+      'language-rules', 'lexicon', 'support'
+    ];
+
+    const loadedSections = new Set();
+
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
+
+        // Highlight active link
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
 
-        const targetId = link.getAttribute('href').replace('#', '');
-        const target = document.getElementById(targetId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-          console.log(`✅ Scrolled to: ${targetId}`);
-        } else {
-          console.warn(`⚠️ Target not found: ${targetId}`);
+        const href = link.getAttribute('href').replace('.html', '').toLowerCase();
+        const sectionId = sectionIds.includes(href) ? href : 'home';
+        const section = document.getElementById(sectionId);
+
+        if (!section) {
+          console.error(`❌ Section container #${sectionId} not found.`);
+          return;
         }
+
+        if (!loadedSections.has(sectionId)) {
+          const githubUrl = `https://raw.githubusercontent.com/thetransgendertrex/website/main/${href}.html`;
+          fetch(githubUrl)
+            .then(res => res.text())
+            .then(html => {
+              section.innerHTML = html;
+              loadedSections.add(sectionId);
+              console.log(`✅ Loaded: ${href}.html`);
+              scaleTables();
+            })
+            .catch(err => console.error(`❌ Failed to load ${href}:`, err));
+        } else {
+          console.log(`ℹ️ Already loaded: ${sectionId}`);
+        }
+
+        section.classList.add(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' });
 
         if (window.innerWidth < 846) {
           menu.classList.remove('open');
@@ -101,7 +147,6 @@
       });
     });
 
-    // ✅ Sidebar toggle
     if (toggle && close && menu) {
       toggle.addEventListener('click', () => {
         menu.classList.toggle('open');
@@ -111,6 +156,8 @@
         menu.classList.remove('open');
         console.log('✅ Sidebar closed.');
       });
+    } else {
+      console.warn('⚠️ Sidebar toggle elements missing.');
     }
 
     window.addEventListener('resize', () => {
@@ -121,63 +168,186 @@
       }
     });
 
-    // ✅ Dark mode
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      body.classList.add('dark-mode');
-      console.log('🌙 Dark mode enabled.');
-    } else {
-      console.log('☀️ Light mode enabled.');
-    }
-
-    // ✅ Scrollbars
     document.documentElement.style.overflowX = 'auto';
     document.documentElement.style.overflowY = 'auto';
     body.style.overflowX = 'auto';
     body.style.overflowY = 'auto';
-    console.log('✅ Scrollbars forced visible.');
+    console.log('✅ Scrollbars forced visible if needed.');
 
-    // ✅ Resize tables
-    const scaleTables = () => {
+    function scaleTables() {
       document.querySelectorAll('table').forEach(table => {
         table.style.width = '100%';
         table.style.maxWidth = '100%';
         table.style.boxSizing = 'border-box';
       });
       console.log('✅ Tables resized.');
-    };
+    }
+
     window.addEventListener('resize', scaleTables);
     scaleTables();
+  // === 1. Fixed Background ===
+  const bg = document.createElement('div');
+  bg.id = 'bg-fixed';
+  bg.style.position = 'fixed';
+  bg.style.top = '0';
+  bg.style.left = '0';
+  bg.style.width = '100%';
+  bg.style.height = '100%';
+  bg.style.background = "url('https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza%27ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg') no-repeat center center fixed";
+  bg.style.backgroundSize = 'cover';
+  bg.style.zIndex = '-2';
+  document.body.appendChild(bg);
 
-    // ✅ Visit/Download buttons
-    const buttons = document.querySelectorAll('.visit-download-buttons button');
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const url = button.getAttribute('data-url');
-        const isDownload = button.getAttribute('data-download') === 'true';
+  // === 2. Black Overlay ===
+  const overlay = document.createElement('div');
+  overlay.id = 'bg-overlay';
+  overlay.style.position = 'absolute';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.background = 'rgba(0,0,0,0.3)';
+  overlay.style.zIndex = '-1';
+  document.body.appendChild(overlay);
 
-        if (url) {
-          if (isDownload) {
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = '';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            console.log(`✅ Download triggered: ${url}`);
-          } else {
-            window.open(url, '_blank');
-            console.log(`✅ Visiting link: ${url}`);
-          }
-        } else {
-          console.warn('⚠️ No data-url found on button.');
-        }
-      });
+  // === 3. Sidebar Toggle ===
+  const menuEl = document.querySelector('.menu');
+  const toggleEl = document.getElementById('menu-toggle');
+  const closeEl = document.getElementById('menu-close');
+  if (menuEl && toggleEl && closeEl) {
+    toggleEl.addEventListener('click', () => {
+      menuEl.classList.toggle('open');
+      console.log('✅ Menu toggled');
     });
+    closeEl.addEventListener('click', () => {
+      menuEl.classList.remove('open');
+      console.log('✅ Menu closed');
+    });
+  }
 
+  // === 4. Nav Active State ===
+  const navLinksEl = document.querySelectorAll('.menu a');
+  navLinksEl.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinksEl.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
   });
 
-})();
+  // === 5. Responsive Breakpoints ===
+  const handleResize = () => {
+    const w = window.innerWidth;
+    if (w < 768) {
+      console.log('📱 Mobile breakpoint active');
+      document.body.classList.add('mobile');
+    } else {
+      document.body.classList.remove('mobile');
+    }
+  };
+  handleResize();
+  window.addEventListener('resize', handleResize);
 
+  // === 6. Section Heading Styling ===
+  const headings = document.querySelectorAll('h1, h2, h3, h4');
+  headings.forEach(h => {
+    h.style.textAlign = 'center';
+    h.style.textShadow = '1px 1px #00FFFF';
+  });
+
+  // === 7. Table Styling ===
+  const styleTables = () => {
+    const tables = document.querySelectorAll('table');
+    tables.forEach(table => {
+      table.style.width = 'calc(100% - 0.5in)';
+      table.style.marginLeft = '0.25in';
+      table.style.marginRight = '0.25in';
+      table.style.opacity = '0.7';
+      table.style.overflowX = 'auto';
+      table.style.overflowY = 'auto';
+    });
+    console.log('✅ Tables styled');
+  };
+  styleTables();
+  window.addEventListener('resize', styleTables);
+
+  // === 8. Force Scrollbars ===
+  document.documentElement.style.overflowX = 'auto';
+  document.documentElement.style.overflowY = 'auto';
+  document.body.style.overflowX = 'auto';
+  document.body.style.overflowY = 'auto';
+
+  // === 9. Buttons ===
+  const buttons = document.querySelectorAll('.button');
+  buttons.forEach(btn => {
+    btn.style.display = 'inline-block';
+    btn.style.background = '#8FE9F0';
+    btn.style.color = '#000';
+    btn.style.border = '2px solid #014d4e';
+    btn.style.borderRadius = '6px';
+    btn.style.padding = '0.75rem 1.5rem';
+    btn.style.cursor = 'pointer';
+    btn.style.transition = 'all 0.3s ease';
+    btn.addEventListener('mouseover', () => {
+      btn.style.background = '#014d4e';
+      btn.style.color = '#00FFFF';
+    });
+    btn.addEventListener('mouseout', () => {
+      btn.style.background = '#8FE9F0';
+      btn.style.color = '#000';
+    });
+  });
+
+  // === 10. Divider Lines for Buttons ===
+  const buttonWrappers = document.querySelectorAll('.button-wrapper');
+  buttonWrappers.forEach(wrapper => {
+    wrapper.style.margin = '2rem 0';
+    wrapper.style.textAlign = 'center';
+    const hr = wrapper.querySelector('hr');
+    if (hr) {
+      hr.style.margin = '1rem auto';
+      hr.style.width = '50%';
+      hr.style.border = 'none';
+      hr.style.borderTop = '2px solid #8FE9F0';
+    }
+  });
+
+  // === 11. Footer Styling ===
+  const footer = document.querySelector('footer');
+  if (footer) {
+    footer.style.textAlign = 'center';
+    footer.style.padding = '2rem';
+    footer.style.color = '#ECEEF1';
+  }
+
+  // === 12. Dark Mode Colors ===
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (prefersDark) {
+    if (menu) menu.style.background = '#000';
+    navLinks.forEach(link => link.style.color = '#fff');
+  } else {
+    if (menu) menu.style.background = '#fff';
+    navLinks.forEach(link => link.style.color = '#000');
+  }
+
+  // === 13. Scrollbar Styling ===
+  const style = document.createElement('style');
+  style.innerHTML = `
+    ::-webkit-scrollbar { width: 12px; height: 12px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #8FE9F0; border-radius: 6px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00FFFF; }
+  `;
+  document.head.appendChild(style);
+
+  // === 14. Hover Fix ===
+  document.querySelectorAll('.hover').forEach(el => {
+    el.addEventListener('mouseleave', () => el.classList.remove('hover'));
+  });
+
+  // === 15. Console Marker ===
+  console.log('✅ Aza\'raan Dynamic Site Style fully applied.');
+  }); // <-- Close DOMContentLoaded handler
+})(); // <-- Close IIFE
   </script>
   <!-- ✅ Load style.css from GitHub -->
   <link rel="stylesheet" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css" />
@@ -244,8 +414,9 @@ body {
 }
 
 /* ===================================================================================================
- * BOX SIZING & UTILITIES (With Explicit Scrollbars)
+ * UNIVERSAL BOX SIZING & UTILITIES
  * ===================================================================================================*/
+
 html {
   box-sizing: border-box;
   overflow-x: auto;
@@ -276,105 +447,116 @@ body {
 .container {
   margin: 0 auto;
 }
+.section {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
 /* ===================================================================================================
- * MAIN CONTENT (Fixed Overflow with Scrollbars)
+ * MAIN CONTENT AREA (aligned next to sidebar)
  * ===================================================================================================*/
+
 .main-content {
   position: relative;
-  left: 35%;
-  right: 10%;
-  width: 55%;
+  margin-left: 20%;  /* Reserve sidebar space */
+  width: 80%;        /* Use rest of viewport */
   min-height: 100vh;
-  padding: 40px;
+  padding: 40px 5%;
   text-align: center;
   overflow-x: auto;
   overflow-y: auto;
 }
 
 /* ===================================================================================================
- * UNIVERSAL SECTION LAYOUT (Fixed Overflow with Scrollbars)
+ * UNIVERSAL SECTION LAYOUT (aligned next to sidebar)
  * ===================================================================================================*/
+
 .section {
   position: relative;
-  left: 35%;
-  right: 10%;
-  width: 55%;
+  margin-left: 20%;  /* Reserve sidebar space */
+  width: 80%;        /* Use rest of viewport */
   min-height: 100vh;
-  padding: 80px 2.5%;
+  padding: 80px 5%;
   text-align: center;
   overflow-x: auto;
   overflow-y: auto;
   border-bottom: 3px solid rgba(250, 250, 250, 0.25);
   background: transparent;
+  font-family: "Times New Roman", serif;
+  color: white;
 }
 
 /* ===================================================================================================
- * HEADINGS
+ * SECTION HEADINGS (Colored + Shadow)
  * ===================================================================================================*/
-.section-heading {
-  text-align: center;
-  padding: 60px 30px;
-}
 
-.section-heading h2 {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.section-heading .line-dec {
-  width: 60px;
-  height: 3px;
-  margin: 10px auto;
-}
-
-.section-heading span {
-  margin-top: 5px;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-}
+.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
+.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
+.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
+.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
+.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
+.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
+.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
+.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
+.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
+.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
 
 /* ===================================================================================================
  * TABLES
  * ===================================================================================================*/
 
-table,
-.main-content table {
-  width: calc(100% - 0.5in);
-  margin: 0.25in auto;
+.section table {
+  width: 100%;
+  max-width: 100%;
+  margin: 40px auto;
   background: rgba(255, 255, 255, 0.7);
   border-collapse: collapse;
   overflow-x: auto;
-  overflow-y: auto;
-  display: block; /* Needed to allow overflow on tables */
+  display: block;
+  padding: 20px;
 }
 
-table td,
-table th,
-.main-content table td,
-.main-content table th {
-  padding: 15px;
+.section table th {
+  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
+  font-size: 1.2em;
+  text-align: left;
+  padding: 10px;
 }
+
+.section table td {
+  font-family: "Times New Roman", serif;
+  color: black;
+  padding: 10px;
+  text-shadow: none;
+}
+
+/* === Table Header Colors === */
+.section.home table th { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
+.section.lore table th { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
+.section.navigation table th { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
+.section.font-project table th { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
+.section.mmorpg table th { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
+.section.book-series table th { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
+.section.timekeeping table th { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
+.section.language-rules table th { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
+.section.lexicon table th { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
+.section.support table th { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
 
 /* ===================================================================================================
- * FLEX SLIDER UTILITY
+ * DIVIDERS
  * ===================================================================================================*/
-.flex-container a:hover,
-.flex-slider a:hover {
-  outline: none;
-}
+.divider-home { border-bottom: 2px solid #ECEEF1; }
+.divider-lore { border-bottom: 2px solid #0075FF; }
+.divider-navigation { border-bottom: 2px solid #C5ECFF; }
+.divider-font-project { border-bottom: 2px solid #C1FF8A; }
+.divider-mmorpg { border-bottom: 2px solid #FBC96D; }
+.divider-book-series { border-bottom: 2px solid #D88EBA; }
+.divider-timekeeping { border-bottom: 2px solid #DCE1E8; }
+.divider-language-rules { border-bottom: 2px solid #8FE9F0; }
+.divider-lexicon { border-bottom: 2px solid #7A7C86; }
+.divider-support { border-bottom: 2px solid #FBC96D; }
+.divider-footer { border-bottom: 2px solid #9381FF; }
 
-.slides,
-.slides > li,
-.flex-control-nav,
-.flex-direction-nav {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.flex-pauseplay span {
-  text-transform: capitalize;
-}
 
 /* ===================================================================================================
  * FOOTER
@@ -383,10 +565,10 @@ footer {
   background: rgba(0, 0, 0, 0.3);
   color: #A63A2C;
   text-shadow:
-    -0.5px -0.5px #9381FF,
-     0.5px -0.5px #9381FF,
-    -0.5px  0.5px #9381FF,
-     0.5px  0.5px #9381FF;
+    -0.5px -0.5px #141223,
+     0.5px -0.5px #141223,
+    -0.5px  0.5px #141223,
+     0.5px  0.5px #141223;
   text-align: center;
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
@@ -413,9 +595,9 @@ footer {
   height: 70px;
   line-height: 70px;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
-  font-family: 'Uncial Antiqua', cursive;
+  font-family: 'Times New Roman', bold;
   color: white;
   width: 100%;
   transition: all 0.5s;
@@ -432,7 +614,7 @@ footer {
 /* === Sidebar Menu === */
 .menu {
   text-align: center;
-  font-family: 'Uncial Antiqua', cursive;
+  font-family: 'Times New Roman', bold;
   background-color: black;
   color: white;
   box-sizing: border-box;
@@ -742,22 +924,43 @@ footer {
 }
 
 
+/* === Button List & Wrappers === */
+.button-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.button-wrapper {
+  margin: 2rem 0; /* Big vertical gap between buttons */
+  text-align: center;
+}
+
+.button-wrapper hr {
+  margin: 1rem auto; /* Space above and below hr */
+  width: 50%;        /* Width of divider line */
+  border: none;
+  border-top: 2px solid #8FE9F0; /* Cyan line to match your theme */
+}
+
 /* === Site Non-Nav Buttons === */
 .button {
-    background-color: black;
-    color: cyan;
-    border: 2px solid cyan;
-    padding: 10px 20px;
-    cursor: pointer;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
+  display: inline-block;
+  background-color: black;
+  color: cyan;
+  border: 2px solid cyan;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
-    background-color: cyan;
-    color: black;
-    border: 2px solid black;
+  background-color: cyan;
+  color: black;
+  border: 2px solid black;
 }
+
 
 /* === FlexSlider Overrides === */
 .flexslider nav {
@@ -768,89 +971,7 @@ footer {
     color: black !important;
     text-shadow: none !important;
 }
-/* === Standardized Section Layout === */
-.section {
-  position: relative;
-  background: transparent;
-  color: white;
-  font-family: "Times New Roman", serif;
-  /* Position and sizing */
-  left: 20%; /* same as sidebar width to not overlap */
-  width: 80%; /* rest of viewport */
-  min-height: 100vh;
-  height: 100vh;
-  overflow-x: auto;
-  overflow-y: auto;
-  padding: 80px 2.5%;
-  box-sizing: border-box;
-}
 
-/* === Section Headers === */
-.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
-.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
-.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
-.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
-.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
-.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
-.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
-.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
-.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
-.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
-
-/* === Tables === */
-.section table {
-  background: rgba(255, 255, 255, 0.7);
-  border-collapse: collapse;
-  width: 100%;
-  padding: 20px;
-}
-
-.section table th {
-  font-family: 'Cinzel Decorative', 'Pridi', 'Uncial Antiqua', serif;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 10px;
-}
-
-.section table td {
-  font-family: "Times New Roman", serif;
-  color: black;
-  padding: 10px;
-  text-shadow: none;
-}
-
-/* === Table Header Colors === */
-.section.home table th { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
-.section.lore table th { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
-.section.navigation table th { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
-.section.font-project table th { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
-.section.mmorpg table th { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
-.section.book-series table th { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
-.section.timekeeping table th { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
-.section.language-rules table th { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
-.section.lexicon table th { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
-.section.support table th { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
-
-/* === Dividers === */
-.divider-home { border-bottom: 2px solid #ECEEF1; }
-.divider-lore { border-bottom: 2px solid #0075FF; }
-.divider-navigation { border-bottom: 2px solid #C5ECFF; }
-.divider-font-project { border-bottom: 2px solid #C1FF8A; }
-.divider-mmorpg { border-bottom: 2px solid #FBC96D; }
-.divider-book-series { border-bottom: 2px solid #D88EBA; }
-.divider-timekeeping { border-bottom: 2px solid #DCE1E8; }
-.divider-language-rules { border-bottom: 2px solid #8FE9F0; }
-.divider-lexicon { border-bottom: 2px solid #7A7C86; }
-.divider-support { border-bottom: 2px solid #FBC96D; }
-.divider-footer { border-bottom: 2px solid #9381FF; }
-
-/* === Responsive === */
-@media screen and (max-width: 1024px) {
-  .section {
-    left: 0;
-    width: 100%;
-  }
-}
 
 /* === Comic Sans Override for index.html === */
 body[data-doc-name*="index"] {
@@ -888,16 +1009,6 @@ span[style*="Comic Sans MS"],
   transform: translateX(-100%);
 }
 
-/* Ensure toggle is hidden on large screens */
-@media (min-width: 846px) {
-  #menu-toggle, #menu-close {
-    display: none;
-  }
-
-  .menu {
-    transform: translateX(0) !important;
-  }
-}
 
 /* Active nav link styling */
 .menu a.active {
@@ -910,104 +1021,148 @@ span[style*="Comic Sans MS"],
 .menu a {
   transition: background 0.3s, color 0.3s;
 }
+/* =======================
+   Universal Responsive
+   ======================= */
 
-/* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
+/* Large Desktop → Large Tablet */
 @media screen and (max-width: 1680px) {
-  .menu {
-    left: 5%;
-  }
-
-  .section, .main-content {
-    width: 65%;
-    left: 30%;
-    right: 5%;
-  }
-}
-
-/* ──────────────✦ Responsive: Medium Tablet ✦────────────── */
-@media screen and (max-width: 1280px) {
   .menu {
     left: 0%;
     width: 25%;
   }
 
-  .section, .main-content {
-    width: 70%;
-    left: 28%;
-    right: 2%;
+  .section {
+    margin-left: 25%;
+    width: 75%;
+    padding: 60px 4%;
+  }
+}
+.button {
+  touch-action: manipulation;
+}
+
+/* Medium Desktop → Standard Tablet */
+@media screen and (max-width: 1280px) {
+  .menu {
+    width: 20%;
   }
 
-  table {
-    width: 95% !important;
-    margin-left: auto;
-    margin-right: auto;
+  .section {
+    margin-left: 20%;
+    width: 70%;
+    padding: 50px 4%;
   }
 }
 
-/* ──────────────✦ Responsive: Small Tablet to Mobile ✦────────────── */
-@media screen and (max-width: 845px) {
-  /* Show toggle buttons */
+/* Large Tablet → Small Tablet */
+@media screen and (max-width: 1024px) {
+  .menu {
+    width: 35%;
+  }
+
+  .section {
+    margin-left: 35%;
+    width: 65%;
+    padding: 40px 3%;
+  }
+}
+.button {
+  touch-action: manipulation;
+}
+
+/* Small Tablet → Large Mobile */
+@media screen and (max-width: 900px) {
+  .menu {
+    width: 320px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+  }
+
+  .menu.open {
+    transform: translateX(0);
+  }
+
   #menu-toggle,
   #menu-close {
     display: inline-block;
   }
 
-  /* Slide out menu by default */
-  .menu {
-    width: 280px;
-    transform: translateX(-100%) !important;
-    -webkit-transform: translateX(-100%) !important;
-    transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  .section {
+    margin-left: 0;
+    width: 100%;
+    padding: 30px 5%;
   }
 
-  .menu.open {
-    transform: translateX(0) !important;
-    -webkit-transform: translateX(0) !important;
-  }
-
-  .section, .main-content {
-    width: 94%;
-    left: 3%;
-    right: 3%;
-    padding: 30px 15px;
-  }
-
-  table {
-    width: 100% !important;
-    margin: 0 auto;
-    font-size: 14px;
-  }
-
-  .main-nav li a {
-    font-size: 14px;
-    height: 50px;
-    line-height: 50px;
-  }
-
-  .menu a {
-    padding: 15px 0;
-    font-size: 16px;
+  footer {
+    width: 100%;
   }
 }
-
-/* ──────────────✦ Comic Sans Override for Small Screens ✦────────────── */
-@media screen and (max-width: 845px) {
-  body {
-    font-family: 'Comic Sans MS', cursive, sans-serif !important;
-  }
-  .section, .main-content, .menu, .main-nav li a {
-    font-family: 'Comic Sans MS', cursive, sans-serif !important;
-  }
-  table {
-    font-family: 'Comic Sans MS', cursive, !important;
-  }
+.button {
+  touch-action: manipulation;
 }
 
-/* ──────────────✦ Responsive Scrollbars Always ✦────────────── */
-html, body {
-  overflow-x: auto;
-  overflow-y: auto;
+/* Large Mobile Screens */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 25px 5%;
+  }
+
+  .section table th,
+  .section table td {
+    padding: 6px 10px;
+    font-size: 0.85em;
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 0.9rem;
+  }
+
+  .divider-home,
+  .divider-lore,
+  .divider-navigation,
+  .divider-font-project,
+  .divider-mmorpg,
+  .divider-book-series,
+  .divider-timekeeping,
+  .divider-language-rules,
+  .divider-lexicon,
+  .divider-support,
+  .divider-footer {
+    margin: 15px 0;
+  }
 }
+.button {
+  touch-action: manipulation;
+}
+
+/* Small Mobile Screens */
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 20px 5%;
+  }
+
+  .section table th,
+  .section table td {
+    padding: 5px 8px;
+    font-size: 0.8em;
+  }
+
+  .button {
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+}
+.button {
+  touch-action: manipulation;
+}
+
 
 </style>
 <!-- Sidebar Menu -->
@@ -2039,13 +2194,48 @@ Aza'ra</span></h3>
 </div>
 
 <h3>📦 Aza’raan Font and Program Resources</h3>
-<ul>
-  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza%27raan%20Planet%20Language.ttf" target="_blank">Download Aza'raan.ttf</a></li>
-  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectstyle.css" target="_blank">Font CSS</a></li>
-  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectjava.js" target="_blank">Font JS</a></li>
-  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectoverride.js" target="_blank">Override Script</a></li>
-  <li><a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Manifest.json" target="_blank">Manifest.json</a></li>
+<ul class="button-list">
+  <li>
+    <div class="button-wrapper">
+      <a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza%27raan%20Planet%20Language.ttf" target="_blank">
+        Download Aza'raan.ttf
+      </a>
+      <hr>
+    </div>
+  </li>
+  <li>
+    <div class="button-wrapper">
+      <a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectstyle.css" target="_blank">
+        Font CSS
+      </a>
+      <hr>
+    </div>
+  </li>
+  <li>
+    <div class="button-wrapper">
+      <a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectjava.js" target="_blank">
+        Font JS
+      </a>
+      <hr>
+    </div>
+  </li>
+  <li>
+    <div class="button-wrapper">
+      <a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/languageprojectoverride.js" target="_blank">
+        Override Script
+      </a>
+      <hr>
+    </div>
+  </li>
+  <li>
+    <div class="button-wrapper">
+      <a class="button" href="https://raw.githubusercontent.com/thetransgendertrex/website/main/Manifest.json" target="_blank">
+        Manifest.json
+      </a>
+    </div>
+  </li>
 </ul>
+
 
 </section>
 
