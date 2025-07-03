@@ -1935,11 +1935,27 @@ footer {
   border-collapse: collapse;
   overflow-x: auto;
   display: block;
-  padding: 0;
   text-align: center;
-  position: relative;
-  left: 45%;
+  padding: 20px; /* full table box padding */
 }
+
+/* === Table headers serif === */
+.section table th {
+  font-family: serif;
+}
+
+/* === Table cells remain Times New Roman === */
+.section table td {
+  font-family: "Times New Roman", serif;
+  padding: 10px;
+  word-break: break-word;
+}
+
+/* === Scrollbars for overflow === */
+.section table {
+  overflow-x: auto;
+}
+
 
 .section table th,
 .section table td {
@@ -1951,15 +1967,6 @@ footer {
   border: 1px solid transparent;
 }
 
-/* === Scrollbars for overflow === */
-.section table {
-  overflow-x: auto;
-}
-
-/* === Table headers serif === */
-.section table th {
-  font-family: serif;
-}
 /* === Home === */
 .section.home table th,
 .section.home table td {
@@ -2121,9 +2128,10 @@ footer {
 
 
 /* ===================================================================================================
- * FOOTER
+ * FOOTER (Updated)
  * ===================================================================================================*/
 footer {
+  position: relative;
   background: rgba(0, 0, 0, 0.3);
   color: #A63A2C;
   text-shadow:
@@ -2134,8 +2142,12 @@ footer {
   text-align: center;
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
+  width: 55%;           /* 100% - (35% left + 10% right) */
+  margin-left: 35%;
+  margin-right: 10%;
   z-index: 1000;
 }
+
 
 
 /* === Button List & Wrappers === */
@@ -2168,7 +2180,7 @@ body[data-doc-name*="index"] {
 span[style*="Comic Sans MS"],
 *[style*="Comic Sans MS"] {
   font-family: 'Comic Sans MS', cursive !important;
-  font-size: 22x !important;
+  font-size: 22px !important;
 }
 
 @media screen and (max-width: 1024px) {
@@ -2326,7 +2338,6 @@ span[style*="Comic Sans MS"],
 .button {
   touch-action: manipulation;
 }
-
 
 </style>
 <!-- Sidebar Menu -->
@@ -7225,117 +7236,64 @@ rakhemalo</span></td>
 </section>
 </body>
 
-<!-- 🛡️ Support -->
+<!-- 🛡️ Support Section -->
 <section class="section support" data-section="support">
   <div class="container">
     <div class="section-heading">
       <main id="support-content"></main>
     </div>
+
     <h2>🌌 Thank You for Supporting Aza’ra</h2>
     <p>
       Your donations help maintain this project, its language, glyphs, and story.<br>
       Whether you’re a linguist, gamer, worldbuilder, or dreamer — your curiosity means everything.<br>
       You’re now part of Aza’ra’s living legacy — a gift of story, structure, and survival.
     </p>
-<p>
-  💙 If you’d rather donate specific items I need instead of funds,<br>
-  you can visit my
-  <a href="https://www.linktr.ee/thetransgendertrex" 
-     target="_blank" 
-     rel="noopener noreferrer" 
-     class="button">
-     Official Wishlists
-  </a>.
-</p>
-        <p>
-          💜 Support the creator and learn more about the lore, linguistic design, and metaphysical themes —<br>
-          <strong>William Blake Saville</strong> (aka <code>#TheTransgenderTRex</code>) — an autistic, low-income, bedridden trans man.
-        </p>
 
-        <noscript>
-          <p>JavaScript is required to process secure donations. Please enable JavaScript.</p>
-        </noscript>
+    <p>
+      💙 If you’d rather donate specific items I need instead of funds,<br>
+      you can visit my
+      <a href="https://www.linktr.ee/thetransgendertrex"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="button">
+         Official Wishlists
+      </a>.
+    </p>
 
-        <!-- ✅ donations.js will build the secure form here -->
-        <div id="donation-module-mount"></div>
+    <p>
+      💜 Support the creator and learn more about the lore, linguistic design, and metaphysical themes —<br>
+      <strong>William Blake Saville</strong> (aka <code>#TheTransgenderTRex</code>) — an autistic, low-income, bedridden trans man.
+    </p>
 
-<p>
-  <label>Donation Amount (USD): 
-    <input type="number" id="donation-amount" placeholder="Amount in USD" min="1" step="1" />
-  </label>
-</p>
+    <noscript>
+      <p>JavaScript is required to process secure donations. Please enable JavaScript.</p>
+    </noscript>
 
-<div class="donation-intervals">
-  <button type="button" class="button interval-btn" data-interval="one_time">One-time</button>
-  <button type="button" class="button interval-btn" data-interval="weekly">Weekly</button>
-  <button type="button" class="button interval-btn" data-interval="monthly">Monthly</button>
-  <button type="button" class="button interval-btn" data-interval="3months">Every 3 Months</button>
-  <button type="button" class="button interval-btn" data-interval="6months">Every 6 Months</button>
-  <button type="button" class="button interval-btn" data-interval="yearly">Yearly</button>
-</div>
+    <!-- ✅ Donation Inputs -->
+    <div id="donation-module-mount"></div>
 
-<p>
-  <button id="donate-btn" class="button">Donate & Support</button>
-  <div id="donation-status"></div>
-</p>
-  <!-- ✅ Load donations.js from GitHub -->
-  <script type="module">
-    import { initDonations } from "https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js";
-    initDonations();
-  </script>
+    <p>
+      <label>Donation Amount (USD):
+        <input type="number" id="donation-amount" placeholder="Amount in USD" min="1" step="1" />
+      </label>
+    </p>
 
-</body>
+    <div class="donation-intervals">
+      <button type="button" class="button interval-btn" data-interval="one_time">One-time</button>
+      <button type="button" class="button interval-btn" data-interval="weekly">Weekly</button>
+      <button type="button" class="button interval-btn" data-interval="monthly">Monthly</button>
+      <button type="button" class="button interval-btn" data-interval="3months">Every 3 Months</button>
+      <button type="button" class="button interval-btn" data-interval="6months">Every 6 Months</button>
+      <button type="button" class="button interval-btn" data-interval="yearly">Yearly</button>
+    </div>
 
-  </main>
-<footer>
-  <hr>
-  <p>© Aza’ra™ and Aza’raan™ Language System — Crafted with purpose by William Blake Saville (<code>#TheTransgenderTRex</code>)</p>
-</footer>
+    <p>
+      <button id="donate-btn" class="button">Donate & Support</button>
+    </p>
+    <div id="donation-status"></div>
+  </div>
+</section>
 
-  <!-- ✅ Load pages dynamically -->
-  <script type="module">
-    const pages = [
-      { id: 'index', url: 'https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/index.html' }
-    ];
-
-    pages.forEach(page => {
-      fetch(`https://raw.githubusercontent.com/thetransgendertrex/website/main/${page.url}`)
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById(`${page.id}-content`).innerHTML = html;
-        });
-    });
-
-    // Load donations JS
-    import('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js')
-      .then(m => m.initDonations())
-      .catch(console.error);
-
-    // Router + Glow
-    const header = document.querySelector('header.site-header');
-    const nav = header.querySelector('nav');
-    const hamburger = header.querySelector('.hamburger');
-    const navButtons = header.querySelectorAll('.nav-button');
-
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active', 'glow'));
-      const page = document.getElementById(id);
-      if (page) {
-        page.classList.add('active', 'glow');
-        setTimeout(() => page.classList.remove('glow'), 3000);
-      }
-    }
-
-    navButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = [...btn.classList].find(cls => cls !== 'nav-button');
-        if (id) showPage(id);
-        if (window.innerWidth <= 768) header.classList.remove('open');
-      });
-    });
-
-    hamburger.addEventListener('click', () => header.classList.toggle('open'));
-    showPage('index');
-  </script>
-</body>
-</html>
+<!-- ✅ Load donations.js as plain script -->
+<script src="https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js"></script>
