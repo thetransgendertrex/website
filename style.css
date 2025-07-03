@@ -53,20 +53,20 @@ body::after {
 body {
   font-family: 'Pridi', serif; /* Or Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
   overflow-x: hidden;
-  color: #000000; /* Light mode default */
+  color: #ffffff; /* Light mode default */
 }
 
 p {
   font-size: 16px;
   line-height: 24px;
-  color: #000000; /* Light mode default */
+  color: #ffffff; /* Light mode default */
 }
 
 h4 {
   font-size: 26px;
   font-weight: 700;
   font-family: 'Cinzel Decorative', serif;
-  color: #000000; /* Light mode default */
+  color: #ffffff; /* Light mode default */
   letter-spacing: 0.25px;
 }
 
@@ -145,156 +145,329 @@ html {
   margin: 0 auto;
 }
 
+/* Example for all sections — same structure, colors unique per section */
+
 /* 🏠 Home */
 .section.home {
   background: transparent;
-  color: #ECEEF1;
-  text-shadow: 2px 2px #1a114b;
+  color: #fff; /* Body text white */
   font-family: 'Cinzel Decorative', serif;
   border-bottom: 2px solid #ECEEF1;
 }
 
+.section.home h1,
+.section.home h2,
+.section.home h3,
+.section.home h4,
+.section.home h5,
+.section.home h6 {
+  color: #ECEEF1;
+  text-shadow: 2px 2px #1a114b;
+}
+
 .section.home table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #1a114b;
+  border-collapse: collapse;
+}
+
+.section.home table td,
+.section.home table th {
+  border: 2px solid #1a114b;
+  padding: 10px;
 }
 
 /* 📖 Lore */
 .section.lore {
   background: transparent;
-  color: #0075FF;
-  text-shadow: 2px 2px #0c4530;
+  color: #fff;
   font-family: 'Uncial Antiqua', cursive;
   border-bottom: 2px solid #0075FF;
 }
 
+.section.lore h1,
+.section.lore h2,
+.section.lore h3,
+.section.lore h4,
+.section.lore h5,
+.section.lore h6 {
+  color: #0075FF;
+  text-shadow: 2px 2px #0c4530;
+}
+
 .section.lore table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #0c4530;
+  border-collapse: collapse;
+}
+
+.section.lore table td,
+.section.lore table th {
+  border: 2px solid #0c4530;
+  padding: 10px;
 }
 
 /* 🧭 Navigation */
 .section.navigation {
   background: transparent;
-  color: #C5ECFF;
-  text-shadow: 2px 2px #342c61;
+  color: #fff;
   font-family: 'Pridi', serif;
   border-bottom: 2px solid #C5ECFF;
 }
 
+.section.navigation h1,
+.section.navigation h2,
+.section.navigation h3,
+.section.navigation h4,
+.section.navigation h5,
+.section.navigation h6 {
+  color: #C5ECFF;
+  text-shadow: 2px 2px #342c61;
+}
+
 .section.navigation table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #342c61;
+  border-collapse: collapse;
+}
+
+.section.navigation table td,
+.section.navigation table th {
+  border: 2px solid #342c61;
+  padding: 10px;
 }
 
 /* 🅰️ Font Project */
 .section.font-project {
   background: transparent;
-  color: #C1FF8A;
-  text-shadow: 2px 2px #572a45;
+  color: #fff;
   font-family: 'Pridi', serif;
   border-bottom: 2px solid #C1FF8A;
 }
 
+.section.font-project h1,
+.section.font-project h2,
+.section.font-project h3,
+.section.font-project h4,
+.section.font-project h5,
+.section.font-project h6 {
+  color: #C1FF8A;
+  text-shadow: 2px 2px #572a45;
+}
+
 .section.font-project table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #572a45;
+  border-collapse: collapse;
+}
+
+.section.font-project table td,
+.section.font-project table th {
+  border: 2px solid #572a45;
+  padding: 10px;
 }
 
 /* 🗡️ MMORPG */
 .section.mmorpg {
   background: transparent;
-  color: #FBC96D;
-  text-shadow: 2px 2px #014d4e;
+  color: #fff;
   font-family: 'Cinzel Decorative', serif;
   border-bottom: 2px solid #FBC96D;
 }
 
+.section.mmorpg h1,
+.section.mmorpg h2,
+.section.mmorpg h3,
+.section.mmorpg h4,
+.section.mmorpg h5,
+.section.mmorpg h6 {
+  color: #FBC96D;
+  text-shadow: 2px 2px #014d4e;
+}
+
 .section.mmorpg table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #014d4e;
+  border-collapse: collapse;
+}
+
+.section.mmorpg table td,
+.section.mmorpg table th {
+  border: 2px solid #014d4e;
+  padding: 10px;
 }
 
 /* 📚 Book Series */
 .section.book-series {
   background: transparent;
-  color: #D88EBA;
-  text-shadow: 2px 2px #78581f;
+  color: #fff;
   font-family: 'Uncial Antiqua', cursive;
   border-bottom: 2px solid #D88EBA;
 }
 
+.section.book-series h1,
+.section.book-series h2,
+.section.book-series h3,
+.section.book-series h4,
+.section.book-series h5,
+.section.book-series h6 {
+  color: #D88EBA;
+  text-shadow: 2px 2px #78581f;
+}
+
 .section.book-series table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #78581f;
+  border-collapse: collapse;
+}
+
+.section.book-series table td,
+.section.book-series table th {
+  border: 2px solid #78581f;
+  padding: 10px;
 }
 
 /* 🕰️ Timekeeping */
 .section.timekeeping {
   background: transparent;
-  color: #DCE1E8;
-  text-shadow: 2px 2px #A63A2C;
+  color: #fff;
   font-family: 'Cinzel Decorative', serif;
   border-bottom: 2px solid #DCE1E8;
 }
 
+.section.timekeeping h1,
+.section.timekeeping h2,
+.section.timekeeping h3,
+.section.timekeeping h4,
+.section.timekeeping h5,
+.section.timekeeping h6 {
+  color: #DCE1E8;
+  text-shadow: 2px 2px #A63A2C;
+}
+
 .section.timekeeping table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #A63A2C;
+  border-collapse: collapse;
+}
+
+.section.timekeeping table td,
+.section.timekeeping table th {
+  border: 2px solid #A63A2C;
+  padding: 10px;
 }
 
 /* 📜 Language Rules */
 .section.language-rules {
   background: transparent;
-  color: #8FE9F0;
-  text-shadow: 2px 2px #7A7C86;
+  color: #fff;
   font-family: 'Pridi', serif;
   border-bottom: 2px solid #8FE9F0;
 }
 
+.section.language-rules h1,
+.section.language-rules h2,
+.section.language-rules h3,
+.section.language-rules h4,
+.section.language-rules h5,
+.section.language-rules h6 {
+  color: #8FE9F0;
+  text-shadow: 2px 2px #7A7C86;
+}
+
 .section.language-rules table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #7A7C86;
+  border-collapse: collapse;
+}
+
+.section.language-rules table td,
+.section.language-rules table th {
+  border: 2px solid #7A7C86;
+  padding: 10px;
 }
 
 /* 🗂️ Lexicon */
 .section.lexicon {
   background: transparent;
-  color: #7A7C86;
-  text-shadow: 2px 2px #1a114b;
+  color: #fff;
   font-family: 'Uncial Antiqua', cursive;
   border-bottom: 2px solid #7A7C86;
 }
 
+.section.lexicon h1,
+.section.lexicon h2,
+.section.lexicon h3,
+.section.lexicon h4,
+.section.lexicon h5,
+.section.lexicon h6 {
+  color: #7A7C86;
+  text-shadow: 2px 2px #1a114b;
+}
+
 .section.lexicon table {
-  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border: 5px solid #1a114b;
+  border-collapse: collapse;
+}
+
+.section.lexicon table td,
+.section.lexicon table th {
+  border: 2px solid #1a114b;
+  padding: 10px;
 }
 
 /* 🛡️ Support */
 .section.support {
   background: transparent;
-  color: #FBC96D;
-  text-shadow: 2px 2px #342c61;
+  color: #fff;
   font-family: 'Pridi', serif;
   border-bottom: 2px solid #FBC96D;
 }
 
-.section.support table {
-  background: rgba(255, 255, 255, 0.3);
-  border: 5px solid #342c61;
+.section.support h1,
+.section.support h2,
+.section.support h3,
+.section.support h4,
+.section.support h5,
+.section.support h6 {
+  color: #FBC96D;
+  text-shadow: 2px 2px #342c61;
 }
 
-/* Footer (text only) */
+.section.support table {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 5px solid #342c61;
+  border-collapse: collapse;
+}
+
+.section.support table td,
+.section.support table th {
+  border: 2px solid #342c61;
+  padding: 10px;
+}
+
+/* ✅ Footer with text-shadow */
 footer {
   background: rgba(0, 0, 0, 0.3);
-  color: #9381FF;
-  text-shadow: 2px 2px #A63A2C;
+  color: #fff;
+  text-shadow: 1px 1px #A63A2C;
   text-align: center;
   font-size: 0.75rem;
   padding: 0.5rem 1rem;
   z-index: 1000;
 }
+
 
 /* ──────────────✦ Sections: Link Colors + Shadow Accent ✦────────────── */
 
