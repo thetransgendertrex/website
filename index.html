@@ -223,11 +223,6 @@ Customized with layered Moonpunk background and custom fonts.
 
 /* ──────────────✦ Layered Background ✦────────────── */
 
-/* Make sure base body background is black so no gaps show */
-body {
-  background-color: #000;
-}
-
 /* Fixed background image behind everything */
 body::before {
   content: "";
@@ -237,23 +232,23 @@ body::before {
   width: 100vw;
   height: 100vh;
   z-index: -2;
-  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg");
+  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   filter: brightness(0.85) contrast(1.05);
 }
 
-/* Black overlay with 0.3 opacity — scrolls with content */
+/* Subtle dark gradient overlay for readability — scrolls with content */
 body::after {
   content: "";
-  position: fixed;  /* Important: fixed makes it cover the viewport, stay in place while content scrolls over it */
+  position: absolute;   
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background: rgba(0, 0, 0, 0.3);
+  background: radial-gradient(ellipse at center, rgba(11, 29, 38, 0.5) 0%, rgba(4, 13, 18, 0.8) 100%);
   pointer-events: none;
 }
 
@@ -261,22 +256,22 @@ body::after {
 /* ──────────────✦ Typography & Basics ✦────────────── */
 
 body {
-  font-family: 'Pridi', serif; /* Or Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
+  font-family: 'Pridi', serif; /* You can change to Cinzel Decorative, Uncial Antiqua, Pacifico as needed */
   overflow-x: hidden;
-  color: #ffffff; /* Light mode default */
+  color: #fff;
 }
 
 p {
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff; /* Light mode default */
+  color: #fff;
 }
 
 h4 {
   font-size: 26px;
   font-weight: 700;
   font-family: 'Cinzel Decorative', serif;
-  color: #ffffff; /* Light mode default */
+  color: #fff;
   letter-spacing: 0.25px;
 }
 
@@ -305,22 +300,6 @@ ul {
 
 ul li {
   display: inline-block;
-}
-
-/* ──────────────✦ Dark Mode Overrides ✦────────────── */
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #ffffff;
-  }
-
-  p {
-    color: #ffffff;
-  }
-
-  h4 {
-    color: #ffffff;
-  }
 }
 
 /* ──────────────✦ Box Sizing ✦────────────── */
@@ -355,384 +334,114 @@ html {
   margin: 0 auto;
 }
 
-/* Example for all sections — same structure, colors unique per section */
+/* ──────────────✦ Navigation ✦────────────── */
 
-/* 🏠 Home */
-.section.home {
-  background: transparent;
-  color: #fff; /* Body text white */
-  font-family: 'Cinzel Decorative', serif;
-  border-bottom: 2px solid #ECEEF1;
-}
-
-.section.home h1,
-.section.home h2,
-.section.home h3,
-.section.home h4,
-.section.home h5,
-.section.home h6 {
-  color: #ECEEF1;
-  text-shadow: 2px 2px #1a114b;
-}
-
-.section.home table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #1a114b;
-  border-collapse: collapse;
-}
-
-.section.home table td,
-.section.home table th {
-  border: 2px solid #1a114b;
-  padding: 10px;
-}
-
-/* 📖 Lore */
-.section.lore {
-  background: transparent;
-  color: #fff;
-  font-family: 'Uncial Antiqua', cursive;
-  border-bottom: 2px solid #0075FF;
-}
-
-.section.lore h1,
-.section.lore h2,
-.section.lore h3,
-.section.lore h4,
-.section.lore h5,
-.section.lore h6 {
-  color: #0075FF;
-  text-shadow: 2px 2px #0c4530;
-}
-
-.section.lore table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #0c4530;
-  border-collapse: collapse;
-}
-
-.section.lore table td,
-.section.lore table th {
-  border: 2px solid #0c4530;
-  padding: 10px;
-}
-
-/* 🧭 Navigation */
-.section.navigation {
-  background: transparent;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #C5ECFF;
-}
-
-.section.navigation h1,
-.section.navigation h2,
-.section.navigation h3,
-.section.navigation h4,
-.section.navigation h5,
-.section.navigation h6 {
-  color: #C5ECFF;
-  text-shadow: 2px 2px #342c61;
-}
-
-.section.navigation table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #342c61;
-  border-collapse: collapse;
-}
-
-.section.navigation table td,
-.section.navigation table th {
-  border: 2px solid #342c61;
-  padding: 10px;
-}
-
-/* 🅰️ Font Project */
-.section.font-project {
-  background: transparent;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #C1FF8A;
-}
-
-.section.font-project h1,
-.section.font-project h2,
-.section.font-project h3,
-.section.font-project h4,
-.section.font-project h5,
-.section.font-project h6 {
-  color: #C1FF8A;
-  text-shadow: 2px 2px #572a45;
-}
-
-.section.font-project table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #572a45;
-  border-collapse: collapse;
-}
-
-.section.font-project table td,
-.section.font-project table th {
-  border: 2px solid #572a45;
-  padding: 10px;
-}
-
-/* 🗡️ MMORPG */
-.section.mmorpg {
-  background: transparent;
-  color: #fff;
-  font-family: 'Cinzel Decorative', serif;
-  border-bottom: 2px solid #FBC96D;
-}
-
-.section.mmorpg h1,
-.section.mmorpg h2,
-.section.mmorpg h3,
-.section.mmorpg h4,
-.section.mmorpg h5,
-.section.mmorpg h6 {
-  color: #FBC96D;
-  text-shadow: 2px 2px #014d4e;
-}
-
-.section.mmorpg table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #014d4e;
-  border-collapse: collapse;
-}
-
-.section.mmorpg table td,
-.section.mmorpg table th {
-  border: 2px solid #014d4e;
-  padding: 10px;
-}
-
-/* 📚 Book Series */
-.section.book-series {
-  background: transparent;
-  color: #fff;
-  font-family: 'Uncial Antiqua', cursive;
-  border-bottom: 2px solid #D88EBA;
-}
-
-.section.book-series h1,
-.section.book-series h2,
-.section.book-series h3,
-.section.book-series h4,
-.section.book-series h5,
-.section.book-series h6 {
-  color: #D88EBA;
-  text-shadow: 2px 2px #78581f;
-}
-
-.section.book-series table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #78581f;
-  border-collapse: collapse;
-}
-
-.section.book-series table td,
-.section.book-series table th {
-  border: 2px solid #78581f;
-  padding: 10px;
-}
-
-/* 🕰️ Timekeeping */
-.section.timekeeping {
-  background: transparent;
-  color: #fff;
-  font-family: 'Cinzel Decorative', serif;
-  border-bottom: 2px solid #DCE1E8;
-}
-
-.section.timekeeping h1,
-.section.timekeeping h2,
-.section.timekeeping h3,
-.section.timekeeping h4,
-.section.timekeeping h5,
-.section.timekeeping h6 {
-  color: #DCE1E8;
-  text-shadow: 2px 2px #A63A2C;
-}
-
-.section.timekeeping table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #A63A2C;
-  border-collapse: collapse;
-}
-
-.section.timekeeping table td,
-.section.timekeeping table th {
-  border: 2px solid #A63A2C;
-  padding: 10px;
-}
-
-/* 📜 Language Rules */
-.section.language-rules {
-  background: transparent;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #8FE9F0;
-}
-
-.section.language-rules h1,
-.section.language-rules h2,
-.section.language-rules h3,
-.section.language-rules h4,
-.section.language-rules h5,
-.section.language-rules h6 {
-  color: #8FE9F0;
-  text-shadow: 2px 2px #7A7C86;
-}
-
-.section.language-rules table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #7A7C86;
-  border-collapse: collapse;
-}
-
-.section.language-rules table td,
-.section.language-rules table th {
-  border: 2px solid #7A7C86;
-  padding: 10px;
-}
-
-/* 🗂️ Lexicon */
-.section.lexicon {
-  background: transparent;
-  color: #fff;
-  font-family: 'Uncial Antiqua', cursive;
-  border-bottom: 2px solid #7A7C86;
-}
-
-.section.lexicon h1,
-.section.lexicon h2,
-.section.lexicon h3,
-.section.lexicon h4,
-.section.lexicon h5,
-.section.lexicon h6 {
-  color: #7A7C86;
-  text-shadow: 2px 2px #1a114b;
-}
-
-.section.lexicon table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #1a114b;
-  border-collapse: collapse;
-}
-
-.section.lexicon table td,
-.section.lexicon table th {
-  border: 2px solid #1a114b;
-  padding: 10px;
-}
-
-/* 🛡️ Support */
-.section.support {
-  background: transparent;
-  color: #fff;
-  font-family: 'Pridi', serif;
-  border-bottom: 2px solid #FBC96D;
-}
-
-.section.support h1,
-.section.support h2,
-.section.support h3,
-.section.support h4,
-.section.support h5,
-.section.support h6 {
-  color: #FBC96D;
-  text-shadow: 2px 2px #342c61;
-}
-
-.section.support table {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 5px solid #342c61;
-  border-collapse: collapse;
-}
-
-.section.support table td,
-.section.support table th {
-  border: 2px solid #342c61;
-  padding: 10px;
-}
-
-/* ✅ Footer with text-shadow */
-footer {
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 1px 1px #A63A2C;
+.main-nav {
   text-align: center;
-  font-size: 0.75rem;
-  padding: 0.5rem 1rem;
-  z-index: 1000;
 }
 
-
-/* ──────────────✦ Sections: Link Colors + Shadow Accent ✦────────────── */
-
-.menu a.home {
-  color: #ECEEF1;
-  text-shadow: 2px 2px #1a114b;
+.main-nav li {
+  display: block;
 }
 
-.menu a.lore {
-  color: #0075FF;
-  text-shadow: 2px 2px #0c4530;
+.main-nav li:last-child a {
+  border-bottom: 2px solid #fff;
 }
 
-.menu a.navigation {
-  color: #C5ECFF;
-  text-shadow: 2px 2px #342c61;
+.main-nav li a {
+  height: 70px;
+  line-height: 70px;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Times New Roman', serif;
+  color: #fff;
+  width: 100%;
+  transition: all 0.5s;
+  border-top: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.3); /* Black with 30% opacity */
 }
 
-.menu a.font-project {
-  color: #C1FF8A;
-  text-shadow: 2px 2px #572a45;
+.main-nav li:hover a,
+.main-nav li.active a {
+  background: #000; /* Fully black on hover */
+  color: #fff;
 }
 
-.menu a.mmorpg {
-  color: #FBC96D;
-  text-shadow: 2px 2px #014d4e;
+/* ──────────────✦ Sidebar Menu ✦────────────── */
+
+.menu {
+  text-align: center;
+  font-family: 'Times New Roman', serif;
+  left: 10%;
+  background-color: rgba(0, 0, 0, 0.3); /* Always black with 30% opacity */
+  color: #fff;
+  box-sizing: border-box;
+  height: 100vh;
+  max-height: 100vh !important;
+  max-width: 80vw !important;
+  min-width: 45px !important;
+  outline: none;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  padding: 0;
+  position: fixed !important;
+  top: 0;
+  width: 20%;
+  z-index: 9999 !important;
+  will-change: transform;
+  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  transition: transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  -webkit-overflow-scrolling: touch;
 }
 
-.menu a.book-series {
-  color: #D88EBA;
-  text-shadow: 2px 2px #78581f;
+.menu a {
+  display: block;
+  text-decoration: none;
+  padding: 20px 0;
+  font-size: 18px;
+  color: inherit;
+  transition: all 0.3s;
 }
 
-.menu a.timekeeping {
-  color: #DCE1E8;
-  text-shadow: 2px 2px #A63A2C;
+.menu a:hover {
+  filter: brightness(0.85);
 }
 
-.menu a.language-rules {
-  color: #8FE9F0;
-  text-shadow: 2px 2px #7A7C86;
+.menu::-webkit-scrollbar {
+  display: none;
 }
 
-.menu a.lexicon {
-  color: #7A7C86;
-  text-shadow: 2px 2px #1a114b;
+/* ──────────────✦ Sidebar Toggle ✦────────────── */
+
+#menu-toggle,
+#menu-close {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
-.menu a.support {
-  color: #FBC96D;
-  text-shadow: 2px 2px #342c61;
-}
+/* ──────────────✦ Section Link Shadows ✦────────────── */
 
-
-
+.menu a.home { text-shadow: 2px 2px #1a114b; color: #ECEEF1; }
+.menu a.lore { text-shadow: 2px 2px #0c4530; color: #0075FF; }
+.menu a.navigation { text-shadow: 2px 2px #342c61; color: #C5ECFF; }
+.menu a.font-project { text-shadow: 2px 2px #572a45; color: #C1FF8A; }
+.menu a.mmorpg { text-shadow: 2px 2px #014d4e; color: #FBC96D; }
+.menu a.book-series { text-shadow: 2px 2px #78581f; color: #D88EBA; }
+.menu a.timekeeping { text-shadow: 2px 2px #A63A2C; color: #DCE1E8; }
+.menu a.language-rules { text-shadow: 2px 2px #7A7C86; color: #8FE9F0; }
+.menu a.lexicon { text-shadow: 2px 2px #1a114b; color: #7A7C86; }
+.menu a.support { text-shadow: 2px 2px #342c61; color: #FBC96D; }
 
 /* ──────────────✦ Base Section Layout ✦────────────── */
 
@@ -828,39 +537,157 @@ body {
   font-size: 16px;
   letter-spacing: 0.5px;
 }
-/* ========== Universal Visit/Download Buttons ========== */
-.visit-download-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 40px auto;
-  justify-content: center;
-  max-width: 90%;
+
+/* 🏠 Home */
+.section.home {
+  background: transparent;
+  color: #ECEEF1;
+  text-shadow: 2px 2px #1a114b;
+  font-family: 'Cinzel Decorative', serif;
+  border-bottom: 2px solid #ECEEF1;
 }
 
-.visit-download-buttons button {
-  background-color: #8FE9F0;
-  color: #000;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 12px 20px;
-  border: 2px solid #7A7C86;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px #014d4e;
+.section.home table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #1a114b;
 }
 
-.visit-download-buttons button:hover,
-.visit-download-buttons button:focus {
-  background-color: #000;
+/* 📖 Lore */
+.section.lore {
+  background: transparent;
+  color: #0075FF;
+  text-shadow: 2px 2px #0c4530;
+  font-family: 'Uncial Antiqua', cursive;
+  border-bottom: 2px solid #0075FF;
+}
+
+.section.lore table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #0c4530;
+}
+
+/* 🧭 Navigation */
+.section.navigation {
+  background: transparent;
+  color: #C5ECFF;
+  text-shadow: 2px 2px #342c61;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #C5ECFF;
+}
+
+.section.navigation table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #342c61;
+}
+
+/* 🅰️ Font Project */
+.section.font-project {
+  background: transparent;
+  color: #C1FF8A;
+  text-shadow: 2px 2px #572a45;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #C1FF8A;
+}
+
+.section.font-project table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #572a45;
+}
+
+/* 🗡️ MMORPG */
+.section.mmorpg {
+  background: transparent;
+  color: #FBC96D;
+  text-shadow: 2px 2px #014d4e;
+  font-family: 'Cinzel Decorative', serif;
+  border-bottom: 2px solid #FBC96D;
+}
+
+.section.mmorpg table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #014d4e;
+}
+
+/* 📚 Book Series */
+.section.book-series {
+  background: transparent;
+  color: #D88EBA;
+  text-shadow: 2px 2px #78581f;
+  font-family: 'Uncial Antiqua', cursive;
+  border-bottom: 2px solid #D88EBA;
+}
+
+.section.book-series table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #78581f;
+}
+
+/* 🕰️ Timekeeping */
+.section.timekeeping {
+  background: transparent;
+  color: #DCE1E8;
+  text-shadow: 2px 2px #A63A2C;
+  font-family: 'Cinzel Decorative', serif;
+  border-bottom: 2px solid #DCE1E8;
+}
+
+.section.timekeeping table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #A63A2C;
+}
+
+/* 📜 Language Rules */
+.section.language-rules {
+  background: transparent;
   color: #8FE9F0;
-  outline: none;
-  transform: translateY(-2px);
+  text-shadow: 2px 2px #7A7C86;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #8FE9F0;
 }
-/* ──────────────✦ Section Specific Styles ✦────────────── */
 
+.section.language-rules table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #7A7C86;
+}
+
+/* 🗂️ Lexicon */
+.section.lexicon {
+  background: transparent;
+  color: #7A7C86;
+  text-shadow: 2px 2px #1a114b;
+  font-family: 'Uncial Antiqua', cursive;
+  border-bottom: 2px solid #7A7C86;
+}
+
+.section.lexicon table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #1a114b;
+}
+
+/* 🛡️ Support */
+.section.support {
+  background: transparent;
+  color: #FBC96D;
+  text-shadow: 2px 2px #342c61;
+  font-family: 'Pridi', serif;
+  border-bottom: 2px solid #FBC96D;
+}
+
+.section.support table {
+  background: rgba(255, 255, 255, 0.3);
+  border: 5px solid #342c61;
+}
+
+/* Footer (text only) */
+footer {
+  background: rgba(0, 0, 0, 0.3);
+  color: #9381FF;
+  text-shadow: 2px 2px #A63A2C;
+  text-align: center;
+  font-size: 0.75rem;
+  padding: 0.5rem 1rem;
+  z-index: 1000;
+}
 
 /* ──────────────✦ Gradient Overlay ✦────────────── */
 
@@ -1021,12 +848,11 @@ body::after {
   flex: 1 1 auto;
 }
 
-/* ===================================================================================================
- * NAVIGATION
- * ===================================================================================================*/
+/* ──────────────✦ Navigation ✦────────────── */
 
 .main-nav {
   text-align: center;
+  font-family: 'Times New Roman', serif;
 }
 
 .main-nav li {
@@ -1043,28 +869,28 @@ body::after {
   display: inline-block;
   font-size: 16px;
   font-weight: 700;
-  font-family: 'Uncial Antiqua', cursive;
+  font-family: 'Times New Roman', serif;
   color: #fff;
   width: 100%;
   transition: all 0.5s;
   border-top: 2px solid #fff;
+  background: rgba(0, 0, 0, 0.3); /* Black nav bar with 30% opacity */
 }
 
 .main-nav li:hover a,
 .main-nav li.active a {
   background: #fff;
-  color: #36888c;
+  color: #000;
 }
 
-/* ===================================================================================================
- * SIDEBAR MENU
- * ===================================================================================================*/
+/* ──────────────✦ Sidebar Menu ✦────────────── */
 
 .menu {
   text-align: center;
-  font-family: 'Uncial Antiqua', cursive;
+  font-family: 'Times New Roman', serif;
   left: 10%;
-  background-color: #000000;
+  background: rgba(0, 0, 0, 0.3); /* Always black with 30% opacity */
+  color: #fff;
   box-sizing: border-box;
   height: 100vh;
   max-width: 80vw;
@@ -1097,14 +923,13 @@ body::after {
   display: none;
 }
 
-/* ===================================================================================================
- * SIDEBAR TOGGLE BUTTONS
- * ===================================================================================================*/
+/* ──────────────✦ Sidebar Toggle Buttons ✦────────────── */
 
 #menu-toggle,
 #menu-close {
   cursor: pointer;
-  background-color: #000000;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
   width: 60px;
   height: 60px;
   text-align: center;
@@ -1116,50 +941,21 @@ body::after {
   z-index: 999;
 }
 
-/* ===================================================================================================
- * SECTION LINKS WITH TEXT SHADOWS
- * ===================================================================================================*/
+/* ──────────────✦ Section Links with Text Shadows ✦────────────── */
 
-.menu a.home { text-shadow: 2px 2px #ECEEF1; }
-.menu a.lore { text-shadow: 2px 2px #0075FF; }
-.menu a.navigation { text-shadow: 2px 2px #C5ECFF; }
-.menu a.font-project { text-shadow: 2px 2px #C1FF8A; }
-.menu a.mmorpg { text-shadow: 2px 2px #FBC96D; }
-.menu a.book-series { text-shadow: 2px 2px #D88EBA; }
-.menu a.timekeeping { text-shadow: 2px 2px #DCE1E8; }
-.menu a.language-rules { text-shadow: 2px 2px #8FE9F0; }
-.menu a.lexicon { text-shadow: 2px 2px #7A7C86; }
-.menu a.support { text-shadow: 2px 2px #FBC96D; }
+.menu a.home { text-shadow: 2px 2px #1a114b; color: #ECEEF1; }
+.menu a.lore { text-shadow: 2px 2px #0c4530; color: #0075FF; }
+.menu a.navigation { text-shadow: 2px 2px #342c61; color: #C5ECFF; }
+.menu a.font-project { text-shadow: 2px 2px #572a45; color: #C1FF8A; }
+.menu a.mmorpg { text-shadow: 2px 2px #014d4e; color: #FBC96D; }
+.menu a.book-series { text-shadow: 2px 2px #78581f; color: #D88EBA; }
+.menu a.timekeeping { text-shadow: 2px 2px #A63A2C; color: #DCE1E8; }
+.menu a.language-rules { text-shadow: 2px 2px #7A7C86; color: #8FE9F0; }
+.menu a.lexicon { text-shadow: 2px 2px #1a114b; color: #7A7C86; }
+.menu a.support { text-shadow: 2px 2px #342c61; color: #FBC96D; }
 
-/* ===================================================================================================
- * DARK MODE
- * ===================================================================================================*/
-
-@media (prefers-color-scheme: dark) {
-  .menu {
-    background-color: #000;
-    color: #fff;
-  }
-
-  #menu-toggle,
-  #menu-close {
-    background-color: #000;
-    color: #fff;
-  }
-
-  .menu a.home { text-shadow: 2px 2px #1a114b; }
-  .menu a.lore { text-shadow: 2px 2px #0c4530; }
-  .menu a.navigation { text-shadow: 2px 2px #342c61; }
-  .menu a.font-project { text-shadow: 2px 2px #572a45; }
-  .menu a.mmorpg { text-shadow: 2px 2px #014d4e; }
-  .menu a.book-series { text-shadow: 2px 2px #78581f; }
-  .menu a.timekeeping { text-shadow: 2px 2px #A63A2C; }
-  .menu a.language-rules { text-shadow: 2px 2px #7A7C86; }
-  .menu a.lexicon { text-shadow: 2px 2px #1a114b; }
-  .menu a.support { text-shadow: 2px 2px #342c61; }
-}
-/* === Comic Sans Override ( HTML page on GitHub) === */
-body[data-doc-name*="index"] {
+/* === Comic Sans Override (index.HTML page on GitHub) === */
+body[data-doc-name*="index"], {
   font-family: 'Comic Sans MS', cursive, sans-serif !important;
 }
 
@@ -1201,8 +997,6 @@ body[data-doc-name*="index"] {
 .menu a {
   transition: background 0.3s, color 0.3s;
 }
-
-
 
 /* ──────────────✦ Responsive: Large Tablet/Desktop Tweaks ✦────────────── */
 @media screen and (max-width: 1680px) {
@@ -1282,14 +1076,7 @@ body[data-doc-name*="index"] {
     font-size: 16px;
   }
 }
-@media (max-width: 845px) {
-  footer {
-    left: 0;  /* sidebar becomes overlay on mobile */
-    width: 100%;
-    font-size: 0.65rem;
-    padding: 0.3rem 0.6rem;
-  }
-}
+
 /* ──────────────✦ Comic Sans Override for Small Screens ✦────────────── */
 @media screen and (max-width: 845px) {
   body {
@@ -1308,53 +1095,6 @@ html, body {
   overflow-x: auto;
   overflow-y: auto;
 }
-/* ========== Universal Visit/Download Buttons ========== */
-.visit-download-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 40px auto;
-  justify-content: center;
-  max-width: 90%;
-}
-
-.visit-download-buttons button {
-  background-color: #8FE9F0;
-  color: #000;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 12px 20px;
-  border: 2px solid #7A7C86;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px #014d4e;
-}
-
-.visit-download-buttons button:hover,
-.visit-download-buttons button:focus {
-  background-color: #000;
-  color: #8FE9F0;
-  outline: none;
-  transform: translateY(-2px);
-}
-
-/* ========== Responsive tweak for small screens ========== */
-@media (max-width: 768px) {
-  .visit-download-buttons {
-    flex-direction: column;
-    gap: 16px;
-    max-width: 95%;
-  }
-
-  .visit-download-buttons button {
-    width: 100%;
-    font-size: 1.1rem;
-  }
-}
-
-
 </style>
 <!-- Sidebar Menu -->
 <div class="responsive-nav">
