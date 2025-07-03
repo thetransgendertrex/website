@@ -17,7 +17,7 @@ Customized with layered Moonpunk background and custom fonts.
 /* === Base Styles === */
 body {
     font-family: "Times New Roman";
-    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)") no-repeat center center fixed;
+    background: black url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated).JPG.jpg") no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
     position: relative;
@@ -34,15 +34,17 @@ body {
 }
 
 /* ===================================================================================================
- * BOX SIZING & UTILITIES
+ * BOX SIZING & UTILITIES (With Explicit Scrollbars)
  * ===================================================================================================*/
 html {
   box-sizing: border-box;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 body {
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 *,
@@ -64,9 +66,8 @@ body {
 .container {
   margin: 0 auto;
 }
-
 /* ===================================================================================================
- * MAIN CONTENT
+ * MAIN CONTENT (Fixed Overflow with Scrollbars)
  * ===================================================================================================*/
 .main-content {
   position: relative;
@@ -76,11 +77,12 @@ body {
   min-height: 100vh;
   padding: 40px;
   text-align: center;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 /* ===================================================================================================
- * UNIVERSAL SECTION LAYOUT
+ * UNIVERSAL SECTION LAYOUT (Fixed Overflow with Scrollbars)
  * ===================================================================================================*/
 .section {
   position: relative;
@@ -90,7 +92,8 @@ body {
   min-height: 100vh;
   padding: 80px 2.5%;
   text-align: center;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
   border-bottom: 3px solid rgba(250, 250, 250, 0.25);
   background: transparent;
 }
@@ -123,12 +126,16 @@ body {
 /* ===================================================================================================
  * TABLES
  * ===================================================================================================*/
+
 table,
 .main-content table {
   width: calc(100% - 0.5in);
   margin: 0.25in auto;
   background: rgba(255, 255, 255, 0.7);
   border-collapse: collapse;
+  overflow-x: auto;
+  overflow-y: auto;
+  display: block; /* Needed to allow overflow on tables */
 }
 
 table td,
@@ -551,26 +558,34 @@ footer {
     color: black !important;
     text-shadow: none !important;
 }
-
-/* ──────────────✦ Section Styles ✦────────────── */
-
+/* === Standardized Section Layout === */
 .section {
+  position: relative;
   background: transparent;
   color: white;
   font-family: "Times New Roman", serif;
+  /* Position and sizing */
+  left: 20%; /* same as sidebar width to not overlap */
+  width: 80%; /* rest of viewport */
+  min-height: 100vh;
+  height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 80px 2.5%;
+  box-sizing: border-box;
 }
 
 /* === Section Headers === */
-.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b, 0 0 2px #1a114b, 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
-.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530, 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
-.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61, 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
-.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45, 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
-.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e, 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
-.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f, 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
-.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C, 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
-.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86, 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
-.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b, 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
-.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61, 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
+.section.home h2 { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
+.section.lore h2 { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
+.section.navigation h2 { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
+.section.font-project h2 { color: #C1FF8A; text-shadow: 0 0 2px #572a45; border-bottom: 2px solid #C1FF8A; }
+.section.mmorpg h2 { color: #FBC96D; text-shadow: 0 0 2px #014d4e; border-bottom: 2px solid #FBC96D; }
+.section.book-series h2 { color: #D88EBA; text-shadow: 0 0 2px #78581f; border-bottom: 2px solid #D88EBA; }
+.section.timekeeping h2 { color: #DCE1E8; text-shadow: 0 0 2px #A63A2C; border-bottom: 2px solid #DCE1E8; }
+.section.language-rules h2 { color: #8FE9F0; text-shadow: 0 0 2px #7A7C86; border-bottom: 2px solid #8FE9F0; }
+.section.lexicon h2 { color: #7A7C86; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #7A7C86; }
+.section.support h2 { color: #FBC96D; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #FBC96D; }
 
 /* === Tables === */
 .section table {
@@ -594,7 +609,7 @@ footer {
   text-shadow: none;
 }
 
-/* === Table Header Colors & Outlines === */
+/* === Table Header Colors === */
 .section.home table th { color: #ECEEF1; text-shadow: 0 0 2px #1a114b; border-bottom: 2px solid #ECEEF1; }
 .section.lore table th { color: #0075FF; text-shadow: 0 0 2px #0c4530; border-bottom: 2px solid #0075FF; }
 .section.navigation table th { color: #C5ECFF; text-shadow: 0 0 2px #342c61; border-bottom: 2px solid #C5ECFF; }
@@ -621,27 +636,38 @@ footer {
 
 /* === Responsive === */
 @media screen and (max-width: 1024px) {
-    nav {
-        width: 100%;
-        height: auto;
-        position: relative;
-    }
-
-    footer {
-        position: relative;
-    }
+  .section {
+    left: 0;
+    width: 100%;
+  }
 }
-/* === Comic Sans Override (INDEX.HTML page on GitHub) === */
+
+/* === Comic Sans Override for index.html === */
 body[data-doc-name*="index"] {
-  font-family: 'Comic Sans MS', !important;
+  font-family: 'Comic Sans MS', cursive !important;
 }
 
-/* === Aza'raan Font Substitution for Comic Sans Only === */
+/* === Force Comic Sans size on all spans or elements === */
+span[style*="Comic Sans MS"],
+*[style*="Comic Sans MS"] {
+  font-family: 'Comic Sans MS', cursive !important;
+  font-size: 18px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  span[style*="Comic Sans MS"],
+  *[style*="Comic Sans MS"] {
+    font-size: 16px !important;
+  }
+}
+
+/* === Aza'raan Font Substitution === */
 .azaraan-word {
   font-family: 'Azaraan', cursive;
   color: #014d4e;
   text-shadow: 0 0 2px var(--cyan);
 }
+
 /* Sidebar open state — slide in */
 .menu {
   transform: translateX(0);
