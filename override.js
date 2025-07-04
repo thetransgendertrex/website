@@ -16,25 +16,35 @@
   // Add @font-face for AzaraanOverride
   const fontStyle = document.createElement("style");
   fontStyle.textContent = `
-    @font-face {
-      font-family: 'AzaraanOverride';
-      src: url('${fontURL}') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
-    /* ✅ Enforce font-size override for Comic Sans inline styles */
-    span[style*="Comic Sans MS"],
-    *[style*="Comic Sans MS"] {
-      font-family: 'AzaraanOverride' !important;
-      font-size: 22px !important;
-    }
-    @media screen and (max-width: 1024px) {
-      span[style*="Comic Sans MS"],
-      *[style*="Comic Sans MS"] {
-        font-size: 18px !important;
-      }
-    }
+/* === Comic Sans Override for index.html === */
+body[data-doc-name*="index"] {
+  font-family: 'Comic Sans MS', cursive !important;
+}
+
+/* === Force Comic Sans size on all spans or elements === */
+span[style*="Comic Sans MS"],
+*[style*="Comic Sans MS"] {
+  font-family: 'Comic Sans MS', cursive !important;
+  font-size: 22px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  span[style*="Comic Sans MS"],
+  *[style*="Comic Sans MS"] {
+    font-size: 18px !important;
+  }
+}
+
+/* === Aza'raan Font Substitution === */
+.azaraan-word {
+  font-family: 'Azaraan', cursive;
+  color: #014d4e;
+  text-shadow: 
+    -1px -1px 0 var(--cyan),
+     1px -1px 0 var(--cyan),
+    -1px  1px 0 var(--cyan),
+     1px  1px 0 var(--cyan);
+}
   `;
   document.head.appendChild(fontStyle);
 
@@ -76,3 +86,37 @@
 
   console.log("✅ Aza'raan Comic Sans override with forced size is active.");
 })();
+// === Comic Sans Override for index.html ===
+if (document.body.dataset.docName && document.body.dataset.docName.includes("index")) {
+  document.body.style.fontFamily = "'Comic Sans MS', cursive";
+}
+
+// === Force Comic Sans size on all spans or elements ===
+function applyComicSans() {
+  const comicElements = document.querySelectorAll('*[style*="Comic Sans MS"]');
+  const newSize = window.innerWidth <= 1024 ? '18px' : '22px';
+
+  comicElements.forEach(el => {
+    el.style.fontFamily = "'Comic Sans MS', cursive";
+    el.style.fontSize = newSize;
+  });
+}
+
+// Apply immediately
+applyComicSans();
+
+// Re-apply on window resize
+window.addEventListener('resize', applyComicSans);
+
+// === Aza'raan Font Substitution ===
+const azaraanElements = document.querySelectorAll('.azaraan-word');
+azaraanElements.forEach(el => {
+  el.style.fontFamily = "'Azaraan', cursive";
+  el.style.color = '#014d4e';
+  el.style.textShadow = `
+    -1px -1px 0 var(--cyan),
+     1px -1px 0 var(--cyan),
+    -1px  1px 0 var(--cyan),
+     1px  1px 0 var(--cyan)
+  `;
+});
