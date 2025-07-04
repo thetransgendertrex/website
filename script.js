@@ -506,3 +506,167 @@ if (main) {
   main.style.padding = '2rem';
   main.style.minHeight = '200vh';
 }
+// Get the .section.home element
+const homeSection = document.querySelector('.section.home');
+
+if (homeSection) {
+  // Base .section.home styles
+  Object.assign(homeSection.style, {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    color: '#ECEEF1'
+  });
+
+  // Container styles
+  const container = homeSection.querySelector('.container');
+  if (container) {
+    Object.assign(container.style, {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      justifyContent: 'center',
+      flexWrap: 'wrap',
+      gap: '2rem'
+    });
+  }
+
+  // Headings & paragraphs
+  homeSection.querySelectorAll('h1,h2,h3,h4,p').forEach(el => {
+    el.style.color = '#ECEEF1';
+    el.style.textShadow = '0 0 2px #1a114b';
+    if (el.tagName === 'P') {
+      el.style.lineHeight = '1.7';
+      el.style.marginBottom = '1rem';
+    }
+  });
+
+  // .section-heading .line-dec
+  const lineDec = homeSection.querySelector('.section-heading .line-dec');
+  if (lineDec) {
+    Object.assign(lineDec.style, {
+      width: '60px',
+      height: '4px',
+      backgroundColor: '#ECEEF1',
+      margin: '1rem 0',
+      borderRadius: '2px'
+    });
+  }
+
+  // Links
+  homeSection.querySelectorAll('a').forEach(link => {
+    link.style.color = '#ECEEF1';
+    link.style.textDecoration = 'underline';
+
+    link.addEventListener('mouseenter', () => {
+      link.style.color = '#29ffff';
+    });
+
+    link.addEventListener('mouseleave', () => {
+      link.style.color = '#ECEEF1';
+    });
+  });
+
+  // Facebook logo container
+  const fbLogoContainer = homeSection.querySelector('.left-image-facebook-logo');
+  if (fbLogoContainer) {
+    Object.assign(fbLogoContainer.style, {
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      gap: '2rem'
+    });
+  }
+
+  // Facebook logo image wrapper
+  const fbLogo = homeSection.querySelector('.facebook-logo');
+  if (fbLogo) {
+    Object.assign(fbLogo.style, {
+      flex: '0 0 auto',
+      maxWidth: '200px'
+    });
+
+    const img = fbLogo.querySelector('img');
+    if (img) {
+      Object.assign(img.style, {
+        display: 'block',
+        width: '100%',
+        height: 'auto',
+        borderRadius: '8px',
+        transition: 'box-shadow 0.3s ease, filter 0.3s ease'
+      });
+
+      img.addEventListener('mouseenter', () => {
+        img.style.boxShadow = '0 0 20px #00ffff';
+        img.style.filter = 'drop-shadow(0 0 10px #00ffff)';
+        img.style.cursor = 'pointer';
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.style.boxShadow = '';
+        img.style.filter = '';
+        img.style.cursor = '';
+      });
+    }
+  }
+
+  // Right text
+  const rightText = homeSection.querySelector('.right-text');
+  if (rightText) {
+    Object.assign(rightText.style, {
+      flex: '1 1 600px',
+      maxWidth: '800px'
+    });
+  }
+
+  // UL & LI spacing
+  homeSection.querySelectorAll('ul').forEach(ul => {
+    ul.style.marginLeft = '1.5rem';
+    ul.style.marginBottom = '1rem';
+  });
+
+  homeSection.querySelectorAll('li').forEach(li => {
+    li.style.marginBottom = '0.5rem';
+  });
+
+  // Basic responsive behavior
+  function adjustHomeLayout() {
+    const w = window.innerWidth;
+    if (w <= 768) {
+      if (container) {
+        container.style.flexDirection = 'column';
+        container.style.alignItems = 'center';
+      }
+      if (fbLogoContainer) {
+        fbLogoContainer.style.flexDirection = 'column';
+        fbLogoContainer.style.alignItems = 'center';
+      }
+      if (rightText) {
+        rightText.style.maxWidth = '100%';
+      }
+      if (fbLogo) {
+        fbLogo.style.maxWidth = '150px';
+      }
+    } else {
+      if (container) {
+        container.style.flexDirection = 'row';
+        container.style.alignItems = 'flex-start';
+      }
+      if (fbLogoContainer) {
+        fbLogoContainer.style.flexDirection = 'row';
+        fbLogoContainer.style.alignItems = 'flex-start';
+      }
+      if (rightText) {
+        rightText.style.maxWidth = '800px';
+      }
+      if (fbLogo) {
+        fbLogo.style.maxWidth = '200px';
+      }
+    }
+  }
+
+  adjustHomeLayout();
+  window.addEventListener('resize', adjustHomeLayout);
+}
+
+// NOTE: Scrollbar colors & pseudo-elements like ::-webkit-scrollbar must remain in CSS.
