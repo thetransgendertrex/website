@@ -61,7 +61,18 @@
         if (targetEl) {
           const elementPosition = targetEl.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-
+constlinks=[
+{href:"#home",text:"Home",color:"#ECEEF1",shadow:"#1a114b"},
+{href:"#lore",text:"Lore",color:"#0075FF",shadow:"#0c4530"},
+{href:"#navigation",text:"Navigation",color:"#C5ECFF",shadow:"#342c61"},
+{href:"#font-project",text:"FontProject",color:"#C1FF8A",shadow:"#572a45"},
+{href:"#mmorpg",text:"MMORPG",color:"#FBC96D",shadow:"#014d4e"},
+{href:"#book-series",text:"BookSeries",color:"#D88EBA",shadow:"#78581f"},
+{href:"#timekeeping",text:"Timekeeping",color:"#DCE1E8",shadow:"#A63A2C"},
+{href:"#language-rules",text:"LanguageRules",color:"#8FE9F0",shadow:"#7A7C86"},
+{href:"#lexicon",text:"Lexicon",color:"#7A7C86",shadow:"#1a114b"},
+{href:"#support",text:"Support",color:"#FBC96D",shadow:"#342c61"},
+];
           window.scrollTo({
             top: offsetPosition,
             behavior: 'smooth'
