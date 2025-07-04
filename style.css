@@ -398,128 +398,20 @@ section {
 }
 
 /* ──────────────✦ HOME ✦────────────── */
-
-.section.home {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #ECEEF1; /* W’iosamn Silver */
-}
-
-.section.home .container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-
-.section.home h1,
-.section.home h2,
-.section.home h3,
-.section.home h4,
-.section.home p {
+.home h1, .home h2, .home h3, .home h4 {
   color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b; /* Astral Navy */
+  text-shadow: 0 0 2px #1a114b;
 }
-
-.section.home .section-heading .line-dec {
-  width: 60px;
-  height: 4px;
-  background-color: #ECEEF1; /* Divider color */
-  margin: 1rem 0;
-  border-radius: 2px;
-}
-
-.section.home a {
+.home th {
   color: #ECEEF1;
-  text-decoration: underline;
+  text-shadow: 0 0 2px #1a114b;
 }
-
-.section.home a:hover {
-  color: #29ffff; /* Cyan hover for links */
-}
-
-/* Facebook logo container */
-.left-image-facebook-logo {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 2rem;
-}
-
-/* Logo styles */
-.facebook-logo {
-  flex: 0 0 auto;
-  max-width: 200px;
-}
-
-.facebook-logo img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  transition: box-shadow 0.3s ease, filter 0.3s ease;
-}
-
-.facebook-logo img:hover {
-  box-shadow: 0 0 20px #00ffff; /* Cyan glow on hover */
-  filter: drop-shadow(0 0 10px #00ffff);
-  cursor: pointer;
-}
-
-/* Right text content */
-.right-text {
-  flex: 1 1 600px;
-  max-width: 800px;
-}
-
-/* Add some breathing space for paragraphs */
-.section.home p {
-  line-height: 1.7;
-  margin-bottom: 1rem;
-}
-
-.section.home ul {
-  margin-left: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.section.home li {
-  margin-bottom: 0.5rem;
-}
-
-/* Scrollbar customization */
 .section.home::-webkit-scrollbar-thumb {
   background: #1a114b;
 }
-
 .section.home::-webkit-scrollbar-track {
   background: #ECEEF1;
 }
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  .section.home .container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .left-image-facebook-logo {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .right-text {
-    max-width: 100%;
-  }
-
-  .facebook-logo {
-    max-width: 150px;
-  }
-}
-
 
 /* ──────────────✦ LORE ✦────────────── */
 .lore h1, .lore h2, .lore h3, .lore h4 {
@@ -769,5 +661,3 @@ span[style*="Comic Sans MS"],
     -1px  1px 0 var(--cyan),
      1px  1px 0 var(--cyan);
 }
-
-
