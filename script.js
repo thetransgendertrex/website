@@ -41,7 +41,21 @@
     .then(() => console.log('✅ index.html verified.'))
     .catch(() => console.warn('⚠️ Could not verify index.html.'));
 
-  /* ──────────────✦ Smooth Scroll & Nav Link Hover ✦────────────── */
+   document.querySelectorAll('header a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      const headerOffset = document.querySelector('header').offsetHeight;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    });
+  });
   const navLinkStyles = [
     { href: '#home', color: '#ECEEF1', shadow: '#1a114b' },
     { href: '#lore', color: '#0075FF', shadow: '#0c4530' },
@@ -57,19 +71,9 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
-    const headerHeight = header ? header.offsetHeight : 0;
 
-    document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top: offset, behavior: 'smooth' });
-        }
-      });
-
+    // Add hover styles to navigation links
+    document.querySelectorAll('header a').forEach(link => {
       const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
       if (navStyle) {
         link.addEventListener('mouseenter', () => {
