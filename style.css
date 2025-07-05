@@ -847,214 +847,198 @@ section {
 }
 
 /* ──────────────✦ HOME ✦────────────── */
+/* ===============================
+   ✅ Section: Home
+   =============================== */
 
-/* ──────────────✦ GLOBAL BASE ✦────────────── */
-body {
-  font-family: "Times New Roman", Times, serif;
+.section.home {
   color: #fff;
-  background: transparent;
-}
-
-section {
+  width: 55%;
+  right: 10%;
+  left: 35%;
   position: relative;
   min-height: 100vh;
-  padding: 60px 20px;
+  padding-bottom: 80px;
   border-bottom: 3px solid rgba(250, 250, 250, 0.25);
 }
 
-section h1,
-section h2,
-section h3,
-section h4 {
-  font-family: serif;
-  font-weight: 700;
+.section.home {
+  color: #fff;
+  width: 55%;
+  right: 10%;
+  left: 35%;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #342c61; /* Twilight Indigo */
+}
+
+/* ===============================
+   ✅ Home Heading
+   =============================== */
+
+.section.home-heading {
   text-align: center;
+  padding: 80px 45px;
 }
 
-/* ──────────────✦ SECTION COLORS ✦────────────── */
-section.home {
-  border-color: #ECEEF1;
+.section.home-heading h1,
+.section.home-heading h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #FBC96D; /* Emberlight Gold */
+  text-shadow:
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61; /* Twilight Indigo */
 }
 
-section.home h1,
-section.home h2,
-section.home h3,
-section.home h4 {
-  color: #ECEEF1;
-  text-shadow: -1px -1px 0 #1a114b, 1px -1px 0 #1a114b, -1px 1px 0 #1a114b, 1px 1px 0 #1a114b;
+.section.home-heading h2,
+.section.home-heading h4 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #342c61; /* Twilight Indigo */
+  text-shadow:
+    -1px -1px 0 #FBC96D,
+     1px -1px 0 #FBC96D,
+    -1px  1px 0 #FBC96D,
+     1px  1px 0 #FBC96D; /* Emberlight Gold */
 }
 
-section.lore {
-  border-color: #0075FF;
+.section.home-heading .line-dec {
+  width: 60px;
+  height: 3px;
+  background-color: transparent;
+  margin: 10px auto;
 }
 
-section.lore h1,
-section.lore h2,
-section.lore h3,
-section.lore h4 {
-  color: #0075FF;
-  text-shadow: -1px -1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530;
+.section.home-heading span {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 0.5px;
 }
 
-section.navigation {
-  border-color: #C5ECFF;
+/* ===============================
+   ✅ Left Image
+   =============================== */
+
+.left-image img {
+  border-radius: 5px;
 }
 
-section.navigation h1,
-section.navigation h2,
-section.navigation h3,
-section.navigation h4 {
-  color: #C5ECFF;
-  text-shadow: -1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61;
+/* ===============================
+   ✅ Left Image Post (matches template structure)
+   =============================== */
+
+.left-image-post {
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 2px solid #FBC96D; /* Emberlight Gold */
 }
 
-section.font-project {
-  border-color: #C1FF8A;
+.left-image-post h4 {
+  margin-top: 30px;
 }
 
-section.font-project h1,
-section.font-project h2,
-section.font-project h3,
-section.font-project h4 {
-  color: #C1FF8A;
-  text-shadow: -1px -1px 0 #572a45, 1px -1px 0 #572a45, -1px 1px 0 #572a45, 1px 1px 0 #572a45;
+.left-image-post p {
+  margin-top: 20px;
 }
 
-section.mmorpg {
-  border-color: #FBC96D;
+.left-image-post .button {
+  margin-top: 30px;
 }
 
-section.mmorpg h1,
-section.mmorpg h2,
-section.mmorpg h3,
-section.mmorpg h4 {
-  color: #FBC96D;
-  text-shadow: -1px -1px 0 #014d4e, 1px -1px 0 #014d4e, -1px 1px 0 #014d4e, 1px 1px 0 #014d4e;
+/* ===============================
+   ✅ Home Button
+   =============================== */
+
+.section.home .button {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-section.book-series {
-  border-color: #D88EBA;
+.section.home .button:hover {
+  background-color: #FBC96D;  /* Emberlight Gold */
+  color: #342c61;             /* Twilight Indigo */
+  border-color: #342c61;
 }
 
-section.book-series h1,
-section.book-series h2,
-section.book-series h3,
-section.book-series h4 {
-  color: #D88EBA;
-  text-shadow: -1px -1px 0 #78581f, 1px -1px 0 #78581f, -1px 1px 0 #78581f, 1px 1px 0 #78581f;
-}
-
-section.timekeeping {
-  border-color: #DCE1E8;
-}
-
-section.timekeeping h1,
-section.timekeeping h2,
-section.timekeeping h3,
-section.timekeeping h4 {
-  color: #DCE1E8;
-  text-shadow: -1px -1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C;
-}
-
-section.language-rules {
-  border-color: #8FE9F0;
-}
-
-section.language-rules h1,
-section.language-rules h2,
-section.language-rules h3,
-section.language-rules h4 {
-  color: #8FE9F0;
-  text-shadow: -1px -1px 0 #7A7C86, 1px -1px 0 #7A7C86, -1px 1px 0 #7A7C86, 1px 1px 0 #7A7C86;
-}
-
-section.lexicon {
-  border-color: #7A7C86;
-}
-
-section.lexicon h1,
-section.lexicon h2,
-section.lexicon h3,
-section.lexicon h4 {
-  color: #7A7C86;
-  text-shadow: -1px -1px 0 #1a114b, 1px -1px 0 #1a114b, -1px 1px 0 #1a114b, 1px 1px 0 #1a114b;
-}
-
-section.support {
-  border-color: #FBC96D;
-}
-
-section.support h1,
-section.support h2,
-section.support h3,
-section.support h4 {
-  color: #FBC96D;
-  text-shadow: -1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61;
-}
-
-header {
-  color: #9381FF;
-}
-
-header h1,
-header h2,
-header h3,
-header h4 {
-  color: #9381FF;
-  text-shadow: -1px -1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C;
-}
-/* Scrollbar */
-.section.lore::-webkit-scrollbar-thumb {
-  background: #A63A2C;
-}
-.section.lore::-webkit-scrollbar-track {
-  background: #9381FF;
-}
-/* ──────────────✦ RESPONSIVE ✦────────────── */
-@media (max-width: 480px) {
-  section {
-    padding: 40px 15px;
+@media screen and (max-width: 480px) {
+  /* Small Mobile */
+  .left-image-post h4 {
+    margin-top: 0px;
   }
-  section h1, section h2 {
-    font-size: 24px;
+  .left-image-post p {
+    margin-top: 10px;
+  }
+  .left-image-post .button {
+    margin-top: 20px;
   }
 }
 
-@media (min-width: 481px) and (max-width: 768px) {
-  section {
-    padding: 50px 30px;
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Small Tablet + Large Mobile */
+  .left-image-post h4 {
+    margin-top: 5px;
   }
-  section h1, section h2 {
-    font-size: 28px;
+  .left-image-post p {
+    margin-top: 12px;
   }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  section {
-    padding: 60px 50px;
-  }
-  section h1, section h2 {
-    font-size: 32px;
+  .left-image-post .button {
+    margin-top: 22px;
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1440px) {
-  section {
-    padding: 70px 80px;
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Medium Tablet + Small Desktop */
+  .left-image-post h4 {
+    margin-top: 10px;
   }
-  section h1, section h2 {
-    font-size: 36px;
+  .left-image-post p {
+    margin-top: 15px;
+  }
+  .left-image-post .button {
+    margin-top: 25px;
   }
 }
 
-@media (min-width: 1441px) {
-  section {
-    padding: 80px 100px;
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* Large Tablet + Medium Desktop */
+  .left-image-post h4 {
+    margin-top: 15px;
   }
-  section h1, section h2 {
-    font-size: 42px;
+  .left-image-post p {
+    margin-top: 18px;
+  }
+  .left-image-post .button {
+    margin-top: 28px;
   }
 }
+
+@media screen and (min-width: 1441px) {
+  /* Large Desktop */
+  .left-image-post h4 {
+    margin-top: 20px;
+  }
+  .left-image-post p {
+    margin-top: 20px;
+  }
+  .left-image-post .button {
+    margin-top: 30px;
+  }
+} 
 
 /* ──────────────✦ LORE ✦────────────── */
 .section.lore { 
