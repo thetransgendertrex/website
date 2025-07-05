@@ -26,19 +26,17 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   font-family: Times New Roman, serif;
-  background-color: black;
+  background-color: transparent;
 }
 
 /* ──────────────✦ Fixed background image (default large desktop) ✦────────────── */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
-  z-index: -2;
+#page-wraper {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
 }
 
 /* ──────────────✦ Scrolling radial black overlay ✦────────────── */
@@ -121,6 +119,11 @@ header nav.main-nav a:hover {
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
 }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth; /* Native smooth scroll! */
+    }
 
 /* Unique hover border colors */
 
@@ -175,10 +178,10 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
   color: #2DC5B4;
   text-align: center;
   text-shadow:
-    -1px 0 #014d4e,
-     1px 0 #014d4e,
-     0 -1px #014d4e,
-     0 1px #014d4e;
+    -2px 0 #014d4e,
+     2px 0 #014d4e,
+     0 -2px #014d4e,
+     0 2px #014d4e;
   z-index: 9;
 }
 
@@ -273,7 +276,7 @@ section {
   }
   .section-divider {
     width: 70%;
-    height: 1px;
+    height: 2px;
     margin: 0.8rem auto;
   }
   table {
@@ -282,7 +285,7 @@ section {
 }
 
 /* Larger mobile + small tablet */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   body::before {
     background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg") center center / cover no-repeat;
   }
@@ -392,7 +395,7 @@ section {
 }
 
 /* Large desktop */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   body::before {
     background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
   }
@@ -429,91 +432,91 @@ section {
 header nav a[href="#home"]:hover {
   color: #FBC96D;               /* Emberlight Gold */
   text-shadow: 
-    -1px -1px 0 #342c61, /* Twilight Indigo */
-     1px -1px 0 #342c61, /* Twilight Indigo */
-    -1px  1px 0 #342c61, /* Twilight Indigo */
-     1px  1px 0 #342c61; /* Twilight Indigo */
+    -2px -2px 0 #342c61, /* Twilight Indigo */
+     2px -2px 0 #342c61, /* Twilight Indigo */
+    -2px  2px 0 #342c61, /* Twilight Indigo */
+     2px  2px 0 #342c61; /* Twilight Indigo */
 }
 
 header nav a[href="#lore"]:hover {
   color: #C5ECFF;               /* Crystalline Ice */
     text-shadow:
-   -1px  1px 0 var(#A63A2C), /* Duvaen Red */  
-    1px -1px 0 var(#A63A2C), /* Duvaen Red */
-   -1px  1px 0 var(#A63A2C), /* Duvaen Red */
-    1px  1px 0 var(#A63A2C), /* Duvaen Red */
+   -2px  2px 0 var(#A63A2C), /* Duvaen Red */  
+    2px -2px 0 var(#A63A2C), /* Duvaen Red */
+   -2px  2px 0 var(#A63A2C), /* Duvaen Red */
+    2px  2px 0 var(#A63A2C), /* Duvaen Red */
 }
 
 header nav a[href="#navigation"]:hover {
   color: #DCE1E8;               /* Moonstone Silver */
   text-shadow: 
-   -1px  1px 0 var(#0075FF), /* Arvalla Prime */ 
-    1px -1px 0 var(#0075FF), /* Arvalla Prime */
-   -1px  1px 0 var(#0075FF), /* Arvalla Prime */
-    1px  1px 0 var(#0075FF), /* Arvalla Prime */
+   -2px  2px 0 var(#0075FF), /* Arvalla Prime */ 
+    2px -2px 0 var(#0075FF), /* Arvalla Prime */
+   -2px  2px 0 var(#0075FF), /* Arvalla Prime */
+    2px  2px 0 var(#0075FF), /* Arvalla Prime */
 }
 
 header nav a[href="#font-project"]:hover {
   color: #8FE9F0;               /* Dreamlight Cyan */
   text-shadow: 
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
-    1px -1px 0 var(#0c4530), /* Moss-Vein Green */ 
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
-    1px  1px 0 var(#0c4530), /* Moss-Vein Green */  
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
+    2px -2px 0 var(#0c4530), /* Moss-Vein Green */ 
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
+    2px  2px 0 var(#0c4530), /* Moss-Vein Green */  
 }
 
 header nav a[href="#mmorpg"]:hover {
   color: #C5ECFF;               /* Crystalline Ice */
   text-shadow: 
-   -1px  1px 0 var(#572a45), /* Leyline Plum */
-    1px -1px 0 var(#572a45), /* Leyline Plum */
-   -1px  1px 0 var(#572a45), /* Leyline Plum */ 
-    1px  1px 0 var(#572a45), /* Leyline Plum */
+   -2px  2px 0 var(#572a45), /* Leyline Plum */
+    2px -2px 0 var(#572a45), /* Leyline Plum */
+   -2px  2px 0 var(#572a45), /* Leyline Plum */ 
+    2px  2px 0 var(#572a45), /* Leyline Plum */
 }
 
 header nav a[href="#book-series"]:hover {
   color: #D88EBA;               /* Leyline Rose */
   text-shadow: 
-   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */
-    1px -1px 0 var(#2DC5B4), /* Biolume Teal */
-   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
-    1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
+   -2px  2px 0 var(#2DC5B4), /* Biolume Teal */
+    2px -2px 0 var(#2DC5B4), /* Biolume Teal */
+   -2px  2px 0 var(#2DC5B4), /* Biolume Teal */ 
+    2px  2px 0 var(#2DC5B4), /* Biolume Teal */ 
 }
 
 header nav a[href="#timekeeping"]:hover {
   color: #8FE9F0;               /* Dreamlight Cyan */
   text-shadow: 
-   -1px  1px 0 var(#78581f), /* Relic Brass */
-    1px -1px 0 var(#78581f), /* Relic Brass */
-   -1px  1px 0 var(#78581f), /* Relic Brass */
-    1px  1px 0 var(#78581f), /* Relic Brass */ 
+   -2px  2px 0 var(#78581f), /* Relic Brass */
+    2px -2px 0 var(#78581f), /* Relic Brass */
+   -2px  2px 0 var(#78581f), /* Relic Brass */
+    2px  2px 0 var(#78581f), /* Relic Brass */ 
 }
 
 header nav a[href="#language-rules"]:hover {
   color: #C1FF8A;               /* Verdant Glow */
   text-shadow: 
-   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
-    1px -1px 0 var(#7A7C86), /* Arvalla Beta */
-   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
-    1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+   -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
+    2px -2px 0 var(#7A7C86), /* Arvalla Beta */
+   -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
+    2px  2px 0 var(#7A7C86), /* Arvalla Beta */
 }
 
 header nav a[href="#lexicon"]:hover {
   color: #FBC96D;               /* Emberlight Gold */
   text-shadow: 
-   -1px  1px 0 var(#342c61), /* Twilight Indigo */
-    1px -1px 0 var(#342c61), /* Twilight Indigo */
-   -1px  1px 0 var(#342c61), /* Twilight Indigo */
-    1px  1px 0 var(#342c61), /* Twilight Indigo */
+   -2px  2px 0 var(#342c61), /* Twilight Indigo */
+    2px -2px 0 var(#342c61), /* Twilight Indigo */
+   -2px  2px 0 var(#342c61), /* Twilight Indigo */
+    2px  2px 0 var(#342c61), /* Twilight Indigo */
 }
 
 header nav a[href="#support"]:hover {
   color: #C5ECFF;               /* Crystalline Ice */
   text-shadow: 
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
-    1px -1px 0 var(#0c4530), /* Moss-Vein Green */
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
-    1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
+    2px -2px 0 var(#0c4530), /* Moss-Vein Green */
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
+    2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
 }
 
  /* ──────────────✦ Small mobile screens ✦────────────── */
@@ -538,7 +541,7 @@ header nav a[href="#support"]:hover {
 }
 
 /* ──────────────✦ Larger mobile + small tablet ✦────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   header {
     padding: 0.75rem 0;
   }
@@ -591,7 +594,7 @@ header nav a[href="#support"]:hover {
 }
 
 /* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   header {
     padding: 1.5rem 0;
   }
@@ -617,10 +620,10 @@ header nav a[href="#support"]:hover {
   color: #2DC5B4;
   text-align: center;
   text-shadow:
-    -1px 0 #014d4e,
-     1px 0 #014d4e,
-     0 -1px #014d4e,
-     0 1px #014d4e;
+    -2px 0 #014d4e,
+     2px 0 #014d4e,
+     0 -2px #014d4e,
+     0 2px #014d4e;
   z-index: 9;
 }
 
@@ -647,7 +650,7 @@ section.section {
 }
 
 /* ──────────────✦ Larger mobile + small tablets ✦────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   .page-title {
     font-size: 1.5rem;
     top: calc(90px + 9%);
@@ -686,7 +689,7 @@ section.section {
 }
 
 /* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   .page-title {
     font-size: 2.5rem;
     top: calc(120px + 10%);
@@ -805,13 +808,13 @@ section {
 @media (max-width: 480px) {
   .section-divider {
     width: 70%;
-    height: 1px;
+    height: 2px;
     margin: 0.8rem auto;
   }
 }
 
 /* ──────────────✦ Larger mobile + small tablet (Kindle) ✦────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   .section-divider {
     width: 75%;
     height: 1.5px;
@@ -838,7 +841,7 @@ section {
 }
 
 /* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   .section-divider {
     width: 80%;
     height: 3px;
@@ -859,7 +862,7 @@ section {
   position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  border-bottom: 3px solid #342c61; /* Twilight Indigo */
 }
 
 .section.home {
@@ -888,10 +891,10 @@ section {
   font-weight: 700;
   color: #FBC96D; /* Emberlight Gold */
   text-shadow:
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61; /* Twilight Indigo */
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61; /* Twilight Indigo */
 }
 
 .section.home-heading h2,
@@ -900,10 +903,10 @@ section {
   font-weight: 700;
   color: #342c61; /* Twilight Indigo */
   text-shadow:
-    -1px -1px 0 #FBC96D,
-     1px -1px 0 #FBC96D,
-    -1px  1px 0 #FBC96D,
-     1px  1px 0 #FBC96D; /* Emberlight Gold */
+    -2px -2px 0 #FBC96D,
+     2px -2px 0 #FBC96D,
+    -2px  2px 0 #FBC96D,
+     2px  2px 0 #FBC96D; /* Emberlight Gold */
 }
 
 .section.home-heading .line-dec {
@@ -988,7 +991,7 @@ section {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 482px) and (max-width: 768px) {
   /* Small Tablet + Large Mobile */
   .left-image-post h4 {
     margin-top: 5px;
@@ -1027,7 +1030,7 @@ section {
   }
 }
 
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1442px) {
   /* Large Desktop */
   .left-image-post h4 {
     margin-top: 20px;
@@ -1061,10 +1064,10 @@ section {
 .section.lore h4 {
   color: #1a114b; /* Astral Navy */
   text-shadow:
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61;
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61;
 }
 
 /* Table Wrapper */
@@ -1082,10 +1085,10 @@ section {
   font-family: 'Cinzel', serif;
   color: #1a114b; /* Astral Navy */
   text-shadow:
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61;
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61;
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -1100,7 +1103,7 @@ section {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo row divider */
 }
 
 /* Section Dividers */
@@ -1142,8 +1145,8 @@ section {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.lore {
     width: 90%;
   }
@@ -1194,8 +1197,8 @@ section {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.lore {
     width: 75%;
   }
@@ -1233,10 +1236,10 @@ section {
 .section.navigation h4 {
   color: #0075FF; /* Arvalla Prime */
   text-shadow:
-    -1px -1px 0 #0075FF,
-     1px -1px 0 #0075FF,
-    -1px  1px 0 #0075FF,
-     1px  1px 0 #0075FF;
+    -2px -2px 0 #0075FF,
+     2px -2px 0 #0075FF,
+    -2px  2px 0 #0075FF,
+     2px  2px 0 #0075FF;
 }
 
 /* Table Wrapper */
@@ -1254,10 +1257,10 @@ section {
   font-family: 'Cinzel', serif;
   color: #DCE1E8; /* Moonstone Silver */
   text-shadow:
-    -1px -1px 0 #0075FF,
-     1px -1px 0 #0075FF,
-    -1px  1px 0 #0075FF,
-     1px  1px 0 #0075FF;
+    -2px -2px 0 #0075FF,
+     2px -2px 0 #0075FF,
+    -2px  2px 0 #0075FF,
+     2px  2px 0 #0075FF;
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -1272,7 +1275,7 @@ section {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #0075FF; /* Arvalla Prime row divider */
+  border-bottom: 2px solid #0075FF; /* Arvalla Prime row divider */
 }
 
 /* Section Dividers */
@@ -1314,8 +1317,8 @@ section {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.navigation {
     width: 90%;
   }
@@ -1366,8 +1369,8 @@ section {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.navigation {
     width: 75%;
   }
@@ -1404,10 +1407,10 @@ section.font-project {
 .font-project h4 {
   color: #8FE9F0; /* Dreamlight Cyan */
   text-shadow:
-    -1px -1px 0 #0c4530,
-     1px -1px 0 #0c4530,
-    -1px  1px 0 #0c4530,
-     1px  1px 0 #0c4530; /* Moss-Vein Green */
+    -2px -2px 0 #0c4530,
+     2px -2px 0 #0c4530,
+    -2px  2px 0 #0c4530,
+     2px  2px 0 #0c4530; /* Moss-Vein Green */
   margin-bottom: 1rem;
   font-family: 'Times New Roman', serif;
 }
@@ -1421,10 +1424,10 @@ section.font-project {
 .font-project th {
   color: #8FE9F0; /* Dreamlight Cyan */
   text-shadow:
-    -1px -1px 0 #0c4530,
-     1px -1px 0 #0c4530,
-    -1px  1px 0 #0c4530,
-     1px  1px 0 #0c4530; /* Moss-Vein Green */
+    -2px -2px 0 #0c4530,
+     2px -2px 0 #0c4530,
+    -2px  2px 0 #0c4530,
+     2px  2px 0 #0c4530; /* Moss-Vein Green */
 }
 
 .font-project a {
@@ -1543,8 +1546,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   section.font-project {
     width: 90%;
   }
@@ -1601,8 +1604,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   section.font-project {
     width: 75%;
   }
@@ -1636,10 +1639,10 @@ section.font-project {
 .section.mmorpg h4 {
   color: #572a45; /* Leyline Plum */
   text-shadow:
-    -1px -1px 0 #572a45,
-     1px -1px 0 #572a45,
-    -1px  1px 0 #572a45,
-     1px  1px 0 #572a45; /* Leyline Plum outline shadow */
+    -2px -2px 0 #572a45,
+     2px -2px 0 #572a45,
+    -2px  2px 0 #572a45,
+     2px  2px 0 #572a45; /* Leyline Plum outline shadow */
 }
 
 /* Section Dividers */
@@ -1683,8 +1686,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.mmorpg {
     width: 90%;
   }
@@ -1752,8 +1755,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.mmorpg {
     width: 75%;
   }
@@ -1796,10 +1799,10 @@ section.font-project {
 .section.book-series h4 {
   color: #2DC5B4; /* Biolume Teal */
   text-shadow:
-    -1px -1px 0 #2DC5B4,
-     1px -1px 0 #2DC5B4,
-    -1px  1px 0 #2DC5B4,
-     1px  1px 0 #2DC5B4; /* Biolume Teal outline shadow */
+    -2px -2px 0 #2DC5B4,
+     2px -2px 0 #2DC5B4,
+    -2px  2px 0 #2DC5B4,
+     2px  2px 0 #2DC5B4; /* Biolume Teal outline shadow */
 }
 
 /* Section Dividers */
@@ -1843,8 +1846,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.book-series {
     width: 90%;
   }
@@ -1912,8 +1915,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.book-series {
     width: 75%;
   }
@@ -1958,10 +1961,10 @@ section.font-project {
 .section.timekeeping h4 {
   color: #78581f; /* Relic Brass */
   text-shadow: 
-    -1px -1px 0 #78581f,
-     1px -1px 0 #78581f,
-    -1px  1px 0 #78581f,
-     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+    -2px -2px 0 #78581f,
+     2px -2px 0 #78581f,
+    -2px  2px 0 #78581f,
+     2px  2px 0 #78581f; /* Relic Brass outline shadow */
 }
 
 /* Table Wrapper */
@@ -1979,10 +1982,10 @@ section.font-project {
   font-family: 'Cinzel', serif;
   color: #78581f; /* Relic Brass */
   text-shadow: 
-    -1px -1px 0 #78581f,
-     1px -1px 0 #78581f,
-    -1px  1px 0 #78581f,
-     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+    -2px -2px 0 #78581f,
+     2px -2px 0 #78581f,
+    -2px  2px 0 #78581f,
+     2px  2px 0 #78581f; /* Relic Brass outline shadow */
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -1997,7 +2000,7 @@ section.font-project {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #78581f; /* Relic Brass row divider */
+  border-bottom: 2px solid #78581f; /* Relic Brass row divider */
 }
 
 /* Section Dividers */
@@ -2046,8 +2049,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.timekeeping {
     width: 90%;
   }
@@ -2130,8 +2133,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.timekeeping {
     width: 75%;
   }
@@ -2179,10 +2182,10 @@ section.font-project {
 .section.language-rules h4 {
   color: #7A7C86; /* Arvalla Beta */
   text-shadow: 
-    -1px -1px 0 #7A7C86,
-     1px -1px 0 #7A7C86,
-    -1px  1px 0 #7A7C86,
-     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+    -2px -2px 0 #7A7C86,
+     2px -2px 0 #7A7C86,
+    -2px  2px 0 #7A7C86,
+     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
 }
 
 /* Table Wrapper */
@@ -2200,10 +2203,10 @@ section.font-project {
   font-family: 'Cinzel', serif;
   color: #7A7C86; /* Arvalla Beta */
   text-shadow: 
-    -1px -1px 0 #7A7C86,
-     1px -1px 0 #7A7C86,
-    -1px  1px 0 #7A7C86,
-     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+    -2px -2px 0 #7A7C86,
+     2px -2px 0 #7A7C86,
+    -2px  2px 0 #7A7C86,
+     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -2218,7 +2221,7 @@ section.font-project {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #7A7C86; /* Arvalla Beta row divider */
+  border-bottom: 2px solid #7A7C86; /* Arvalla Beta row divider */
 }
 
 /* Section Dividers */
@@ -2267,8 +2270,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.language-rules {
     width: 90%;
   }
@@ -2351,8 +2354,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.language-rules {
     width: 75%;
   }
@@ -2401,10 +2404,10 @@ section.font-project {
 .section.lexicon h4 {
   color: #342c61; /* Twilight Indigo */
   text-shadow: 
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61; /* Twilight Indigo outline shadow */
 }
 
 /* Table Wrapper */
@@ -2422,10 +2425,10 @@ section.font-project {
   font-family: 'Cinzel', serif;
   color: #342c61; /* Twilight Indigo */
   text-shadow: 
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61; /* Twilight Indigo outline shadow */
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -2440,7 +2443,7 @@ section.font-project {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo row divider */
 }
 
 /* Section Dividers */
@@ -2489,8 +2492,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.lexicon {
     width: 90%;
   }
@@ -2573,8 +2576,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.lexicon {
     width: 75%;
   }
@@ -2622,10 +2625,10 @@ section.font-project {
 .section.support h4 {
   color: #7A7C86; /* Arvalla Beta */
   text-shadow:
-    -1px -1px 0 #7A7C86,
-     1px -1px 0 #7A7C86,
-    -1px  1px 0 #7A7C86,
-     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+    -2px -2px 0 #7A7C86,
+     2px -2px 0 #7A7C86,
+    -2px  2px 0 #7A7C86,
+     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
 }
 
 /* Position buttons absolutely inside .section.support */
@@ -2688,8 +2691,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.support {
     width: 85%;
   }
@@ -2766,8 +2769,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.support {
     width: 70%;
   }
@@ -2845,10 +2848,10 @@ span[style*="Comic Sans MS"],
   font-family: 'Azaraan', cursive;
   color: #014d4e;
   text-shadow: 
-    -1px -1px 0 var(--cyan),
-     1px -1px 0 var(--cyan),
-    -1px  1px 0 var(--cyan),
-     1px  1px 0 var(--cyan);
+    -2px -2px 0 var(--cyan),
+     2px -2px 0 var(--cyan),
+    -2px  2px 0 var(--cyan),
+     2px  2px 0 var(--cyan);
 }
 
 
