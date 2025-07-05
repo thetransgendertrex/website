@@ -65,11 +65,11 @@ errorNotice.textContent='⚠️Failedtoloadoverridescript.Checkconsolefordetails
 document.body.appendChild(errorNotice);
 });
 /* ──────────────✦ === Aza'raan Website Script === ✦────────────── */
-// @name         Aza'raan Website Script
+// @name   Aza'raan Website Script
 // @namespace    https://github.com/thetransgendertrex/website
-// @version      1.3
+// @version1.3
 // @description  Core interactive behavior for Aza'raan's Trademarked Projects
-// @match        https://www.azara-trademarked-projects.com/*
+// @match  https://www.azara-trademarked-projects.com/*
 
 (() => {
   'use strict';
@@ -88,14 +88,14 @@ document.body.appendChild(errorNotice);
 
   async function loadScript(url) {
     try {
-      const res = await fetch(url);
-      const code = await res.text();
-      const script = document.createElement('script');
-      script.textContent = code;
-      document.head.appendChild(script);
-      console.log(`✅ ${url} loaded.`);
+const res = await fetch(url);
+const code = await res.text();
+const script = document.createElement('script');
+script.textContent = code;
+document.head.appendChild(script);
+console.log(`✅ ${url} loaded.`);
     } catch (err) {
-      console.error(`❌ Failed to load ${url}:`, err);
+console.error(`❌ Failed to load ${url}:`, err);
     }
   }
 
@@ -109,17 +109,17 @@ document.body.appendChild(errorNotice);
 
    document.querySelectorAll('header a').forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').slice(1);
-      const target = document.getElementById(targetId);
-      const headerOffset = document.querySelector('header').offsetHeight;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+e.preventDefault();
+const targetId = link.getAttribute('href').slice(1);
+const target = document.getElementById(targetId);
+const headerOffset = document.querySelector('header').offsetHeight;
+const elementPosition = target.getBoundingClientRect().top;
+const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
+window.scrollTo({
+  top: offsetPosition,
+  behavior: "smooth"
+});
     });
   });
   const navLinkStyles = [
@@ -140,123 +140,123 @@ document.body.appendChild(errorNotice);
 
     // Add hover styles to navigation links
     document.querySelectorAll('header a').forEach(link => {
-      const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
-      if (navStyle) {
-        link.addEventListener('mouseenter', () => {
-          link.style.color = navStyle.color;
-          link.style.textShadow = `-1px -1px 0 ${navStyle.shadow}, 1px -1px 0 ${navStyle.shadow}, -1px 1px 0 ${navStyle.shadow}, 1px 1px 0 ${navStyle.shadow}`;
-        });
-        link.addEventListener('mouseleave', () => {
-          link.style.color = '';
-          link.style.textShadow = '';
-        });
-      }
+const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
+if (navStyle) {
+  link.addEventListener('mouseenter', () => {
+    link.style.color = navStyle.color;
+    link.style.textShadow = `-1px -1px 0 ${navStyle.shadow}, 1px -1px 0 ${navStyle.shadow}, -1px 1px 0 ${navStyle.shadow}, 1px 1px 0 ${navStyle.shadow}`;
+  });
+  link.addEventListener('mouseleave', () => {
+    link.style.color = '';
+    link.style.textShadow = '';
+  });
+}
     });
 
     /* ──────────────✦ Auto-ID Headings ✦────────────── */
     document.querySelectorAll('h1, h2, h3, h4').forEach((heading, i) => {
-      if (!heading.id) {
-        const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
-        heading.id = `${slug}-${i}`;
-      }
+if (!heading.id) {
+  const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+  heading.id = `${slug}-${i}`;
+}
     });
 
     /* ──────────────✦ Enhance Tables ✦────────────── */
     document.querySelectorAll('table').forEach(table => {
-      table.setAttribute('role', 'table');
-      if (!table.parentElement.classList.contains('table-wrapper')) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'table-wrapper';
-        table.parentNode.insertBefore(wrapper, table);
-        wrapper.appendChild(table);
-      }
+table.setAttribute('role', 'table');
+if (!table.parentElement.classList.contains('table-wrapper')) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'table-wrapper';
+  table.parentNode.insertBefore(wrapper, table);
+  wrapper.appendChild(table);
+}
     });
 
     /* ──────────────✦ Fade-In Dividers ✦────────────── */
     const dividerObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 1s ease-out';
-          entry.target.style.opacity = 1;
-        }
-      });
+entries.forEach(entry => {
+  if (entry.isIntersecting) {
+    entry.target.style.transition = 'opacity 1s ease-out';
+    entry.target.style.opacity = 1;
+  }
+});
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.section-divider').forEach(divider => {
-      divider.style.opacity = 0;
-      dividerObserver.observe(divider);
+divider.style.opacity = 0;
+dividerObserver.observe(divider);
     });
 
     /* ──────────────✦ Sections Fade-In & Vertical Buttons ✦────────────── */
     const sections = document.querySelectorAll('.section.home, .section.font-project');
     const sectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-          sectionObserver.unobserve(entry.target);
-        }
-      });
+entries.forEach(entry => {
+  if (entry.isIntersecting) {
+    entry.target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+    entry.target.style.opacity = 1;
+    entry.target.style.transform = 'translateY(0)';
+    sectionObserver.unobserve(entry.target);
+  }
+});
     }, { threshold: 0.1 });
 
     sections.forEach(section => {
-      section.style.opacity = 0;
-      section.style.transform = 'translateY(30px)';
-      sectionObserver.observe(section);
+section.style.opacity = 0;
+section.style.transform = 'translateY(30px)';
+sectionObserver.observe(section);
     });
 
     const smoothLinks = document.querySelectorAll('.vertical-buttons a');
     smoothLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        const href = link.getAttribute('href');
-        if (href.startsWith("#")) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          smoothLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
-      });
+link.addEventListener('click', e => {
+  const href = link.getAttribute('href');
+  if (href.startsWith("#")) {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    smoothLinks.forEach(l => l.classList.remove('active'));
+    link.classList.add('active');
+  }
+});
     });
   });
 
   /* ──────────────✦ Responsive Background ✦────────────── */
   (function () {
     const backgrounds = [
-      {
-        min: 0,
-        max: 480,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg"
-      },
-      {
-        min: 481,
-        max: 768,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg"
-      },
-      {
-        min: 769,
-        max: 1024,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg"
-      },
-      {
-        min: 1025,
-        max: 1440,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg"
-      },
-      {
-        min: 1441,
-        max: Infinity,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg"
-      }
+{
+  min: 0,
+  max: 480,
+  url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg"
+},
+{
+  min: 481,
+  max: 768,
+  url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg"
+},
+{
+  min: 769,
+  max: 1024,
+  url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg"
+},
+{
+  min: 1025,
+  max: 1440,
+  url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg"
+},
+{
+  min: 1441,
+  max: Infinity,
+  url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg"
+}
     ];
 
     function updateBackground() {
-      const width = window.innerWidth;
-      const match = backgrounds.find(b => width >= b.min && width <= b.max);
-      if (match) {
-        document.body.style.setProperty('--bg-url', `url("${match.url}")`);
-      }
+const width = window.innerWidth;
+const match = backgrounds.find(b => width >= b.min && width <= b.max);
+if (match) {
+  document.body.style.setProperty('--bg-url', `url("${match.url}")`);
+}
     }
 
     window.addEventListener('resize', updateBackground);
@@ -270,34 +270,34 @@ document.body.appendChild(errorNotice);
     const close = document.getElementById('menu-close');
 
     toggle?.addEventListener('click', () => {
-      menu?.classList.toggle('open');
+menu?.classList.toggle('open');
     });
 
     close?.addEventListener('click', () => {
-      menu?.classList.remove('open');
+menu?.classList.remove('open');
     });
 
     window.addEventListener('resize', () => {
-      if (window.innerWidth < 846) {
-        document.querySelectorAll('.main-menu a').forEach(link => {
-          link.addEventListener('click', () => {
-            menu?.classList.remove('open');
-          });
-        });
-      }
+if (window.innerWidth < 846) {
+  document.querySelectorAll('.main-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+menu?.classList.remove('open');
+    });
+  });
+}
     });
   })();
 
 })();
 
 // ==UserScript==
-// @name         Aza'raan Comic Sans Span Override
+// @name   Aza'raan Comic Sans Span Override
 // @namespace    https://github.com/thetransgendertrex/website
-// @version      2.1
+// @version2.1
 // @description  Fully override Comic Sans in all elements with inline font-family using Azaraan font and force size override.
-// @author       William Blake Saville
-// @match        https://www.azara-trademarked-projects.com/*
-// @grant        none
+// @author William Blake Saville
+// @match  https://www.azara-trademarked-projects.com/*
+// @grant  none
 // ==/UserScript==
 
 (function () {
@@ -350,11 +350,11 @@ span[style*="Comic Sans MS"],
   function replaceComicSans() {
     const elements = document.querySelectorAll('*[style*="font-family"]');
     elements.forEach(el => {
-      const style = el.getAttribute('style');
-      if (style && /comic sans ms/i.test(style)) {
-        el.style.setProperty('font-family', "'AzaraanOverride'", 'important');
-        el.style.setProperty('font-size', window.innerWidth <= 1024 ? '18px' : '22px', 'important');
-      }
+const style = el.getAttribute('style');
+if (style && /comic sans ms/i.test(style)) {
+  el.style.setProperty('font-family', "'AzaraanOverride'", 'important');
+  el.style.setProperty('font-size', window.innerWidth <= 1024 ? '18px' : '22px', 'important');
+}
     });
   }
 
@@ -368,9 +368,9 @@ span[style*="Comic Sans MS"],
   // ✅ Observe DOM for new elements
   const observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
-      if (mutation.addedNodes.length) {
-        replaceComicSans();
-      }
+if (mutation.addedNodes.length) {
+  replaceComicSans();
+}
     });
   });
 
@@ -520,7 +520,7 @@ section {
 /* Example: Section theme using Extra Site Style 1 - Biolume Teal */
 section.section-style-1 {
   background-color: #2DC5B4; /* Dark */
-  color: #D88EBA;            /* Light */
+  color: #D88EBA;/* Light */
 }
 
 /* You can duplicate and update the classes below for each unique section style */
@@ -919,9 +919,9 @@ header nav.main-nav a:hover {
   border-bottom: 2px solid currentColor;
 }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth; /* Native smooth scroll! */
+margin: 0;
+font-family: Arial, sans-serif;
+scroll-behavior: smooth; /* Native smooth scroll! */
     }
 
 /* Unique hover border colors */
@@ -1138,7 +1138,7 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
 
 /* ──────────────✦ Hover styles ✦────────────── */ 
 header nav a[href="#home"]:hover {
-  color: #FBC96D;               /* Emberlight Gold */
+  color: #FBC96D;   /* Emberlight Gold */
   text-shadow: 
     -2px -2px 0 #342c61, /* Twilight Indigo */
      2px -2px 0 #342c61, /* Twilight Indigo */
@@ -1147,7 +1147,7 @@ header nav a[href="#home"]:hover {
 }
 
 header nav a[href="#lore"]:hover {
-  color: #C5ECFF;               /* Crystalline Ice */
+  color: #C5ECFF;   /* Crystalline Ice */
     text-shadow:
    -2px  2px 0 var(#A63A2C), /* Duvaen Red */  
     2px -2px 0 var(#A63A2C), /* Duvaen Red */
@@ -1156,7 +1156,7 @@ header nav a[href="#lore"]:hover {
 }
 
 header nav a[href="#navigation"]:hover {
-  color: #DCE1E8;               /* Moonstone Silver */
+  color: #DCE1E8;   /* Moonstone Silver */
   text-shadow: 
    -2px  2px 0 var(#0075FF), /* Arvalla Prime */ 
     2px -2px 0 var(#0075FF), /* Arvalla Prime */
@@ -1165,7 +1165,7 @@ header nav a[href="#navigation"]:hover {
 }
 
 header nav a[href="#font-project"]:hover {
-  color: #8FE9F0;               /* Dreamlight Cyan */
+  color: #8FE9F0;   /* Dreamlight Cyan */
   text-shadow: 
    -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
     2px -2px 0 var(#0c4530), /* Moss-Vein Green */ 
@@ -1174,7 +1174,7 @@ header nav a[href="#font-project"]:hover {
 }
 
 header nav a[href="#mmorpg"]:hover {
-  color: #C5ECFF;               /* Crystalline Ice */
+  color: #C5ECFF;   /* Crystalline Ice */
   text-shadow: 
    -2px  2px 0 var(#572a45), /* Leyline Plum */
     2px -2px 0 var(#572a45), /* Leyline Plum */
@@ -1183,7 +1183,7 @@ header nav a[href="#mmorpg"]:hover {
 }
 
 header nav a[href="#book-series"]:hover {
-  color: #D88EBA;               /* Leyline Rose */
+  color: #D88EBA;   /* Leyline Rose */
   text-shadow: 
    -2px  2px 0 var(#2DC5B4), /* Biolume Teal */
     2px -2px 0 var(#2DC5B4), /* Biolume Teal */
@@ -1192,7 +1192,7 @@ header nav a[href="#book-series"]:hover {
 }
 
 header nav a[href="#timekeeping"]:hover {
-  color: #8FE9F0;               /* Dreamlight Cyan */
+  color: #8FE9F0;   /* Dreamlight Cyan */
   text-shadow: 
    -2px  2px 0 var(#78581f), /* Relic Brass */
     2px -2px 0 var(#78581f), /* Relic Brass */
@@ -1201,7 +1201,7 @@ header nav a[href="#timekeeping"]:hover {
 }
 
 header nav a[href="#language-rules"]:hover {
-  color: #C1FF8A;               /* Verdant Glow */
+  color: #C1FF8A;   /* Verdant Glow */
   text-shadow: 
    -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
     2px -2px 0 var(#7A7C86), /* Arvalla Beta */
@@ -1210,7 +1210,7 @@ header nav a[href="#language-rules"]:hover {
 }
 
 header nav a[href="#lexicon"]:hover {
-  color: #FBC96D;               /* Emberlight Gold */
+  color: #FBC96D;   /* Emberlight Gold */
   text-shadow: 
    -2px  2px 0 var(#342c61), /* Twilight Indigo */
     2px -2px 0 var(#342c61), /* Twilight Indigo */
@@ -1219,7 +1219,7 @@ header nav a[href="#lexicon"]:hover {
 }
 
 header nav a[href="#support"]:hover {
-  color: #C5ECFF;               /* Crystalline Ice */
+  color: #C5ECFF;   /* Crystalline Ice */
   text-shadow: 
    -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
     2px -2px 0 var(#0c4530), /* Moss-Vein Green */
@@ -1550,89 +1550,81 @@ span[style*="Comic Sans MS"],
 <section class="section home" data-section="home">
   <div class="container">
     <div class="section-heading">
-      <h2>💠 Historical Context: The Cataclysm and the Birth of Aza’ra</h2>
-      <div class="line-dec"></div>
+<h2>💠 Historical Context: The Cataclysm and the Birth of Aza’ra</h2>
+<div class="line-dec"></div>
 
-      <p><b>🌄 1351 BCE — The Cataclysm</b><br>
-      <i>Aarak</i> was once a world of crystalline skies and verdant expanses—a realm where harmony thrived under the glow of a solitary, nurturing sun and the watchful dance of three sacred moons. Its people, the Aaraks, knew no sorcery nor arcane chants. Instead, their gifts were of the mind: telepathy that stitched communities together in wordless conversation, telekinesis that shaped stone and bent metal with thought alone. Their cities hummed with psionic resonance—a symphony of unspoken connection.</p>
+<p><b>🌄 1351 BCE — The Cataclysm</b><br>
+<i>Aarak</i> was once a world of crystalline skies and verdant expanses—a realm where harmony thrived under the glow of a solitary, nurturing sun and the watchful dance of three sacred moons. Its people, the Aaraks, knew no sorcery nor arcane chants. Instead, their gifts were of the mind: telepathy that stitched communities together in wordless conversation, telekinesis that shaped stone and bent metal with thought alone. Their cities hummed with psionic resonance—a symphony of unspoken connection.</p>
 
-      <p>This tranquil brilliance ended in desperation. A dying alien race, drifting between stars, found Aarak’s sun and greedily siphoned its essence to sustain their waning world. Their theft unleashed a stellar wrath: violent solar flares rippled outward, rending Aarak’s crust, toppling forests into molten fissures, and flinging entire continents skyward. Broken fragments rose in defiance of gravity, suspended by the psionic will of the Aaraks who clung desperately to survival amid a shattered firmament.</p>
+<p>This tranquil brilliance ended in desperation. A dying alien race, drifting between stars, found Aarak’s sun and greedily siphoned its essence to sustain their waning world. Their theft unleashed a stellar wrath: violent solar flares rippled outward, rending Aarak’s crust, toppling forests into molten fissures, and flinging entire continents skyward. Broken fragments rose in defiance of gravity, suspended by the psionic will of the Aaraks who clung desperately to survival amid a shattered firmament.</p>
 
-      <p><b>🌟 Arrival of the Aramaics</b><br>
-      In the final weeks before collapse, three wanderers stumbled through a tear in reality—nomadic magicians known as the Aramaics, exiles of distant <i>Adamah</i> (Earth). Their arrival was never intended; their portal magic had misfired, delivering them not home, but to a doomed world under alien stars.</p>
+<p><b>🌟 Arrival of the Aramaics</b><br>
+In the final weeks before collapse, three wanderers stumbled through a tear in reality—nomadic magicians known as the Aramaics, exiles of distant <i>Adamah</i> (Earth). Their arrival was never intended; their portal magic had misfired, delivering them not home, but to a doomed world under alien stars.</p>
 
-      <p>Frightened whispers met their sudden presence, for the Aaraks had never known true sorcery—only the quiet dominion of the mind. Yet in this bleak hour, the Aramaics offered a new power: <b>true magic</b>. In exchange for sanctuary, they taught the Aaraks how to weave elemental energies with their innate psionics, binding mind and mana for the first time.</p>
+<p>Frightened whispers met their sudden presence, for the Aaraks had never known true sorcery—only the quiet dominion of the mind. Yet in this bleak hour, the Aramaics offered a new power: <b>true magic</b>. In exchange for sanctuary, they taught the Aaraks how to weave elemental energies with their innate psionics, binding mind and mana for the first time.</p>
 
-      <p>When ruin fell at last, the Aramaics shaped a desperate salvation: <u>The Veil</u>, a vast arcane lattice infused with the raw magic of Earth. This radiant barrier sealed Aarak’s broken pieces, preserving them against the endless hunger of the cosmic Void. But the Veil’s brilliance came at a terrible price—its appetite was insatiable. The moment it ignited, it began to draw from Earth’s boundless wells of mana, threading siphons through ancient leylines, pulling power from Adamah across the chasm of stars.</p>
+<p>When ruin fell at last, the Aramaics shaped a desperate salvation: <u>The Veil</u>, a vast arcane lattice infused with the raw magic of Earth. This radiant barrier sealed Aarak’s broken pieces, preserving them against the endless hunger of the cosmic Void. But the Veil’s brilliance came at a terrible price—its appetite was insatiable. The moment it ignited, it began to draw from Earth’s boundless wells of mana, threading siphons through ancient leylines, pulling power from Adamah across the chasm of stars.</p>
 
-      <p><b>⚡ The Veil and the Souls of Adamah</b><br>
-      What began as a protective shroud soon became a living hunger. To sustain itself—and the drifting isles of <i>Aza’ra</i> now teeming with magic-dependent beings—the Veil grew fangs. It reached beyond Adamah’s stone veins, latching onto the secret wellspring within every sentient soul descended from Earth.</p>
+<p><b>⚡ The Veil and the Souls of Adamah</b><br>
+What began as a protective shroud soon became a living hunger. To sustain itself—and the drifting isles of <i>Aza’ra</i> now teeming with magic-dependent beings—the Veil grew fangs. It reached beyond Adamah’s stone veins, latching onto the secret wellspring within every sentient soul descended from Earth.</p>
 
-      <p>Each birth of an Earth-blooded soul creates a fresh ember of mana—a reservoir that its bearer may wield to conjure flame, see hidden truths, shape luck, and glimpse the thin spaces where life and death bleed into one another. This personal wellspring binds them, unknowingly, to the Veil’s endless feast.</p>
+<p>Each birth of an Earth-blooded soul creates a fresh ember of mana—a reservoir that its bearer may wield to conjure flame, see hidden truths, shape luck, and glimpse the thin spaces where life and death bleed into one another. This personal wellspring binds them, unknowingly, to the Veil’s endless feast.</p>
 
-      <p>On Earth, those who still slip through the Veil’s grasp are called <i>Rahemlan</i>—the Gifted, the Chosen—those rare souls who channel scraps of untouched magic. They are the whispered witches and prophets, the miracle-workers and vision-seers, remnants of a world slowly bled dry to keep Aza’ra afloat.</p>
+<p>On Earth, those who still slip through the Veil’s grasp are called <i>Rahemlan</i>—the Gifted, the Chosen—those rare souls who channel scraps of untouched magic. They are the whispered witches and prophets, the miracle-workers and vision-seers, remnants of a world slowly bled dry to keep Aza’ra afloat.</p>
 
-      <p><b>✨ The Refugees of Myth</b><br>
-      When Earth’s ambient magic began to wane, the first to flee were its oldest keepers—deities who once strode the mortal world draped in mortal prayers. Stripped of worship and fuel, they found refuge beyond the Veil’s edge, passing into Aza’ra where new faith, new mana, and new myths awaited.</p>
+<p><b>✨ The Refugees of Myth</b><br>
+When Earth’s ambient magic began to wane, the first to flee were its oldest keepers—deities who once strode the mortal world draped in mortal prayers. Stripped of worship and fuel, they found refuge beyond the Veil’s edge, passing into Aza’ra where new faith, new mana, and new myths awaited.</p>
 
-      <p>Behind them came the beasts of Earth’s collective dreaming: dragons that once scorched ancient skies, merfolk who sang in drowned cities, griffons and phoenixes, leviathans and spirits—all crossing hidden rifts in pursuit of the mana they needed to exist. To Earth’s children, these wonders faded into bedtime stories and campfire tales. They did not know their legends yet live, winged and roaring in the skies of a world reborn.</p>
+<p>Behind them came the beasts of Earth’s collective dreaming: dragons that once scorched ancient skies, merfolk who sang in drowned cities, griffons and phoenixes, leviathans and spirits—all crossing hidden rifts in pursuit of the mana they needed to exist. To Earth’s children, these wonders faded into bedtime stories and campfire tales. They did not know their legends yet live, winged and roaring in the skies of a world reborn.</p>
 
-      <p><b>🕊️ Birth of Aza’ra: A Realm of Mind and Magic</b><br>
-      What survived of Aarak was renamed <i>Aza’ra</i>, a word meaning "to help" in the old Aramaic tongue—a promise forged from ruin and woven into every drifting isle. It is now a realm where psionics and true magic twine like silver threads. The Aaraks’ children and the Aramaics’ descendants—known as the Aza’raans—walk side by side with dragons perched on skyborne cliffs, merfolk shepherding rivers that spill from floating forests, and phoenixes whose embers rise like stars.</p>
+<p><b>🕊️ Birth of Aza’ra: A Realm of Mind and Magic</b><br>
+What survived of Aarak was renamed <i>Aza’ra</i>, a word meaning "to help" in the old Aramaic tongue—a promise forged from ruin and woven into every drifting isle. It is now a realm where psionics and true magic twine like silver threads. The Aaraks’ children and the Aramaics’ descendants—known as the Aza’raans—walk side by side with dragons perched on skyborne cliffs, merfolk shepherding rivers that spill from floating forests, and phoenixes whose embers rise like stars.</p>
 
-      <p>Over time, the cultures of mind and magic entwined. <u>Aza’ra</u> is not simply a place; it is a living memory of all Earth’s forgotten myths—an ark sailing the Void, moored only by the mana drawn endlessly from a distant, unsuspecting blue world.</p>
+<p>Over time, the cultures of mind and magic entwined. <u>Aza’ra</u> is not simply a place; it is a living memory of all Earth’s forgotten myths—an ark sailing the Void, moored only by the mana drawn endlessly from a distant, unsuspecting blue world.</p>
 
-      <p><b>🌙 The Sacred Moons of Aza’ra</b><br>
-      Aza’ra is illuminated not by a traditional sun, but by three celestial moons—each governing distinct periods of the 21-hour day. These moons hold immense cultural, spiritual, and astronomical significance, shaping daily life, ceremonial rites, and linguistic evolution.</p>
+<p><b>🌙 The Sacred Moons of Aza’ra</b><br>
+Aza’ra is illuminated not by a traditional sun, but by three celestial moons—each governing distinct periods of the 21-hour day. These moons hold immense cultural, spiritual, and astronomical significance, shaping daily life, ceremonial rites, and linguistic evolution.</p>
 
-      <ul>
-        <li><u>Duvaen</u> (Morning Moon) — Pronunciation: Doo-vay-en<br>
-        <b>Celestial Traits:</b> A crimson-red moon, akin to Mars, casting warm, diffuse light across the land.<br>
-        <b>Time Period Governed:</b> Ae (Morning) | Hours 1–7<br>
-        <b>Symbolism:</b> Renewal, ambition, vitality. Duvaen’s rise marks the awakening of the world and the pursuit of progress.</li>
+<ul>
+  <li><u>Duvaen</u> (Morning Moon) — Pronunciation: Doo-vay-en<br>
+  <b>Celestial Traits:</b> A crimson-red moon, akin to Mars, casting warm, diffuse light across the land.<br>
+  <b>Time Period Governed:</b> Ae (Morning) | Hours 1–7<br>
+  <b>Symbolism:</b> Renewal, ambition, vitality. Duvaen’s rise marks the awakening of the world and the pursuit of progress.</li>
 
-        <li><u>W’iosamn</u> (Midday Moon) — Pronunciation: wuh-ai-ee-sahmn<br>
-        <b>Celestial Traits:</b> A pale silver moon, larger and brighter than Earth’s, dominating the sky with a radiant glow.<br>
-        <b>Time Period Governed:</b> W’i (Midday) | Hours 8–14<br>
-        <b>Symbolism:</b> Clarity, balance, and guidance. Decisions are made, structures are reinforced, and society flourishes.</li>
+  <li><u>W’iosamn</u> (Midday Moon) — Pronunciation: wuh-ai-ee-sahmn<br>
+  <b>Celestial Traits:</b> A pale silver moon, larger and brighter than Earth’s, dominating the sky with a radiant glow.<br>
+  <b>Time Period Governed:</b> W’i (Midday) | Hours 8–14<br>
+  <b>Symbolism:</b> Clarity, balance, and guidance. Decisions are made, structures are reinforced, and society flourishes.</li>
 
-        <li><u>Arvalla</u> (Night Moon) — Pronunciation: Ar͡r-vah-lah<br>
-        <b>Celestial Traits:</b> A colossal blue-silver moon with tilted rings and perpetual storms, shaping the dynamic cycles of Aza’raan weather.<br>
-        <b>Time Period Governed:</b> La (Night) | Hours 15–21<br>
-        <b>Symbolism:</b> Mystery, transformation, and introspection. Arvalla rules the night’s arcane energies and subconscious realms.</li>
-      </ul>
+  <li><u>Arvalla</u> (Night Moon) — Pronunciation: Ar͡r-vah-lah<br>
+  <b>Celestial Traits:</b> A colossal blue-silver moon with tilted rings and perpetual storms, shaping the dynamic cycles of Aza’raan weather.<br>
+  <b>Time Period Governed:</b> La (Night) | Hours 15–21<br>
+  <b>Symbolism:</b> Mystery, transformation, and introspection. Arvalla rules the night’s arcane energies and subconscious realms.</li>
+</ul>
 
-      <p><b>🕰️ The Living Pulse of Time</b><br>
-      In Aza’ra, time is not merely counted—it is felt. The Veil, always drinking deep of Earth’s mana, hums with resonant pulses. These sonic waves ripple through stone and sky, marking hours, minutes, and seconds like the heartbeat of a colossal, unseen god.</p>
+<p><b>🕰️ The Living Pulse of Time</b><br>
+In Aza’ra, time is not merely counted—it is felt. The Veil, always drinking deep of Earth’s mana, hums with resonant pulses. These sonic waves ripple through stone and sky, marking hours, minutes, and seconds like the heartbeat of a colossal, unseen god.</p>
 
-      <p>To the Aza’raans, each pulse is sacred—a reminder that their world’s heartbeat is paid for by the blood of Adamah. Temples rise where the hums strike strongest, and scholars bend the resonance into magitech and psionic tools that keep the fractured realm alive.</p>
+<p>To the Aza’raans, each pulse is sacred—a reminder that their world’s heartbeat is paid for by the blood of Adamah. Temples rise where the hums strike strongest, and scholars bend the resonance into magitech and psionic tools that keep the fractured realm alive.</p>
 
-      <p><b>🌌 A Realm Suspended</b><br>
-      Thus drifts Aza’ra: a realm of thought and sorcery, its people bound by a promise made in ruin and sustained by a secret sacrifice. Myths long dead on Earth soar alive above skyborne isles. And deep within each soul born of Adamah, a spark of mana still dreams—woven into a Veil that keeps the Void at bay, but never sated.</p>
+<p><b>🌌 A Realm Suspended</b><br>
+Thus drifts Aza’ra: a realm of thought and sorcery, its people bound by a promise made in ruin and sustained by a secret sacrifice. Myths long dead on Earth soar alive above skyborne isles. And deep within each soul born of Adamah, a spark of mana still dreams—woven into a Veil that keeps the Void at bay, but never sated.</p>
 
-      <p><u>So long as souls are born, so long as myths are remembered, Aza’ra endures.</u></p>
+<p><u>So long as souls are born, so long as myths are remembered, Aza’ra endures.</u></p>
     </div>
-
-    <div class="left-image-post">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="left-image">
-            <img src="https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Facebook-Logo.png" alt="Facebook Logo" />
-<div class="left-image-post">
-  <img src="https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Facebook-Logo.png" alt="Facebook Logo" />
   <a href="#" class="button">Follow On Facebook</a>
 </div>
-        <div class="col-md-6">
-          <div class="right-text">
-            <h4>Follow The Magic</h4>
-            <p>
-              Get updates and connect with the Aza'ra Facebook community.  
-              Your engagement helps keep the spirit of Aza’ra alive and thriving.
-              Explore the full living dictionary here (updated daily!)
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="col-md-6">
+    <div class="right-text">
+<h4>Follow The Magic</h4>
+<p>
+  Get updates and connect with the Aza'ra Facebook community.  
+  Your engagement helps keep the spirit of Aza’ra alive and thriving.
+  Explore the full living dictionary here (updated daily!)
+</p>
+    </div>
+  </div>
+</div>
     </div>
 <h2>The World of Aza’ra</h2>
 <h3>A Fusion of Aarak and Aramaic</h3>
