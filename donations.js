@@ -67,3 +67,7 @@ function initDonations() {
 
 // ✅ Init on DOM ready
 document.addEventListener('DOMContentLoaded', initDonations);
+
+
+// ✅ Run it immediately
+initDonations();
