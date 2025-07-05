@@ -20,16 +20,17 @@
     document.head.appendChild(link);
   }
 
-  function loadScript(url) {
-    return fetch(url)
-      .then(res => res.text())
-      .then(code => {
-        const script = document.createElement('script');
-        script.textContent = code;
-        document.head.appendChild(script);
-        console.log(`✅ ${url} loaded.`);
-      })
-      .catch(err => console.error(`❌ Failed to load ${url}:`, err));
+  async function loadScript(url) {
+    try {
+      const res = await fetch(url);
+      const code = await res.text();
+      const script = document.createElement('script');
+      script.textContent = code;
+      document.head.appendChild(script);
+      console.log(`✅ ${url} loaded.`);
+    } catch (err) {
+      console.error(`❌ Failed to load ${url}:`, err);
+    }
   }
 
   loadStyle('https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css');
@@ -151,13 +152,33 @@
   });
 
   /* ──────────────✦ Responsive Background ✦────────────── */
-  (() => {
+  (function () {
     const backgrounds = [
-      { min: 0, max: 480, url: '...small_mobile.jpg' },
-      { min: 481, max: 768, url: '...mobile_tablet.jpg' },
-      { min: 769, max: 1024, url: '...tablet_small_desktop.jpg' },
-      { min: 1025, max: 1440, url: '...large_tablet_medium_desktop.jpg' },
-      { min: 1441, max: Infinity, url: '...large%20desktop.jpg' },
+      {
+        min: 0,
+        max: 480,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile.jpg"
+      },
+      {
+        min: 481,
+        max: 768,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet.jpg"
+      },
+      {
+        min: 769,
+        max: 1024,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop.jpg"
+      },
+      {
+        min: 1025,
+        max: 1440,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop.jpg"
+      },
+      {
+        min: 1441,
+        max: Infinity,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop.jpg"
+      }
     ];
 
     function updateBackground() {
