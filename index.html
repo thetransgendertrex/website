@@ -3,38 +3,38 @@
 <head>
 <metacharset="UTF-8"/>
 <metaname="viewport"content="width=device-width,initial-scale=1.0"/>
-<title>TheWorldof©Aza’ra™</title>
+<title>The World of © Aza’ra™</title>
 <linkrel="stylesheet"href="styles.css">
 </head>
 <body>
 
 <header>
-<h1>©Aza’ra™andAza’raan™LanguageSystem—CraftedwithpurposebyWilliamBlakeSaville(<code>#TheTransgenderTRex</code>)</h1>
+<h1>© Aza’ra™ and Aza’raan™ Languag System—Crafted with purpose by William Blake Saville(<code>#TheTransgenderTRex</code>)</h1>
 <divclass="divider"></div>
 <nav>
 <ahref="#home">Home</a>
 <ahref="#lore">Lore</a>
 <ahref="#navigation">Navigation</a>
-<ahref="#font-project">FontProject</a>
+<ahref="#font-project">Font Project</a>
 <ahref="#mmorpg">MMORPG</a>
-<ahref="#book-series">BookSeries</a>
+<ahref="#book-series">Book Series</a>
 <ahref="#timekeeping">Timekeeping</a>
-<ahref="#language-rules">LanguageRules</a>
+<ahref="#language-rules">Language Rules</a>
 <ahref="#lexicon">Lexicon</a>
 <ahref="#support">Support</a>
 </nav>
 </header>
 
-<sectionclass="sectionhome"data-section="home">HomeContent</section>
-<sectionclass="sectionlore"data-section="lore">LoreContent</section>
-<sectionclass="sectionnavigation"data-section="navigation">NavigationContent</section>
-<sectionclass="sectionfont-project"data-section="font-project">FontProjectContent</section>
-<sectionclass="sectionmmorpg"data-section="mmorpg">MMORPGContent</section>
-<sectionclass="sectionbook-series"data-section="book-series">BookSeriesContent</section>
-<sectionclass="sectiontimekeeping"data-section="timekeeping">TimekeepingContent</section>
-<sectionclass="sectionlanguage-rules"data-section="language-rules">LanguageRulesContent</section>
-<sectionclass="sectionlexicon"data-section="lexicon">LexiconContent</section>
-<sectionclass="sectionsupport"data-section="support">SupportContent</section>
+<sectionclass="sectionhome"data-section="home">Home Content</section>
+<sectionclass="sectionlore"data-section="lore">Lore Content</section>
+<sectionclass="sectionnavigation"data-section="navigation">Navigation Content</section>
+<sectionclass="sectionfont-project"data-section="font-project">Font Project Content</section>
+<sectionclass="sectionmmorpg"data-section="mmorpg">MMORPG Content</section>
+<sectionclass="sectionbook-series"data-section="book-series">Book Series Content</section>
+<sectionclass="sectiontimekeeping"data-section="timekeeping">Timekeeping Content</section>
+<sectionclass="sectionlanguage-rules"data-section="language-rules">Language Rules Content</section>
+<sectionclass="sectionlexicon"data-section="lexicon">Lexicon Content</section>
+<sectionclass="sectionsupport"data-section="support">Support Content</section>
 </header>
 <metaname="viewport"content="width=device-width,initial-scale=1.0"/>
 
@@ -61,201 +61,98 @@ document.body.appendChild(errorNotice);
 /* ──────────────✦ === Aza'raan Website Script === ✦────────────── */
 // @name         Aza'raan Website Script
 // @namespace    https://github.com/thetransgendertrex/website
-// @version      1.2
+// @version      1.3
 // @description  Core interactive behavior for Aza'raan's Trademarked Projects
 // @match        https://www.azara-trademarked-projects.com/*
 
-(function () {
+(() => {
   'use strict';
 
   console.log('✨ Aza\'raan Site Script initializing...');
 
-  /** Load style.css dynamically */
-  const styleLink = document.createElement('link');
-  styleLink.rel = 'stylesheet';
-  styleLink.href = 'https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css';
-  styleLink.onload = () => console.log('✅ style.css loaded.');
-  styleLink.onerror = () => console.error('❌ Failed to load style.css.');
-  document.head.appendChild(styleLink);
+  /* ──────────────✦ Load External Assets ✦────────────── */
+  function loadStyle(href) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onload = () => console.log(`✅ ${href} loaded.`);
+    link.onerror = () => console.error(`❌ Failed to load ${href}.`);
+    document.head.appendChild(link);
+  }
 
-  /** Load override.js dynamically */
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js')
-    .then(res => res.text())
-    .then(code => {
+  async function loadScript(url) {
+    try {
+      const res = await fetch(url);
+      const code = await res.text();
       const script = document.createElement('script');
       script.textContent = code;
       document.head.appendChild(script);
-      console.log('✅ override.js loaded.');
-    })
-    .catch(err => console.error('❌ Failed to load override.js:', err));
+      console.log(`✅ ${url} loaded.`);
+    } catch (err) {
+      console.error(`❌ Failed to load ${url}:`, err);
+    }
+  }
 
-  /** Load donations.js dynamically */
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js')
-    .then(res => res.text())
-    .then(code => {
-      const script = document.createElement('script');
-      script.textContent = code;
-      document.head.appendChild(script);
-      console.log('✅ donations.js loaded.');
-    })
-    .catch(err => console.error('❌ Failed to load donations.js:', err));
+  loadStyle('https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css');
+  loadScript('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js');
+  loadScript('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js');
 
-  /** Verify index.html presence */
   fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
     .then(() => console.log('✅ index.html verified.'))
     .catch(() => console.warn('⚠️ Could not verify index.html.'));
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ──────────────✦ Smooth Scroll & Nav Link Hover ✦────────────── */
+  const navLinkStyles = [
+    { href: '#home', color: '#ECEEF1', shadow: '#1a114b' },
+    { href: '#lore', color: '#0075FF', shadow: '#0c4530' },
+    { href: '#navigation', color: '#C5ECFF', shadow: '#342c61' },
+    { href: '#font-project', color: '#C1FF8A', shadow: '#572a45' },
+    { href: '#mmorpg', color: '#FBC96D', shadow: '#014d4e' },
+    { href: '#book-series', color: '#D88EBA', shadow: '#78581f' },
+    { href: '#timekeeping', color: '#DCE1E8', shadow: '#A63A2C' },
+    { href: '#language-rules', color: '#8FE9F0', shadow: '#7A7C86' },
+    { href: '#lexicon', color: '#7A7C86', shadow: '#1a114b' },
+    { href: '#support', color: '#FBC96D', shadow: '#342c61' },
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const headerHeight = header ? header.offsetHeight : 0;
 
-    // Select all nav links with hashes for smooth scrolling
-    const navLinksWithHashes = document.querySelectorAll('header nav a[href^="#"]');
-
-    navLinksWithHashes.forEach(link => {
-      link.addEventListener('click', function (e) {
+    document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
+        const targetId = link.getAttribute('href').substring(1);
         const targetEl = document.getElementById(targetId);
-
         if (targetEl) {
-          const elementPosition = targetEl.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-constlinks=[
-{href:"#home",text:"Home",color:"#ECEEF1",shadow:"#1a114b"},
-{href:"#lore",text:"Lore",color:"#0075FF",shadow:"#0c4530"},
-{href:"#navigation",text:"Navigation",color:"#C5ECFF",shadow:"#342c61"},
-{href:"#font-project",text:"FontProject",color:"#C1FF8A",shadow:"#572a45"},
-{href:"#mmorpg",text:"MMORPG",color:"#FBC96D",shadow:"#014d4e"},
-{href:"#book-series",text:"BookSeries",color:"#D88EBA",shadow:"#78581f"},
-{href:"#timekeeping",text:"Timekeeping",color:"#DCE1E8",shadow:"#A63A2C"},
-{href:"#language-rules",text:"LanguageRules",color:"#8FE9F0",shadow:"#7A7C86"},
-{href:"#lexicon",text:"Lexicon",color:"#7A7C86",shadow:"#1a114b"},
-{href:"#support",text:"Support",color:"#FBC96D",shadow:"#342c61"},
-];
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Add hover effects to all nav links
-    const navLinks = document.querySelectorAll('header nav a');
-
-    navLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        const href = link.getAttribute('href');
-
-        switch (href) {
-          case '#home':
-            link.style.color = '#FBC96D'; // Emberlight Gold
-            link.style.textShadow = '-1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61';
-            break;
-          case '#lore':
-            link.style.color = '#C5ECFF'; // Crystalline Ice
-            link.style.textShadow = '-1px 1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C';
-            break;
-          case '#navigation':
-            link.style.color = '#DCE1E8'; // Moonstone Silver
-            link.style.textShadow = '-1px 1px 0 #0075FF, 1px -1px 0 #0075FF, -1px 1px 0 #0075FF, 1px 1px 0 #0075FF';
-            break;
-          case '#font-project':
-            link.style.color = '#8FE9F0'; // Dreamlight Cyan
-            link.style.textShadow = '-1px 1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530';
-            break;
-          case '#mmorpg':
-            link.style.color = '#C5ECFF'; // Crystalline Ice
-            link.style.textShadow = '-1px 1px 0 #572a45, 1px -1px 0 #572a45, -1px 1px 0 #572a45, 1px 1px 0 #572a45';
-            break;
-          case '#book-series':
-            link.style.color = '#D88EBA'; // Leyline Rose
-            link.style.textShadow = '-1px 1px 0 #2DC5B4, 1px -1px 0 #2DC5B4, -1px 1px 0 #2DC5B4, 1px 1px 0 #2DC5B4';
-            break;
-          case '#timekeeping':
-            link.style.color = '#8FE9F0'; // Dreamlight Cyan
-            link.style.textShadow = '-1px 1px 0 #78581f, 1px -1px 0 #78581f, -1px 1px 0 #78581f, 1px 1px 0 #78581f';
-            break;
-          case '#language-rules':
-            link.style.color = '#C1FF8A'; // Verdant Glow
-            link.style.textShadow = '-1px 1px 0 #7A7C86, 1px -1px 0 #7A7C86, -1px 1px 0 #7A7C86, 1px 1px 0 #7A7C86';
-            break;
-          case '#lexicon':
-            link.style.color = '#FBC96D'; // Emberlight Gold
-            link.style.textShadow = '-1px 1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61';
-            break;
-          case '#support':
-            link.style.color = '#C5ECFF'; // Crystalline Ice
-            link.style.textShadow = '-1px 1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530';
-            break;
+          const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
         }
       });
 
-      link.addEventListener('mouseleave', () => {
-        // Reset to default link style
-        link.style.color = 'black';
-        link.style.textShadow = 'none';
-      });
+      const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
+      if (navStyle) {
+        link.addEventListener('mouseenter', () => {
+          link.style.color = navStyle.color;
+          link.style.textShadow = `-1px -1px 0 ${navStyle.shadow}, 1px -1px 0 ${navStyle.shadow}, -1px 1px 0 ${navStyle.shadow}, 1px 1px 0 ${navStyle.shadow}`;
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.color = '';
+          link.style.textShadow = '';
+        });
+      }
     });
-  });
 
-  (function () {
-    const backgrounds = [
-      {
-        min: 0,
-        max: 480,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile.jpg"
-      },
-      {
-        min: 481,
-        max: 768,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet.jpg"
-      },
-      {
-        min: 769,
-        max: 1024,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop.jpg"
-      },
-      {
-        min: 1025,
-        max: 1440,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop.jpg"
-      },
-      {
-        min: 1441,
-        max: Infinity,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop.jpg"
-      }
-    ];
-
-    function updateBackground() {
-      const width = window.innerWidth;
-      let bgURL = backgrounds.find(b => width >= b.min && width <= b.max)?.url;
-      if (bgURL) {
-        document.body.style.setProperty('--bg-url', `url("${bgURL}")`);
-      }
-    }
-
-    window.addEventListener('resize', updateBackground);
-    window.addEventListener('DOMContentLoaded', updateBackground);
-  })();
-
-  /* ──────────────✦ Heading, Table, Divider Helper Script ✦────────────── */
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // ✦ Auto-generate IDs for headings (useful for linking)
-    const headings = document.querySelectorAll('h1, h2, h3, h4');
-    headings.forEach((heading, index) => {
+    /* ──────────────✦ Auto-ID Headings ✦────────────── */
+    document.querySelectorAll('h1, h2, h3, h4').forEach((heading, i) => {
       if (!heading.id) {
         const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
-        heading.id = `${slug}-${index}`;
+        heading.id = `${slug}-${i}`;
       }
     });
 
-    // ✦ Add basic table accessibility roles + responsive wrapper if needed
-    const tables = document.querySelectorAll('table');
-    tables.forEach((table) => {
+    /* ──────────────✦ Enhance Tables ✦────────────── */
+    document.querySelectorAll('table').forEach(table => {
       table.setAttribute('role', 'table');
       if (!table.parentElement.classList.contains('table-wrapper')) {
         const wrapper = document.createElement('div');
@@ -265,83 +162,246 @@ constlinks=[
       }
     });
 
-    // ✦ Enhance dividers: fade in on scroll (simple example)
-    const dividers = document.querySelectorAll('.section-divider');
-    const observer = new IntersectionObserver((entries) => {
+    /* ──────────────✦ Fade-In Dividers ✦────────────── */
+    const dividerObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.transition = 'opacity 1s ease-out';
           entry.target.style.opacity = 1;
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
-    dividers.forEach(divider => {
+    document.querySelectorAll('.section-divider').forEach(divider => {
       divider.style.opacity = 0;
-      observer.observe(divider);
+      dividerObserver.observe(divider);
     });
-  });
 
-  // sections.js
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // Smooth fade-in effect for sections
+    /* ──────────────✦ Sections Fade-In & Vertical Buttons ✦────────────── */
     const sections = document.querySelectorAll('.section.home, .section.font-project');
-
-    sections.forEach(section => {
-      section.style.opacity = 0;
-      section.style.transform = 'translateY(30px)';
-    });
-
-    const fadeInOnScroll = (entries, observer) => {
+    const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
           entry.target.style.opacity = 1;
           entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
+          sectionObserver.unobserve(entry.target);
         }
       });
-    };
-
-    const observer = new IntersectionObserver(fadeInOnScroll, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
     sections.forEach(section => {
-      observer.observe(section);
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(30px)';
+      sectionObserver.observe(section);
     });
 
-    // Smooth scroll for vertical buttons
     const smoothLinks = document.querySelectorAll('.vertical-buttons a');
-
     smoothLinks.forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
-
-        // Only handle in-page anchor links
-        if (href && href.startsWith("#")) {
+        if (href.startsWith("#")) {
           e.preventDefault();
           const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          smoothLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
         }
-      });
-    });
-
-    // Optional: add active class on click if you want to style clicked buttons
-    smoothLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        smoothLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
       });
     });
   });
 
+  /* ──────────────✦ Responsive Background ✦────────────── */
+  (function () {
+    const backgrounds = [
+      {
+        min: 0,
+        max: 480,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg"
+      },
+      {
+        min: 481,
+        max: 768,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg"
+      },
+      {
+        min: 769,
+        max: 1024,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg"
+      },
+      {
+        min: 1025,
+        max: 1440,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg"
+      },
+      {
+        min: 1441,
+        max: Infinity,
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg"
+      }
+    ];
+
+    function updateBackground() {
+      const width = window.innerWidth;
+      const match = backgrounds.find(b => width >= b.min && width <= b.max);
+      if (match) {
+        document.body.style.setProperty('--bg-url', `url("${match.url}")`);
+      }
+    }
+
+    window.addEventListener('resize', updateBackground);
+    window.addEventListener('DOMContentLoaded', updateBackground);
+  })();
+
+  /* ──────────────✦ Mobile Menu Toggle ✦────────────── */
+  (() => {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const close = document.getElementById('menu-close');
+
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('open');
+    });
+
+    close?.addEventListener('click', () => {
+      menu?.classList.remove('open');
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 846) {
+        document.querySelectorAll('.main-menu a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu?.classList.remove('open');
+          });
+        });
+      }
+    });
+  })();
+
 })();
+
+// ==UserScript==
+// @name         Aza'raan Comic Sans Span Override
+// @namespace    https://github.com/thetransgendertrex/website
+// @version      2.1
+// @description  Fully override Comic Sans in all elements with inline font-family using Azaraan font and force size override.
+// @author       William Blake Saville
+// @match        https://www.azara-trademarked-projects.com/*
+// @grant        none
+// ==/UserScript==
+
+(function () {
+  'use strict';
+
+  const fontURL = "https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf";
+
+  // Add @font-face for AzaraanOverride
+  const fontStyle = document.createElement("style");
+  fontStyle.textContent = `
+/* === Comic Sans Override for index.html === */
+body[data-doc-name*="index"] {
+  font-family: 'Comic Sans MS', cursive !important;
+}
+
+/* === Force Comic Sans size on all spans or elements === */
+span[style*="Comic Sans MS"],
+*[style*="Comic Sans MS"] {
+  font-family: 'Comic Sans MS', cursive !important;
+  font-size: 22px !important;
+}
+
+@media screen and (max-width: 1024px) {
+  span[style*="Comic Sans MS"],
+  *[style*="Comic Sans MS"] {
+    font-size: 18px !important;
+  }
+}
+
+/* === Aza'raan Font Substitution === */
+.azaraan-word {
+  font-family: 'Azaraan', cursive;
+  color: #014d4e;
+  text-shadow: 
+    -1px -1px 0 var(--cyan),
+     1px -1px 0 var(--cyan),
+    -1px  1px 0 var(--cyan),
+     1px  1px 0 var(--cyan);
+}
+  `;
+  document.head.appendChild(fontStyle);
+
+  // ✅ Optional: Load base site CSS
+  const cssLink = document.createElement('link');
+  cssLink.rel = 'stylesheet';
+  cssLink.href = 'https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css';
+  document.head.appendChild(cssLink);
+
+  // ✅ Robust function to fix any Comic Sans elements dynamically
+  function replaceComicSans() {
+    const elements = document.querySelectorAll('*[style*="font-family"]');
+    elements.forEach(el => {
+      const style = el.getAttribute('style');
+      if (style && /comic sans ms/i.test(style)) {
+        el.style.setProperty('font-family', "'AzaraanOverride'", 'important');
+        el.style.setProperty('font-size', window.innerWidth <= 1024 ? '18px' : '22px', 'important');
+      }
+    });
+  }
+
+  // ✅ Run on load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', replaceComicSans);
+  } else {
+    replaceComicSans();
+  }
+
+  // ✅ Observe DOM for new elements
+  const observer = new MutationObserver(mutations => {
+    mutations.forEach(mutation => {
+      if (mutation.addedNodes.length) {
+        replaceComicSans();
+      }
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  console.log("✅ Aza'raan Comic Sans override with forced size is active.");
+})();
+// === Comic Sans Override for index.html ===
+if (document.body.dataset.docName && document.body.dataset.docName.includes("index")) {
+  document.body.style.fontFamily = "'Comic Sans MS', cursive";
+}
+
+// === Force Comic Sans size on all spans or elements ===
+function applyComicSans() {
+  const comicElements = document.querySelectorAll('*[style*="Comic Sans MS"]');
+  const newSize = window.innerWidth <= 1024 ? '18px' : '22px';
+
+  comicElements.forEach(el => {
+    el.style.fontFamily = "'Comic Sans MS', cursive";
+    el.style.fontSize = newSize;
+  });
+}
+
+// Apply immediately
+applyComicSans();
+
+// Re-apply on window resize
+window.addEventListener('resize', applyComicSans);
+
+// === Aza'raan Font Substitution ===
+const azaraanElements = document.querySelectorAll('.azaraan-word');
+azaraanElements.forEach(el => {
+  el.style.fontFamily = "'Azaraan', cursive";
+  el.style.color = '#014d4e';
+  el.style.textShadow = `
+    -1px -1px 0 var(--cyan),
+     1px -1px 0 var(--cyan),
+    -1px  1px 0 var(--cyan),
+     1px  1px 0 var(--cyan)
+  `;
+});
 
 </script>
 <!--✅Loadstyle.cssfromGitHub-->
@@ -383,7 +443,9 @@ footer fixed at bottom All backgrounds are handled by individual sections.
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
-
+html {
+  scroll-behavior: smooth;
+}
 /* ──────────────✦ Reset default margins/padding ✦────────────── */
 * {
   margin: 0;
@@ -399,7 +461,7 @@ html, body {
   background-color: black;
 }
 
-/* ──────────────✦ Fixed background image ✦────────────── */
+/* ──────────────✦ Fixed background image (default large desktop) ✦────────────── */
 body::before {
   content: "";
   position: fixed;
@@ -407,9 +469,10 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza%27ra%20Moonpunk%20Settlement%20%28AI%20Generated%29.JPG.jpg") center center / cover no-repeat;
+  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
   z-index: -2;
 }
+
 /* ──────────────✦ Scrolling radial black overlay ✦────────────── */
 body::after {
   content: "";
@@ -423,205 +486,650 @@ body::after {
   pointer-events: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px; /* ──────────────✦ base height, adjust as needed ✦────────────── */
   background: white;
   z-index: 10;
-  border-bottom: 2px solid #9381FF; /* ──────────────✦ Twilight Lavender border ✦────────────── */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 5%;
+  border-bottom: 2px solid #9381FF;
+  padding: 1rem 0;
   box-sizing: border-box;
 }
 
-/* ──────────────✦ Header Title ✦────────────── */
 header h1 {
   font-family: 'Times New Roman', serif;
   font-weight: bold;
   color: black;
-  letter-spacing: 0.1rem; /* ──────────────✦ adjust letter spacing ✦────────────── */
-  word-spacing: 0.2rem;   /* ──────────────✦ adjust word spacing ✦────────────── */
+  letter-spacing: 0.1rem;
+  word-spacing: 0.2rem;
   margin: 0;
-  padding: 0;
 }
 
-/* ──────────────✦ Divider below title, above nav ✦────────────── */
 header .divider {
   width: 80%;
   height: 2px;
-  background-color: #9381FF; /* ──────────────✦ Twilight Lavender ✦────────────── */
+  background-color: #9381FF;
   margin: 0.5rem 0;
 }
 
-/* ──────────────✦ Navigation stays where you defined it ✦────────────── */
-header nav {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 5%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+header .copyright {
+  font-family: 'Times New Roman', serif;
+  color: black;
+  margin-top: 10vh;
+  margin-bottom: 5vh; /* creates about 15% gap before nav line */
+  text-align: center;
 }
 
-header nav a {
+header nav.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem; /* horizontal spacing between buttons */
+  margin-bottom: 0.5rem; /* keeps nav just above bottom border */
+}
+
+header nav.main-nav a {
   font-family: 'Times New Roman', serif;
   color: black;
   text-decoration: none;
   font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
-  position: relative;
 }
 
-/* ──────────────✦ Responsive tweaks ✦────────────── */
+header nav.main-nav a:hover {
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+/* Unique hover border colors */
+
+header nav a.home:hover { color: #342c61; border-color: #FBC96D; }
+header nav a.lore:hover { color: #A63A2C; border-color: #C5ECFF; }
+header nav a.navigation:hover { color: #0075FF; border-color: #DCE1E8; }
+header nav a.font-project:hover { color: #0c4530; border-color: #8FE9F0; }
+header nav a.mmorpg:hover { color: #572a45; border-color: #C5ECFF; }
+header nav a.book-series:hover { color: #2DC5B4; border-color: #D88EBA; }
+header nav a.timekeeping:hover { color: #78581f; border-color: #8FE9F0; }
+header nav a.language-rules:hover { color: #7A7C86; border-color: #C1FF8A; }
+header nav a.lexicon:hover { color: #342c61; border-color: #FBC96D; }
+header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
+
+
+/* Mobile nav toggle icon for small screens */
+.menu-toggle {
+  display: none; /* Hidden by default for desktop */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: black;
+}
+
+/* Show toggle on small screens */
 @media (max-width: 768px) {
-  header {
-    height: 60px;
-    padding-top: 4%;
+  .menu-toggle {
+    display: block;
   }
 
-  header h1 {
-    font-size: 1rem;
+  header nav.main-nav {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
   }
 
-  header nav a {
-    font-size: 0.8rem;
+  header nav.main-nav.active {
+    display: flex;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  header {
-    height: 70px;
-    padding-top: 4.5%;
-  }
+.page-title {
+  position: fixed;
+  top: calc(100px + 10%);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Times New Roman', serif;
+  font-size: 2rem;
+  color: #2DC5B4;
+  text-align: center;
+  text-shadow:
+    -1px 0 #014d4e,
+     1px 0 #014d4e,
+     0 -1px #014d4e,
+     0 1px #014d4e;
+  z-index: 9;
+}
 
+section.section {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+}
+
+h1, h3 {
+  font-family: 'Uncial Antiqua', serif;
+  text-align: center;
+}
+
+h2, h4 {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+}
+
+p, span, li {
+  font-family: serif;
+  color: white;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-collapse: collapse;
+}
+
+th {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  padding: 0.75rem;
+}
+
+td {
+  font-family: 'Pridi', serif;
+  color: black;
+  text-align: center;
+  padding: 0.75rem;
+}
+
+section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-divider {
+  width: 80%;
+  height: 2px;
+  margin: 1rem auto;
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
+  }
+  header {
+    padding: 0.5rem 0;
+  }
   header h1 {
     font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.1rem;
+    text-align: center;
   }
-}
-
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; /* ──────────────✦ adjust as needed ✦────────────── */
-  background: white;
-  z-index: 10;
-}
-
-header nav {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 5%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-header nav a {
-  font-family: Times New Roman, serif;
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-/* ──────────────✦ HOME ✦────────────── */
-header nav a[href="#home"]:hover {
-  color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b;
-}
-
-/* ──────────────✦ LORE ✦────────────── */
-header nav a[href="#lore"]:hover {
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
-}
-
-/* ──────────────✦ NAVIGATION ✦────────────── */
-header nav a[href="#navigation"]:hover {
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
-}
-
-/* ──────────────✦ FONT PROJECT ✦────────────── */
-header nav a[href="#font-project"]:hover {
-  color: #C1FF8A;
-  text-shadow: 0 0 2px #572a45;
-}
-
-/* ──────────────✦ MMORPG ✦────────────── */
-header nav a[href="#mmorpg"]:hover {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #014d4e;
-}
-
-/* ──────────────✦ BOOK SERIES ✦────────────── */
-header nav a[href="#book-series"]:hover {
-  color: #D88EBA;
-  text-shadow: 0 0 2px #78581f;
-}
-
-/* ──────────────✦ TIMEKEEPING ✦────────────── */
-header nav a[href="#timekeeping"]:hover {
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-}
-
-/* ──────────────✦ LANGUAGE RULES ✦────────────── */
-header nav a[href="#language-rules"]:hover {
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-}
-
-/* ──────────────✦ LEXICON ✦────────────── */
-header nav a[href="#lexicon"]:hover {
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
-}
-
-/* ──────────────✦ SUPPORT ✦────────────── */
-header nav a[href="#support"]:hover {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61;
-}
-html {
-  scroll-behavior: smooth;
-}
-@media (max-width: 768px) {
   header nav {
-    left: 5%;
-    right: 5%;
-    bottom: 5%;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
   }
-
   header nav a {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .page-title {
+    font-size: 1.2rem;
+    top: calc(80px + 8%);
+  }
+  section.section {
+    width: 90%;
+    margin-top: calc(150px + 8%);
+    padding: 1rem 0;
+  }
+  .section-divider {
+    width: 70%;
+    height: 1px;
+    margin: 0.8rem auto;
+  }
+  table {
+    width: 100%;
   }
 }
 
+/* Larger mobile + small tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg") center center / cover no-repeat;
+  }
+  header {
+    padding: 0.75rem 0;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  header nav a {
+    font-size: 1rem;
+  }
+  .page-title {
+    font-size: 1.5rem;
+    top: calc(90px + 9%);
+  }
+  section.section {
+    width: 85%;
+    margin-top: calc(180px + 9%);
+    padding: 1.5rem 0;
+  }
+  .section-divider {
+    width: 75%;
+    height: 1.5px;
+    margin: 0.9rem auto;
+  }
+  table {
+    width: 100%;
+  }
+}
+
+/* Medium tablet + small desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg") center center / cover no-repeat;
+  }
+  header {
+    padding: 1rem 0;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+  .page-title {
+    font-size: 1.8rem;
+    top: calc(95px + 9%);
+  }
+  section.section {
+    width: 80%;
+    margin-top: calc(190px + 9%);
+    padding: 1.8rem 0;
+  }
+  .section-divider {
+    width: 80%;
+    height: 2px;
+    margin: 1rem auto;
+  }
+  table {
+    width: 95%;
+  }
+}
+
+/* Large tablet + medium desktop */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg") center center / cover no-repeat;
+  }
+  header {
+    padding: 1.2rem 0;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+  .page-title {
+    font-size: 2rem;
+    top: calc(100px + 10%);
+  }
+  section.section {
+    width: 75%;
+    margin-top: calc(200px + 10%);
+    padding: 2rem 0;
+  }
+  .section-divider {
+    width: 80%;
+    height: 2.5px;
+    margin: 1.2rem auto;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1441px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
+  }
+  header {
+    padding: 1.5rem 0;
+  }
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  header nav a {
+    font-size: 1.2rem;
+  }
+  .page-title {
+    font-size: 2.5rem;
+    top: calc(120px + 10%);
+  }
+  section.section {
+    width: 70%;
+    margin-top: calc(220px + 10%);
+    padding: 2.5rem 0;
+  }
+  .section-divider {
+    width: 80%;
+    height: 3px;
+    margin: 1.5rem auto;
+  }
+}
+
+/* ──────────────✦ Hover styles ✦────────────── */ 
+header nav a[href="#home"]:hover {
+  color: #FBC96D;               /* Emberlight Gold */
+  text-shadow: 
+    -1px -1px 0 #342c61, /* Twilight Indigo */
+     1px -1px 0 #342c61, /* Twilight Indigo */
+    -1px  1px 0 #342c61, /* Twilight Indigo */
+     1px  1px 0 #342c61; /* Twilight Indigo */
+}
+
+header nav a[href="#lore"]:hover {
+  color: #C5ECFF;               /* Crystalline Ice */
+    text-shadow:
+   -1px  1px 0 var(#A63A2C), /* Duvaen Red */  
+    1px -1px 0 var(#A63A2C), /* Duvaen Red */
+   -1px  1px 0 var(#A63A2C), /* Duvaen Red */
+    1px  1px 0 var(#A63A2C), /* Duvaen Red */
+}
+
+header nav a[href="#navigation"]:hover {
+  color: #DCE1E8;               /* Moonstone Silver */
+  text-shadow: 
+   -1px  1px 0 var(#0075FF), /* Arvalla Prime */ 
+    1px -1px 0 var(#0075FF), /* Arvalla Prime */
+   -1px  1px 0 var(#0075FF), /* Arvalla Prime */
+    1px  1px 0 var(#0075FF), /* Arvalla Prime */
+}
+
+header nav a[href="#font-project"]:hover {
+  color: #8FE9F0;               /* Dreamlight Cyan */
+  text-shadow: 
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+    1px -1px 0 var(#0c4530), /* Moss-Vein Green */ 
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+    1px  1px 0 var(#0c4530), /* Moss-Vein Green */  
+}
+
+header nav a[href="#mmorpg"]:hover {
+  color: #C5ECFF;               /* Crystalline Ice */
+  text-shadow: 
+   -1px  1px 0 var(#572a45), /* Leyline Plum */
+    1px -1px 0 var(#572a45), /* Leyline Plum */
+   -1px  1px 0 var(#572a45), /* Leyline Plum */ 
+    1px  1px 0 var(#572a45), /* Leyline Plum */
+}
+
+header nav a[href="#book-series"]:hover {
+  color: #D88EBA;               /* Leyline Rose */
+  text-shadow: 
+   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */
+    1px -1px 0 var(#2DC5B4), /* Biolume Teal */
+   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
+    1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
+}
+
+header nav a[href="#timekeeping"]:hover {
+  color: #8FE9F0;               /* Dreamlight Cyan */
+  text-shadow: 
+   -1px  1px 0 var(#78581f), /* Relic Brass */
+    1px -1px 0 var(#78581f), /* Relic Brass */
+   -1px  1px 0 var(#78581f), /* Relic Brass */
+    1px  1px 0 var(#78581f), /* Relic Brass */ 
+}
+
+header nav a[href="#language-rules"]:hover {
+  color: #C1FF8A;               /* Verdant Glow */
+  text-shadow: 
+   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+    1px -1px 0 var(#7A7C86), /* Arvalla Beta */
+   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+    1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+}
+
+header nav a[href="#lexicon"]:hover {
+  color: #FBC96D;               /* Emberlight Gold */
+  text-shadow: 
+   -1px  1px 0 var(#342c61), /* Twilight Indigo */
+    1px -1px 0 var(#342c61), /* Twilight Indigo */
+   -1px  1px 0 var(#342c61), /* Twilight Indigo */
+    1px  1px 0 var(#342c61), /* Twilight Indigo */
+}
+
+header nav a[href="#support"]:hover {
+  color: #C5ECFF;               /* Crystalline Ice */
+  text-shadow: 
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
+    1px -1px 0 var(#0c4530), /* Moss-Vein Green */
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
+    1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+}
+
+ /* ──────────────✦ Small mobile screens ✦────────────── */
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem 0;
+  }
+  header h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.1rem;
+    text-align: center;
+  }
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
   header nav a {
     font-size: 0.9rem;
   }
 }
 
-@media (min-width: 1025px) {
+/* ──────────────✦ Larger mobile + small tablet ✦────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    padding: 0.75rem 0;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
   header nav a {
     font-size: 1rem;
   }
 }
+
+/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  header {
+    padding: 1rem 0;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  header {
+    padding: 1.2rem 0;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ Large desktop ✦────────────── */
+@media (min-width: 1441px) {
+  header {
+    padding: 1.5rem 0;
+  }
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  header nav a {
+    font-size: 1.2rem;
+  }
+}
+/* ──────────────✦ Base styles ✦────────────── */
+.page-title {
+  position: fixed;
+  top: calc(100px + 10%);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Times New Roman', serif;
+  font-size: 2rem;
+  color: #2DC5B4;
+  text-align: center;
+  text-shadow:
+    -1px 0 #014d4e,
+     1px 0 #014d4e,
+     0 -1px #014d4e,
+     0 1px #014d4e;
+  z-index: 9;
+}
+
+section.section {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+}
+
+/* ──────────────✦ Small mobile screens ✦────────────── */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.2rem;
+    top: calc(80px + 8%);
+  }
+  section.section {
+    width: 90%;
+    margin-top: calc(150px + 8%);
+    padding: 1rem 0;
+  }
+}
+
+/* ──────────────✦ Larger mobile + small tablets ✦────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .page-title {
+    font-size: 1.5rem;
+    top: calc(90px + 9%);
+  }
+  section.section {
+    width: 85%;
+    margin-top: calc(180px + 9%);
+    padding: 1.5rem 0;
+  }
+}
+
+/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .page-title {
+    font-size: 1.8rem;
+    top: calc(95px + 9%);
+  }
+  section.section {
+    width: 80%;
+    margin-top: calc(190px + 9%);
+    padding: 1.8rem 0;
+  }
+}
+
+/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .page-title {
+    font-size: 2rem;
+    top: calc(100px + 10%);
+  }
+  section.section {
+    width: 75%;
+    margin-top: calc(200px + 10%);
+    padding: 2rem 0;
+  }
+}
+
+/* ──────────────✦ Large desktop ✦────────────── */
+@media (min-width: 1441px) {
+  .page-title {
+    font-size: 2.5rem;
+    top: calc(120px + 10%);
+  }
+  section.section {
+    width: 70%;
+    margin-top: calc(220px + 10%);
+    padding: 2.5rem 0;
+  }
+}
+
 /* ──────────────✦ Base heading styles ✦────────────── */
 h1, h3 {
   font-family: 'Uncial Antiqua', serif;
@@ -683,46 +1191,47 @@ section {
   margin: 1rem auto;
 }
 
-/* ──────────────✦ Specific colors for each section ✦────────────── */
+/* ──────────────✦ Specific colors for each section (using Dividers hex) ✦────────────── */
 .section.home .section-divider {
-  background-color: #ECEEF1; /* ──────────────✦ W’iosamn Silver ✦────────────── */
+  background-color: #342c61; /* Twilight Indigo */
 }
 
 .section.lore .section-divider {
-  background-color: #0075FF; /* ──────────────✦ Arvalla Prime ✦────────────── */
+  background-color: #A63A2C; /* Duvaen Red */
 }
 
 .section.navigation .section-divider {
-  background-color: #C5ECFF; /* ──────────────✦ Crystalline Ice ✦────────────── */
+  background-color: #0075FF; /* Arvalla Prime */
 }
 
 .section.font-project .section-divider {
-  background-color: #C1FF8A; /* ──────────────✦ Verdant Glow ✦────────────── */
+  background-color: #0c4530; /* Moss-Vein Green */
 }
 
 .section.mmorpg .section-divider {
-  background-color: #FBC96D; /* ──────────────✦ Emberlight Gold ✦────────────── */
+  background-color: #572a45; /* Leyline Plum */
 }
 
 .section.book-series .section-divider {
-  background-color: #D88EBA; /* ──────────────✦ Leyline Rose ✦────────────── */
+  background-color: #2DC5B4; /* Biolume Teal */
 }
 
 .section.timekeeping .section-divider {
-  background-color: #DCE1E8; /* ──────────────✦ Moonstone Silver ✦────────────── */
+  background-color: #78581f; /* Relic Brass */
 }
 
 .section.language-rules .section-divider {
-  background-color: #8FE9F0; /* ──────────────✦ Dreamlight Cyan ✦────────────── */
+  background-color: #7A7C86; /* Arvalla Beta */
 }
 
 .section.lexicon .section-divider {
-  background-color: #7A7C86; /* ──────────────✦ Arvalla Beta ✦────────────── */
+  background-color: #342c61; /* Twilight Indigo */
 }
 
-.section.support .section-divider {
-  background-color: #FBC96D; /* ──────────────✦ Emberlight Gold ✦────────────── */
+.section.section.support .section-divider {
+  background-color: #0c4530; /* Moss-Vein Green */
 }
+
 
 /* ──────────────✦ RESPONSIVE - Small mobile screens ✦────────────── */
 @media (max-width: 480px) {
@@ -770,175 +1279,662 @@ section {
 }
 
 /* ──────────────✦ HOME ✦────────────── */
-.home h1, .home h2, .home h3, .home h4 {
-  color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b;
+/* ===============================
+   ✅ Section: Home
+   =============================== */
+
+.section.home {
+  color: #fff;
+  width: 55%;
+  right: 10%;
+  left: 35%;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
 }
-.home th {
-  color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b;
+
+.section.home {
+  color: #fff;
+  width: 55%;
+  right: 10%;
+  left: 35%;
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #342c61; /* Twilight Indigo */
 }
-.section.home::-webkit-scrollbar-thumb {
-  background: #1a114b;
+
+/* ===============================
+   ✅ Home Heading
+   =============================== */
+
+.section.home-heading {
+  text-align: center;
+  padding: 80px 45px;
 }
-.section.home::-webkit-scrollbar-track {
-  background: #ECEEF1;
+
+.section.home-heading h1,
+.section.home-heading h3 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #FBC96D; /* Emberlight Gold */
+  text-shadow:
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61; /* Twilight Indigo */
 }
+
+.section.home-heading h2,
+.section.home-heading h4 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #342c61; /* Twilight Indigo */
+  text-shadow:
+    -1px -1px 0 #FBC96D,
+     1px -1px 0 #FBC96D,
+    -1px  1px 0 #FBC96D,
+     1px  1px 0 #FBC96D; /* Emberlight Gold */
+}
+
+.section.home-heading .line-dec {
+  width: 60px;
+  height: 3px;
+  background-color: transparent;
+  margin: 10px auto;
+}
+
+.section.home-heading span {
+  margin-top: 5px;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+/* ===============================
+   ✅ Left Image
+   =============================== */
+
+.left-image img {
+  border-radius: 5px;
+}
+
+/* ===============================
+   ✅ Left Image Post (matches template structure)
+   =============================== */
+
+.left-image-post {
+  margin-top: 60px;
+  padding-top: 60px;
+  border-top: 2px solid #FBC96D; /* Emberlight Gold */
+}
+
+.left-image-post h4 {
+  margin-top: 30px;
+}
+
+.left-image-post p {
+  margin-top: 20px;
+}
+
+.left-image-post .button {
+  margin-top: 30px;
+}
+
+/* ===============================
+   ✅ Home Button
+   =============================== */
+
+.section.home .button {
+  display: inline-block;
+  background-color: black;
+  color: white;
+  border: 2px solid white;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.section.home .button:hover {
+  background-color: #FBC96D;  /* Emberlight Gold */
+  color: #342c61;             /* Twilight Indigo */
+  border-color: #342c61;
+}
+
+@media screen and (max-width: 480px) {
+  /* Small Mobile */
+  .left-image-post h4 {
+    margin-top: 0px;
+  }
+  .left-image-post p {
+    margin-top: 10px;
+  }
+  .left-image-post .button {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  /* Small Tablet + Large Mobile */
+  .left-image-post h4 {
+    margin-top: 5px;
+  }
+  .left-image-post p {
+    margin-top: 12px;
+  }
+  .left-image-post .button {
+    margin-top: 22px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* Medium Tablet + Small Desktop */
+  .left-image-post h4 {
+    margin-top: 10px;
+  }
+  .left-image-post p {
+    margin-top: 15px;
+  }
+  .left-image-post .button {
+    margin-top: 25px;
+  }
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* Large Tablet + Medium Desktop */
+  .left-image-post h4 {
+    margin-top: 15px;
+  }
+  .left-image-post p {
+    margin-top: 18px;
+  }
+  .left-image-post .button {
+    margin-top: 28px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  /* Large Desktop */
+  .left-image-post h4 {
+    margin-top: 20px;
+  }
+  .left-image-post p {
+    margin-top: 20px;
+  }
+  .left-image-post .button {
+    margin-top: 30px;
+  }
+} 
 
 /* ──────────────✦ LORE ✦────────────── */
-.lore h1, .lore h2, .lore h3, .lore h4 {
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
+.section.lore { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #A63A2C; /* Duvaen Red */
 }
-.lore th {
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
+
+/* Headings */
+.section.lore h1,
+.section.lore h2,
+.section.lore h3,
+.section.lore h4 {
+  color: #1a114b; /* Astral Navy */
+  text-shadow:
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61;
 }
+
+/* Table Wrapper */
+.section.lore table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #1a114b; /* Astral Navy border */
+}
+
+/* Table Header */
+.section.lore th {
+  font-family: 'Cinzel', serif;
+  color: #1a114b; /* Astral Navy */
+  text-shadow:
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #C5ECFF; /* Crystalline Ice */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo divider */
+}
+
+/* Table Body */
+.section.lore td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+}
+
+/* Section Dividers */
+.section.lore hr {
+  border: 0;
+  border-top: 2px solid #1a114b; /* Astral Navy divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
 .section.lore::-webkit-scrollbar-thumb {
-  background: #0c4530;
+  background: #342c61; /* Twilight Indigo */
 }
 .section.lore::-webkit-scrollbar-track {
-  background: #0075FF;
+  background: #FBC96D; /* Emberlight Gold */
 }
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.lore {
+    width: 95%;
+    padding: 1.5rem 0;
+  }
+
+  .section.lore h1 { font-size: 26px; }
+  .section.lore h2 { font-size: 22px; }
+  .section.lore h3 { font-size: 20px; }
+  .section.lore h4 { font-size: 18px; }
+
+  .section.lore table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.lore th {
+    font-size: 1rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.lore {
+    width: 90%;
+  }
+
+  .section.lore h1 { font-size: 30px; }
+  .section.lore h2 { font-size: 26px; }
+  .section.lore h3 { font-size: 24px; }
+  .section.lore h4 { font-size: 22px; }
+
+  .section.lore table {
+    width: 100%;
+  }
+
+  .section.lore th {
+    font-size: 1.05rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.lore {
+    width: 85%;
+  }
+
+  .section.lore h1 { font-size: 36px; }
+  .section.lore h2 { font-size: 30px; }
+  .section.lore h3 { font-size: 28px; }
+  .section.lore h4 { font-size: 26px; }
+
+  .section.lore table {
+    width: 95%;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.lore {
+    width: 80%;
+  }
+
+  .section.lore h1 { font-size: 42px; }
+  .section.lore h2 { font-size: 34px; }
+  .section.lore h3 { font-size: 32px; }
+  .section.lore h4 { font-size: 30px; }
+
+  .section.lore table {
+    width: 90%;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.lore {
+    width: 75%;
+  }
+
+  .section.lore h1 { font-size: 48px; }
+  .section.lore h2 { font-size: 38px; }
+  .section.lore h3 { font-size: 36px; }
+  .section.lore h4 { font-size: 34px; }
+
+  .section.lore table {
+    width: 85%;
+  }
+}
+
+
+
 /* ──────────────✦ NAVIGATION ✦────────────── */
-.navigation h1, .navigation h2, .navigation h3, .navigation h4 {
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
+.section.navigation { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #0075FF; /* Arvalla Prime */
 }
-.navigation th {
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
+
+/* Headings */
+.section.navigation h1,
+.section.navigation h2,
+.section.navigation h3,
+.section.navigation h4 {
+  color: #0075FF; /* Arvalla Prime */
+  text-shadow:
+    -1px -1px 0 #0075FF,
+     1px -1px 0 #0075FF,
+    -1px  1px 0 #0075FF,
+     1px  1px 0 #0075FF;
 }
+
+/* Table Wrapper */
+.section.navigation table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0075FF; /* Arvalla Prime border */
+}
+
+/* Table Header */
+.section.navigation th {
+  font-family: 'Cinzel', serif;
+  color: #DCE1E8; /* Moonstone Silver */
+  text-shadow:
+    -1px -1px 0 #0075FF,
+     1px -1px 0 #0075FF,
+    -1px  1px 0 #0075FF,
+     1px  1px 0 #0075FF;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #0075FF; /* Arvalla Prime */
+  border-bottom: 2px solid #DCE1E8; /* Moonstone Silver */
+}
+
+/* Table Body */
+.section.navigation td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #0075FF; /* Arvalla Prime row divider */
+}
+
+/* Section Dividers */
+.section.navigation hr {
+  border: 0;
+  border-top: 2px solid #0075FF; /* Arvalla Prime divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
 .section.navigation::-webkit-scrollbar-thumb {
-  background: #342c61;
+  background: #0075FF; /* Arvalla Prime */
 }
 .section.navigation::-webkit-scrollbar-track {
-  background: #C5ECFF;
+  background: #DCE1E8; /* Moonstone Silver */
 }
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.navigation {
+    width: 95%;
+    padding: 1.5rem 0;
+  }
+
+  .section.navigation h1 { font-size: 26px; }
+  .section.navigation h2 { font-size: 22px; }
+  .section.navigation h3 { font-size: 20px; }
+  .section.navigation h4 { font-size: 18px; }
+
+  .section.navigation table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.navigation th {
+    font-size: 1rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.navigation {
+    width: 90%;
+  }
+
+  .section.navigation h1 { font-size: 30px; }
+  .section.navigation h2 { font-size: 26px; }
+  .section.navigation h3 { font-size: 24px; }
+  .section.navigation h4 { font-size: 22px; }
+
+  .section.navigation table {
+    width: 100%;
+  }
+
+  .section.navigation th {
+    font-size: 1.05rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.navigation {
+    width: 85%;
+  }
+
+  .section.navigation h1 { font-size: 36px; }
+  .section.navigation h2 { font-size: 30px; }
+  .section.navigation h3 { font-size: 28px; }
+  .section.navigation h4 { font-size: 26px; }
+
+  .section.navigation table {
+    width: 95%;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.navigation {
+    width: 80%;
+  }
+
+  .section.navigation h1 { font-size: 42px; }
+  .section.navigation h2 { font-size: 34px; }
+  .section.navigation h3 { font-size: 32px; }
+  .section.navigation h4 { font-size: 30px; }
+
+  .section.navigation table {
+    width: 90%;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.navigation {
+    width: 75%;
+  }
+
+  .section.navigation h1 { font-size: 48px; }
+  .section.navigation h2 { font-size: 38px; }
+  .section.navigation h3 { font-size: 36px; }
+  .section.navigation h4 { font-size: 34px; }
+
+  .section.navigation table {
+    width: 85%;
+  }
+}
+
+
+
 /* ──────────────✦ FONT PROJECT ✦────────────── */
-.font-project h1, .font-project h2, .font-project h3, .font-project h4 {
-  color: #C1FF8A;
-  text-shadow: 0 0 2px #572a45;
+section.font-project {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #0c4530; /* Moss-Vein Green */
 }
+
+.font-project h1,
+.font-project h2,
+.font-project h3,
+.font-project h4 {
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-shadow:
+    -1px -1px 0 #0c4530,
+     1px -1px 0 #0c4530,
+    -1px  1px 0 #0c4530,
+     1px  1px 0 #0c4530; /* Moss-Vein Green */
+  margin-bottom: 1rem;
+  font-family: 'Times New Roman', serif;
+}
+
+.font-project p,
+.font-project span {
+  line-height: 1.6;
+  color: #8FE9F0; /* Dreamlight Cyan */
+}
+
 .font-project th {
-  color: #C1FF8A;
-  text-shadow: 0 0 2px #572a45;
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-shadow:
+    -1px -1px 0 #0c4530,
+     1px -1px 0 #0c4530,
+    -1px  1px 0 #0c4530,
+     1px  1px 0 #0c4530; /* Moss-Vein Green */
 }
+
+.font-project a {
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-decoration: underline;
+}
+
+.font-project a:hover {
+  color: #0c4530; /* Moss-Vein Green */
+}
+
 .section.font-project::-webkit-scrollbar-thumb {
-  background: #572a45;
+  background: #0c4530; /* Moss-Vein Green */
 }
+
 .section.font-project::-webkit-scrollbar-track {
-  background: #C1FF8A;
-}
-/* ──────────────✦ MMORPG ✦────────────── */
-.mmorpg h1, .mmorpg h2, .mmorpg h3, .mmorpg h4 {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #014d4e;
-}
-.mmorpg th {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #014d4e;
-}
-.section.mmorpg::-webkit-scrollbar-thumb {
-  background: #014d4e;
-}
-.section.mmorpg::-webkit-scrollbar-track {
-  background: #FBC96D;
-}
-/* ──────────────✦ BOOK SERIES ✦────────────── */
-.book-series h1, .book-series h2, .book-series h3, .book-series h4 {
-  color: #D88EBA;
-  text-shadow: 0 0 2px #78581f;
-}
-.book-series th {
-  color: #D88EBA;
-  text-shadow: 0 0 2px #78581f;
-}
-.section.book-series::-webkit-scrollbar-thumb {
-  background: #78581f;
-}
-.section.book-series::-webkit-scrollbar-track {
-  background: #D88EBA;
+  background: #8FE9F0; /* Dreamlight Cyan */
 }
 
-/* ──────────────✦ TIMEKEEPING ✦────────────── */
-.timekeeping h1, .timekeeping h2, .timekeeping h3, .timekeeping h4 {
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-}
-.timekeeping th {
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-}
-.section.timekeeping::-webkit-scrollbar-thumb {
-  background: #A63A2C;
-}
-.section.timekeeping::-webkit-scrollbar-track {
-  background: #DCE1E8;
-}
-/* ──────────────✦ LANGUAGE RULES ✦────────────── */
-.language-rules h1, .language-rules h2, .language-rules h3, .language-rules h4 {
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-}
-.language-rules th {
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-}
-.section.language-rules::-webkit-scrollbar-thumb {
-  background: #7A7C86;
-}
-.section.language-rules::-webkit-scrollbar-track {
-  background: #8FE9F0;
+/* DEMO AREA */
+.font-project .pacifico {
+  font-family: 'Pacifico', cursive !important;
+  font-size: 1.6em;
+  color: #8FE9F0; /* Dreamlight Cyan */
 }
 
-/* ──────────────✦ LEXICON ✦────────────── */
-.lexicon h1, .lexicon h2, .lexicon h3, .lexicon h4 {
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
+.font-project .azaaraan-preview {
+  font-family: 'Comic Sans MS', cursive !important;
+  font-size: 1.2em;
+  color: #8FE9F0; /* Dreamlight Cyan */
 }
-.lexicon th {
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
+
+/* CLOSING LINES */
+.font-project .closing-lines p {
+  margin: 0.5rem 0;
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  color: #8FE9F0; /* Dreamlight Cyan */
 }
-.section.lexicon::-webkit-scrollbar-thumb {
-  background: #1a114b;
+
+/* BUTTONS */
+.font-project .button,
+.font-project button.button {
+  background: #78581f; /* Relic Brass */
+  color: #8FE9F0;      /* Dreamlight Cyan */
+  border: 2px solid #8FE9F0;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Times New Roman', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
-.section.lexicon::-webkit-scrollbar-track {
-  background: #7A7C86;
+
+.font-project .button:hover,
+.font-project button.button:hover {
+  background: #8FE9F0; /* Dreamlight Cyan */
+  color: #78581f;      /* Relic Brass */
+  border-color: #78581f;
 }
-/* ──────────────✦ SUPPORT ✦────────────── */
-.support h1, .support h2, .support h3, .support h4 {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61;
-}
-.support th {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61;
-}
-.section.support::-webkit-scrollbar-thumb {
-  background: #342c61;
-}
-.section.support::-webkit-scrollbar-track {
-  background: #FBC96D;
-}
-/* ──────────────✦ Container for all vertical buttons ✦────────────── */
-.vertical-buttons {
-  position: fixed;
+
+/* VERTICAL BUTTONS */
+.section.font-project .vertical-buttons {
+  position: relative;
   top: 30%;
   left: 2%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* space between buttons */
-  z-index: 9999; /*stays on top */
+  gap: 1.5rem;
+  z-index: 9999;
 }
 
-/* ──────────────✦ Style for each button ✦────────────── */
-.vertical-buttons a {
+.section.font-project .vertical-buttons a {
   display: inline-block;
-  background-color: black;
-  color: cyan;
-  border: 2px solid cyan;
+  background-color: #78581f; /* Relic Brass */
+  color: #8FE9F0; /* Dreamlight Cyan */
+  border: 2px solid #8FE9F0;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;
   font-family: 'Times New Roman', serif;
@@ -947,34 +1943,1287 @@ section {
   transition: all 0.3s ease;
 }
 
-/* ──────────────✦ Hover effect ✦────────────── */
-.vertical-buttons a:hover {
-  background-color: cyan;
-  color: black;
-  border: 2px solid black;
+.section.font-project .vertical-buttons a:hover {
+  background-color: #8FE9F0; /* Dreamlight Cyan */
+  color: #78581f;            /* Relic Brass */
+  border: 2px solid #78581f;
 }
 
-/* ──────────────✦ Responsive adjustments ✦────────────── */
-@media (max-width: 768px) {
-  .vertical-buttons {
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  section.font-project {
+    width: 95%;
+    padding: 1.5rem 0;
+  }
+
+  .font-project h1 { font-size: 26px; }
+  .font-project h2 { font-size: 22px; }
+  .font-project h3 { font-size: 20px; }
+  .font-project h4 { font-size: 18px; }
+
+  .section.font-project .vertical-buttons {
     top: 20%;
     left: 1%;
     gap: 1rem;
   }
 
-  .vertical-buttons a {
+  .section.font-project .vertical-buttons a {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .vertical-buttons {
-    top: 25%;
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  section.font-project {
+    width: 90%;
+  }
+
+  .font-project h1 { font-size: 30px; }
+  .font-project h2 { font-size: 26px; }
+  .font-project h3 { font-size: 24px; }
+  .font-project h4 { font-size: 22px; }
+
+  .section.font-project .vertical-buttons {
+    top: 22%;
     left: 1.5%;
     gap: 1.25rem;
   }
+
+  .section.font-project .vertical-buttons a {
+    padding: 0.65rem 1.25rem;
+    font-size: 1rem;
+  }
 }
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  section.font-project {
+    width: 85%;
+  }
+
+  .font-project h1 { font-size: 36px; }
+  .font-project h2 { font-size: 30px; }
+  .font-project h3 { font-size: 28px; }
+  .font-project h4 { font-size: 26px; }
+
+  .section.font-project .vertical-buttons {
+    top: 25%;
+    left: 2%;
+    gap: 1.5rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  section.font-project {
+    width: 80%;
+  }
+
+  .font-project h1 { font-size: 42px; }
+  .font-project h2 { font-size: 34px; }
+  .font-project h3 { font-size: 32px; }
+  .font-project h4 { font-size: 30px; }
+
+  .section.font-project .vertical-buttons {
+    top: 28%;
+    left: 2%;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  section.font-project {
+    width: 75%;
+  }
+
+  .font-project h1 { font-size: 48px; }
+  .font-project h2 { font-size: 38px; }
+  .font-project h3 { font-size: 36px; }
+  .font-project h4 { font-size: 34px; }
+}
+
+
+
+/* ──────────────✦ MMORPG ✦────────────── */
+.section.mmorpg { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #572a45; /* Leyline Plum */
+}
+
+/* Headings */
+.section.mmorpg h1,
+.section.mmorpg h2,
+.section.mmorpg h3,
+.section.mmorpg h4 {
+  color: #572a45; /* Leyline Plum */
+  text-shadow:
+    -1px -1px 0 #572a45,
+     1px -1px 0 #572a45,
+    -1px  1px 0 #572a45,
+     1px  1px 0 #572a45; /* Leyline Plum outline shadow */
+}
+
+/* Section Dividers */
+.section.mmorpg hr {
+  border: 0;
+  border-top: 2px solid #572a45; /* Leyline Plum divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.mmorpg::-webkit-scrollbar-thumb {
+  background: #572a45; /* Leyline Plum */
+}
+.section.mmorpg::-webkit-scrollbar-track {
+  background: #C5ECFF; /* Crystalline Ice */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.mmorpg {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 26px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 22px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 20px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 18px;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.mmorpg {
+    width: 90%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 30px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 26px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 24px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 22px;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.mmorpg {
+    width: 85%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 36px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 30px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 28px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 26px;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.mmorpg {
+    width: 80%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 42px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 34px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 32px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 30px;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.mmorpg {
+    width: 75%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 48px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 38px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 36px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 34px;
+  }
+}
+
+/* ──────────────✦ BOOK SERIES ✦────────────── */
+.section.book-series { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #2DC5B4; /* Biolume Teal */
+}
+
+/* Headings */
+.section.book-series h1,
+.section.book-series h2,
+.section.book-series h3,
+.section.book-series h4 {
+  color: #2DC5B4; /* Biolume Teal */
+  text-shadow:
+    -1px -1px 0 #2DC5B4,
+     1px -1px 0 #2DC5B4,
+    -1px  1px 0 #2DC5B4,
+     1px  1px 0 #2DC5B4; /* Biolume Teal outline shadow */
+}
+
+/* Section Dividers */
+.section.book-series hr {
+  border: 0;
+  border-top: 2px solid #2DC5B4; /* Biolume Teal divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.book-series::-webkit-scrollbar-thumb {
+  background: #2DC5B4; /* Biolume Teal */
+}
+.section.book-series::-webkit-scrollbar-track {
+  background: #D88EBA; /* Leyline Rose */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.book-series {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.book-series h1 {
+    font-size: 26px;
+  }
+
+  .section.book-series h2 {
+    font-size: 22px;
+  }
+
+  .section.book-series h3 {
+    font-size: 20px;
+  }
+
+  .section.book-series h4 {
+    font-size: 18px;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.book-series {
+    width: 90%;
+  }
+
+  .section.book-series h1 {
+    font-size: 30px;
+  }
+
+  .section.book-series h2 {
+    font-size: 26px;
+  }
+
+  .section.book-series h3 {
+    font-size: 24px;
+  }
+
+  .section.book-series h4 {
+    font-size: 22px;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.book-series {
+    width: 85%;
+  }
+
+  .section.book-series h1 {
+    font-size: 36px;
+  }
+
+  .section.book-series h2 {
+    font-size: 30px;
+  }
+
+  .section.book-series h3 {
+    font-size: 28px;
+  }
+
+  .section.book-series h4 {
+    font-size: 26px;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.book-series {
+    width: 80%;
+  }
+
+  .section.book-series h1 {
+    font-size: 42px;
+  }
+
+  .section.book-series h2 {
+    font-size: 34px;
+  }
+
+  .section.book-series h3 {
+    font-size: 32px;
+  }
+
+  .section.book-series h4 {
+    font-size: 30px;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.book-series {
+    width: 75%;
+  }
+
+  .section.book-series h1 {
+    font-size: 48px;
+  }
+
+  .section.book-series h2 {
+    font-size: 38px;
+  }
+
+  .section.book-series h3 {
+    font-size: 36px;
+  }
+
+  .section.book-series h4 {
+    font-size: 34px;
+  }
+}
+
+
+
+/* ──────────────✦ TIMEKEEPING ✦────────────── */
+.section.timekeeping { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #78581f; /* Relic Brass */
+}
+
+/* Headings */
+.section.timekeeping h1,
+.section.timekeeping h2,
+.section.timekeeping h3,
+.section.timekeeping h4 {
+  color: #78581f; /* Relic Brass */
+  text-shadow: 
+    -1px -1px 0 #78581f,
+     1px -1px 0 #78581f,
+    -1px  1px 0 #78581f,
+     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+}
+
+/* Table Wrapper */
+.section.timekeeping table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #78581f; /* Relic Brass border */
+}
+
+/* Table Header */
+.section.timekeeping th {
+  font-family: 'Cinzel', serif;
+  color: #78581f; /* Relic Brass */
+  text-shadow: 
+    -1px -1px 0 #78581f,
+     1px -1px 0 #78581f,
+    -1px  1px 0 #78581f,
+     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #8FE9F0; /* Dreamlight Cyan */
+  border-bottom: 2px solid #78581f; /* Relic Brass divider */
+}
+
+/* Table Body */
+.section.timekeeping td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #78581f; /* Relic Brass row divider */
+}
+
+/* Section Dividers */
+.section.timekeeping hr {
+  border: 0;
+  border-top: 2px solid #78581f; /* Relic Brass divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.timekeeping::-webkit-scrollbar-thumb {
+  background: #78581f; /* Relic Brass */
+}
+.section.timekeeping::-webkit-scrollbar-track {
+  background: #8FE9F0; /* Dreamlight Cyan */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.timekeeping {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 26px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 22px;
+  }
+
+  .section.timekeeping table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.timekeeping {
+    width: 90%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 30px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 26px;
+  }
+
+  .section.timekeeping table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.05rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.timekeeping {
+    width: 85%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 36px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 30px;
+  }
+
+  .section.timekeeping table {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.1rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.timekeeping {
+    width: 80%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 42px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 34px;
+  }
+
+  .section.timekeeping table {
+    width: 90%;
+    font-size: 1.05rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.15rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.timekeeping {
+    width: 75%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 48px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 38px;
+  }
+
+  .section.timekeeping table {
+    width: 85%;
+    font-size: 1.1rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.2rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ LANGUAGE RULES ✦────────────── */
+.section.language-rules { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #7A7C86; /* Arvalla Beta */
+}
+
+/* Headings */
+.section.language-rules h1,
+.section.language-rules h2,
+.section.language-rules h3,
+.section.language-rules h4 {
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow: 
+    -1px -1px 0 #7A7C86,
+     1px -1px 0 #7A7C86,
+    -1px  1px 0 #7A7C86,
+     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+}
+
+/* Table Wrapper */
+.section.language-rules table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #7A7C86; /* Arvalla Beta border */
+}
+
+/* Table Header */
+.section.language-rules th {
+  font-family: 'Cinzel', serif;
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow: 
+    -1px -1px 0 #7A7C86,
+     1px -1px 0 #7A7C86,
+    -1px  1px 0 #7A7C86,
+     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #C1FF8A; /* Verdant Glow */
+  border-bottom: 2px solid #7A7C86; /* Arvalla Beta divider */
+}
+
+/* Table Body */
+.section.language-rules td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #7A7C86; /* Arvalla Beta row divider */
+}
+
+/* Section Dividers */
+.section.language-rules hr {
+  border: 0;
+  border-top: 2px solid #7A7C86; /* Arvalla Beta divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.language-rules::-webkit-scrollbar-thumb {
+  background: #7A7C86; /* Arvalla Beta */
+}
+.section.language-rules::-webkit-scrollbar-track {
+  background: #C1FF8A; /* Verdant Glow */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.language-rules {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.language-rules h1 {
+    font-size: 26px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 22px;
+  }
+
+  .section.language-rules table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1rem;
+  }
+
+  .section.language-rules td {
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.language-rules {
+    width: 90%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 30px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 26px;
+  }
+
+  .section.language-rules table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.05rem;
+  }
+
+  .section.language-rules td {
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.language-rules {
+    width: 85%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 36px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 30px;
+  }
+
+  .section.language-rules table {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.1rem;
+  }
+
+  .section.language-rules td {
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.language-rules {
+    width: 80%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 42px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 34px;
+  }
+
+  .section.language-rules table {
+    width: 90%;
+    font-size: 1.05rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.15rem;
+  }
+
+  .section.language-rules td {
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.language-rules {
+    width: 75%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 48px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 38px;
+  }
+
+  .section.language-rules table {
+    width: 85%;
+    font-size: 1.1rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.2rem;
+  }
+
+  .section.language-rules td {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ LEXICON ✦────────────── */
+
+.section.lexicon { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #342c61; /* Twilight Indigo */
+}
+
+/* Headings */
+.section.lexicon h1,
+.section.lexicon h2,
+.section.lexicon h3,
+.section.lexicon h4 {
+  color: #342c61; /* Twilight Indigo */
+  text-shadow: 
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+}
+
+/* Table Wrapper */
+.section.lexicon table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #342c61; /* Twilight Indigo border */
+}
+
+/* Table Header */
+.section.lexicon th {
+  font-family: 'Cinzel', serif;
+  color: #342c61; /* Twilight Indigo */
+  text-shadow: 
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #FBC96D; /* Emberlight Gold */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo divider */
+}
+
+/* Table Body */
+.section.lexicon td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+}
+
+/* Section Dividers */
+.section.lexicon hr {
+  border: 0;
+  border-top: 2px solid #342c61; /* Twilight Indigo divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.lexicon::-webkit-scrollbar-thumb {
+  background: #342c61; /* Twilight Indigo */
+}
+.section.lexicon::-webkit-scrollbar-track {
+  background: #FBC96D; /* Emberlight Gold */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.lexicon {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.lexicon h1 {
+    font-size: 26px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 22px;
+  }
+
+  .section.lexicon table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1rem;
+  }
+
+  .section.lexicon td {
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.lexicon {
+    width: 90%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 30px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 26px;
+  }
+
+  .section.lexicon table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.05rem;
+  }
+
+  .section.lexicon td {
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.lexicon {
+    width: 85%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 36px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 30px;
+  }
+
+  .section.lexicon table {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.1rem;
+  }
+
+  .section.lexicon td {
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.lexicon {
+    width: 80%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 42px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 34px;
+  }
+
+  .section.lexicon table {
+    width: 90%;
+    font-size: 1.05rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.15rem;
+  }
+
+  .section.lexicon td {
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.lexicon {
+    width: 75%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 48px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 38px;
+  }
+
+  .section.lexicon table {
+    width: 85%;
+    font-size: 1.1rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.2rem;
+  }
+
+  .section.lexicon td {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ SUPPORT ✦────────────── */
+.section.support {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem;
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #7A7C86; /* Arvalla Beta */
+}
+
+/* Headings */
+.section.support h1,
+.section.support h2,
+.section.support h3,
+.section.support h4 {
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow:
+    -1px -1px 0 #7A7C86,
+     1px -1px 0 #7A7C86,
+    -1px  1px 0 #7A7C86,
+     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+}
+
+/* Position buttons absolutely inside .section.support */
+.section.support .vertical-buttons {
+  position: absolute;
+  top: 30%;
+  left: -80px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 9999;
+}
+
+/* Buttons themselves stay the same */
+.section.support .vertical-buttons a {
+  display: inline-block;
+  background-color: #0c4530; /* Moss-Vein Green */
+  color: #C5ECFF; /* Crystalline Ice */
+  border: 2px solid #C5ECFF; /* Crystalline Ice */
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Times New Roman', serif;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.section.support .vertical-buttons a:hover {
+  background-color: #C5ECFF; /* Crystalline Ice */
+  color: #0c4530; /* Moss-Vein Green */
+  border: 2px solid #0c4530; /* Moss-Vein Green */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile Screens: <= 480px */
+@media (max-width: 480px) {
+  .section.support {
+    width: 90%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.support h1 {
+    font-size: 28px;
+  }
+
+  .section.support h2 {
+    font-size: 24px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 20%;
+    left: -50px;
+    gap: 1rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.support {
+    width: 85%;
+  }
+
+  .section.support h1 {
+    font-size: 32px;
+  }
+
+  .section.support h2 {
+    font-size: 26px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 22%;
+    left: -60px;
+    gap: 1.2rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.support {
+    width: 80%;
+  }
+
+  .section.support h1 {
+    font-size: 38px;
+  }
+
+  .section.support h2 {
+    font-size: 30px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 25%;
+    left: -70px;
+    gap: 1.25rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.support {
+    width: 75%;
+  }
+
+  .section.support h1 {
+    font-size: 42px;
+  }
+
+  .section.support h2 {
+    font-size: 34px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 28%;
+    left: -80px;
+    gap: 1.5rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.85rem 1.75rem;
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.support {
+    width: 70%;
+  }
+
+  .section.support h1 {
+    font-size: 48px;
+  }
+
+  .section.support h2 {
+    font-size: 38px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 30%;
+    left: -90px;
+    gap: 1.75rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
 
 
 /* ──────────────✦ Example page content to test scrolling ✦────────────── */
@@ -1035,8 +3284,8 @@ span[style*="Comic Sans MS"],
 }
 
 </style>
-    </div>
-  </div>
+</div>
+</div>
 </section>
 <!-- 🏠 Home -->
       <section class="section home" data-section="home">
@@ -1044,7 +3293,8 @@ span[style*="Comic Sans MS"],
           <div class="section-heading">
             <h2>💠 Historical Context: The Cataclysm and the Birth of Aza’ra</h2>
             <div class="line-dec"></div>
-            <span
+            <span>
+              >
             <p><b>🌄 1351 BCE — The Cataclysm</b><br>
             <i>Aarak</i> was once a world of crystalline skies and verdant expanses—a realm where harmony thrived under the glow of a solitary, nurturing sun and the watchful dance of three sacred moons. Its people, the Aaraks, knew no sorcery nor arcane chants. Instead, their gifts were of the mind: telepathy that stitched communities together in wordless conversation, telekinesis that shaped stone and bent metal with thought alone. Their cities hummed with psionic resonance—a symphony of unspoken connection.</p>
 
@@ -1101,7 +3351,7 @@ span[style*="Comic Sans MS"],
             <p><b>🌌 A Realm Suspended</b><br>
                Thus drifts Aza’ra: a realm of thought and sorcery, its people bound by a promise made in ruin and sustained by a secret sacrifice. Myths long dead on Earth soar alive above skyborne isles. And deep within each soul born of Adamah, a spark of mana still dreams—woven into a Veil that keeps the Void at bay, but never sated.</p>
 
-            <p><u>So long as souls are born, so long as myths are remembered, Aza’ra endures.</u></p>
+            ><p><u>So long as souls are born, so long as myths are remembered, Aza’ra endures.</u></p>
           </div>
           <div class="left-image-post">
             <div class="row">
@@ -1113,12 +3363,13 @@ span[style*="Comic Sans MS"],
               <div class="col-md-6">
                 <div class="right-text">
                   <h4>Follow The Magic</h4>
-            >        Get updates and connect with the Aza'ra Facebook community.  
+                  <p>
+                     Get updates and connect with the Aza'ra Facebook community.  
                      Your engagement helps keep the spirit of Aza’ra alive and thriving.
                      Explore the full living dictionary here (updated daily!)</span
-            >
-                  <div class="button"><a href="https://www.facebook.com/WorldOfAzara/" target="_blank"></a>
-                    <a href="#">Follow On Facebook</a>
+                  </p>
+                  <div class="vertical-button">
+                  <a class="button" href="https://www.facebook.com/WorldOfAzara/" target="_blank">Follow On Facebook</a>
                   </div>
                 </div>
               </div>
@@ -1153,8 +3404,7 @@ This website is not just a guide—it is an invitation to explore, refine, and e
 The Aza'raan language is a unique blend of the phonetic richness of Aarak and the structured grammar of Aramaic. This fusion reflects the cultural and historical integration of the two peoples, creating a language that is both expressive and functional.
 </p>
 <h2>The Shattered Realm of Aza’ra</h2>
-<h3><span style="font-family: 'Comic Sans MS', cursive;">
-Aza'ra</span></h3>
+<h3><span style="font-family: 'Comic Sans MS', cursive;">Aza'ra</span></h3>
 <p>
     </div>
   </div>
@@ -1167,6 +3417,120 @@ Aza'ra</span></h3>
 </div>
 <h2>Aza'ra's Lore</h2>
 <div>
+<h2>🌌 The Constellations of Aza'ra: Echoes in the Eternal Night</h2>
+
+<p>In the world of <strong>Aza'ra</strong>, the sky is a canvas of eternal dusk—forever dark, lit only by the gentle glow of Aza'ra’s three moons and the fading shimmer of their dying star, still flickering faintly beyond the veil of space. After the Cataclysm, what remained of the world now drifts beneath the protective dome of the <strong>Veil</strong>, a divine bubble shielding life from the cold vacuum above.</p>
+
+<p>Beneath this sheltering sky, the people of Aza'ra look upward not in fear, but in hope.</p>
+
+<p>The constellations etched across the heavens are not merely distant lights—they are <em>legends</em>, <em>guardians</em>, <em>warnings</em>, and <em>guides</em>. They offer <strong>wisdom</strong> to those who seek meaning, <strong>peace</strong> to the soul-weary, and the spark of <strong>adventure</strong> to all who dare imagine more. Below are twelve of the most captivating among them—symbols of the past, and beacons toward the future.</p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Appearance</strong></th>
+<th><strong>Story</strong></th>
+<th><strong>Months Visible</strong></th>
+<th><strong>Time</strong></th>
+<th><strong>Most Visible From</strong></th>
+</tr>
+<tr>
+<td><strong>The Emberchild</strong></td>
+<td>Trail of stars like a hand reaching toward flame</td>
+<td>Mortal child gifted divine spark after stealing forge fire.</td>
+<td>7</td>
+<td>Midday</td>
+<td>Tzaphaer</td>
+</tr>
+<tr>
+<td><strong>The Aetherfang Spiral</strong></td>
+<td>Spiraling coil like a fang in a whirlwind</td>
+<td>Wind-serpent born of Zephyra's breath, still spinning in the stars.</td>
+<td>3, 4</td>
+<td>Midday</td>
+<td>Dakaroth</td>
+</tr>
+<tr>
+<td><strong>The Thornveil Bloom</strong></td>
+<td>Twisted loops forming a flower with offset thorn</td>
+<td>Sacred bloom from Nyxara’s ascension, symbol of bittersweet transformation.</td>
+<td>5, 6</td>
+<td>Midday</td>
+<td>Arzuhan</td>
+</tr>
+<tr>
+<td><strong>Selkhanis’ Loom</strong></td>
+<td>Radiating web of three-anchored threads</td>
+<td>Fate-weaving loom of Selkhanis, guiding destiny's weave.</td>
+<td>1, 5</td>
+<td>Midday</td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Raethelis’ Threefold Judgment</strong></td>
+<td>Three aligned luminous orbs</td>
+<td>Three moons watching law, mercy, and wrath; their rise marks judgment.</td>
+<td>4, 8</td>
+<td>Midday</td>
+<td>Global</td>
+</tr>
+<tr>
+<td><strong>Wings of the Veiled Courier</strong></td>
+<td>Two arched wings with a faint central star</td>
+<td>Psychopomps’ wings guiding the dead—fully open on the longest night.</td>
+<td>8</td>
+<td>Evening</td>
+<td>Dakaroth</td>
+</tr>
+<tr>
+<td><strong>The Broken Mirror</strong></td>
+<td>Sharp-edged oval with scattered shards</td>
+<td>Wielded by Nyxara, reveals truth and identity in reflection.</td>
+<td>5</td>
+<td>Evening</td>
+<td>Arzuhan</td>
+</tr>
+<tr>
+<td><strong>The Siren’s Gaze</strong></td>
+<td>Two spiraled eyes gazing to the sea</td>
+<td>Morrigaen's ever-watching eyes over oathkeepers and breakers.</td>
+<td>6</td>
+<td>Evening</td>
+<td>Arzuhan</td>
+</tr>
+<tr>
+<td><strong>The Ember Swine Spiral</strong></td>
+<td>Fiery arc spiraling inward like a tusk</td>
+<td>Kaelthar’s burning swine scorched the land and stars alike.</td>
+<td>2</td>
+<td>Midday</td>
+<td>Tzaphaer</td>
+</tr>
+<tr>
+<td><strong>The Verdant Stag</strong></td>
+<td>Antlered silhouette framed by tree stars</td>
+<td>Walked with Eryndria, grants rebirth to forests and souls.</td>
+<td>2</td>
+<td>Morning</td>
+<td>Tzaphaer</td>
+</tr>
+<tr>
+<td><strong>Vulkiris’ Chain</strong></td>
+<td>Broken loop with twin-star sword</td>
+<td>Shattered bindings of oppression immortalized in the sky.</td>
+<td>6, 8</td>
+<td>Midday</td>
+<td>Tzaphaer</td>
+</tr>
+<tr>
+<td><strong>The Duskraven Eye</strong></td>
+<td>Central eye-star with feathered surround</td>
+<td>Watcher of fate gifted prophecy by the god of truth.</td>
+<td>2</td>
+<td>Morning</td>
+<td>Dakaroth</td>
+</tr>
+</table>
 <h3>Disclaimer</h3>
 <p>
 The settlement names and geographical features used throughout this document are English translations of the original Aza'ra names.
@@ -1175,7 +3539,7 @@ All kingdoms by the time of the book series have been absorbed into the UNA (Uni
 </p>
 </div>
 
-<h3>👑 Major Kingdoms of Tzaphaer</h3>
+<h3>👑 Major Kingdoms of Tzaphaer (Taz-af-air͡r)</h3>
 
 <h5>Atmosphere and Theme</h5>
 <ul>
@@ -1471,20 +3835,223 @@ Where witches fall, sea-daughters shall rise.”
 
 <article>
 <h3>🏛 City of the Mourned Gods</h3>
+<p><strong>Kariyaka’alahaeri</strong> — City of the Mourned Gods<br>
+<em>(pronounced: Ka-ir͡ree-yah-kah-ai-lah-hah-eh-ir͡ree)</em><br>
+This ancient name translates directly to “Mourned Gods.”<br>
+It stands as both a title and a lament—echoing through the stone halls and silent spires of a city built upon remembrance.</p>
 <p><strong>Location:</strong> Central-Eastern Tzaphaer, within the Phalorran Wall Mountains, overlooking the River of Mourning.</p>
 <p><strong>Overview:</strong> A necropolis of divine memory and temporal distortion. The last home of forgotten gods, where time unravels and faith lingers.</p>
+<h2>City Atmosphere</h2>
 
-<h4>⚰️ Underworld of Aza’ra</h4>
-<ul>
-<li><strong>The Veilgate:</strong> Beneath the Shrine of Anubrios, sealed by Tears of the Moon. Accessed through the Rite of Three Hours.</li>
-<li><strong>Avya ("Pain"):</strong> Cleansing realm of reckoning and purification.</li>
-<li><strong>Shlama ("Peace"):</strong> Luminous sanctuary for balanced souls.</li>
-<li><strong>Guides:</strong> Volsariis (memory streams), Veiled Couriers (psychopomps of Nyxariel)</li>
-</ul>
+<p>
+The City of the Mourned Gods bears the corruption of Tzaphaer’s damaged magic. Rain sometimes falls upward. Time blinks. Memory drifts. Shadows move with sentience. The presence of the Forgotten Pantheon is not poetic—it is tangible. Their breath hangs in the mist. Their voices echo through alleyways. Their wills are etched into architecture and storm.
+</p>
+<p>
+Within these borders, reality bends under the weight of faith and entropy. Pilgrims, scholars, and seekers arrive willingly, hoping to understand the gods who demand not worship, but trials—psychic gauntlets, existential riddles, visions from the edge of reason. These gods do not test strength. They test comprehension, empathy, and the ability to endure the unbearable.
+</p>
 
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong> <br>
+The city pulses with corrupted magic and shifting reality. Its divine inhabitants test not power, but the resilience of mind and spirit—challenging all who seek them with trials of empathy and endurance.
+</div>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong> <br>
+The City of the Mourned Gods exists at the fragile crossroads between reality and the divine. It is a spectral refuge for forsaken gods and a city shaped by paradox—where faith, memory, and cosmic fracture converge in haunting beauty.
+</div>
+<h2>The Underworld of Aza’ra: Part I — The Veilgate: Threshold of the Dead</h2>
+
+<p>
+Hidden beneath the Shrine of Anubrios, deep in the ancient City of the Mourned Gods, lies the <strong>Veilgate</strong>—a sacred portal carved from obsidian bone and sealed with the crystallized Tears of the Moon. This portal is the only known passage to the Underworld of Aza’ra: a vast, soul-bound dimension beyond the veil of mortality.
+</p>
+
+<p>
+The Veilgate is jealously guarded by Spectral Wardens and Mind-Sealed Acolytes, who allow entry only through the <em>Rite of Three Hours</em>—a soul-carving enchantment that protects travelers from the Underworld’s temporal corruption. Should one remain longer than the allotted time, the enchantment forcibly removes them to prevent their soul from being unraveled into un-death.
+</p>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong> <br>
+The Veilgate stands as the solemn gateway between life and the afterlife—a sacred threshold guarded to ensure the soul’s safe passage without corruption or decay.
+</div>
+<h2>The Underworld of Aza’ra: Part II — Realm of Memory, Trial, and Transition</h2>
+
+<p>
+The Underworld is not a single, uniform plane. It is a labyrinth of drifting soul-cities, storm-wracked memories, and broken echoes of forgotten civilizations. Souls do not wander aimlessly here; they journey through layered realities shaped by belief, consequence, and spiritual resonance.
+</p>
+
+<p>
+Far from silent, the Underworld pulses with the murmur of forgotten prayers, regretful echoes, and songs remembered only by the dead. Within its depths, one may encounter remnants of ancient gods, crumbling histories, and dream-like reflections of lost worlds.
+</p>
+
+<p>
+The Underworld contains two sacred sub-realms—<strong>Avya</strong> and <strong>Shlama</strong>—which embody its dual nature: pain and peace, reckoning and redemption.
+</p>
 <h5>🌍 Earth Portal: Mount Osore, Japan</h5>
 <p>Located on the Shimokita Peninsula, it connects to the Mourned Gods via volcanic storms and psychic resonance. Both sites reflect humanity’s deep myths about death and spiritual passage.</p>
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong> <br>
+The Underworld is a complex realm where souls face memories, trials, and transformation—reflecting the balance of pain and peace in the journey beyond life.
+</div>
+<h2>The Underworld of Aza’ra: Part III — Avya: The Realm of Pain and Purification</h2>
 
+<p>
+<strong>Avya</strong> (Aramaic: “Pain”) is a place of consequence, not cruelty. Cloaked in shifting shadow and bitter flame, it exists to purge, punish, or prepare souls who failed in life to uphold the virtues of Aza’ra.
+</p>
+
+<h3>Environment</h3>
+<p>
+Caverns of ash, rivers of flame, jagged obsidian wastes. Pain is ambient—etched into the air, embedded in the soil.
+</p>
+
+<h3>Inhabitants</h3>
+<p>
+Tormented souls bound in spectral chains, shadow-wraith guardians, and the mysterious Weepers, who offer mercy amid misery.
+</p>
+
+<h3>Purpose</h3>
+<p>
+Avya is not hell; it is reckoning. Souls confront the weight of their choices. Some are cleansed through suffering and permitted to ascend. Others remain in eternal torment.
+</p>
+
+<h3>Spiritual Role</h3>
+<p>
+It teaches that all deeds bear consequence. Through pain, some find redemption; through refusal, some find annihilation.
+</p>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong><br>
+Avya embodies the necessary reckoning of souls, where pain serves as purification and a path to possible redemption.
+</div>
+<h2>The Underworld of Aza’ra: Part IV — Shlama: The Peaceful Realm Beneath</h2>
+
+<p>
+<strong>Shlama</strong> (Aramaic: “Peace”) is a hidden sanctuary of sublime light within the Underworld’s depths. It is the final haven for those who lived in balance with the Eternal Virtues of Aza’ra.
+</p>
+
+<h3>Environment</h3>
+<p>
+Crystal gardens, liquid-light rivers, and golden caverns where stars shine beneath the earth. Soundless music and radiant stillness cradle the soul.
+</p>
+
+<h3>Inhabitants</h3>
+<p>
+Enlightened souls, ancestors, radiant guardians called Shlamar, and the ever-present warmth of the Eternal Light.
+</p>
+
+<h3>Purpose</h3>
+<p>
+Souls here are reunited, renewed, and healed. Time becomes fluid. Pain vanishes. They may remain in eternal peace or be reborn by choice.
+</p>
+
+<h3>Spiritual Role</h3>
+<p>
+It embodies the reward of righteous life. Where Avya burns, Shlama soothes. It reminds mortals that peace is always possible—even in death.
+</p>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong><br>
+Shlama is the realm of peace and renewal, offering healing and eternal rest or rebirth to souls who lived in harmony with Aza’ra’s virtues.
+</div>
+<h2>The Underworld of Aza’ra: Part V — Volsariis: The Ethereal Conduits</h2>
+
+<p>
+The <strong>Volsariis</strong> are a race of sentient beings devoted to Nyxariel, the Patient God of Death. They live multiple lifespans, reincarnating through a cycle of thirteen lives. Each time they die, they return as infants to begin a new cycle. On their final cycle, they sprout large, bat-like wings that radiate with inner light, granting them unmatched grace as they glide through the air.
+</p>
+
+<p>
+These ethereal beings serve as conduits of soul-energy, flowing like luminous rivers between realms—guiding souls through the Veilgate, Avya, Shlama, and beyond. The Volsariis are stewards of transition and judgment, answering only to Nyxariel’s will.
+</p>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong><br>
+The Volsariis embody the cycle of death and rebirth, guiding souls with wisdom and grace through Aza’ra’s Underworld under Nyxariel’s watchful eye.
+</div>
+<h2>The Underworld of Aza’ra: Part VI — The Veiled Couriers: Envoys Between Worlds</h2>
+
+<p>
+The <strong>Veiled Couriers</strong> are mortal-born envoys of Aza’ra, chosen to traverse the thin boundary between Adamah (Earth) and Aza’ra’s Underworld. Because Nyxariel cannot manifest in Adamah’s magic-thin reality, these couriers are empowered by Raz to retrieve souls destined for Aza’ra’s judgment.
+</p>
+
+<p>
+Born from the fusion of Aramaic soul-sorcerers and the psychic Aaraks, the Couriers wield ancient death rites and mind-born power. They appear cloaked, luminous, and silent at moments of passing, guiding wandering souls from Earth through the Veilgate into the realm beyond.
+</p>
+
+<p>
+Though their presence is rarely remembered by the living, the Couriers’ legacy deeply influences death rituals, mourning songs, and psychopomp myths shared across both worlds.
+</p>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong><br>
+The Veiled Couriers act as the silent bridge between life and afterlife, embodying compassion and duty in the passage of souls.
+</div>
+<h2>The Underworld of Aza’ra: Part VII — The Soul’s Journey Through the Underworld</h2>
+
+<ol>
+<li><strong>Death</strong><br>
+Upon departing the mortal coil, a soul is gently met by a Veiled Courier—an Aza’raan soul guide who appears subtly, respectfully, and without spectacle. This meeting takes place on Earth (Adamah), where Nyxariel Rachtnami cannot tread. The Couriers act in Nyxariel’s stead, entrusted to carry out the first step of the soul’s sacred transition.
+</li>
+
+<li><strong>Transit</strong><br>
+The soul is escorted through a Veilgate, a shimmering threshold between worlds powered by the ancient bond between Earth and Aza’ra. Once beyond, the soul is immersed in the Rivers of Reflection—luminescent currents within the Underworld that flow with memories, emotions, and echoes of lifetimes past.
+</li>
+
+<li><strong>Weighing</strong><br>
+Guided by the Volsariis, ethereal soulbinders born from starlit shadow, the soul undergoes the Weighing of the Heart. This is not a cold judgment, but a psionic reflection—a communion of one’s regrets, deeds, virtues, and intentions across their life. The Volsariis, bound to Nyxariel, gaze through the soul into the truth beneath.
+</li>
+
+<li><strong>Judgment</strong><br>
+A soul’s path is determined by its spiritual resonance, not dogma. The outcome reflects the soul’s internal harmony, not external affiliation.<br><br>
+
+Believers are guided to Shlama or Avya, but within realms shaped by their own traditions.<br><br>
+
+<em>A Christian soul</em> may find a radiant city beside a gleaming gate.<br>
+<em>A Hellenic soul</em> may walk rivers toward the Styx or Elysium.<br>
+Each is surrounded by kindred spirits, a shared memory space honoring belief.<br><br>
+
+<em>Agnostics</em> are offered insight and choice, their paths open-ended but guided with compassion.<br>
+<em>Reincarnationists</em>—unless enlightened—are reborn, not on Earth, but into Aza’ra, bringing new potential to its evolving future.<br>
+<em>Atheists</em>—in full alignment with their beliefs—never perceive the Underworld; they pass into nonexistence, unburdened and untouched.<br>
+<em>The Lost</em>—those with utterly fractured resonance—drift in shadow, unreachable, remembered but never reclaimed.
+</li>
+
+<li><strong>Conclusion</strong><br>
+Every soul is treated with dignity and care, their destiny honored by the Couriers and Volsariis alike.<br><br>
+
+Some find rest in eternal realms shaped by faith and virtue.<br>
+Some are reborn, given another chance to grow, change, and build.<br>
+Some, rare and tragic, are lost forever, beyond the reach of gods or memory.
+</li>
+</ol>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong><br>
+The soul’s journey is a deeply personal passage shaped by belief, compassion, and spiritual harmony—not rigid judgment.
+</div>
+<h2>The Underworld of Aza’ra: Part VIII — Philosophical and Cultural Impact in Aza’ra</h2>
+
+<ul>
+<li><strong>Life as Preparation:</strong> Existence is viewed not as an end but a prelude—a test of soul-weight toward Shlama or Avya.</li>
+
+<li><strong>Rites of Passage:</strong> Funerary rituals often invoke both pain and peace—symbolizing the soul’s dual potential paths through the Underworld.</li>
+
+<li><strong>Heroic Myths:</strong> Countless tales speak of champions who descended into Avya to rescue loved ones or who glimpsed Shlama and returned enlightened.</li>
+</ul>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+<strong>Takeaway:</strong><br>
+The Underworld deeply influences Aza’raan culture, shaping beliefs about life, death, and heroism.
+</div>
+<h2>The Underworld of Aza’ra: Part IX — Poetic Invocation of the Underworld</h2>
+
+<div style="background: transparent; border-left: 4px solid; padding: 12px 16px; margin-top: 24px; font-style: italic">
+Beyond the breath of the last bell’s toll,<br>
+Beneath the shrine where gods no longer wake,<br>
+The soul descends through obsidian gate,<br>
+To face the light, the fire, the fate.
+</p>
+<strong>Reflection:</strong><br>
+This invocation captures the solemn journey of the soul through Kariyaka’alahaeri, symbolizing the eternal cycle of challenge and peace within Aza’ra’s underworld.
+</div>
 <blockquote>
 <strong>🕯 Poetic Invocation</strong><br>
 Beyond the breath of the last bell’s toll,<br>
@@ -1493,9 +4060,10 @@ The soul descends through obsidian gate,<br>
 To face the light, the fire, the fate.
 </blockquote> 
 </article>
+</div>
 <h2>🌬️ Arzuhan — Continent of Sky Kingdoms, Arcane Winds, and Floating Legacies</h2>
 <p>
-<strong>Pronunciation:</strong> <em>Arr-zoo-hahn</em> (rolled “r”)<br />
+<strong>Pronunciation:</strong> <em>Air͡r-zoo-hahn</em> (rolled “r”)<br />
 <strong>Location:</strong> Easternmost continent<br />
 <strong>Primary Moon:</strong> 🌙 <em>Arvalla</em> (rises NE, arcs over Arzuhan &amp; SW Tzaphaer)
 </p>
@@ -1717,7 +4285,7 @@ Zephyra is a luminous, skyborne kingdom of floating aeries, interplanar bridges,
 <p>
 A bi-leveled city resting above and below the waters of Eryndria Harbors and River. Featuring glass towers and coral-like domes, Eryndria is arcane-affiliated and formerly connected by portals to Glastonbury Tor (England → Avalon myth). It remains independent from Zephyra’s governance.
 </p>
-<h2>⚒️ Dakaroth</h2>
+<h2>⚒️ Dakaroth (Pronunciation: Dak-ah-Ar͡roth)</h2>
 <p>
 <strong>Land of Stone, Steel, and Forgotten Fire</strong><br />
 Pronunciation: Dak-ah-r͡roth (rolled “r”)<br />
@@ -5927,7 +8495,78 @@ convey meaning and must be spoken with clarity and rhythm.
 <div class="section-heading">
 <main id="support-content"></main>
 </div>
+<script>
+console.log("✅ Aza'ra Donations script loaded.");
 
+// ✅ Initialize donations logic
+function initDonations() {
+console.log("✅ Aza'ra Donations initialized.");
+
+// ✅ Dynamically load site-wide CSS if needed
+const styleLink = document.createElement('link');
+styleLink.rel = 'stylesheet';
+styleLink.href = 'https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css';
+styleLink.onload = () => console.log('✅ style.css loaded.');
+styleLink.onerror = () => console.error('❌ style.css failed to load.');
+document.head.appendChild(styleLink);
+
+// ✅ Grab DOM elements
+const amountInput = document.querySelector('.section.support #donation-amount');
+const donateBtn = document.querySelector('.section.support #donate-btn');
+const statusEl = document.querySelector('.section.support #donation-status');
+const intervalButtons = document.querySelectorAll('.section.support .interval-btn');
+
+let selectedInterval = 'one_time'; // Default interval
+
+// ✅ Check for essential elements
+if (!amountInput || !donateBtn || !statusEl || intervalButtons.length === 0) {
+console.warn('⚠️ Missing required donation elements.');
+return;
+}
+
+// ✅ Interval buttons logic
+intervalButtons.forEach(button => {
+button.addEventListener('click', () => {
+intervalButtons.forEach(b => b.classList.remove('active'));
+button.classList.add('active');
+selectedInterval = button.dataset.interval || 'one_time';
+console.log(`✅ Selected interval: ${selectedInterval}`);
+});
+});
+
+// ✅ Make sure first interval is active on load
+intervalButtons[0].classList.add('active');
+
+// ✅ Handle donate button click
+donateBtn.addEventListener('click', () => {
+const amount = parseFloat(amountInput.value);
+
+if (isNaN(amount) || amount < 1) {
+alert('⚠️ Minimum donation is $1.');
+return;
+}
+
+donateBtn.disabled = true;
+updateStatus('Redirecting to secure Stripe checkout...');
+
+// ✅ Replace with your actual Stripe URLs
+const stripeURL = selectedInterval === 'one_time'
+? 'https://buy.stripe.com/8x24gz18oaCEgIc7kg0x200'
+: 'https://donate.stripe.com/cNifZhdVa268ajOeMI0x201';
+
+window.location.href = stripeURL;
+});
+
+// ✅ Helper to update donation status
+function updateStatus(message) {
+statusEl.textContent = message;
+}
+}
+
+// ✅ Init on DOM ready
+document.addEventListener('DOMContentLoaded', initDonations);
+
+</script>
 <h2>🌌 Thank You for Supporting Aza’ra</h2>
 <p>
 Your donations help maintain this project, its language, glyphs, and story.<br>
