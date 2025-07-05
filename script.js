@@ -157,27 +157,27 @@
       {
         min: 0,
         max: 480,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile.jpg"
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile"
       },
       {
         min: 481,
         max: 768,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet.jpg"
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet"
       },
       {
         min: 769,
         max: 1024,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop.jpg"
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop"
       },
       {
         min: 1025,
         max: 1440,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop.jpg"
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop"
       },
       {
         min: 1441,
         max: Infinity,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop.jpg"
+        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop"
       }
     ];
 
@@ -219,3 +219,5 @@
   })();
 
 })();
+
+
