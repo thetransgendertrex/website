@@ -850,35 +850,20 @@ section {
 }
 
 /* ──────────────✦ HOME ✦────────────── */
-/* ===============================
-   ✅ Section: Home
-   =============================== */
 
+/* ==== Main Styling ==== */
 .section.home {
   color: #fff;
   width: 55%;
-  right: 10%;
   left: 35%;
+  right: 10%;
   position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
   border-bottom: 3px solid #342c61; /* Twilight Indigo */
 }
 
-.section.home {
-  color: #fff;
-  width: 55%;
-  right: 10%;
-  left: 35%;
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #342c61; /* Twilight Indigo */
-}
-
-/* ===============================
-   ✅ Home Heading
-   =============================== */
+/* ─────── HOME HEADINGS ─────── */
 
 .section.home-heading {
   text-align: center;
@@ -923,22 +908,34 @@ section {
   letter-spacing: 0.5px;
 }
 
-/* ===============================
-   ✅ Left Image
-   =============================== */
-
-.left-image img {
-  border-radius: 5px;
-}
-
-/* ===============================
-   ✅ Left Image Post (matches template structure)
-   =============================== */
+/* ────── LEFT IMAGE POST CONTAINER ────── */
 
 .left-image-post {
+  position: fixed;
+  top: 40%;
+  left: 40%;
+  width: 30%;
+  height: 30%;
+  background-color: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  overflow: hidden;
+  z-index: 9998;
+
+  display: flex;
+  flex-direction: column;  /* Stack image + button vertically */
+  justify-content: center;
+  align-items: center;
   margin-top: 60px;
   padding-top: 60px;
   border-top: 2px solid #FBC96D; /* Emberlight Gold */
+}
+
+.left-image-post img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
 }
 
 .left-image-post h4 {
@@ -949,15 +946,13 @@ section {
   margin-top: 20px;
 }
 
+/* ─────── BUTTON INSIDE LEFT IMAGE POST ─────── */
+
 .left-image-post .button {
-  margin-top: 30px;
-}
-
-/* ===============================
-   ✅ Home Button
-   =============================== */
-
-.section.home .button {
+  position: absolute;
+  bottom: 25%;            /* 25% from bottom of container */
+  left: 50%;
+  transform: translate(-50%, 50%);
   display: inline-block;
   background-color: black;
   color: white;
@@ -970,78 +965,160 @@ section {
   text-transform: uppercase;
   text-decoration: none;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.section.home .button:hover {
-  background-color: #FBC96D;  /* Emberlight Gold */
-  color: #342c61;             /* Twilight Indigo */
+.left-image-post .button:hover {
+  background-color: #FBC96D; /* Emberlight Gold */
+  color: #342c61;            /* Twilight Indigo */
   border-color: #342c61;
 }
 
-@media screen and (max-width: 480px) {
-  /* Small Mobile */
-  .left-image-post h4 {
-    margin-top: 0px;
+/* ==== RESPONSIVE BREAKPOINTS ==== */
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .section.home {
+    width: 90%;
+    left: 5%;
+    right: 5%;
+    padding-bottom: 40px;
   }
-  .left-image-post p {
-    margin-top: 10px;
+  .section.home-heading h1,
+  .section.home-heading h3 {
+    font-size: 24px;
+  }
+  .section.home-heading h2,
+  .section.home-heading h4 {
+    font-size: 20px;
+  }
+  .left-image-post {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
   }
   .left-image-post .button {
+    position: static;
+    transform: none;
     margin-top: 20px;
+    bottom: auto;
+    left: auto;
   }
 }
 
-@media screen and (min-width: 482px) and (max-width: 768px) {
-  /* Small Tablet + Large Mobile */
-  .left-image-post h4 {
-    margin-top: 5px;
+/* Large Mobile + Small Tablet (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.home {
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    padding-bottom: 50px;
   }
-  .left-image-post p {
-    margin-top: 12px;
+  .section.home-heading h1,
+  .section.home-heading h3 {
+    font-size: 28px;
+  }
+  .section.home-heading h2,
+  .section.home-heading h4 {
+    font-size: 22px;
+  }
+  .left-image-post {
+    top: 45%;
+    left: 45%;
+    width: 50%;
+    height: 40%;
   }
   .left-image-post .button {
-    margin-top: 22px;
+    bottom: 20%;
   }
 }
 
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  /* Medium Tablet + Small Desktop */
-  .left-image-post h4 {
-    margin-top: 10px;
+/* Medium Tablet + Small Desktop (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.home {
+    width: 70%;
+    left: 20%;
+    right: 10%;
+    padding-bottom: 60px;
   }
-  .left-image-post p {
-    margin-top: 15px;
+  .section.home-heading h1,
+  .section.home-heading h3 {
+    font-size: 30px;
+  }
+  .section.home-heading h2,
+  .section.home-heading h4 {
+    font-size: 24px;
+  }
+  .left-image-post {
+    top: 42%;
+    left: 42%;
+    width: 40%;
+    height: 35%;
   }
   .left-image-post .button {
-    margin-top: 25px;
+    bottom: 22%;
   }
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
-  /* Large Tablet + Medium Desktop */
-  .left-image-post h4 {
-    margin-top: 15px;
+/* Large Tablet + Medium Desktop (1025px - 1440px) */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.home {
+    width: 55%;
+    left: 35%;
+    right: 10%;
+    padding-bottom: 80px;
   }
-  .left-image-post p {
-    margin-top: 18px;
+  .section.home-heading h1,
+  .section.home-heading h3 {
+    font-size: 32px;
+  }
+  .section.home-heading h2,
+  .section.home-heading h4 {
+    font-size: 26px;
+  }
+  .left-image-post {
+    top: 40%;
+    left: 40%;
+    width: 30%;
+    height: 30%;
   }
   .left-image-post .button {
-    margin-top: 28px;
+    bottom: 25%;
   }
 }
 
-@media screen and (min-width: 1442px) {
-  /* Large Desktop */
-  .left-image-post h4 {
-    margin-top: 20px;
+/* Large Desktop (1441px and up) */
+@media (min-width: 1441px) {
+  .section.home {
+    width: 50%;
+    left: 40%;
+    right: 10%;
+    padding-bottom: 90px;
   }
-  .left-image-post p {
-    margin-top: 20px;
+  .section.home-heading h1,
+  .section.home-heading h3 {
+    font-size: 36px;
+  }
+  .section.home-heading h2,
+  .section.home-heading h4 {
+    font-size: 28px;
+  }
+  .left-image-post {
+    top: 40%;
+    left: 40%;
+    width: 28%;
+    height: 28%;
   }
   .left-image-post .button {
-    margin-top: 30px;
+    bottom: 25%;
   }
-} 
+}
 
 /* ──────────────✦ LORE ✦────────────── */
 .section.lore { 
