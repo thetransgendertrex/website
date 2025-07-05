@@ -1,201 +1,97 @@
 /* ──────────────✦ === Aza'raan Website Script === ✦────────────── */
 // @name         Aza'raan Website Script
 // @namespace    https://github.com/thetransgendertrex/website
-// @version      1.2
+// @version      1.3
 // @description  Core interactive behavior for Aza'raan's Trademarked Projects
 // @match        https://www.azara-trademarked-projects.com/*
 
-(function () {
+(() => {
   'use strict';
 
   console.log('✨ Aza\'raan Site Script initializing...');
 
-  /** Load style.css dynamically */
-  const styleLink = document.createElement('link');
-  styleLink.rel = 'stylesheet';
-  styleLink.href = 'https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css';
-  styleLink.onload = () => console.log('✅ style.css loaded.');
-  styleLink.onerror = () => console.error('❌ Failed to load style.css.');
-  document.head.appendChild(styleLink);
+  /* ──────────────✦ Load External Assets ✦────────────── */
+  function loadStyle(href) {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    link.onload = () => console.log(`✅ ${href} loaded.`);
+    link.onerror = () => console.error(`❌ Failed to load ${href}.`);
+    document.head.appendChild(link);
+  }
 
-  /** Load override.js dynamically */
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js')
-    .then(res => res.text())
-    .then(code => {
-      const script = document.createElement('script');
-      script.textContent = code;
-      document.head.appendChild(script);
-      console.log('✅ override.js loaded.');
-    })
-    .catch(err => console.error('❌ Failed to load override.js:', err));
+  function loadScript(url) {
+    return fetch(url)
+      .then(res => res.text())
+      .then(code => {
+        const script = document.createElement('script');
+        script.textContent = code;
+        document.head.appendChild(script);
+        console.log(`✅ ${url} loaded.`);
+      })
+      .catch(err => console.error(`❌ Failed to load ${url}:`, err));
+  }
 
-  /** Load donations.js dynamically */
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js')
-    .then(res => res.text())
-    .then(code => {
-      const script = document.createElement('script');
-      script.textContent = code;
-      document.head.appendChild(script);
-      console.log('✅ donations.js loaded.');
-    })
-    .catch(err => console.error('❌ Failed to load donations.js:', err));
+  loadStyle('https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css');
+  loadScript('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js');
+  loadScript('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js');
 
-  /** Verify index.html presence */
   fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
     .then(() => console.log('✅ index.html verified.'))
     .catch(() => console.warn('⚠️ Could not verify index.html.'));
 
-  document.addEventListener('DOMContentLoaded', function () {
+  /* ──────────────✦ Smooth Scroll & Nav Link Hover ✦────────────── */
+  const navLinkStyles = [
+    { href: '#home', color: '#ECEEF1', shadow: '#1a114b' },
+    { href: '#lore', color: '#0075FF', shadow: '#0c4530' },
+    { href: '#navigation', color: '#C5ECFF', shadow: '#342c61' },
+    { href: '#font-project', color: '#C1FF8A', shadow: '#572a45' },
+    { href: '#mmorpg', color: '#FBC96D', shadow: '#014d4e' },
+    { href: '#book-series', color: '#D88EBA', shadow: '#78581f' },
+    { href: '#timekeeping', color: '#DCE1E8', shadow: '#A63A2C' },
+    { href: '#language-rules', color: '#8FE9F0', shadow: '#7A7C86' },
+    { href: '#lexicon', color: '#7A7C86', shadow: '#1a114b' },
+    { href: '#support', color: '#FBC96D', shadow: '#342c61' },
+  ];
+
+  document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
     const headerHeight = header ? header.offsetHeight : 0;
 
-    // Select all nav links with hashes for smooth scrolling
-    const navLinksWithHashes = document.querySelectorAll('header nav a[href^="#"]');
-
-    navLinksWithHashes.forEach(link => {
-      link.addEventListener('click', function (e) {
+    document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
+        const targetId = link.getAttribute('href').substring(1);
         const targetEl = document.getElementById(targetId);
-
         if (targetEl) {
-          const elementPosition = targetEl.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
-constlinks=[
-{href:"#home",text:"Home",color:"#ECEEF1",shadow:"#1a114b"},
-{href:"#lore",text:"Lore",color:"#0075FF",shadow:"#0c4530"},
-{href:"#navigation",text:"Navigation",color:"#C5ECFF",shadow:"#342c61"},
-{href:"#font-project",text:"FontProject",color:"#C1FF8A",shadow:"#572a45"},
-{href:"#mmorpg",text:"MMORPG",color:"#FBC96D",shadow:"#014d4e"},
-{href:"#book-series",text:"BookSeries",color:"#D88EBA",shadow:"#78581f"},
-{href:"#timekeeping",text:"Timekeeping",color:"#DCE1E8",shadow:"#A63A2C"},
-{href:"#language-rules",text:"LanguageRules",color:"#8FE9F0",shadow:"#7A7C86"},
-{href:"#lexicon",text:"Lexicon",color:"#7A7C86",shadow:"#1a114b"},
-{href:"#support",text:"Support",color:"#FBC96D",shadow:"#342c61"},
-];
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Add hover effects to all nav links
-    const navLinks = document.querySelectorAll('header nav a');
-
-    navLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        const href = link.getAttribute('href');
-
-        switch (href) {
-          case '#home':
-            link.style.color = '#FBC96D'; // Emberlight Gold
-            link.style.textShadow = '-1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61';
-            break;
-          case '#lore':
-            link.style.color = '#C5ECFF'; // Crystalline Ice
-            link.style.textShadow = '-1px 1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C';
-            break;
-          case '#navigation':
-            link.style.color = '#DCE1E8'; // Moonstone Silver
-            link.style.textShadow = '-1px 1px 0 #0075FF, 1px -1px 0 #0075FF, -1px 1px 0 #0075FF, 1px 1px 0 #0075FF';
-            break;
-          case '#font-project':
-            link.style.color = '#8FE9F0'; // Dreamlight Cyan
-            link.style.textShadow = '-1px 1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530';
-            break;
-          case '#mmorpg':
-            link.style.color = '#C5ECFF'; // Crystalline Ice
-            link.style.textShadow = '-1px 1px 0 #572a45, 1px -1px 0 #572a45, -1px 1px 0 #572a45, 1px 1px 0 #572a45';
-            break;
-          case '#book-series':
-            link.style.color = '#D88EBA'; // Leyline Rose
-            link.style.textShadow = '-1px 1px 0 #2DC5B4, 1px -1px 0 #2DC5B4, -1px 1px 0 #2DC5B4, 1px 1px 0 #2DC5B4';
-            break;
-          case '#timekeeping':
-            link.style.color = '#8FE9F0'; // Dreamlight Cyan
-            link.style.textShadow = '-1px 1px 0 #78581f, 1px -1px 0 #78581f, -1px 1px 0 #78581f, 1px 1px 0 #78581f';
-            break;
-          case '#language-rules':
-            link.style.color = '#C1FF8A'; // Verdant Glow
-            link.style.textShadow = '-1px 1px 0 #7A7C86, 1px -1px 0 #7A7C86, -1px 1px 0 #7A7C86, 1px 1px 0 #7A7C86';
-            break;
-          case '#lexicon':
-            link.style.color = '#FBC96D'; // Emberlight Gold
-            link.style.textShadow = '-1px 1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61';
-            break;
-          case '#support':
-            link.style.color = '#C5ECFF'; // Crystalline Ice
-            link.style.textShadow = '-1px 1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530';
-            break;
+          const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top: offset, behavior: 'smooth' });
         }
       });
 
-      link.addEventListener('mouseleave', () => {
-        // Reset to default link style
-        link.style.color = 'black';
-        link.style.textShadow = 'none';
-      });
+      const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
+      if (navStyle) {
+        link.addEventListener('mouseenter', () => {
+          link.style.color = navStyle.color;
+          link.style.textShadow = `-1px -1px 0 ${navStyle.shadow}, 1px -1px 0 ${navStyle.shadow}, -1px 1px 0 ${navStyle.shadow}, 1px 1px 0 ${navStyle.shadow}`;
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.color = '';
+          link.style.textShadow = '';
+        });
+      }
     });
-  });
 
-  (function () {
-    const backgrounds = [
-      {
-        min: 0,
-        max: 480,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile.jpg"
-      },
-      {
-        min: 481,
-        max: 768,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet.jpg"
-      },
-      {
-        min: 769,
-        max: 1024,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop.jpg"
-      },
-      {
-        min: 1025,
-        max: 1440,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop.jpg"
-      },
-      {
-        min: 1441,
-        max: Infinity,
-        url: "https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop.jpg"
-      }
-    ];
-
-    function updateBackground() {
-      const width = window.innerWidth;
-      let bgURL = backgrounds.find(b => width >= b.min && width <= b.max)?.url;
-      if (bgURL) {
-        document.body.style.setProperty('--bg-url', `url("${bgURL}")`);
-      }
-    }
-
-    window.addEventListener('resize', updateBackground);
-    window.addEventListener('DOMContentLoaded', updateBackground);
-  })();
-
-  /* ──────────────✦ Heading, Table, Divider Helper Script ✦────────────── */
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // ✦ Auto-generate IDs for headings (useful for linking)
-    const headings = document.querySelectorAll('h1, h2, h3, h4');
-    headings.forEach((heading, index) => {
+    /* ──────────────✦ Auto-ID Headings ✦────────────── */
+    document.querySelectorAll('h1, h2, h3, h4').forEach((heading, i) => {
       if (!heading.id) {
         const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
-        heading.id = `${slug}-${index}`;
+        heading.id = `${slug}-${i}`;
       }
     });
 
-    // ✦ Add basic table accessibility roles + responsive wrapper if needed
-    const tables = document.querySelectorAll('table');
-    tables.forEach((table) => {
+    /* ──────────────✦ Enhance Tables ✦────────────── */
+    document.querySelectorAll('table').forEach(table => {
       table.setAttribute('role', 'table');
       if (!table.parentElement.classList.contains('table-wrapper')) {
         const wrapper = document.createElement('div');
@@ -205,80 +101,100 @@ constlinks=[
       }
     });
 
-    // ✦ Enhance dividers: fade in on scroll (simple example)
-    const dividers = document.querySelectorAll('.section-divider');
-    const observer = new IntersectionObserver((entries) => {
+    /* ──────────────✦ Fade-In Dividers ✦────────────── */
+    const dividerObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.transition = 'opacity 1s ease-out';
           entry.target.style.opacity = 1;
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
-    dividers.forEach(divider => {
+    document.querySelectorAll('.section-divider').forEach(divider => {
       divider.style.opacity = 0;
-      observer.observe(divider);
+      dividerObserver.observe(divider);
     });
-  });
 
-  // sections.js
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // Smooth fade-in effect for sections
+    /* ──────────────✦ Sections Fade-In & Vertical Buttons ✦────────────── */
     const sections = document.querySelectorAll('.section.home, .section.font-project');
-
-    sections.forEach(section => {
-      section.style.opacity = 0;
-      section.style.transform = 'translateY(30px)';
-    });
-
-    const fadeInOnScroll = (entries, observer) => {
+    const sectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
           entry.target.style.opacity = 1;
           entry.target.style.transform = 'translateY(0)';
-          observer.unobserve(entry.target);
+          sectionObserver.unobserve(entry.target);
         }
       });
-    };
-
-    const observer = new IntersectionObserver(fadeInOnScroll, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
     sections.forEach(section => {
-      observer.observe(section);
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(30px)';
+      sectionObserver.observe(section);
     });
 
-    // Smooth scroll for vertical buttons
     const smoothLinks = document.querySelectorAll('.vertical-buttons a');
-
     smoothLinks.forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
-
-        // Only handle in-page anchor links
-        if (href && href.startsWith("#")) {
+        if (href.startsWith("#")) {
           e.preventDefault();
           const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          smoothLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
         }
       });
     });
-
-    // Optional: add active class on click if you want to style clicked buttons
-    smoothLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        smoothLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-      });
-    });
   });
+
+  /* ──────────────✦ Responsive Background ✦────────────── */
+  (() => {
+    const backgrounds = [
+      { min: 0, max: 480, url: '...small_mobile.jpg' },
+      { min: 481, max: 768, url: '...mobile_tablet.jpg' },
+      { min: 769, max: 1024, url: '...tablet_small_desktop.jpg' },
+      { min: 1025, max: 1440, url: '...large_tablet_medium_desktop.jpg' },
+      { min: 1441, max: Infinity, url: '...large%20desktop.jpg' },
+    ];
+
+    function updateBackground() {
+      const width = window.innerWidth;
+      const match = backgrounds.find(b => width >= b.min && width <= b.max);
+      if (match) {
+        document.body.style.setProperty('--bg-url', `url("${match.url}")`);
+      }
+    }
+
+    window.addEventListener('resize', updateBackground);
+    window.addEventListener('DOMContentLoaded', updateBackground);
+  })();
+
+  /* ──────────────✦ Mobile Menu Toggle ✦────────────── */
+  (() => {
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+    const close = document.getElementById('menu-close');
+
+    toggle?.addEventListener('click', () => {
+      menu?.classList.toggle('open');
+    });
+
+    close?.addEventListener('click', () => {
+      menu?.classList.remove('open');
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth < 846) {
+        document.querySelectorAll('.main-menu a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu?.classList.remove('open');
+          });
+        });
+      }
+    });
+  })();
 
 })();
