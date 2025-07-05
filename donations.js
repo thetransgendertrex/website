@@ -1,69 +1,69 @@
-// ✅ Aza'ra Donations — Unified for azara-trademarked-projects.com
+console.log("✅ Aza'ra Donations script loaded.");
 
-export function initDonations() {
-  console.log("✅ Aza'ra Donations script loaded.");
+// ✅ Initialize donations logic
+function initDonations() {
+  console.log("✅ Aza'ra Donations initialized.");
 
-  // ✅ Load site-wide CSS (optional, skip if already linked in <head>)
+  // ✅ Dynamically load site-wide CSS if needed
   const styleLink = document.createElement('link');
   styleLink.rel = 'stylesheet';
   styleLink.href = 'https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css';
-  styleLink.onload = () => console.log('✅ style.css loaded (GitHub).');
+  styleLink.onload = () => console.log('✅ style.css loaded.');
   styleLink.onerror = () => console.error('❌ style.css failed to load.');
   document.head.appendChild(styleLink);
 
-  // ✅ DOM elements
-  const amountInput = document.getElementById('donation-amount');
-  const donateBtn = document.getElementById('donate-btn');
-  const statusEl = document.getElementById('donation-status');
-  const intervalButtons = document.querySelectorAll('.interval-btn');
+  // ✅ Grab DOM elements
+  const amountInput = document.querySelector('.section.support #donation-amount');
+  const donateBtn = document.querySelector('.section.support #donate-btn');
+  const statusEl = document.querySelector('.section.support #donation-status');
+  const intervalButtons = document.querySelectorAll('.section.support .interval-btn');
 
-  let selectedInterval = 'one_time'; // default
+  let selectedInterval = 'one_time'; // Default interval
 
-  if (!donateBtn || !amountInput || intervalButtons.length === 0) {
-    console.warn('⚠️ Missing donation elements.');
+  // ✅ Check for essential elements
+  if (!amountInput || !donateBtn || !statusEl || intervalButtons.length === 0) {
+    console.warn('⚠️ Missing required donation elements.');
     return;
   }
 
-  // ✅ Interval button logic
-  intervalButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove .active from all
+  // ✅ Interval buttons logic
+  intervalButtons.forEach(button => {
+    button.addEventListener('click', () => {
       intervalButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      selectedInterval = btn.dataset.interval;
-      console.log(`✅ Interval selected: ${selectedInterval}`);
+      button.classList.add('active');
+      selectedInterval = button.dataset.interval || 'one_time';
+      console.log(`✅ Selected interval: ${selectedInterval}`);
     });
   });
 
-  // ✅ Default active on load
+  // ✅ Make sure first interval is active on load
   intervalButtons[0].classList.add('active');
 
-  // ✅ Donation click
+  // ✅ Handle donate button click
   donateBtn.addEventListener('click', () => {
     const amount = parseFloat(amountInput.value);
 
     if (isNaN(amount) || amount < 1) {
-      alert('Minimum donation is $1.');
+      alert('⚠️ Minimum donation is $1.');
       return;
     }
 
     donateBtn.disabled = true;
-    setStatus('Redirecting to secure Stripe payment...');
+    updateStatus('Redirecting to secure Stripe checkout...');
 
-    if (selectedInterval === 'one_time') {
-      // ✅ One-time link
-      window.location.href = 'https://buy.stripe.com/8x24gz18oaCEgIc7kg0x200';
-    } else {
-      // ✅ Subscription link (same for all recurring)
-      window.location.href = 'https://donate.stripe.com/cNifZhdVa268ajOeMI0x201';
-    }
+    // ✅ Replace with your actual Stripe URLs
+    const stripeURL = selectedInterval === 'one_time'
+      ? 'https://buy.stripe.com/8x24gz18oaCEgIc7kg0x200'
+      : 'https://donate.stripe.com/cNifZhdVa268ajOeMI0x201';
+
+    window.location.href = stripeURL;
   });
 
-  function setStatus(msg) {
-    statusEl.textContent = msg;
+  // ✅ Helper to update donation status
+  function updateStatus(message) {
+    statusEl.textContent = message;
   }
 }
 
-// ✅ Auto-run
-initDonations();
-
+// ✅ Init on DOM ready
+document.addEventListener('DOMContentLoaded', initDonations);
