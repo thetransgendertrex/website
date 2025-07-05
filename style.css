@@ -37,7 +37,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop") center center / cover no-repeat;
+  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
   z-index: -2;
 }
 
@@ -243,7 +243,7 @@ section {
 /* Small mobile screens */
 @media (max-width: 480px) {
   body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile") center center / cover no-repeat;
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
   }
   header {
     padding: 0.5rem 0;
@@ -284,7 +284,7 @@ section {
 /* Larger mobile + small tablet */
 @media (min-width: 481px) and (max-width: 768px) {
   body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet") center center / cover no-repeat;
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg") center center / cover no-repeat;
   }
   header {
     padding: 0.75rem 0;
@@ -322,7 +322,7 @@ section {
 /* Medium tablet + small desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
   body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop") center center / cover no-repeat;
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg") center center / cover no-repeat;
   }
   header {
     padding: 1rem 0;
@@ -360,7 +360,7 @@ section {
 /* Large tablet + medium desktop */
 @media (min-width: 1025px) and (max-width: 1440px) {
   body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop") center center / cover no-repeat;
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg") center center / cover no-repeat;
   }
   header {
     padding: 1.2rem 0;
@@ -394,7 +394,7 @@ section {
 /* Large desktop */
 @media (min-width: 1441px) {
   body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop") center center / cover no-repeat;
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
   }
   header {
     padding: 1.5rem 0;
