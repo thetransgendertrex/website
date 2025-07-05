@@ -9,34 +9,40 @@
 <body>
 
 <header>
-<h1>© Aza’ra™ and Aza’raan™ Languag System—Crafted with purpose by William Blake Saville(<code>#TheTransgenderTRex</code>)</h1>
-<divclass="divider"></div>
-<nav>
-<ahref="#home">Home</a>
-<ahref="#lore">Lore</a>
-<ahref="#navigation">Navigation</a>
-<ahref="#font-project">Font Project</a>
-<ahref="#mmorpg">MMORPG</a>
-<ahref="#book-series">Book Series</a>
-<ahref="#timekeeping">Timekeeping</a>
-<ahref="#language-rules">Language Rules</a>
-<ahref="#lexicon">Lexicon</a>
-<ahref="#support">Support</a>
-</nav>
+  <h1>© Aza’ra™ and Aza’raan™ Language System — Crafted with purpose by William Blake Saville (<code>#TheTransgenderTRex</code>)</h1>
+  <div class="divider"></div>
+
+  <!-- Mobile Menu Toggle Icon -->
+  <div id="menu-toggle" class="menu-toggle">☰</div>
+
+  <nav id="menu" class="main-nav">
+    <a href="#home" class="home">Home</a>
+    <a href="#lore" class="lore">Lore</a>
+    <a href="#navigation" class="navigation">Navigation</a>
+    <a href="#font-project" class="font-project">Font Project</a>
+    <a href="#mmorpg" class="mmorpg">MMORPG</a>
+    <a href="#book-series" class="book-series">Book Series</a>
+    <a href="#timekeeping" class="timekeeping">Timekeeping</a>
+    <a href="#language-rules" class="language-rules">Language Rules</a>
+    <a href="#lexicon" class="lexicon">Lexicon</a>
+    <a href="#support" class="support">Support</a>
+  </nav>
 </header>
 
-<sectionclass="sectionhome"data-section="home">Home Content</section>
-<sectionclass="sectionlore"data-section="lore">Lore Content</section>
-<sectionclass="sectionnavigation"data-section="navigation">Navigation Content</section>
-<sectionclass="sectionfont-project"data-section="font-project">Font Project Content</section>
-<sectionclass="sectionmmorpg"data-section="mmorpg">MMORPG Content</section>
-<sectionclass="sectionbook-series"data-section="book-series">Book Series Content</section>
-<sectionclass="sectiontimekeeping"data-section="timekeeping">Timekeeping Content</section>
-<sectionclass="sectionlanguage-rules"data-section="language-rules">Language Rules Content</section>
-<sectionclass="sectionlexicon"data-section="lexicon">Lexicon Content</section>
-<sectionclass="sectionsupport"data-section="support">Support Content</section>
-</header>
-<metaname="viewport"content="width=device-width,initial-scale=1.0"/>
+<!-- Sections with proper class and ID -->
+<section id="home" class="section home" data-section="home">Home Content</section>
+<section id="lore" class="section lore" data-section="lore">Lore Content</section>
+<section id="navigation" class="section navigation" data-section="navigation">Navigation Content</section>
+<section id="font-project" class="section font-project" data-section="font-project">Font Project Content</section>
+<section id="mmorpg" class="section mmorpg" data-section="mmorpg">MMORPG Content</section>
+<section id="book-series" class="section book-series" data-section="book-series">Book Series Content</section>
+<section id="timekeeping" class="section timekeeping" data-section="timekeeping">Timekeeping Content</section>
+<section id="language-rules" class="section language-rules" data-section="language-rules">Language Rules Content</section>
+<section id="lexicon" class="section lexicon" data-section="lexicon">Lexicon Content</section>
+<section id="support" class="section support" data-section="support">Support Content</section>
+
+<!-- Close nav for mobile (optional) -->
+<div id="menu-close" style="display:none;">✕</div>
 
 <!--👇Loadandrunoverride.jsFIRST-->
 <script>
@@ -101,7 +107,21 @@ document.body.appendChild(errorNotice);
     .then(() => console.log('✅ index.html verified.'))
     .catch(() => console.warn('⚠️ Could not verify index.html.'));
 
-  /* ──────────────✦ Smooth Scroll & Nav Link Hover ✦────────────── */
+   document.querySelectorAll('header a').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').slice(1);
+      const target = document.getElementById(targetId);
+      const headerOffset = document.querySelector('header').offsetHeight;
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    });
+  });
   const navLinkStyles = [
     { href: '#home', color: '#ECEEF1', shadow: '#1a114b' },
     { href: '#lore', color: '#0075FF', shadow: '#0c4530' },
@@ -117,19 +137,9 @@ document.body.appendChild(errorNotice);
 
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
-    const headerHeight = header ? header.offsetHeight : 0;
 
-    document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetEl = document.getElementById(targetId);
-        if (targetEl) {
-          const offset = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top: offset, behavior: 'smooth' });
-        }
-      });
-
+    // Add hover styles to navigation links
+    document.querySelectorAll('header a').forEach(link => {
       const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
       if (navStyle) {
         link.addEventListener('mouseenter', () => {
@@ -322,10 +332,10 @@ span[style*="Comic Sans MS"],
   font-family: 'Azaraan', cursive;
   color: #014d4e;
   text-shadow: 
-    -1px -1px 0 var(--cyan),
-     1px -1px 0 var(--cyan),
-    -1px  1px 0 var(--cyan),
-     1px  1px 0 var(--cyan);
+    -2px -2px 0 var(--cyan),
+     2px -2px 0 var(--cyan),
+    -2px  2px 0 var(--cyan),
+     2px  2px 0 var(--cyan);
 }
   `;
   document.head.appendChild(fontStyle);
@@ -396,10 +406,10 @@ azaraanElements.forEach(el => {
   el.style.fontFamily = "'Azaraan', cursive";
   el.style.color = '#014d4e';
   el.style.textShadow = `
-    -1px -1px 0 var(--cyan),
-     1px -1px 0 var(--cyan),
-    -1px  1px 0 var(--cyan),
-     1px  1px 0 var(--cyan)
+    -2px -2px 0 var(--cyan),
+     2px -2px 0 var(--cyan),
+    -2px  2px 0 var(--cyan),
+     2px  2px 0 var(--cyan)
   `;
 });
 
@@ -458,19 +468,17 @@ html, body {
   height: 100%;
   overflow-x: hidden;
   font-family: Times New Roman, serif;
-  background-color: black;
+  background-color: transparent;
 }
 
 /* ──────────────✦ Fixed background image (default large desktop) ✦────────────── */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
-  z-index: -2;
+#page-wraper {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
 }
 
 /* ──────────────✦ Scrolling radial black overlay ✦────────────── */
@@ -553,6 +561,11 @@ header nav.main-nav a:hover {
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
 }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth; /* Native smooth scroll! */
+    }
 
 /* Unique hover border colors */
 
@@ -607,10 +620,10 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
   color: #2DC5B4;
   text-align: center;
   text-shadow:
-    -1px 0 #014d4e,
-     1px 0 #014d4e,
-     0 -1px #014d4e,
-     0 1px #014d4e;
+    -2px 0 #014d4e,
+     2px 0 #014d4e,
+     0 -2px #014d4e,
+     0 2px #014d4e;
   z-index: 9;
 }
 
@@ -705,7 +718,7 @@ section {
   }
   .section-divider {
     width: 70%;
-    height: 1px;
+    height: 2px;
     margin: 0.8rem auto;
   }
   table {
@@ -714,7 +727,7 @@ section {
 }
 
 /* Larger mobile + small tablet */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   body::before {
     background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg") center center / cover no-repeat;
   }
@@ -824,7 +837,7 @@ section {
 }
 
 /* Large desktop */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   body::before {
     background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
   }
@@ -861,91 +874,91 @@ section {
 header nav a[href="#home"]:hover {
   color: #FBC96D;               /* Emberlight Gold */
   text-shadow: 
-    -1px -1px 0 #342c61, /* Twilight Indigo */
-     1px -1px 0 #342c61, /* Twilight Indigo */
-    -1px  1px 0 #342c61, /* Twilight Indigo */
-     1px  1px 0 #342c61; /* Twilight Indigo */
+    -2px -2px 0 #342c61, /* Twilight Indigo */
+     2px -2px 0 #342c61, /* Twilight Indigo */
+    -2px  2px 0 #342c61, /* Twilight Indigo */
+     2px  2px 0 #342c61; /* Twilight Indigo */
 }
 
 header nav a[href="#lore"]:hover {
   color: #C5ECFF;               /* Crystalline Ice */
     text-shadow:
-   -1px  1px 0 var(#A63A2C), /* Duvaen Red */  
-    1px -1px 0 var(#A63A2C), /* Duvaen Red */
-   -1px  1px 0 var(#A63A2C), /* Duvaen Red */
-    1px  1px 0 var(#A63A2C), /* Duvaen Red */
+   -2px  2px 0 var(#A63A2C), /* Duvaen Red */  
+    2px -2px 0 var(#A63A2C), /* Duvaen Red */
+   -2px  2px 0 var(#A63A2C), /* Duvaen Red */
+    2px  2px 0 var(#A63A2C), /* Duvaen Red */
 }
 
 header nav a[href="#navigation"]:hover {
   color: #DCE1E8;               /* Moonstone Silver */
   text-shadow: 
-   -1px  1px 0 var(#0075FF), /* Arvalla Prime */ 
-    1px -1px 0 var(#0075FF), /* Arvalla Prime */
-   -1px  1px 0 var(#0075FF), /* Arvalla Prime */
-    1px  1px 0 var(#0075FF), /* Arvalla Prime */
+   -2px  2px 0 var(#0075FF), /* Arvalla Prime */ 
+    2px -2px 0 var(#0075FF), /* Arvalla Prime */
+   -2px  2px 0 var(#0075FF), /* Arvalla Prime */
+    2px  2px 0 var(#0075FF), /* Arvalla Prime */
 }
 
 header nav a[href="#font-project"]:hover {
   color: #8FE9F0;               /* Dreamlight Cyan */
   text-shadow: 
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
-    1px -1px 0 var(#0c4530), /* Moss-Vein Green */ 
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
-    1px  1px 0 var(#0c4530), /* Moss-Vein Green */  
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
+    2px -2px 0 var(#0c4530), /* Moss-Vein Green */ 
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
+    2px  2px 0 var(#0c4530), /* Moss-Vein Green */  
 }
 
 header nav a[href="#mmorpg"]:hover {
   color: #C5ECFF;               /* Crystalline Ice */
   text-shadow: 
-   -1px  1px 0 var(#572a45), /* Leyline Plum */
-    1px -1px 0 var(#572a45), /* Leyline Plum */
-   -1px  1px 0 var(#572a45), /* Leyline Plum */ 
-    1px  1px 0 var(#572a45), /* Leyline Plum */
+   -2px  2px 0 var(#572a45), /* Leyline Plum */
+    2px -2px 0 var(#572a45), /* Leyline Plum */
+   -2px  2px 0 var(#572a45), /* Leyline Plum */ 
+    2px  2px 0 var(#572a45), /* Leyline Plum */
 }
 
 header nav a[href="#book-series"]:hover {
   color: #D88EBA;               /* Leyline Rose */
   text-shadow: 
-   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */
-    1px -1px 0 var(#2DC5B4), /* Biolume Teal */
-   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
-    1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
+   -2px  2px 0 var(#2DC5B4), /* Biolume Teal */
+    2px -2px 0 var(#2DC5B4), /* Biolume Teal */
+   -2px  2px 0 var(#2DC5B4), /* Biolume Teal */ 
+    2px  2px 0 var(#2DC5B4), /* Biolume Teal */ 
 }
 
 header nav a[href="#timekeeping"]:hover {
   color: #8FE9F0;               /* Dreamlight Cyan */
   text-shadow: 
-   -1px  1px 0 var(#78581f), /* Relic Brass */
-    1px -1px 0 var(#78581f), /* Relic Brass */
-   -1px  1px 0 var(#78581f), /* Relic Brass */
-    1px  1px 0 var(#78581f), /* Relic Brass */ 
+   -2px  2px 0 var(#78581f), /* Relic Brass */
+    2px -2px 0 var(#78581f), /* Relic Brass */
+   -2px  2px 0 var(#78581f), /* Relic Brass */
+    2px  2px 0 var(#78581f), /* Relic Brass */ 
 }
 
 header nav a[href="#language-rules"]:hover {
   color: #C1FF8A;               /* Verdant Glow */
   text-shadow: 
-   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
-    1px -1px 0 var(#7A7C86), /* Arvalla Beta */
-   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
-    1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+   -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
+    2px -2px 0 var(#7A7C86), /* Arvalla Beta */
+   -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
+    2px  2px 0 var(#7A7C86), /* Arvalla Beta */
 }
 
 header nav a[href="#lexicon"]:hover {
   color: #FBC96D;               /* Emberlight Gold */
   text-shadow: 
-   -1px  1px 0 var(#342c61), /* Twilight Indigo */
-    1px -1px 0 var(#342c61), /* Twilight Indigo */
-   -1px  1px 0 var(#342c61), /* Twilight Indigo */
-    1px  1px 0 var(#342c61), /* Twilight Indigo */
+   -2px  2px 0 var(#342c61), /* Twilight Indigo */
+    2px -2px 0 var(#342c61), /* Twilight Indigo */
+   -2px  2px 0 var(#342c61), /* Twilight Indigo */
+    2px  2px 0 var(#342c61), /* Twilight Indigo */
 }
 
 header nav a[href="#support"]:hover {
   color: #C5ECFF;               /* Crystalline Ice */
   text-shadow: 
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
-    1px -1px 0 var(#0c4530), /* Moss-Vein Green */
-   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
-    1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
+    2px -2px 0 var(#0c4530), /* Moss-Vein Green */
+   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
+    2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
 }
 
  /* ──────────────✦ Small mobile screens ✦────────────── */
@@ -970,7 +983,7 @@ header nav a[href="#support"]:hover {
 }
 
 /* ──────────────✦ Larger mobile + small tablet ✦────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   header {
     padding: 0.75rem 0;
   }
@@ -1023,7 +1036,7 @@ header nav a[href="#support"]:hover {
 }
 
 /* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   header {
     padding: 1.5rem 0;
   }
@@ -1049,10 +1062,10 @@ header nav a[href="#support"]:hover {
   color: #2DC5B4;
   text-align: center;
   text-shadow:
-    -1px 0 #014d4e,
-     1px 0 #014d4e,
-     0 -1px #014d4e,
-     0 1px #014d4e;
+    -2px 0 #014d4e,
+     2px 0 #014d4e,
+     0 -2px #014d4e,
+     0 2px #014d4e;
   z-index: 9;
 }
 
@@ -1079,7 +1092,7 @@ section.section {
 }
 
 /* ──────────────✦ Larger mobile + small tablets ✦────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   .page-title {
     font-size: 1.5rem;
     top: calc(90px + 9%);
@@ -1118,7 +1131,7 @@ section.section {
 }
 
 /* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   .page-title {
     font-size: 2.5rem;
     top: calc(120px + 10%);
@@ -1237,13 +1250,13 @@ section {
 @media (max-width: 480px) {
   .section-divider {
     width: 70%;
-    height: 1px;
+    height: 2px;
     margin: 0.8rem auto;
   }
 }
 
 /* ──────────────✦ Larger mobile + small tablet (Kindle) ✦────────────── */
-@media (min-width: 481px) and (max-width: 768px) {
+@media (min-width: 482px) and (max-width: 768px) {
   .section-divider {
     width: 75%;
     height: 1.5px;
@@ -1270,7 +1283,7 @@ section {
 }
 
 /* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1441px) {
+@media (min-width: 1442px) {
   .section-divider {
     width: 80%;
     height: 3px;
@@ -1291,7 +1304,7 @@ section {
   position: relative;
   min-height: 100vh;
   padding-bottom: 80px;
-  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+  border-bottom: 3px solid #342c61; /* Twilight Indigo */
 }
 
 .section.home {
@@ -1320,10 +1333,10 @@ section {
   font-weight: 700;
   color: #FBC96D; /* Emberlight Gold */
   text-shadow:
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61; /* Twilight Indigo */
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61; /* Twilight Indigo */
 }
 
 .section.home-heading h2,
@@ -1332,10 +1345,10 @@ section {
   font-weight: 700;
   color: #342c61; /* Twilight Indigo */
   text-shadow:
-    -1px -1px 0 #FBC96D,
-     1px -1px 0 #FBC96D,
-    -1px  1px 0 #FBC96D,
-     1px  1px 0 #FBC96D; /* Emberlight Gold */
+    -2px -2px 0 #FBC96D,
+     2px -2px 0 #FBC96D,
+    -2px  2px 0 #FBC96D,
+     2px  2px 0 #FBC96D; /* Emberlight Gold */
 }
 
 .section.home-heading .line-dec {
@@ -1420,7 +1433,7 @@ section {
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 482px) and (max-width: 768px) {
   /* Small Tablet + Large Mobile */
   .left-image-post h4 {
     margin-top: 5px;
@@ -1459,7 +1472,7 @@ section {
   }
 }
 
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1442px) {
   /* Large Desktop */
   .left-image-post h4 {
     margin-top: 20px;
@@ -1493,10 +1506,10 @@ section {
 .section.lore h4 {
   color: #1a114b; /* Astral Navy */
   text-shadow:
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61;
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61;
 }
 
 /* Table Wrapper */
@@ -1514,10 +1527,10 @@ section {
   font-family: 'Cinzel', serif;
   color: #1a114b; /* Astral Navy */
   text-shadow:
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61;
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61;
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -1532,7 +1545,7 @@ section {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo row divider */
 }
 
 /* Section Dividers */
@@ -1574,8 +1587,8 @@ section {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.lore {
     width: 90%;
   }
@@ -1626,8 +1639,8 @@ section {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.lore {
     width: 75%;
   }
@@ -1665,10 +1678,10 @@ section {
 .section.navigation h4 {
   color: #0075FF; /* Arvalla Prime */
   text-shadow:
-    -1px -1px 0 #0075FF,
-     1px -1px 0 #0075FF,
-    -1px  1px 0 #0075FF,
-     1px  1px 0 #0075FF;
+    -2px -2px 0 #0075FF,
+     2px -2px 0 #0075FF,
+    -2px  2px 0 #0075FF,
+     2px  2px 0 #0075FF;
 }
 
 /* Table Wrapper */
@@ -1686,10 +1699,10 @@ section {
   font-family: 'Cinzel', serif;
   color: #DCE1E8; /* Moonstone Silver */
   text-shadow:
-    -1px -1px 0 #0075FF,
-     1px -1px 0 #0075FF,
-    -1px  1px 0 #0075FF,
-     1px  1px 0 #0075FF;
+    -2px -2px 0 #0075FF,
+     2px -2px 0 #0075FF,
+    -2px  2px 0 #0075FF,
+     2px  2px 0 #0075FF;
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -1704,7 +1717,7 @@ section {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #0075FF; /* Arvalla Prime row divider */
+  border-bottom: 2px solid #0075FF; /* Arvalla Prime row divider */
 }
 
 /* Section Dividers */
@@ -1746,8 +1759,8 @@ section {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.navigation {
     width: 90%;
   }
@@ -1798,8 +1811,8 @@ section {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.navigation {
     width: 75%;
   }
@@ -1836,10 +1849,10 @@ section.font-project {
 .font-project h4 {
   color: #8FE9F0; /* Dreamlight Cyan */
   text-shadow:
-    -1px -1px 0 #0c4530,
-     1px -1px 0 #0c4530,
-    -1px  1px 0 #0c4530,
-     1px  1px 0 #0c4530; /* Moss-Vein Green */
+    -2px -2px 0 #0c4530,
+     2px -2px 0 #0c4530,
+    -2px  2px 0 #0c4530,
+     2px  2px 0 #0c4530; /* Moss-Vein Green */
   margin-bottom: 1rem;
   font-family: 'Times New Roman', serif;
 }
@@ -1853,10 +1866,10 @@ section.font-project {
 .font-project th {
   color: #8FE9F0; /* Dreamlight Cyan */
   text-shadow:
-    -1px -1px 0 #0c4530,
-     1px -1px 0 #0c4530,
-    -1px  1px 0 #0c4530,
-     1px  1px 0 #0c4530; /* Moss-Vein Green */
+    -2px -2px 0 #0c4530,
+     2px -2px 0 #0c4530,
+    -2px  2px 0 #0c4530,
+     2px  2px 0 #0c4530; /* Moss-Vein Green */
 }
 
 .font-project a {
@@ -1975,8 +1988,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   section.font-project {
     width: 90%;
   }
@@ -2033,8 +2046,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   section.font-project {
     width: 75%;
   }
@@ -2068,10 +2081,10 @@ section.font-project {
 .section.mmorpg h4 {
   color: #572a45; /* Leyline Plum */
   text-shadow:
-    -1px -1px 0 #572a45,
-     1px -1px 0 #572a45,
-    -1px  1px 0 #572a45,
-     1px  1px 0 #572a45; /* Leyline Plum outline shadow */
+    -2px -2px 0 #572a45,
+     2px -2px 0 #572a45,
+    -2px  2px 0 #572a45,
+     2px  2px 0 #572a45; /* Leyline Plum outline shadow */
 }
 
 /* Section Dividers */
@@ -2115,8 +2128,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.mmorpg {
     width: 90%;
   }
@@ -2184,8 +2197,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.mmorpg {
     width: 75%;
   }
@@ -2228,10 +2241,10 @@ section.font-project {
 .section.book-series h4 {
   color: #2DC5B4; /* Biolume Teal */
   text-shadow:
-    -1px -1px 0 #2DC5B4,
-     1px -1px 0 #2DC5B4,
-    -1px  1px 0 #2DC5B4,
-     1px  1px 0 #2DC5B4; /* Biolume Teal outline shadow */
+    -2px -2px 0 #2DC5B4,
+     2px -2px 0 #2DC5B4,
+    -2px  2px 0 #2DC5B4,
+     2px  2px 0 #2DC5B4; /* Biolume Teal outline shadow */
 }
 
 /* Section Dividers */
@@ -2275,8 +2288,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.book-series {
     width: 90%;
   }
@@ -2344,8 +2357,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.book-series {
     width: 75%;
   }
@@ -2390,10 +2403,10 @@ section.font-project {
 .section.timekeeping h4 {
   color: #78581f; /* Relic Brass */
   text-shadow: 
-    -1px -1px 0 #78581f,
-     1px -1px 0 #78581f,
-    -1px  1px 0 #78581f,
-     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+    -2px -2px 0 #78581f,
+     2px -2px 0 #78581f,
+    -2px  2px 0 #78581f,
+     2px  2px 0 #78581f; /* Relic Brass outline shadow */
 }
 
 /* Table Wrapper */
@@ -2411,10 +2424,10 @@ section.font-project {
   font-family: 'Cinzel', serif;
   color: #78581f; /* Relic Brass */
   text-shadow: 
-    -1px -1px 0 #78581f,
-     1px -1px 0 #78581f,
-    -1px  1px 0 #78581f,
-     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+    -2px -2px 0 #78581f,
+     2px -2px 0 #78581f,
+    -2px  2px 0 #78581f,
+     2px  2px 0 #78581f; /* Relic Brass outline shadow */
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -2429,7 +2442,7 @@ section.font-project {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #78581f; /* Relic Brass row divider */
+  border-bottom: 2px solid #78581f; /* Relic Brass row divider */
 }
 
 /* Section Dividers */
@@ -2478,8 +2491,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.timekeeping {
     width: 90%;
   }
@@ -2562,8 +2575,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.timekeeping {
     width: 75%;
   }
@@ -2611,10 +2624,10 @@ section.font-project {
 .section.language-rules h4 {
   color: #7A7C86; /* Arvalla Beta */
   text-shadow: 
-    -1px -1px 0 #7A7C86,
-     1px -1px 0 #7A7C86,
-    -1px  1px 0 #7A7C86,
-     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+    -2px -2px 0 #7A7C86,
+     2px -2px 0 #7A7C86,
+    -2px  2px 0 #7A7C86,
+     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
 }
 
 /* Table Wrapper */
@@ -2632,10 +2645,10 @@ section.font-project {
   font-family: 'Cinzel', serif;
   color: #7A7C86; /* Arvalla Beta */
   text-shadow: 
-    -1px -1px 0 #7A7C86,
-     1px -1px 0 #7A7C86,
-    -1px  1px 0 #7A7C86,
-     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+    -2px -2px 0 #7A7C86,
+     2px -2px 0 #7A7C86,
+    -2px  2px 0 #7A7C86,
+     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -2650,7 +2663,7 @@ section.font-project {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #7A7C86; /* Arvalla Beta row divider */
+  border-bottom: 2px solid #7A7C86; /* Arvalla Beta row divider */
 }
 
 /* Section Dividers */
@@ -2699,8 +2712,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.language-rules {
     width: 90%;
   }
@@ -2783,8 +2796,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.language-rules {
     width: 75%;
   }
@@ -2833,10 +2846,10 @@ section.font-project {
 .section.lexicon h4 {
   color: #342c61; /* Twilight Indigo */
   text-shadow: 
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61; /* Twilight Indigo outline shadow */
 }
 
 /* Table Wrapper */
@@ -2854,10 +2867,10 @@ section.font-project {
   font-family: 'Cinzel', serif;
   color: #342c61; /* Twilight Indigo */
   text-shadow: 
-    -1px -1px 0 #342c61,
-     1px -1px 0 #342c61,
-    -1px  1px 0 #342c61,
-     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+    -2px -2px 0 #342c61,
+     2px -2px 0 #342c61,
+    -2px  2px 0 #342c61,
+     2px  2px 0 #342c61; /* Twilight Indigo outline shadow */
   text-align: center;
   padding: 0.75rem;
   font-size: 1.1rem;
@@ -2872,7 +2885,7 @@ section.font-project {
   text-align: center;
   padding: 0.75rem;
   background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo row divider */
 }
 
 /* Section Dividers */
@@ -2921,8 +2934,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.lexicon {
     width: 90%;
   }
@@ -3005,8 +3018,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.lexicon {
     width: 75%;
   }
@@ -3054,10 +3067,10 @@ section.font-project {
 .section.support h4 {
   color: #7A7C86; /* Arvalla Beta */
   text-shadow:
-    -1px -1px 0 #7A7C86,
-     1px -1px 0 #7A7C86,
-    -1px  1px 0 #7A7C86,
-     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+    -2px -2px 0 #7A7C86,
+     2px -2px 0 #7A7C86,
+    -2px  2px 0 #7A7C86,
+     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
 }
 
 /* Position buttons absolutely inside .section.support */
@@ -3120,8 +3133,8 @@ section.font-project {
   }
 }
 
-/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
-@media (min-width: 481px) and (max-width: 768px) {
+/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
+@media (min-width: 482px) and (max-width: 768px) {
   .section.support {
     width: 85%;
   }
@@ -3198,8 +3211,8 @@ section.font-project {
   }
 }
 
-/* 5️⃣ Large Desktops: 1441px+ */
-@media (min-width: 1441px) {
+/* 5️⃣ Large Desktops: 1442px+ */
+@media (min-width: 1442px) {
   .section.support {
     width: 70%;
   }
@@ -3277,104 +3290,105 @@ span[style*="Comic Sans MS"],
   font-family: 'Azaraan', cursive;
   color: #014d4e;
   text-shadow: 
-    -1px -1px 0 var(--cyan),
-     1px -1px 0 var(--cyan),
-    -1px  1px 0 var(--cyan),
-     1px  1px 0 var(--cyan);
+    -2px -2px 0 var(--cyan),
+     2px -2px 0 var(--cyan),
+    -2px  2px 0 var(--cyan),
+     2px  2px 0 var(--cyan);
 }
 
 </style>
-</div>
-</div>
+    </div>
+  </div>
 </section>
-<!-- 🏠 Home -->
-      <section class="section home" data-section="home">
-        <div class="container">
-          <div class="section-heading">
-            <h2>💠 Historical Context: The Cataclysm and the Birth of Aza’ra</h2>
-            <div class="line-dec"></div>
-            <span>
-              >
-            <p><b>🌄 1351 BCE — The Cataclysm</b><br>
-            <i>Aarak</i> was once a world of crystalline skies and verdant expanses—a realm where harmony thrived under the glow of a solitary, nurturing sun and the watchful dance of three sacred moons. Its people, the Aaraks, knew no sorcery nor arcane chants. Instead, their gifts were of the mind: telepathy that stitched communities together in wordless conversation, telekinesis that shaped stone and bent metal with thought alone. Their cities hummed with psionic resonance—a symphony of unspoken connection.</p>
+<!-- 🏠 Home --> 
+<section class="section home" data-section="home">
+  <div class="container">
+    <div class="section-heading">
+      <h2>💠 Historical Context: The Cataclysm and the Birth of Aza’ra</h2>
+      <div class="line-dec"></div>
 
-            <p>This tranquil brilliance ended in desperation. A dying alien race, drifting between stars, found Aarak’s sun and greedily siphoned its essence to sustain their waning world. Their theft unleashed a stellar wrath: violent solar flares rippled outward, rending Aarak’s crust, toppling forests into molten fissures, and flinging entire continents skyward. Broken fragments rose in defiance of gravity, suspended by the psionic will of the Aaraks who clung desperately to survival amid a shattered firmament.</p>
-            <p><b>🌟 Arrival of the Aramaics</b><br>
-            In the final weeks before collapse, three wanderers stumbled through a tear in reality—nomadic magicians known as the Aramaics, exiles of distant <i>Adamah</i> (Earth). Their arrival was never intended; their portal magic had misfired, delivering them not home, but to a doomed world under alien stars.</p>
+      <p><b>🌄 1351 BCE — The Cataclysm</b><br>
+      <i>Aarak</i> was once a world of crystalline skies and verdant expanses—a realm where harmony thrived under the glow of a solitary, nurturing sun and the watchful dance of three sacred moons. Its people, the Aaraks, knew no sorcery nor arcane chants. Instead, their gifts were of the mind: telepathy that stitched communities together in wordless conversation, telekinesis that shaped stone and bent metal with thought alone. Their cities hummed with psionic resonance—a symphony of unspoken connection.</p>
 
-            <p>Frightened whispers met their sudden presence, for the Aaraks had never known true sorcery—only the quiet dominion of the mind. Yet in this bleak hour, the Aramaics offered a new power: <b>true magic</b>. In exchange for sanctuary, they taught the Aaraks how to weave elemental energies with their innate psionics, binding mind and mana for the first time.</p>
+      <p>This tranquil brilliance ended in desperation. A dying alien race, drifting between stars, found Aarak’s sun and greedily siphoned its essence to sustain their waning world. Their theft unleashed a stellar wrath: violent solar flares rippled outward, rending Aarak’s crust, toppling forests into molten fissures, and flinging entire continents skyward. Broken fragments rose in defiance of gravity, suspended by the psionic will of the Aaraks who clung desperately to survival amid a shattered firmament.</p>
 
-            <p>When ruin fell at last, the Aramaics shaped a desperate salvation: <u>The Veil</u>, a vast arcane lattice infused with the raw magic of Earth. This radiant barrier sealed Aarak’s broken pieces, preserving them against the endless hunger of the cosmic Void. But the Veil’s brilliance came at a terrible price—its appetite was insatiable. The moment it ignited, it began to draw from Earth’s boundless wells of mana, threading siphons through ancient leylines, pulling power from Adamah across the chasm of stars.</p>
+      <p><b>🌟 Arrival of the Aramaics</b><br>
+      In the final weeks before collapse, three wanderers stumbled through a tear in reality—nomadic magicians known as the Aramaics, exiles of distant <i>Adamah</i> (Earth). Their arrival was never intended; their portal magic had misfired, delivering them not home, but to a doomed world under alien stars.</p>
 
-            <p><b>⚡ The Veil and the Souls of Adamah</b><br>
-            What began as a protective shroud soon became a living hunger. To sustain itself—and the drifting isles of <i>Aza’ra</i> now teeming with magic-dependent beings—the Veil grew fangs. It reached beyond Adamah’s stone veins, latching onto the secret wellspring within every sentient soul descended from Earth.</p>
+      <p>Frightened whispers met their sudden presence, for the Aaraks had never known true sorcery—only the quiet dominion of the mind. Yet in this bleak hour, the Aramaics offered a new power: <b>true magic</b>. In exchange for sanctuary, they taught the Aaraks how to weave elemental energies with their innate psionics, binding mind and mana for the first time.</p>
 
-            <p>Each birth of an Earth-blooded soul creates a fresh ember of mana—a reservoir that its bearer may wield to conjure flame, see hidden truths, shape luck, and glimpse the thin spaces where life and death bleed into one another. This personal wellspring binds them, unknowingly, to the Veil’s endless feast.</p>
+      <p>When ruin fell at last, the Aramaics shaped a desperate salvation: <u>The Veil</u>, a vast arcane lattice infused with the raw magic of Earth. This radiant barrier sealed Aarak’s broken pieces, preserving them against the endless hunger of the cosmic Void. But the Veil’s brilliance came at a terrible price—its appetite was insatiable. The moment it ignited, it began to draw from Earth’s boundless wells of mana, threading siphons through ancient leylines, pulling power from Adamah across the chasm of stars.</p>
 
-            <p>On Earth, those who still slip through the Veil’s grasp are called <i>Rahemlan</i>—the Gifted, the Chosen—those rare souls who channel scraps of untouched magic. They are the whispered witches and prophets, the miracle-workers and vision-seers, remnants of a world slowly bled dry to keep Aza’ra afloat.</p>
+      <p><b>⚡ The Veil and the Souls of Adamah</b><br>
+      What began as a protective shroud soon became a living hunger. To sustain itself—and the drifting isles of <i>Aza’ra</i> now teeming with magic-dependent beings—the Veil grew fangs. It reached beyond Adamah’s stone veins, latching onto the secret wellspring within every sentient soul descended from Earth.</p>
 
-            <p><b>✨ The Refugees of Myth</b><br>
-            When Earth’s ambient magic began to wane, the first to flee were its oldest keepers—deities who once strode the mortal world draped in mortal prayers. Stripped of worship and fuel, they found refuge beyond the Veil’s edge, passing into Aza’ra where new faith, new mana, and new myths awaited.</p>
+      <p>Each birth of an Earth-blooded soul creates a fresh ember of mana—a reservoir that its bearer may wield to conjure flame, see hidden truths, shape luck, and glimpse the thin spaces where life and death bleed into one another. This personal wellspring binds them, unknowingly, to the Veil’s endless feast.</p>
 
-             <p>Behind them came the beasts of Earth’s collective dreaming: dragons that once scorched ancient skies, merfolk who sang in drowned cities, griffons and phoenixes, leviathans and spirits—all crossing hidden rifts in pursuit of the mana they needed to exist. To Earth’s children, these wonders faded into bedtime stories and campfire tales. They did not know their legends yet live, winged and roaring in the skies of a world reborn.</p>
+      <p>On Earth, those who still slip through the Veil’s grasp are called <i>Rahemlan</i>—the Gifted, the Chosen—those rare souls who channel scraps of untouched magic. They are the whispered witches and prophets, the miracle-workers and vision-seers, remnants of a world slowly bled dry to keep Aza’ra afloat.</p>
 
-            <p><b>🕊️ Birth of Aza’ra: A Realm of Mind and Magic</b><br>
-            What survived of Aarak was renamed <i>Aza’ra</i>, a word meaning "to help" in the old Aramaic tongue—a promise forged from ruin and woven into every drifting isle. It is now a realm where psionics and true magic twine like silver threads. The Aaraks’ children and the Aramaics’ descendants—known as the Aza’raans—walk side by side with dragons perched on skyborne cliffs, merfolk shepherding rivers that spill from floating forests, and phoenixes whose embers rise like stars.</p>
+      <p><b>✨ The Refugees of Myth</b><br>
+      When Earth’s ambient magic began to wane, the first to flee were its oldest keepers—deities who once strode the mortal world draped in mortal prayers. Stripped of worship and fuel, they found refuge beyond the Veil’s edge, passing into Aza’ra where new faith, new mana, and new myths awaited.</p>
 
-            <p>Over time, the cultures of mind and magic entwined. <u>Aza’ra</u> is not simply a place; it is a living memory of all Earth’s forgotten myths—an ark sailing the Void, moored only by the mana drawn endlessly from a distant, unsuspecting blue world.</p>
+      <p>Behind them came the beasts of Earth’s collective dreaming: dragons that once scorched ancient skies, merfolk who sang in drowned cities, griffons and phoenixes, leviathans and spirits—all crossing hidden rifts in pursuit of the mana they needed to exist. To Earth’s children, these wonders faded into bedtime stories and campfire tales. They did not know their legends yet live, winged and roaring in the skies of a world reborn.</p>
 
-            <p><b>🌙 The Sacred Moons of Aza’ra</b><br>
-            Aza’ra is illuminated not by a traditional sun, but by three celestial moons—each governing distinct periods of the 21-hour day. These moons hold immense cultural, spiritual, and astronomical significance, shaping daily life, ceremonial rites, and linguistic evolution.</p>
+      <p><b>🕊️ Birth of Aza’ra: A Realm of Mind and Magic</b><br>
+      What survived of Aarak was renamed <i>Aza’ra</i>, a word meaning "to help" in the old Aramaic tongue—a promise forged from ruin and woven into every drifting isle. It is now a realm where psionics and true magic twine like silver threads. The Aaraks’ children and the Aramaics’ descendants—known as the Aza’raans—walk side by side with dragons perched on skyborne cliffs, merfolk shepherding rivers that spill from floating forests, and phoenixes whose embers rise like stars.</p>
 
-            <ul>
-            <li><u>Duvaen</u> (Morning Moon) — Pronunciation: Doo-vay-en<br>
-            <b>Celestial Traits:</b> A crimson-red moon, akin to Mars, casting warm, diffuse light across the land.<br>
-            <b>Time Period Governed:</b> Ae (Morning) | Hours 1–7<br>
-            <b>Symbolism:</b> Renewal, ambition, vitality. Duvaen’s rise marks the awakening of the world and the pursuit of progress.</li>
+      <p>Over time, the cultures of mind and magic entwined. <u>Aza’ra</u> is not simply a place; it is a living memory of all Earth’s forgotten myths—an ark sailing the Void, moored only by the mana drawn endlessly from a distant, unsuspecting blue world.</p>
 
-            <li><u>W’iosamn</u> (Midday Moon) — Pronunciation: wuh-ai-ee-sahmn<br>
-            <b>Celestial Traits:</b> A pale silver moon, larger and brighter than Earth’s, dominating the sky with a radiant glow.<br>
-            <b>Time Period Governed:</b> W’i (Midday) | Hours 8–14<br>
-            <b>Symbolism:</b> Clarity, balance, and guidance. Decisions are made, structures are reinforced, and society flourishes.</li>
+      <p><b>🌙 The Sacred Moons of Aza’ra</b><br>
+      Aza’ra is illuminated not by a traditional sun, but by three celestial moons—each governing distinct periods of the 21-hour day. These moons hold immense cultural, spiritual, and astronomical significance, shaping daily life, ceremonial rites, and linguistic evolution.</p>
 
-            <li><u>Arvalla</u> (Night Moon) — Pronunciation: Ar͡r-vah-lah<br>
-            <b>Celestial Traits:</b> A colossal blue-silver moon with tilted rings and perpetual storms, shaping the dynamic cycles of Aza’raan weather.<br>
-            <b>Time Period Governed:</b> La (Night) | Hours 15–21<br>
-            <b>Symbolism:</b> Mystery, transformation, and introspection. Arvalla rules the night’s arcane energies and subconscious realms.</li>
-            </ul>
+      <ul>
+        <li><u>Duvaen</u> (Morning Moon) — Pronunciation: Doo-vay-en<br>
+        <b>Celestial Traits:</b> A crimson-red moon, akin to Mars, casting warm, diffuse light across the land.<br>
+        <b>Time Period Governed:</b> Ae (Morning) | Hours 1–7<br>
+        <b>Symbolism:</b> Renewal, ambition, vitality. Duvaen’s rise marks the awakening of the world and the pursuit of progress.</li>
 
-            <p><b>🕰️ The Living Pulse of Time</b><br>
-               In Aza’ra, time is not merely counted—it is felt. The Veil, always drinking deep of Earth’s mana, hums with resonant pulses. These sonic waves ripple through stone and sky, marking hours, minutes, and seconds like the heartbeat of a colossal, unseen god.</p>
+        <li><u>W’iosamn</u> (Midday Moon) — Pronunciation: wuh-ai-ee-sahmn<br>
+        <b>Celestial Traits:</b> A pale silver moon, larger and brighter than Earth’s, dominating the sky with a radiant glow.<br>
+        <b>Time Period Governed:</b> W’i (Midday) | Hours 8–14<br>
+        <b>Symbolism:</b> Clarity, balance, and guidance. Decisions are made, structures are reinforced, and society flourishes.</li>
 
-            <p>To the Aza’raans, each pulse is sacred—a reminder that their world’s heartbeat is paid for by the blood of Adamah. Temples rise where the hums strike strongest, and scholars bend the resonance into magitech and psionic tools that keep the fractured realm alive.</p>
+        <li><u>Arvalla</u> (Night Moon) — Pronunciation: Ar͡r-vah-lah<br>
+        <b>Celestial Traits:</b> A colossal blue-silver moon with tilted rings and perpetual storms, shaping the dynamic cycles of Aza’raan weather.<br>
+        <b>Time Period Governed:</b> La (Night) | Hours 15–21<br>
+        <b>Symbolism:</b> Mystery, transformation, and introspection. Arvalla rules the night’s arcane energies and subconscious realms.</li>
+      </ul>
 
-            <p><b>🌌 A Realm Suspended</b><br>
-               Thus drifts Aza’ra: a realm of thought and sorcery, its people bound by a promise made in ruin and sustained by a secret sacrifice. Myths long dead on Earth soar alive above skyborne isles. And deep within each soul born of Adamah, a spark of mana still dreams—woven into a Veil that keeps the Void at bay, but never sated.</p>
+      <p><b>🕰️ The Living Pulse of Time</b><br>
+      In Aza’ra, time is not merely counted—it is felt. The Veil, always drinking deep of Earth’s mana, hums with resonant pulses. These sonic waves ripple through stone and sky, marking hours, minutes, and seconds like the heartbeat of a colossal, unseen god.</p>
 
-            ><p><u>So long as souls are born, so long as myths are remembered, Aza’ra endures.</u></p>
+      <p>To the Aza’raans, each pulse is sacred—a reminder that their world’s heartbeat is paid for by the blood of Adamah. Temples rise where the hums strike strongest, and scholars bend the resonance into magitech and psionic tools that keep the fractured realm alive.</p>
+
+      <p><b>🌌 A Realm Suspended</b><br>
+      Thus drifts Aza’ra: a realm of thought and sorcery, its people bound by a promise made in ruin and sustained by a secret sacrifice. Myths long dead on Earth soar alive above skyborne isles. And deep within each soul born of Adamah, a spark of mana still dreams—woven into a Veil that keeps the Void at bay, but never sated.</p>
+
+      <p><u>So long as souls are born, so long as myths are remembered, Aza’ra endures.</u></p>
+    </div>
+
+    <div class="left-image-post">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="left-image">
+            <img src="https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Facebook-Logo.png" alt="Facebook Logo" />
           </div>
-          <div class="left-image-post">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="left-image">
-                  <img src="https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Facebook-Logo.png" alt="" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="right-text">
-                  <h4>Follow The Magic</h4>
-                  <p>
-                     Get updates and connect with the Aza'ra Facebook community.  
-                     Your engagement helps keep the spirit of Aza’ra alive and thriving.
-                     Explore the full living dictionary here (updated daily!)</span
-                  </p>
-                  <div class="vertical-button">
-                  <a class="button" href="https://www.facebook.com/WorldOfAzara/" target="_blank">Follow On Facebook</a>
-                  </div>
-                </div>
-              </div>
+        </div>
+        <div class="col-md-6">
+          <div class="right-text">
+            <h4>Follow The Magic</h4>
+            <p>
+              Get updates and connect with the Aza'ra Facebook community.  
+              Your engagement helps keep the spirit of Aza’ra alive and thriving.
+              Explore the full living dictionary here (updated daily!)
+            </p>
+            <div class="vertical-button">
+              <a class="button" href="https://www.facebook.com/WorldOfAzara/" target="_blank">Follow On Facebook</a>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
 <h2>The World of Aza’ra</h2>
 <h3>A Fusion of Aarak and Aramaic</h3>
 <p>Compiled & Created by <br> William Blake Saville AKA #TheTransgenderTRex</p>
