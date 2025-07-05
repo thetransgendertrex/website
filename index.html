@@ -12,10 +12,10 @@
   <h4> © Aza’ra™ and Aza’raan™ Language System — Crafted with purpose by William Blake Saville (<code>#TheTransgenderTRex</code>)</h4>
   <div class="divider"></div>
 
-  <!-- Mobile Menu Toggle Icon -->
-  <div id="menu-toggle" class="menu-toggle">☰</div>
-
-  <nav id="menu" class="main-nav">
+   <!-- Menu toggle icon (mobile only) -->
+  <div class="menu-toggle" onclick="toggleNav()">☰</div>
+ 
+<nav class="main-nav" id="mainNav">
     <a href="#home" class="home">Home</a>
     <a href="#lore" class="lore">Lore</a>
     <a href="#navigation" class="navigation">Navigation</a>
@@ -27,23 +27,7 @@
     <a href="#lexicon" class="lexicon">Lexicon</a>
     <a href="#support" class="support">Support</a>
   </nav>
-</header>
-
-<!-- Sections with proper class and ID -->
-<section id="home" class="section home" data-section="home">Home Content</section>
-<section id="lore" class="section lore" data-section="lore">Lore Content</section>
-<section id="navigation" class="section navigation" data-section="navigation">Navigation Content</section>
-<section id="font-project" class="section font-project" data-section="font-project">Font Project Content</section>
-<section id="mmorpg" class="section mmorpg" data-section="mmorpg">MMORPG Content</section>
-<section id="book-series" class="section book-series" data-section="book-series">Book Series Content</section>
-<section id="timekeeping" class="section timekeeping" data-section="timekeeping">Timekeeping Content</section>
-<section id="language-rules" class="section language-rules" data-section="language-rules">Language Rules Content</section>
-<section id="lexicon" class="section lexicon" data-section="lexicon">Lexicon Content</section>
-<section id="support" class="section support" data-section="support">Support Content</section>
-
-<!-- Close nav for mobile (optional) -->
-<div id="menu-close" style="display:none;">✕</div>
-
+</header> 
 <!--👇Loadandrunoverride.jsFIRST-->
 <script>
 //Loadremoteoverride.jsfromGitHubandexecute
@@ -520,7 +504,7 @@ section {
 /* Example: Section theme using Extra Site Style 1 - Biolume Teal */
 section.section-style-1 {
   background-color: #2DC5B4; /* Dark */
-  color: #D88EBA;/* Light */
+  color: #D88EBA;            /* Light */
 }
 
 /* You can duplicate and update the classes below for each unique section style */
@@ -855,6 +839,15 @@ td {
   font-weight: bold;
 }
 
+/* ==== Main Styling ==== */
+/* ──────────────✦ HEADER + NAV ✦────────────── */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth; /* Native smooth scroll */
+}
+
 header {
   position: fixed;
   top: 0;
@@ -890,16 +883,35 @@ header .copyright {
   font-family: 'Times New Roman', serif;
   color: black;
   margin-top: 10vh;
-  margin-bottom: 5vh; /* creates about 15% gap before nav line */
+  margin-bottom: 5vh; /* ~15% vertical gap before nav line */
   text-align: center;
 }
 
+/* ─────── NAVIGATION ─────── */
+
 header nav.main-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;          /* Prevent wrapping by default */
+  overflow-x: auto;           /* Enable horizontal scroll on small screens */
   justify-content: center;
-  gap: 2rem; /* horizontal spacing between buttons */
-  margin-bottom: 0.5rem; /* keeps nav just above bottom border */
+  gap: 2rem;                  /* Horizontal spacing between links */
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #9381FF transparent;
+}
+
+header nav.main-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+header nav.main-nav::-webkit-scrollbar-thumb {
+  background-color: #9381FF;
+  border-radius: 3px;
+}
+
+header nav.main-nav::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 header nav.main-nav a {
@@ -918,27 +930,22 @@ header nav.main-nav a:hover {
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
 }
-    body {
-margin: 0;
-font-family: Arial, sans-serif;
-scroll-behavior: smooth; /* Native smooth scroll! */
-    }
 
-/* Unique hover border colors */
+/* ─────── NAV HOVER COLORS ─────── */
 
-header nav a.home:hover { color: #342c61; border-color: #FBC96D; }
-header nav a.lore:hover { color: #A63A2C; border-color: #C5ECFF; }
-header nav a.navigation:hover { color: #0075FF; border-color: #DCE1E8; }
-header nav a.font-project:hover { color: #0c4530; border-color: #8FE9F0; }
-header nav a.mmorpg:hover { color: #572a45; border-color: #C5ECFF; }
-header nav a.book-series:hover { color: #2DC5B4; border-color: #D88EBA; }
-header nav a.timekeeping:hover { color: #78581f; border-color: #8FE9F0; }
+header nav a.home:hover           { color: #342c61; border-color: #FBC96D; }
+header nav a.lore:hover           { color: #A63A2C; border-color: #C5ECFF; }
+header nav a.navigation:hover     { color: #0075FF; border-color: #DCE1E8; }
+header nav a.font-project:hover   { color: #0c4530; border-color: #8FE9F0; }
+header nav a.mmorpg:hover         { color: #572a45; border-color: #C5ECFF; }
+header nav a.book-series:hover    { color: #2DC5B4; border-color: #D88EBA; }
+header nav a.timekeeping:hover    { color: #78581f; border-color: #8FE9F0; }
 header nav a.language-rules:hover { color: #7A7C86; border-color: #C1FF8A; }
-header nav a.lexicon:hover { color: #342c61; border-color: #FBC96D; }
-header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
+header nav a.lexicon:hover        { color: #342c61; border-color: #FBC96D; }
+header nav a.support:hover        { color: #2DC5B4; border-color: #D88EBA; }
 
+/* ─────── MOBILE NAV TOGGLE ─────── */
 
-/* Mobile nav toggle icon for small screens */
 .menu-toggle {
   display: none; /* Hidden by default for desktop */
   position: absolute;
@@ -949,13 +956,9 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
   color: black;
 }
 
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+/* ─────── RESPONSIVE NAV ─────── */
 
-/* Small mobile screens */
-@media (max-width: 480px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
-  }
+@media (max-width: 768px) {
   header {
     padding: 0.5rem 0;
   }
@@ -965,14 +968,25 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
     word-spacing: 0.1rem;
     text-align: center;
   }
-  header nav {
+  header nav.main-nav {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    overflow-x: visible; /* No horizontal scroll needed when stacked */
   }
-  header nav a {
+  header nav.main-nav a {
     font-size: 0.9rem;
   }
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
+  }
+
   .page-title {
     font-size: 1.2rem;
     top: calc(80px + 8%);
@@ -1138,7 +1152,7 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
 
 /* ──────────────✦ Hover styles ✦────────────── */ 
 header nav a[href="#home"]:hover {
-  color: #FBC96D;   /* Emberlight Gold */
+  color: #FBC96D;               /* Emberlight Gold */
   text-shadow: 
     -2px -2px 0 #342c61, /* Twilight Indigo */
      2px -2px 0 #342c61, /* Twilight Indigo */
@@ -1147,7 +1161,7 @@ header nav a[href="#home"]:hover {
 }
 
 header nav a[href="#lore"]:hover {
-  color: #C5ECFF;   /* Crystalline Ice */
+  color: #C5ECFF;               /* Crystalline Ice */
     text-shadow:
    -2px  2px 0 var(#A63A2C), /* Duvaen Red */  
     2px -2px 0 var(#A63A2C), /* Duvaen Red */
@@ -1156,7 +1170,7 @@ header nav a[href="#lore"]:hover {
 }
 
 header nav a[href="#navigation"]:hover {
-  color: #DCE1E8;   /* Moonstone Silver */
+  color: #DCE1E8;               /* Moonstone Silver */
   text-shadow: 
    -2px  2px 0 var(#0075FF), /* Arvalla Prime */ 
     2px -2px 0 var(#0075FF), /* Arvalla Prime */
@@ -1165,7 +1179,7 @@ header nav a[href="#navigation"]:hover {
 }
 
 header nav a[href="#font-project"]:hover {
-  color: #8FE9F0;   /* Dreamlight Cyan */
+  color: #8FE9F0;               /* Dreamlight Cyan */
   text-shadow: 
    -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
     2px -2px 0 var(#0c4530), /* Moss-Vein Green */ 
@@ -1174,7 +1188,7 @@ header nav a[href="#font-project"]:hover {
 }
 
 header nav a[href="#mmorpg"]:hover {
-  color: #C5ECFF;   /* Crystalline Ice */
+  color: #C5ECFF;               /* Crystalline Ice */
   text-shadow: 
    -2px  2px 0 var(#572a45), /* Leyline Plum */
     2px -2px 0 var(#572a45), /* Leyline Plum */
@@ -1183,7 +1197,7 @@ header nav a[href="#mmorpg"]:hover {
 }
 
 header nav a[href="#book-series"]:hover {
-  color: #D88EBA;   /* Leyline Rose */
+  color: #D88EBA;               /* Leyline Rose */
   text-shadow: 
    -2px  2px 0 var(#2DC5B4), /* Biolume Teal */
     2px -2px 0 var(#2DC5B4), /* Biolume Teal */
@@ -1192,7 +1206,7 @@ header nav a[href="#book-series"]:hover {
 }
 
 header nav a[href="#timekeeping"]:hover {
-  color: #8FE9F0;   /* Dreamlight Cyan */
+  color: #8FE9F0;               /* Dreamlight Cyan */
   text-shadow: 
    -2px  2px 0 var(#78581f), /* Relic Brass */
     2px -2px 0 var(#78581f), /* Relic Brass */
@@ -1201,7 +1215,7 @@ header nav a[href="#timekeeping"]:hover {
 }
 
 header nav a[href="#language-rules"]:hover {
-  color: #C1FF8A;   /* Verdant Glow */
+  color: #C1FF8A;               /* Verdant Glow */
   text-shadow: 
    -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
     2px -2px 0 var(#7A7C86), /* Arvalla Beta */
@@ -1210,7 +1224,7 @@ header nav a[href="#language-rules"]:hover {
 }
 
 header nav a[href="#lexicon"]:hover {
-  color: #FBC96D;   /* Emberlight Gold */
+  color: #FBC96D;               /* Emberlight Gold */
   text-shadow: 
    -2px  2px 0 var(#342c61), /* Twilight Indigo */
     2px -2px 0 var(#342c61), /* Twilight Indigo */
@@ -1219,7 +1233,7 @@ header nav a[href="#lexicon"]:hover {
 }
 
 header nav a[href="#support"]:hover {
-  color: #C5ECFF;   /* Crystalline Ice */
+  color: #C5ECFF;               /* Crystalline Ice */
   text-shadow: 
    -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
     2px -2px 0 var(#0c4530), /* Moss-Vein Green */
