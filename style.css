@@ -11,7 +11,9 @@ footer fixed at bottom All backgrounds are handled by individual sections.
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
-
+html {
+  scroll-behavior: smooth;
+}
 /* ──────────────✦ Reset default margins/padding ✦────────────── */
 * {
   margin: 0;
@@ -27,7 +29,7 @@ html, body {
   background-color: black;
 }
 
-/* ──────────────✦ Fixed background image ✦────────────── */
+/* ──────────────✦ Fixed background image (default large desktop) ✦────────────── */
 body::before {
   content: "";
   position: fixed;
@@ -35,9 +37,10 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza%27ra%20Moonpunk%20Settlement%20%28AI%20Generated%29.JPG.jpg") center center / cover no-repeat;
+  background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop") center center / cover no-repeat;
   z-index: -2;
 }
+
 /* ──────────────✦ Scrolling radial black overlay ✦────────────── */
 body::after {
   content: "";
@@ -51,205 +54,650 @@ body::after {
   pointer-events: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px; /* ──────────────✦ base height, adjust as needed ✦────────────── */
   background: white;
   z-index: 10;
-  border-bottom: 2px solid #9381FF; /* ──────────────✦ Twilight Lavender border ✦────────────── */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding-top: 5%;
+  border-bottom: 2px solid #9381FF;
+  padding: 1rem 0;
   box-sizing: border-box;
 }
 
-/* ──────────────✦ Header Title ✦────────────── */
 header h1 {
   font-family: 'Times New Roman', serif;
   font-weight: bold;
   color: black;
-  letter-spacing: 0.1rem; /* ──────────────✦ adjust letter spacing ✦────────────── */
-  word-spacing: 0.2rem;   /* ──────────────✦ adjust word spacing ✦────────────── */
+  letter-spacing: 0.1rem;
+  word-spacing: 0.2rem;
   margin: 0;
-  padding: 0;
 }
 
-/* ──────────────✦ Divider below title, above nav ✦────────────── */
 header .divider {
   width: 80%;
   height: 2px;
-  background-color: #9381FF; /* ──────────────✦ Twilight Lavender ✦────────────── */
+  background-color: #9381FF;
   margin: 0.5rem 0;
 }
 
-/* ──────────────✦ Navigation stays where you defined it ✦────────────── */
-header nav {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 5%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+header .copyright {
+  font-family: 'Times New Roman', serif;
+  color: black;
+  margin-top: 10vh;
+  margin-bottom: 5vh; /* creates about 15% gap before nav line */
+  text-align: center;
 }
 
-header nav a {
+header nav.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem; /* horizontal spacing between buttons */
+  margin-bottom: 0.5rem; /* keeps nav just above bottom border */
+}
+
+header nav.main-nav a {
   font-family: 'Times New Roman', serif;
   color: black;
   text-decoration: none;
   font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 0;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
-  position: relative;
 }
 
-/* ──────────────✦ Responsive tweaks ✦────────────── */
+header nav.main-nav a:hover {
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+/* Unique hover border colors */
+
+header nav a.home:hover { color: #342c61; border-color: #FBC96D; }
+header nav a.lore:hover { color: #A63A2C; border-color: #C5ECFF; }
+header nav a.navigation:hover { color: #0075FF; border-color: #DCE1E8; }
+header nav a.font-project:hover { color: #0c4530; border-color: #8FE9F0; }
+header nav a.mmorpg:hover { color: #572a45; border-color: #C5ECFF; }
+header nav a.book-series:hover { color: #2DC5B4; border-color: #D88EBA; }
+header nav a.timekeeping:hover { color: #78581f; border-color: #8FE9F0; }
+header nav a.language-rules:hover { color: #7A7C86; border-color: #C1FF8A; }
+header nav a.lexicon:hover { color: #342c61; border-color: #FBC96D; }
+header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
+
+
+/* Mobile nav toggle icon for small screens */
+.menu-toggle {
+  display: none; /* Hidden by default for desktop */
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  color: black;
+}
+
+/* Show toggle on small screens */
 @media (max-width: 768px) {
-  header {
-    height: 60px;
-    padding-top: 4%;
+  .menu-toggle {
+    display: block;
   }
 
-  header h1 {
-    font-size: 1rem;
+  header nav.main-nav {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
   }
 
-  header nav a {
-    font-size: 0.8rem;
+  header nav.main-nav.active {
+    display: flex;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  header {
-    height: 70px;
-    padding-top: 4.5%;
-  }
+.page-title {
+  position: fixed;
+  top: calc(100px + 10%);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Times New Roman', serif;
+  font-size: 2rem;
+  color: #2DC5B4;
+  text-align: center;
+  text-shadow:
+    -1px 0 #014d4e,
+     1px 0 #014d4e,
+     0 -1px #014d4e,
+     0 1px #014d4e;
+  z-index: 9;
+}
 
+section.section {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+}
+
+h1, h3 {
+  font-family: 'Uncial Antiqua', serif;
+  text-align: center;
+}
+
+h2, h4 {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+}
+
+p, span, li {
+  font-family: serif;
+  color: white;
+  text-align: center;
+}
+
+table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-collapse: collapse;
+}
+
+th {
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  padding: 0.75rem;
+}
+
+td {
+  font-family: 'Pridi', serif;
+  color: black;
+  text-align: center;
+  padding: 0.75rem;
+}
+
+section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.section-divider {
+  width: 80%;
+  height: 2px;
+  margin: 1rem auto;
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20small_mobile") center center / cover no-repeat;
+  }
+  header {
+    padding: 0.5rem 0;
+  }
   header h1 {
     font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.1rem;
+    text-align: center;
   }
-}
-
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; /* ──────────────✦ adjust as needed ✦────────────── */
-  background: white;
-  z-index: 10;
-}
-
-header nav {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 5%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-header nav a {
-  font-family: Times New Roman, serif;
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  position: relative;
-}
-/* ──────────────✦ HOME ✦────────────── */
-header nav a[href="#home"]:hover {
-  color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b;
-}
-
-/* ──────────────✦ LORE ✦────────────── */
-header nav a[href="#lore"]:hover {
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
-}
-
-/* ──────────────✦ NAVIGATION ✦────────────── */
-header nav a[href="#navigation"]:hover {
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
-}
-
-/* ──────────────✦ FONT PROJECT ✦────────────── */
-header nav a[href="#font-project"]:hover {
-  color: #C1FF8A;
-  text-shadow: 0 0 2px #572a45;
-}
-
-/* ──────────────✦ MMORPG ✦────────────── */
-header nav a[href="#mmorpg"]:hover {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #014d4e;
-}
-
-/* ──────────────✦ BOOK SERIES ✦────────────── */
-header nav a[href="#book-series"]:hover {
-  color: #D88EBA;
-  text-shadow: 0 0 2px #78581f;
-}
-
-/* ──────────────✦ TIMEKEEPING ✦────────────── */
-header nav a[href="#timekeeping"]:hover {
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-}
-
-/* ──────────────✦ LANGUAGE RULES ✦────────────── */
-header nav a[href="#language-rules"]:hover {
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-}
-
-/* ──────────────✦ LEXICON ✦────────────── */
-header nav a[href="#lexicon"]:hover {
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
-}
-
-/* ──────────────✦ SUPPORT ✦────────────── */
-header nav a[href="#support"]:hover {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61;
-}
-html {
-  scroll-behavior: smooth;
-}
-@media (max-width: 768px) {
   header nav {
-    left: 5%;
-    right: 5%;
-    bottom: 5%;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
   }
-
   header nav a {
-    font-size: 0.8rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+  }
+  .page-title {
+    font-size: 1.2rem;
+    top: calc(80px + 8%);
+  }
+  section.section {
+    width: 90%;
+    margin-top: calc(150px + 8%);
+    padding: 1rem 0;
+  }
+  .section-divider {
+    width: 70%;
+    height: 1px;
+    margin: 0.8rem auto;
+  }
+  table {
+    width: 100%;
   }
 }
 
+/* Larger mobile + small tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20mobile_tablet") center center / cover no-repeat;
+  }
+  header {
+    padding: 0.75rem 0;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  header nav a {
+    font-size: 1rem;
+  }
+  .page-title {
+    font-size: 1.5rem;
+    top: calc(90px + 9%);
+  }
+  section.section {
+    width: 85%;
+    margin-top: calc(180px + 9%);
+    padding: 1.5rem 0;
+  }
+  .section-divider {
+    width: 75%;
+    height: 1.5px;
+    margin: 0.9rem auto;
+  }
+  table {
+    width: 100%;
+  }
+}
+
+/* Medium tablet + small desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20tablet_small_desktop") center center / cover no-repeat;
+  }
+  header {
+    padding: 1rem 0;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+  .page-title {
+    font-size: 1.8rem;
+    top: calc(95px + 9%);
+  }
+  section.section {
+    width: 80%;
+    margin-top: calc(190px + 9%);
+    padding: 1.8rem 0;
+  }
+  .section-divider {
+    width: 80%;
+    height: 2px;
+    margin: 1rem auto;
+  }
+  table {
+    width: 95%;
+  }
+}
+
+/* Large tablet + medium desktop */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large_tablet_medium_desktop") center center / cover no-repeat;
+  }
+  header {
+    padding: 1.2rem 0;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+  .page-title {
+    font-size: 2rem;
+    top: calc(100px + 10%);
+  }
+  section.section {
+    width: 75%;
+    margin-top: calc(200px + 10%);
+    padding: 2rem 0;
+  }
+  .section-divider {
+    width: 80%;
+    height: 2.5px;
+    margin: 1.2rem auto;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1441px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/main/Aza'ra%20Moonpunk%20Settlement%20(AI%20Generated)%20large%20desktop") center center / cover no-repeat;
+  }
+  header {
+    padding: 1.5rem 0;
+  }
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  header nav a {
+    font-size: 1.2rem;
+  }
+  .page-title {
+    font-size: 2.5rem;
+    top: calc(120px + 10%);
+  }
+  section.section {
+    width: 70%;
+    margin-top: calc(220px + 10%);
+    padding: 2.5rem 0;
+  }
+  .section-divider {
+    width: 80%;
+    height: 3px;
+    margin: 1.5rem auto;
+  }
+}
+
+/* ──────────────✦ Hover styles ✦────────────── */ 
+header nav a[href="#home"]:hover {
+  color: #FBC96D;               /* Emberlight Gold */
+  text-shadow: 
+    -1px -1px 0 #342c61, /* Twilight Indigo */
+     1px -1px 0 #342c61, /* Twilight Indigo */
+    -1px  1px 0 #342c61, /* Twilight Indigo */
+     1px  1px 0 #342c61; /* Twilight Indigo */
+}
+
+header nav a[href="#lore"]:hover {
+  color: #C5ECFF;               /* Crystalline Ice */
+    text-shadow:
+   -1px  1px 0 var(#A63A2C), /* Duvaen Red */  
+    1px -1px 0 var(#A63A2C), /* Duvaen Red */
+   -1px  1px 0 var(#A63A2C), /* Duvaen Red */
+    1px  1px 0 var(#A63A2C), /* Duvaen Red */
+}
+
+header nav a[href="#navigation"]:hover {
+  color: #DCE1E8;               /* Moonstone Silver */
+  text-shadow: 
+   -1px  1px 0 var(#0075FF), /* Arvalla Prime */ 
+    1px -1px 0 var(#0075FF), /* Arvalla Prime */
+   -1px  1px 0 var(#0075FF), /* Arvalla Prime */
+    1px  1px 0 var(#0075FF), /* Arvalla Prime */
+}
+
+header nav a[href="#font-project"]:hover {
+  color: #8FE9F0;               /* Dreamlight Cyan */
+  text-shadow: 
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+    1px -1px 0 var(#0c4530), /* Moss-Vein Green */ 
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+    1px  1px 0 var(#0c4530), /* Moss-Vein Green */  
+}
+
+header nav a[href="#mmorpg"]:hover {
+  color: #C5ECFF;               /* Crystalline Ice */
+  text-shadow: 
+   -1px  1px 0 var(#572a45), /* Leyline Plum */
+    1px -1px 0 var(#572a45), /* Leyline Plum */
+   -1px  1px 0 var(#572a45), /* Leyline Plum */ 
+    1px  1px 0 var(#572a45), /* Leyline Plum */
+}
+
+header nav a[href="#book-series"]:hover {
+  color: #D88EBA;               /* Leyline Rose */
+  text-shadow: 
+   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */
+    1px -1px 0 var(#2DC5B4), /* Biolume Teal */
+   -1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
+    1px  1px 0 var(#2DC5B4), /* Biolume Teal */ 
+}
+
+header nav a[href="#timekeeping"]:hover {
+  color: #8FE9F0;               /* Dreamlight Cyan */
+  text-shadow: 
+   -1px  1px 0 var(#78581f), /* Relic Brass */
+    1px -1px 0 var(#78581f), /* Relic Brass */
+   -1px  1px 0 var(#78581f), /* Relic Brass */
+    1px  1px 0 var(#78581f), /* Relic Brass */ 
+}
+
+header nav a[href="#language-rules"]:hover {
+  color: #C1FF8A;               /* Verdant Glow */
+  text-shadow: 
+   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+    1px -1px 0 var(#7A7C86), /* Arvalla Beta */
+   -1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+    1px  1px 0 var(#7A7C86), /* Arvalla Beta */
+}
+
+header nav a[href="#lexicon"]:hover {
+  color: #FBC96D;               /* Emberlight Gold */
+  text-shadow: 
+   -1px  1px 0 var(#342c61), /* Twilight Indigo */
+    1px -1px 0 var(#342c61), /* Twilight Indigo */
+   -1px  1px 0 var(#342c61), /* Twilight Indigo */
+    1px  1px 0 var(#342c61), /* Twilight Indigo */
+}
+
+header nav a[href="#support"]:hover {
+  color: #C5ECFF;               /* Crystalline Ice */
+  text-shadow: 
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
+    1px -1px 0 var(#0c4530), /* Moss-Vein Green */
+   -1px  1px 0 var(#0c4530), /* Moss-Vein Green */
+    1px  1px 0 var(#0c4530), /* Moss-Vein Green */ 
+}
+
+ /* ──────────────✦ Small mobile screens ✦────────────── */
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem 0;
+  }
+  header h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.1rem;
+    text-align: center;
+  }
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
   header nav a {
     font-size: 0.9rem;
   }
 }
 
-@media (min-width: 1025px) {
+/* ──────────────✦ Larger mobile + small tablet ✦────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    padding: 0.75rem 0;
+  }
+  header h1 {
+    font-size: 1.5rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
   header nav a {
     font-size: 1rem;
   }
 }
+
+/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  header {
+    padding: 1rem 0;
+  }
+  header h1 {
+    font-size: 1.8rem;
+  }
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  header {
+    padding: 1.2rem 0;
+  }
+  header h1 {
+    font-size: 2rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+  header nav a {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ Large desktop ✦────────────── */
+@media (min-width: 1441px) {
+  header {
+    padding: 1.5rem 0;
+  }
+  header h1 {
+    font-size: 2.5rem;
+  }
+  header nav {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  header nav a {
+    font-size: 1.2rem;
+  }
+}
+/* ──────────────✦ Base styles ✦────────────── */
+.page-title {
+  position: fixed;
+  top: calc(100px + 10%);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Times New Roman', serif;
+  font-size: 2rem;
+  color: #2DC5B4;
+  text-align: center;
+  text-shadow:
+    -1px 0 #014d4e,
+     1px 0 #014d4e,
+     0 -1px #014d4e,
+     0 1px #014d4e;
+  z-index: 9;
+}
+
+section.section {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0;
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+}
+
+/* ──────────────✦ Small mobile screens ✦────────────── */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 1.2rem;
+    top: calc(80px + 8%);
+  }
+  section.section {
+    width: 90%;
+    margin-top: calc(150px + 8%);
+    padding: 1rem 0;
+  }
+}
+
+/* ──────────────✦ Larger mobile + small tablets ✦────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .page-title {
+    font-size: 1.5rem;
+    top: calc(90px + 9%);
+  }
+  section.section {
+    width: 85%;
+    margin-top: calc(180px + 9%);
+    padding: 1.5rem 0;
+  }
+}
+
+/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .page-title {
+    font-size: 1.8rem;
+    top: calc(95px + 9%);
+  }
+  section.section {
+    width: 80%;
+    margin-top: calc(190px + 9%);
+    padding: 1.8rem 0;
+  }
+}
+
+/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .page-title {
+    font-size: 2rem;
+    top: calc(100px + 10%);
+  }
+  section.section {
+    width: 75%;
+    margin-top: calc(200px + 10%);
+    padding: 2rem 0;
+  }
+}
+
+/* ──────────────✦ Large desktop ✦────────────── */
+@media (min-width: 1441px) {
+  .page-title {
+    font-size: 2.5rem;
+    top: calc(120px + 10%);
+  }
+  section.section {
+    width: 70%;
+    margin-top: calc(220px + 10%);
+    padding: 2.5rem 0;
+  }
+}
+
 /* ──────────────✦ Base heading styles ✦────────────── */
 h1, h3 {
   font-family: 'Uncial Antiqua', serif;
@@ -311,46 +759,47 @@ section {
   margin: 1rem auto;
 }
 
-/* ──────────────✦ Specific colors for each section ✦────────────── */
+/* ──────────────✦ Specific colors for each section (using Dividers hex) ✦────────────── */
 .section.home .section-divider {
-  background-color: #ECEEF1; /* ──────────────✦ W’iosamn Silver ✦────────────── */
+  background-color: #342c61; /* Twilight Indigo */
 }
 
 .section.lore .section-divider {
-  background-color: #0075FF; /* ──────────────✦ Arvalla Prime ✦────────────── */
+  background-color: #A63A2C; /* Duvaen Red */
 }
 
 .section.navigation .section-divider {
-  background-color: #C5ECFF; /* ──────────────✦ Crystalline Ice ✦────────────── */
+  background-color: #0075FF; /* Arvalla Prime */
 }
 
 .section.font-project .section-divider {
-  background-color: #C1FF8A; /* ──────────────✦ Verdant Glow ✦────────────── */
+  background-color: #0c4530; /* Moss-Vein Green */
 }
 
 .section.mmorpg .section-divider {
-  background-color: #FBC96D; /* ──────────────✦ Emberlight Gold ✦────────────── */
+  background-color: #572a45; /* Leyline Plum */
 }
 
 .section.book-series .section-divider {
-  background-color: #D88EBA; /* ──────────────✦ Leyline Rose ✦────────────── */
+  background-color: #2DC5B4; /* Biolume Teal */
 }
 
 .section.timekeeping .section-divider {
-  background-color: #DCE1E8; /* ──────────────✦ Moonstone Silver ✦────────────── */
+  background-color: #78581f; /* Relic Brass */
 }
 
 .section.language-rules .section-divider {
-  background-color: #8FE9F0; /* ──────────────✦ Dreamlight Cyan ✦────────────── */
+  background-color: #7A7C86; /* Arvalla Beta */
 }
 
 .section.lexicon .section-divider {
-  background-color: #7A7C86; /* ──────────────✦ Arvalla Beta ✦────────────── */
+  background-color: #342c61; /* Twilight Indigo */
 }
 
-.section.support .section-divider {
-  background-color: #FBC96D; /* ──────────────✦ Emberlight Gold ✦────────────── */
+.section.section.support .section-divider {
+  background-color: #0c4530; /* Moss-Vein Green */
 }
+
 
 /* ──────────────✦ RESPONSIVE - Small mobile screens ✦────────────── */
 @media (max-width: 480px) {
@@ -398,175 +847,678 @@ section {
 }
 
 /* ──────────────✦ HOME ✦────────────── */
-.home h1, .home h2, .home h3, .home h4 {
+
+/* ──────────────✦ GLOBAL BASE ✦────────────── */
+body {
+  font-family: "Times New Roman", Times, serif;
+  color: #fff;
+  background: transparent;
+}
+
+section {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+section h1,
+section h2,
+section h3,
+section h4 {
+  font-family: serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* ──────────────✦ SECTION COLORS ✦────────────── */
+section.home {
+  border-color: #ECEEF1;
+}
+
+section.home h1,
+section.home h2,
+section.home h3,
+section.home h4 {
   color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b;
+  text-shadow: -1px -1px 0 #1a114b, 1px -1px 0 #1a114b, -1px 1px 0 #1a114b, 1px 1px 0 #1a114b;
 }
-.home th {
-  color: #ECEEF1;
-  text-shadow: 0 0 2px #1a114b;
+
+section.lore {
+  border-color: #0075FF;
 }
-.section.home::-webkit-scrollbar-thumb {
-  background: #1a114b;
+
+section.lore h1,
+section.lore h2,
+section.lore h3,
+section.lore h4 {
+  color: #0075FF;
+  text-shadow: -1px -1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530;
 }
-.section.home::-webkit-scrollbar-track {
-  background: #ECEEF1;
+
+section.navigation {
+  border-color: #C5ECFF;
+}
+
+section.navigation h1,
+section.navigation h2,
+section.navigation h3,
+section.navigation h4 {
+  color: #C5ECFF;
+  text-shadow: -1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61;
+}
+
+section.font-project {
+  border-color: #C1FF8A;
+}
+
+section.font-project h1,
+section.font-project h2,
+section.font-project h3,
+section.font-project h4 {
+  color: #C1FF8A;
+  text-shadow: -1px -1px 0 #572a45, 1px -1px 0 #572a45, -1px 1px 0 #572a45, 1px 1px 0 #572a45;
+}
+
+section.mmorpg {
+  border-color: #FBC96D;
+}
+
+section.mmorpg h1,
+section.mmorpg h2,
+section.mmorpg h3,
+section.mmorpg h4 {
+  color: #FBC96D;
+  text-shadow: -1px -1px 0 #014d4e, 1px -1px 0 #014d4e, -1px 1px 0 #014d4e, 1px 1px 0 #014d4e;
+}
+
+section.book-series {
+  border-color: #D88EBA;
+}
+
+section.book-series h1,
+section.book-series h2,
+section.book-series h3,
+section.book-series h4 {
+  color: #D88EBA;
+  text-shadow: -1px -1px 0 #78581f, 1px -1px 0 #78581f, -1px 1px 0 #78581f, 1px 1px 0 #78581f;
+}
+
+section.timekeeping {
+  border-color: #DCE1E8;
+}
+
+section.timekeeping h1,
+section.timekeeping h2,
+section.timekeeping h3,
+section.timekeeping h4 {
+  color: #DCE1E8;
+  text-shadow: -1px -1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C;
+}
+
+section.language-rules {
+  border-color: #8FE9F0;
+}
+
+section.language-rules h1,
+section.language-rules h2,
+section.language-rules h3,
+section.language-rules h4 {
+  color: #8FE9F0;
+  text-shadow: -1px -1px 0 #7A7C86, 1px -1px 0 #7A7C86, -1px 1px 0 #7A7C86, 1px 1px 0 #7A7C86;
+}
+
+section.lexicon {
+  border-color: #7A7C86;
+}
+
+section.lexicon h1,
+section.lexicon h2,
+section.lexicon h3,
+section.lexicon h4 {
+  color: #7A7C86;
+  text-shadow: -1px -1px 0 #1a114b, 1px -1px 0 #1a114b, -1px 1px 0 #1a114b, 1px 1px 0 #1a114b;
+}
+
+section.support {
+  border-color: #FBC96D;
+}
+
+section.support h1,
+section.support h2,
+section.support h3,
+section.support h4 {
+  color: #FBC96D;
+  text-shadow: -1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61;
+}
+
+header {
+  color: #9381FF;
+}
+
+header h1,
+header h2,
+header h3,
+header h4 {
+  color: #9381FF;
+  text-shadow: -1px -1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C;
+}
+/* Scrollbar */
+.section.lore::-webkit-scrollbar-thumb {
+  background: #A63A2C;
+}
+.section.lore::-webkit-scrollbar-track {
+  background: #9381FF;
+}
+/* ──────────────✦ RESPONSIVE ✦────────────── */
+@media (max-width: 480px) {
+  section {
+    padding: 40px 15px;
+  }
+  section h1, section h2 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  section {
+    padding: 50px 30px;
+  }
+  section h1, section h2 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  section {
+    padding: 60px 50px;
+  }
+  section h1, section h2 {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  section {
+    padding: 70px 80px;
+  }
+  section h1, section h2 {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 1441px) {
+  section {
+    padding: 80px 100px;
+  }
+  section h1, section h2 {
+    font-size: 42px;
+  }
 }
 
 /* ──────────────✦ LORE ✦────────────── */
-.lore h1, .lore h2, .lore h3, .lore h4 {
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
+.section.lore { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #A63A2C; /* Duvaen Red */
 }
-.lore th {
-  color: #0075FF;
-  text-shadow: 0 0 2px #0c4530;
+
+/* Headings */
+.section.lore h1,
+.section.lore h2,
+.section.lore h3,
+.section.lore h4 {
+  color: #1a114b; /* Astral Navy */
+  text-shadow:
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61;
 }
+
+/* Table Wrapper */
+.section.lore table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #1a114b; /* Astral Navy border */
+}
+
+/* Table Header */
+.section.lore th {
+  font-family: 'Cinzel', serif;
+  color: #1a114b; /* Astral Navy */
+  text-shadow:
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #C5ECFF; /* Crystalline Ice */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo divider */
+}
+
+/* Table Body */
+.section.lore td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+}
+
+/* Section Dividers */
+.section.lore hr {
+  border: 0;
+  border-top: 2px solid #1a114b; /* Astral Navy divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
 .section.lore::-webkit-scrollbar-thumb {
-  background: #0c4530;
+  background: #342c61; /* Twilight Indigo */
 }
 .section.lore::-webkit-scrollbar-track {
-  background: #0075FF;
+  background: #FBC96D; /* Emberlight Gold */
 }
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.lore {
+    width: 95%;
+    padding: 1.5rem 0;
+  }
+
+  .section.lore h1 { font-size: 26px; }
+  .section.lore h2 { font-size: 22px; }
+  .section.lore h3 { font-size: 20px; }
+  .section.lore h4 { font-size: 18px; }
+
+  .section.lore table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.lore th {
+    font-size: 1rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.lore {
+    width: 90%;
+  }
+
+  .section.lore h1 { font-size: 30px; }
+  .section.lore h2 { font-size: 26px; }
+  .section.lore h3 { font-size: 24px; }
+  .section.lore h4 { font-size: 22px; }
+
+  .section.lore table {
+    width: 100%;
+  }
+
+  .section.lore th {
+    font-size: 1.05rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.lore {
+    width: 85%;
+  }
+
+  .section.lore h1 { font-size: 36px; }
+  .section.lore h2 { font-size: 30px; }
+  .section.lore h3 { font-size: 28px; }
+  .section.lore h4 { font-size: 26px; }
+
+  .section.lore table {
+    width: 95%;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.lore {
+    width: 80%;
+  }
+
+  .section.lore h1 { font-size: 42px; }
+  .section.lore h2 { font-size: 34px; }
+  .section.lore h3 { font-size: 32px; }
+  .section.lore h4 { font-size: 30px; }
+
+  .section.lore table {
+    width: 90%;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.lore {
+    width: 75%;
+  }
+
+  .section.lore h1 { font-size: 48px; }
+  .section.lore h2 { font-size: 38px; }
+  .section.lore h3 { font-size: 36px; }
+  .section.lore h4 { font-size: 34px; }
+
+  .section.lore table {
+    width: 85%;
+  }
+}
+
+
+
 /* ──────────────✦ NAVIGATION ✦────────────── */
-.navigation h1, .navigation h2, .navigation h3, .navigation h4 {
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
+.section.navigation { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #0075FF; /* Arvalla Prime */
 }
-.navigation th {
-  color: #C5ECFF;
-  text-shadow: 0 0 2px #342c61;
+
+/* Headings */
+.section.navigation h1,
+.section.navigation h2,
+.section.navigation h3,
+.section.navigation h4 {
+  color: #0075FF; /* Arvalla Prime */
+  text-shadow:
+    -1px -1px 0 #0075FF,
+     1px -1px 0 #0075FF,
+    -1px  1px 0 #0075FF,
+     1px  1px 0 #0075FF;
 }
+
+/* Table Wrapper */
+.section.navigation table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #0075FF; /* Arvalla Prime border */
+}
+
+/* Table Header */
+.section.navigation th {
+  font-family: 'Cinzel', serif;
+  color: #DCE1E8; /* Moonstone Silver */
+  text-shadow:
+    -1px -1px 0 #0075FF,
+     1px -1px 0 #0075FF,
+    -1px  1px 0 #0075FF,
+     1px  1px 0 #0075FF;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #0075FF; /* Arvalla Prime */
+  border-bottom: 2px solid #DCE1E8; /* Moonstone Silver */
+}
+
+/* Table Body */
+.section.navigation td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #0075FF; /* Arvalla Prime row divider */
+}
+
+/* Section Dividers */
+.section.navigation hr {
+  border: 0;
+  border-top: 2px solid #0075FF; /* Arvalla Prime divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
 .section.navigation::-webkit-scrollbar-thumb {
-  background: #342c61;
+  background: #0075FF; /* Arvalla Prime */
 }
 .section.navigation::-webkit-scrollbar-track {
-  background: #C5ECFF;
+  background: #DCE1E8; /* Moonstone Silver */
 }
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.navigation {
+    width: 95%;
+    padding: 1.5rem 0;
+  }
+
+  .section.navigation h1 { font-size: 26px; }
+  .section.navigation h2 { font-size: 22px; }
+  .section.navigation h3 { font-size: 20px; }
+  .section.navigation h4 { font-size: 18px; }
+
+  .section.navigation table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.navigation th {
+    font-size: 1rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.navigation {
+    width: 90%;
+  }
+
+  .section.navigation h1 { font-size: 30px; }
+  .section.navigation h2 { font-size: 26px; }
+  .section.navigation h3 { font-size: 24px; }
+  .section.navigation h4 { font-size: 22px; }
+
+  .section.navigation table {
+    width: 100%;
+  }
+
+  .section.navigation th {
+    font-size: 1.05rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.navigation {
+    width: 85%;
+  }
+
+  .section.navigation h1 { font-size: 36px; }
+  .section.navigation h2 { font-size: 30px; }
+  .section.navigation h3 { font-size: 28px; }
+  .section.navigation h4 { font-size: 26px; }
+
+  .section.navigation table {
+    width: 95%;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.navigation {
+    width: 80%;
+  }
+
+  .section.navigation h1 { font-size: 42px; }
+  .section.navigation h2 { font-size: 34px; }
+  .section.navigation h3 { font-size: 32px; }
+  .section.navigation h4 { font-size: 30px; }
+
+  .section.navigation table {
+    width: 90%;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.navigation {
+    width: 75%;
+  }
+
+  .section.navigation h1 { font-size: 48px; }
+  .section.navigation h2 { font-size: 38px; }
+  .section.navigation h3 { font-size: 36px; }
+  .section.navigation h4 { font-size: 34px; }
+
+  .section.navigation table {
+    width: 85%;
+  }
+}
+
+
+
 /* ──────────────✦ FONT PROJECT ✦────────────── */
-.font-project h1, .font-project h2, .font-project h3, .font-project h4 {
-  color: #C1FF8A;
-  text-shadow: 0 0 2px #572a45;
+section.font-project {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #0c4530; /* Moss-Vein Green */
 }
+
+.font-project h1,
+.font-project h2,
+.font-project h3,
+.font-project h4 {
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-shadow:
+    -1px -1px 0 #0c4530,
+     1px -1px 0 #0c4530,
+    -1px  1px 0 #0c4530,
+     1px  1px 0 #0c4530; /* Moss-Vein Green */
+  margin-bottom: 1rem;
+  font-family: 'Times New Roman', serif;
+}
+
+.font-project p,
+.font-project span {
+  line-height: 1.6;
+  color: #8FE9F0; /* Dreamlight Cyan */
+}
+
 .font-project th {
-  color: #C1FF8A;
-  text-shadow: 0 0 2px #572a45;
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-shadow:
+    -1px -1px 0 #0c4530,
+     1px -1px 0 #0c4530,
+    -1px  1px 0 #0c4530,
+     1px  1px 0 #0c4530; /* Moss-Vein Green */
 }
+
+.font-project a {
+  color: #8FE9F0; /* Dreamlight Cyan */
+  text-decoration: underline;
+}
+
+.font-project a:hover {
+  color: #0c4530; /* Moss-Vein Green */
+}
+
 .section.font-project::-webkit-scrollbar-thumb {
-  background: #572a45;
+  background: #0c4530; /* Moss-Vein Green */
 }
+
 .section.font-project::-webkit-scrollbar-track {
-  background: #C1FF8A;
-}
-/* ──────────────✦ MMORPG ✦────────────── */
-.mmorpg h1, .mmorpg h2, .mmorpg h3, .mmorpg h4 {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #014d4e;
-}
-.mmorpg th {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #014d4e;
-}
-.section.mmorpg::-webkit-scrollbar-thumb {
-  background: #014d4e;
-}
-.section.mmorpg::-webkit-scrollbar-track {
-  background: #FBC96D;
-}
-/* ──────────────✦ BOOK SERIES ✦────────────── */
-.book-series h1, .book-series h2, .book-series h3, .book-series h4 {
-  color: #D88EBA;
-  text-shadow: 0 0 2px #78581f;
-}
-.book-series th {
-  color: #D88EBA;
-  text-shadow: 0 0 2px #78581f;
-}
-.section.book-series::-webkit-scrollbar-thumb {
-  background: #78581f;
-}
-.section.book-series::-webkit-scrollbar-track {
-  background: #D88EBA;
+  background: #8FE9F0; /* Dreamlight Cyan */
 }
 
-/* ──────────────✦ TIMEKEEPING ✦────────────── */
-.timekeeping h1, .timekeeping h2, .timekeeping h3, .timekeeping h4 {
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-}
-.timekeeping th {
-  color: #DCE1E8;
-  text-shadow: 0 0 2px #A63A2C;
-}
-.section.timekeeping::-webkit-scrollbar-thumb {
-  background: #A63A2C;
-}
-.section.timekeeping::-webkit-scrollbar-track {
-  background: #DCE1E8;
-}
-/* ──────────────✦ LANGUAGE RULES ✦────────────── */
-.language-rules h1, .language-rules h2, .language-rules h3, .language-rules h4 {
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-}
-.language-rules th {
-  color: #8FE9F0;
-  text-shadow: 0 0 2px #7A7C86;
-}
-.section.language-rules::-webkit-scrollbar-thumb {
-  background: #7A7C86;
-}
-.section.language-rules::-webkit-scrollbar-track {
-  background: #8FE9F0;
+/* DEMO AREA */
+.font-project .pacifico {
+  font-family: 'Pacifico', cursive !important;
+  font-size: 1.6em;
+  color: #8FE9F0; /* Dreamlight Cyan */
 }
 
-/* ──────────────✦ LEXICON ✦────────────── */
-.lexicon h1, .lexicon h2, .lexicon h3, .lexicon h4 {
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
+.font-project .azaaraan-preview {
+  font-family: 'Comic Sans MS', cursive !important;
+  font-size: 1.2em;
+  color: #8FE9F0; /* Dreamlight Cyan */
 }
-.lexicon th {
-  color: #7A7C86;
-  text-shadow: 0 0 2px #1a114b;
+
+/* CLOSING LINES */
+.font-project .closing-lines p {
+  margin: 0.5rem 0;
+  font-family: 'Times New Roman', serif;
+  font-style: italic;
+  color: #8FE9F0; /* Dreamlight Cyan */
 }
-.section.lexicon::-webkit-scrollbar-thumb {
-  background: #1a114b;
+
+/* BUTTONS */
+.font-project .button,
+.font-project button.button {
+  background: #78581f; /* Relic Brass */
+  color: #8FE9F0;      /* Dreamlight Cyan */
+  border: 2px solid #8FE9F0;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Times New Roman', serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
-.section.lexicon::-webkit-scrollbar-track {
-  background: #7A7C86;
+
+.font-project .button:hover,
+.font-project button.button:hover {
+  background: #8FE9F0; /* Dreamlight Cyan */
+  color: #78581f;      /* Relic Brass */
+  border-color: #78581f;
 }
-/* ──────────────✦ SUPPORT ✦────────────── */
-.support h1, .support h2, .support h3, .support h4 {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61;
-}
-.support th {
-  color: #FBC96D;
-  text-shadow: 0 0 2px #342c61;
-}
-.section.support::-webkit-scrollbar-thumb {
-  background: #342c61;
-}
-.section.support::-webkit-scrollbar-track {
-  background: #FBC96D;
-}
-/* ──────────────✦ Container for all vertical buttons ✦────────────── */
-.vertical-buttons {
-  position: fixed;
+
+/* VERTICAL BUTTONS */
+.section.font-project .vertical-buttons {
+  position: relative;
   top: 30%;
   left: 2%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* space between buttons */
-  z-index: 9999; /*stays on top */
+  gap: 1.5rem;
+  z-index: 9999;
 }
 
-/* ──────────────✦ Style for each button ✦────────────── */
-.vertical-buttons a {
+.section.font-project .vertical-buttons a {
   display: inline-block;
-  background-color: black;
-  color: cyan;
-  border: 2px solid cyan;
+  background-color: #78581f; /* Relic Brass */
+  color: #8FE9F0; /* Dreamlight Cyan */
+  border: 2px solid #8FE9F0;
   border-radius: 8px;
   padding: 0.75rem 1.5rem;
   font-family: 'Times New Roman', serif;
@@ -575,34 +1527,1287 @@ section {
   transition: all 0.3s ease;
 }
 
-/* ──────────────✦ Hover effect ✦────────────── */
-.vertical-buttons a:hover {
-  background-color: cyan;
-  color: black;
-  border: 2px solid black;
+.section.font-project .vertical-buttons a:hover {
+  background-color: #8FE9F0; /* Dreamlight Cyan */
+  color: #78581f;            /* Relic Brass */
+  border: 2px solid #78581f;
 }
 
-/* ──────────────✦ Responsive adjustments ✦────────────── */
-@media (max-width: 768px) {
-  .vertical-buttons {
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  section.font-project {
+    width: 95%;
+    padding: 1.5rem 0;
+  }
+
+  .font-project h1 { font-size: 26px; }
+  .font-project h2 { font-size: 22px; }
+  .font-project h3 { font-size: 20px; }
+  .font-project h4 { font-size: 18px; }
+
+  .section.font-project .vertical-buttons {
     top: 20%;
     left: 1%;
     gap: 1rem;
   }
 
-  .vertical-buttons a {
+  .section.font-project .vertical-buttons a {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
-  .vertical-buttons {
-    top: 25%;
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  section.font-project {
+    width: 90%;
+  }
+
+  .font-project h1 { font-size: 30px; }
+  .font-project h2 { font-size: 26px; }
+  .font-project h3 { font-size: 24px; }
+  .font-project h4 { font-size: 22px; }
+
+  .section.font-project .vertical-buttons {
+    top: 22%;
     left: 1.5%;
     gap: 1.25rem;
   }
+
+  .section.font-project .vertical-buttons a {
+    padding: 0.65rem 1.25rem;
+    font-size: 1rem;
+  }
 }
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  section.font-project {
+    width: 85%;
+  }
+
+  .font-project h1 { font-size: 36px; }
+  .font-project h2 { font-size: 30px; }
+  .font-project h3 { font-size: 28px; }
+  .font-project h4 { font-size: 26px; }
+
+  .section.font-project .vertical-buttons {
+    top: 25%;
+    left: 2%;
+    gap: 1.5rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  section.font-project {
+    width: 80%;
+  }
+
+  .font-project h1 { font-size: 42px; }
+  .font-project h2 { font-size: 34px; }
+  .font-project h3 { font-size: 32px; }
+  .font-project h4 { font-size: 30px; }
+
+  .section.font-project .vertical-buttons {
+    top: 28%;
+    left: 2%;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  section.font-project {
+    width: 75%;
+  }
+
+  .font-project h1 { font-size: 48px; }
+  .font-project h2 { font-size: 38px; }
+  .font-project h3 { font-size: 36px; }
+  .font-project h4 { font-size: 34px; }
+}
+
+
+
+/* ──────────────✦ MMORPG ✦────────────── */
+.section.mmorpg { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #572a45; /* Leyline Plum */
+}
+
+/* Headings */
+.section.mmorpg h1,
+.section.mmorpg h2,
+.section.mmorpg h3,
+.section.mmorpg h4 {
+  color: #572a45; /* Leyline Plum */
+  text-shadow:
+    -1px -1px 0 #572a45,
+     1px -1px 0 #572a45,
+    -1px  1px 0 #572a45,
+     1px  1px 0 #572a45; /* Leyline Plum outline shadow */
+}
+
+/* Section Dividers */
+.section.mmorpg hr {
+  border: 0;
+  border-top: 2px solid #572a45; /* Leyline Plum divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.mmorpg::-webkit-scrollbar-thumb {
+  background: #572a45; /* Leyline Plum */
+}
+.section.mmorpg::-webkit-scrollbar-track {
+  background: #C5ECFF; /* Crystalline Ice */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.mmorpg {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 26px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 22px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 20px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 18px;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.mmorpg {
+    width: 90%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 30px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 26px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 24px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 22px;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.mmorpg {
+    width: 85%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 36px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 30px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 28px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 26px;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.mmorpg {
+    width: 80%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 42px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 34px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 32px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 30px;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.mmorpg {
+    width: 75%;
+  }
+
+  .section.mmorpg h1 {
+    font-size: 48px;
+  }
+
+  .section.mmorpg h2 {
+    font-size: 38px;
+  }
+
+  .section.mmorpg h3 {
+    font-size: 36px;
+  }
+
+  .section.mmorpg h4 {
+    font-size: 34px;
+  }
+}
+
+/* ──────────────✦ BOOK SERIES ✦────────────── */
+.section.book-series { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #2DC5B4; /* Biolume Teal */
+}
+
+/* Headings */
+.section.book-series h1,
+.section.book-series h2,
+.section.book-series h3,
+.section.book-series h4 {
+  color: #2DC5B4; /* Biolume Teal */
+  text-shadow:
+    -1px -1px 0 #2DC5B4,
+     1px -1px 0 #2DC5B4,
+    -1px  1px 0 #2DC5B4,
+     1px  1px 0 #2DC5B4; /* Biolume Teal outline shadow */
+}
+
+/* Section Dividers */
+.section.book-series hr {
+  border: 0;
+  border-top: 2px solid #2DC5B4; /* Biolume Teal divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.book-series::-webkit-scrollbar-thumb {
+  background: #2DC5B4; /* Biolume Teal */
+}
+.section.book-series::-webkit-scrollbar-track {
+  background: #D88EBA; /* Leyline Rose */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.book-series {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.book-series h1 {
+    font-size: 26px;
+  }
+
+  .section.book-series h2 {
+    font-size: 22px;
+  }
+
+  .section.book-series h3 {
+    font-size: 20px;
+  }
+
+  .section.book-series h4 {
+    font-size: 18px;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.book-series {
+    width: 90%;
+  }
+
+  .section.book-series h1 {
+    font-size: 30px;
+  }
+
+  .section.book-series h2 {
+    font-size: 26px;
+  }
+
+  .section.book-series h3 {
+    font-size: 24px;
+  }
+
+  .section.book-series h4 {
+    font-size: 22px;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.book-series {
+    width: 85%;
+  }
+
+  .section.book-series h1 {
+    font-size: 36px;
+  }
+
+  .section.book-series h2 {
+    font-size: 30px;
+  }
+
+  .section.book-series h3 {
+    font-size: 28px;
+  }
+
+  .section.book-series h4 {
+    font-size: 26px;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.book-series {
+    width: 80%;
+  }
+
+  .section.book-series h1 {
+    font-size: 42px;
+  }
+
+  .section.book-series h2 {
+    font-size: 34px;
+  }
+
+  .section.book-series h3 {
+    font-size: 32px;
+  }
+
+  .section.book-series h4 {
+    font-size: 30px;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.book-series {
+    width: 75%;
+  }
+
+  .section.book-series h1 {
+    font-size: 48px;
+  }
+
+  .section.book-series h2 {
+    font-size: 38px;
+  }
+
+  .section.book-series h3 {
+    font-size: 36px;
+  }
+
+  .section.book-series h4 {
+    font-size: 34px;
+  }
+}
+
+
+
+/* ──────────────✦ TIMEKEEPING ✦────────────── */
+.section.timekeeping { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #78581f; /* Relic Brass */
+}
+
+/* Headings */
+.section.timekeeping h1,
+.section.timekeeping h2,
+.section.timekeeping h3,
+.section.timekeeping h4 {
+  color: #78581f; /* Relic Brass */
+  text-shadow: 
+    -1px -1px 0 #78581f,
+     1px -1px 0 #78581f,
+    -1px  1px 0 #78581f,
+     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+}
+
+/* Table Wrapper */
+.section.timekeeping table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #78581f; /* Relic Brass border */
+}
+
+/* Table Header */
+.section.timekeeping th {
+  font-family: 'Cinzel', serif;
+  color: #78581f; /* Relic Brass */
+  text-shadow: 
+    -1px -1px 0 #78581f,
+     1px -1px 0 #78581f,
+    -1px  1px 0 #78581f,
+     1px  1px 0 #78581f; /* Relic Brass outline shadow */
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #8FE9F0; /* Dreamlight Cyan */
+  border-bottom: 2px solid #78581f; /* Relic Brass divider */
+}
+
+/* Table Body */
+.section.timekeeping td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #78581f; /* Relic Brass row divider */
+}
+
+/* Section Dividers */
+.section.timekeeping hr {
+  border: 0;
+  border-top: 2px solid #78581f; /* Relic Brass divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.timekeeping::-webkit-scrollbar-thumb {
+  background: #78581f; /* Relic Brass */
+}
+.section.timekeeping::-webkit-scrollbar-track {
+  background: #8FE9F0; /* Dreamlight Cyan */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.timekeeping {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 26px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 22px;
+  }
+
+  .section.timekeeping table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.timekeeping {
+    width: 90%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 30px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 26px;
+  }
+
+  .section.timekeeping table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.05rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.timekeeping {
+    width: 85%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 36px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 30px;
+  }
+
+  .section.timekeeping table {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.1rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.timekeeping {
+    width: 80%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 42px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 34px;
+  }
+
+  .section.timekeeping table {
+    width: 90%;
+    font-size: 1.05rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.15rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.timekeeping {
+    width: 75%;
+  }
+
+  .section.timekeeping h1 {
+    font-size: 48px;
+  }
+
+  .section.timekeeping h2 {
+    font-size: 38px;
+  }
+
+  .section.timekeeping table {
+    width: 85%;
+    font-size: 1.1rem;
+  }
+
+  .section.timekeeping th {
+    font-size: 1.2rem;
+  }
+
+  .section.timekeeping td {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ LANGUAGE RULES ✦────────────── */
+.section.language-rules { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #7A7C86; /* Arvalla Beta */
+}
+
+/* Headings */
+.section.language-rules h1,
+.section.language-rules h2,
+.section.language-rules h3,
+.section.language-rules h4 {
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow: 
+    -1px -1px 0 #7A7C86,
+     1px -1px 0 #7A7C86,
+    -1px  1px 0 #7A7C86,
+     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+}
+
+/* Table Wrapper */
+.section.language-rules table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #7A7C86; /* Arvalla Beta border */
+}
+
+/* Table Header */
+.section.language-rules th {
+  font-family: 'Cinzel', serif;
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow: 
+    -1px -1px 0 #7A7C86,
+     1px -1px 0 #7A7C86,
+    -1px  1px 0 #7A7C86,
+     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #C1FF8A; /* Verdant Glow */
+  border-bottom: 2px solid #7A7C86; /* Arvalla Beta divider */
+}
+
+/* Table Body */
+.section.language-rules td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #7A7C86; /* Arvalla Beta row divider */
+}
+
+/* Section Dividers */
+.section.language-rules hr {
+  border: 0;
+  border-top: 2px solid #7A7C86; /* Arvalla Beta divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.language-rules::-webkit-scrollbar-thumb {
+  background: #7A7C86; /* Arvalla Beta */
+}
+.section.language-rules::-webkit-scrollbar-track {
+  background: #C1FF8A; /* Verdant Glow */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.language-rules {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.language-rules h1 {
+    font-size: 26px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 22px;
+  }
+
+  .section.language-rules table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1rem;
+  }
+
+  .section.language-rules td {
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.language-rules {
+    width: 90%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 30px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 26px;
+  }
+
+  .section.language-rules table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.05rem;
+  }
+
+  .section.language-rules td {
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.language-rules {
+    width: 85%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 36px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 30px;
+  }
+
+  .section.language-rules table {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.1rem;
+  }
+
+  .section.language-rules td {
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.language-rules {
+    width: 80%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 42px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 34px;
+  }
+
+  .section.language-rules table {
+    width: 90%;
+    font-size: 1.05rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.15rem;
+  }
+
+  .section.language-rules td {
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.language-rules {
+    width: 75%;
+  }
+
+  .section.language-rules h1 {
+    font-size: 48px;
+  }
+
+  .section.language-rules h2 {
+    font-size: 38px;
+  }
+
+  .section.language-rules table {
+    width: 85%;
+    font-size: 1.1rem;
+  }
+
+  .section.language-rules th {
+    font-size: 1.2rem;
+  }
+
+  .section.language-rules td {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ LEXICON ✦────────────── */
+
+.section.lexicon { 
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem; 
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #342c61; /* Twilight Indigo */
+}
+
+/* Headings */
+.section.lexicon h1,
+.section.lexicon h2,
+.section.lexicon h3,
+.section.lexicon h4 {
+  color: #342c61; /* Twilight Indigo */
+  text-shadow: 
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+}
+
+/* Table Wrapper */
+.section.lexicon table {
+  width: 90%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-collapse: collapse;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 2px solid #342c61; /* Twilight Indigo border */
+}
+
+/* Table Header */
+.section.lexicon th {
+  font-family: 'Cinzel', serif;
+  color: #342c61; /* Twilight Indigo */
+  text-shadow: 
+    -1px -1px 0 #342c61,
+     1px -1px 0 #342c61,
+    -1px  1px 0 #342c61,
+     1px  1px 0 #342c61; /* Twilight Indigo outline shadow */
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  background-color: #FBC96D; /* Emberlight Gold */
+  border-bottom: 2px solid #342c61; /* Twilight Indigo divider */
+}
+
+/* Table Body */
+.section.lexicon td {
+  font-family: 'Pridi', serif;
+  color: #000; /* Black text */
+  text-align: center;
+  padding: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
+  border-bottom: 1px solid #342c61; /* Twilight Indigo row divider */
+}
+
+/* Section Dividers */
+.section.lexicon hr {
+  border: 0;
+  border-top: 2px solid #342c61; /* Twilight Indigo divider */
+  margin: 30px 0;
+}
+
+/* Scrollbar */
+.section.lexicon::-webkit-scrollbar-thumb {
+  background: #342c61; /* Twilight Indigo */
+}
+.section.lexicon::-webkit-scrollbar-track {
+  background: #FBC96D; /* Emberlight Gold */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile: <= 480px */
+@media (max-width: 480px) {
+  .section.lexicon {
+    width: 95%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.lexicon h1 {
+    font-size: 26px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 22px;
+  }
+
+  .section.lexicon table {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1rem;
+  }
+
+  .section.lexicon td {
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.lexicon {
+    width: 90%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 30px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 26px;
+  }
+
+  .section.lexicon table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.05rem;
+  }
+
+  .section.lexicon td {
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.lexicon {
+    width: 85%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 36px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 30px;
+  }
+
+  .section.lexicon table {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.1rem;
+  }
+
+  .section.lexicon td {
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.lexicon {
+    width: 80%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 42px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 34px;
+  }
+
+  .section.lexicon table {
+    width: 90%;
+    font-size: 1.05rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.15rem;
+  }
+
+  .section.lexicon td {
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.lexicon {
+    width: 75%;
+  }
+
+  .section.lexicon h1 {
+    font-size: 48px;
+  }
+
+  .section.lexicon h2 {
+    font-size: 38px;
+  }
+
+  .section.lexicon table {
+    width: 85%;
+    font-size: 1.1rem;
+  }
+
+  .section.lexicon th {
+    font-size: 1.2rem;
+  }
+
+  .section.lexicon td {
+    font-size: 1.1rem;
+  }
+}
+
+/* ──────────────✦ SUPPORT ✦────────────── */
+.section.support {
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2rem 0rem;
+  margin-top: calc(200px + 10%);
+  overflow-y: auto;
+  background-color: transparent; /* Transparent background for section */
+  text-align: center;
+  padding-bottom: 80px;
+  border-bottom: 3px solid #7A7C86; /* Arvalla Beta */
+}
+
+/* Headings */
+.section.support h1,
+.section.support h2,
+.section.support h3,
+.section.support h4 {
+  color: #7A7C86; /* Arvalla Beta */
+  text-shadow:
+    -1px -1px 0 #7A7C86,
+     1px -1px 0 #7A7C86,
+    -1px  1px 0 #7A7C86,
+     1px  1px 0 #7A7C86; /* Arvalla Beta outline shadow */
+}
+
+/* Position buttons absolutely inside .section.support */
+.section.support .vertical-buttons {
+  position: absolute;
+  top: 30%;
+  left: -80px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 9999;
+}
+
+/* Buttons themselves stay the same */
+.section.support .vertical-buttons a {
+  display: inline-block;
+  background-color: #0c4530; /* Moss-Vein Green */
+  color: #C5ECFF; /* Crystalline Ice */
+  border: 2px solid #C5ECFF; /* Crystalline Ice */
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Times New Roman', serif;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.section.support .vertical-buttons a:hover {
+  background-color: #C5ECFF; /* Crystalline Ice */
+  color: #0c4530; /* Moss-Vein Green */
+  border: 2px solid #0c4530; /* Moss-Vein Green */
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* 1️⃣ Small Mobile Screens: <= 480px */
+@media (max-width: 480px) {
+  .section.support {
+    width: 90%;
+    padding: 1.5rem 0rem;
+  }
+
+  .section.support h1 {
+    font-size: 28px;
+  }
+
+  .section.support h2 {
+    font-size: 24px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 20%;
+    left: -50px;
+    gap: 1rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* 2️⃣ Larger Mobile + Small Tablets: 481px - 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section.support {
+    width: 85%;
+  }
+
+  .section.support h1 {
+    font-size: 32px;
+  }
+
+  .section.support h2 {
+    font-size: 26px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 22%;
+    left: -60px;
+    gap: 1.2rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.65rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section.support {
+    width: 80%;
+  }
+
+  .section.support h1 {
+    font-size: 38px;
+  }
+
+  .section.support h2 {
+    font-size: 30px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 25%;
+    left: -70px;
+    gap: 1.25rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .section.support {
+    width: 75%;
+  }
+
+  .section.support h1 {
+    font-size: 42px;
+  }
+
+  .section.support h2 {
+    font-size: 34px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 28%;
+    left: -80px;
+    gap: 1.5rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 0.85rem 1.75rem;
+    font-size: 1.05rem;
+  }
+}
+
+/* 5️⃣ Large Desktops: 1441px+ */
+@media (min-width: 1441px) {
+  .section.support {
+    width: 70%;
+  }
+
+  .section.support h1 {
+    font-size: 48px;
+  }
+
+  .section.support h2 {
+    font-size: 38px;
+  }
+
+  .section.support .vertical-buttons {
+    top: 30%;
+    left: -90px;
+    gap: 1.75rem;
+  }
+
+  .section.support .vertical-buttons a {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
 
 
 /* ──────────────✦ Example page content to test scrolling ✦────────────── */
@@ -661,3 +2866,5 @@ span[style*="Comic Sans MS"],
     -1px  1px 0 var(--cyan),
      1px  1px 0 var(--cyan);
 }
+
+
