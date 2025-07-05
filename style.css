@@ -413,6 +413,15 @@ td {
   font-weight: bold;
 }
 
+/* ==== Main Styling ==== */
+/* ──────────────✦ HEADER + NAV ✦────────────── */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  scroll-behavior: smooth; /* Native smooth scroll */
+}
+
 header {
   position: fixed;
   top: 0;
@@ -448,16 +457,35 @@ header .copyright {
   font-family: 'Times New Roman', serif;
   color: black;
   margin-top: 10vh;
-  margin-bottom: 5vh; /* creates about 15% gap before nav line */
+  margin-bottom: 5vh; /* ~15% vertical gap before nav line */
   text-align: center;
 }
 
+/* ─────── NAVIGATION ─────── */
+
 header nav.main-nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;          /* Prevent wrapping by default */
+  overflow-x: auto;           /* Enable horizontal scroll on small screens */
   justify-content: center;
-  gap: 2rem; /* horizontal spacing between buttons */
-  margin-bottom: 0.5rem; /* keeps nav just above bottom border */
+  gap: 2rem;                  /* Horizontal spacing between links */
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: #9381FF transparent;
+}
+
+header nav.main-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+header nav.main-nav::-webkit-scrollbar-thumb {
+  background-color: #9381FF;
+  border-radius: 3px;
+}
+
+header nav.main-nav::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 header nav.main-nav a {
@@ -476,27 +504,22 @@ header nav.main-nav a:hover {
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
 }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth; /* Native smooth scroll! */
-    }
 
-/* Unique hover border colors */
+/* ─────── NAV HOVER COLORS ─────── */
 
-header nav a.home:hover { color: #342c61; border-color: #FBC96D; }
-header nav a.lore:hover { color: #A63A2C; border-color: #C5ECFF; }
-header nav a.navigation:hover { color: #0075FF; border-color: #DCE1E8; }
-header nav a.font-project:hover { color: #0c4530; border-color: #8FE9F0; }
-header nav a.mmorpg:hover { color: #572a45; border-color: #C5ECFF; }
-header nav a.book-series:hover { color: #2DC5B4; border-color: #D88EBA; }
-header nav a.timekeeping:hover { color: #78581f; border-color: #8FE9F0; }
+header nav a.home:hover           { color: #342c61; border-color: #FBC96D; }
+header nav a.lore:hover           { color: #A63A2C; border-color: #C5ECFF; }
+header nav a.navigation:hover     { color: #0075FF; border-color: #DCE1E8; }
+header nav a.font-project:hover   { color: #0c4530; border-color: #8FE9F0; }
+header nav a.mmorpg:hover         { color: #572a45; border-color: #C5ECFF; }
+header nav a.book-series:hover    { color: #2DC5B4; border-color: #D88EBA; }
+header nav a.timekeeping:hover    { color: #78581f; border-color: #8FE9F0; }
 header nav a.language-rules:hover { color: #7A7C86; border-color: #C1FF8A; }
-header nav a.lexicon:hover { color: #342c61; border-color: #FBC96D; }
-header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
+header nav a.lexicon:hover        { color: #342c61; border-color: #FBC96D; }
+header nav a.support:hover        { color: #2DC5B4; border-color: #D88EBA; }
 
+/* ─────── MOBILE NAV TOGGLE ─────── */
 
-/* Mobile nav toggle icon for small screens */
 .menu-toggle {
   display: none; /* Hidden by default for desktop */
   position: absolute;
@@ -507,13 +530,9 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
   color: black;
 }
 
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+/* ─────── RESPONSIVE NAV ─────── */
 
-/* Small mobile screens */
-@media (max-width: 480px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
-  }
+@media (max-width: 768px) {
   header {
     padding: 0.5rem 0;
   }
@@ -523,14 +542,25 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
     word-spacing: 0.1rem;
     text-align: center;
   }
-  header nav {
+  header nav.main-nav {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    overflow-x: visible; /* No horizontal scroll needed when stacked */
   }
-  header nav a {
+  header nav.main-nav a {
     font-size: 0.9rem;
   }
+}
+
+/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
+  }
+
   .page-title {
     font-size: 1.2rem;
     top: calc(80px + 8%);
@@ -1099,5 +1129,3 @@ span[style*="Comic Sans MS"],
     -2px  2px 0 var(--cyan),
      2px  2px 0 var(--cyan);
 }
-
-
