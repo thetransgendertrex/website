@@ -1,9 +1,11 @@
 /* ──────────────✦ === Aza'raan Website Script === ✦────────────── */
+// ==UserScript==
 // @name         Aza'raan Website Script
 // @namespace    https://github.com/thetransgendertrex/website
 // @version      1.3
 // @description  Core interactive behavior for Aza'raan's Trademarked Projects
 // @match        https://www.azara-trademarked-projects.com/*
+// ==/UserScript==
 
 (() => {
   'use strict';
@@ -40,120 +42,6 @@
   fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
     .then(() => console.log('✅ index.html verified.'))
     .catch(() => console.warn('⚠️ Could not verify index.html.'));
-
-   document.querySelectorAll('header a').forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').slice(1);
-      const target = document.getElementById(targetId);
-      const headerOffset = document.querySelector('header').offsetHeight;
-      const elementPosition = target.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    });
-  });
-  const navLinkStyles = [
-    { href: '#home', color: '#ECEEF1', shadow: '#1a114b' },
-    { href: '#lore', color: '#0075FF', shadow: '#0c4530' },
-    { href: '#navigation', color: '#C5ECFF', shadow: '#342c61' },
-    { href: '#font-project', color: '#C1FF8A', shadow: '#572a45' },
-    { href: '#mmorpg', color: '#FBC96D', shadow: '#014d4e' },
-    { href: '#book-series', color: '#D88EBA', shadow: '#78581f' },
-    { href: '#timekeeping', color: '#DCE1E8', shadow: '#A63A2C' },
-    { href: '#language-rules', color: '#8FE9F0', shadow: '#7A7C86' },
-    { href: '#lexicon', color: '#7A7C86', shadow: '#1a114b' },
-    { href: '#support', color: '#FBC96D', shadow: '#342c61' },
-  ];
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const header = document.querySelector('header');
-
-    // Add hover styles to navigation links
-    document.querySelectorAll('header a').forEach(link => {
-      const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
-      if (navStyle) {
-        link.addEventListener('mouseenter', () => {
-          link.style.color = navStyle.color;
-          link.style.textShadow = `-1px -1px 0 ${navStyle.shadow}, 1px -1px 0 ${navStyle.shadow}, -1px 1px 0 ${navStyle.shadow}, 1px 1px 0 ${navStyle.shadow}`;
-        });
-        link.addEventListener('mouseleave', () => {
-          link.style.color = '';
-          link.style.textShadow = '';
-        });
-      }
-    });
-
-    /* ──────────────✦ Auto-ID Headings ✦────────────── */
-    document.querySelectorAll('h1, h2, h3, h4').forEach((heading, i) => {
-      if (!heading.id) {
-        const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
-        heading.id = `${slug}-${i}`;
-      }
-    });
-
-    /* ──────────────✦ Enhance Tables ✦────────────── */
-    document.querySelectorAll('table').forEach(table => {
-      table.setAttribute('role', 'table');
-      if (!table.parentElement.classList.contains('table-wrapper')) {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'table-wrapper';
-        table.parentNode.insertBefore(wrapper, table);
-        wrapper.appendChild(table);
-      }
-    });
-
-    /* ──────────────✦ Fade-In Dividers ✦────────────── */
-    const dividerObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 1s ease-out';
-          entry.target.style.opacity = 1;
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section-divider').forEach(divider => {
-      divider.style.opacity = 0;
-      dividerObserver.observe(divider);
-    });
-
-    /* ──────────────✦ Sections Fade-In & Vertical Buttons ✦────────────── */
-    const sections = document.querySelectorAll('.section.home, .section.font-project');
-    const sectionObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
-          sectionObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => {
-      section.style.opacity = 0;
-      section.style.transform = 'translateY(30px)';
-      sectionObserver.observe(section);
-    });
-
-    const smoothLinks = document.querySelectorAll('.vertical-buttons a');
-    smoothLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        const href = link.getAttribute('href');
-        if (href.startsWith("#")) {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          smoothLinks.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
-        }
-      });
-    });
-  });
 
   /* ──────────────✦ Responsive Background ✦────────────── */
   (function () {
@@ -193,12 +81,130 @@
       }
     }
 
+    updateBackground();
     window.addEventListener('resize', updateBackground);
-    window.addEventListener('DOMContentLoaded', updateBackground);
   })();
 
-  /* ──────────────✦ Mobile Menu Toggle ✦────────────── */
-  (() => {
+  document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('header');
+
+    // Smooth scroll with header offset for nav links
+    document.querySelectorAll('header nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.querySelector(`section[data-section="${targetId}"]`);
+        if (target) {
+          const headerOffset = header.offsetHeight;
+          const elementPosition = target.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Nav link hover styles
+    const navLinkStyles = [
+      { href: '#home', color: '#ECEEF1', shadow: '#1a114b' },
+      { href: '#lore', color: '#0075FF', shadow: '#0c4530' },
+      { href: '#navigation', color: '#C5ECFF', shadow: '#342c61' },
+      { href: '#font-project', color: '#C1FF8A', shadow: '#572a45' },
+      { href: '#mmorpg', color: '#FBC96D', shadow: '#014d4e' },
+      { href: '#book-series', color: '#D88EBA', shadow: '#78581f' },
+      { href: '#timekeeping', color: '#DCE1E8', shadow: '#A63A2C' },
+      { href: '#language-rules', color: '#8FE9F0', shadow: '#7A7C86' },
+      { href: '#lexicon', color: '#7A7C86', shadow: '#1a114b' },
+      { href: '#support', color: '#FBC96D', shadow: '#342c61' },
+    ];
+
+    document.querySelectorAll('header nav a').forEach(link => {
+      const navStyle = navLinkStyles.find(item => item.href === link.getAttribute('href'));
+      if (navStyle) {
+        link.addEventListener('mouseenter', () => {
+          link.style.color = navStyle.color;
+          link.style.textShadow = `-1px -1px 0 ${navStyle.shadow}, 1px -1px 0 ${navStyle.shadow}, -1px 1px 0 ${navStyle.shadow}, 1px 1px 0 ${navStyle.shadow}`;
+        });
+        link.addEventListener('mouseleave', () => {
+          link.style.color = '';
+          link.style.textShadow = '';
+        });
+      }
+    });
+
+    // Auto-ID Headings
+    document.querySelectorAll('h1, h2, h3, h4').forEach((heading, i) => {
+      if (!heading.id) {
+        const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+        heading.id = `${slug}-${i}`;
+      }
+    });
+
+    // Wrap tables for styling
+    document.querySelectorAll('table').forEach(table => {
+      table.setAttribute('role', 'table');
+      if (!table.parentElement.classList.contains('table-wrapper')) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        table.parentNode.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+      }
+    });
+
+    // Fade-in dividers
+    const dividerObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transition = 'opacity 1s ease-out';
+          entry.target.style.opacity = 1;
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.section-divider').forEach(divider => {
+      divider.style.opacity = 0;
+      dividerObserver.observe(divider);
+    });
+
+    // Fade-in sections
+    const sections = document.querySelectorAll('section.section[data-section]');
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(30px)';
+      sectionObserver.observe(section);
+    });
+
+    // Smooth scroll for vertical buttons
+    document.querySelectorAll('.vertical-buttons a').forEach(link => {
+      link.addEventListener('click', e => {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(`section[data-section="${href.slice(1)}"]`);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            document.querySelectorAll('.vertical-buttons a').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    });
+
+    // Mobile menu toggle
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
     const close = document.getElementById('menu-close');
@@ -220,6 +226,6 @@
         });
       }
     });
-  })();
+  });
 
 })();
