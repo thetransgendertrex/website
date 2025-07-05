@@ -40,10 +40,10 @@ span[style*="Comic Sans MS"],
   font-family: 'Azaraan', cursive;
   color: #014d4e;
   text-shadow: 
-    -1px -1px 0 var(--cyan),
-     1px -1px 0 var(--cyan),
-    -1px  1px 0 var(--cyan),
-     1px  1px 0 var(--cyan);
+    -2px -2px 0 var(--cyan),
+     2px -2px 0 var(--cyan),
+    -2px  2px 0 var(--cyan),
+     2px  2px 0 var(--cyan);
 }
   `;
   document.head.appendChild(fontStyle);
@@ -114,9 +114,9 @@ azaraanElements.forEach(el => {
   el.style.fontFamily = "'Azaraan', cursive";
   el.style.color = '#014d4e';
   el.style.textShadow = `
-    -1px -1px 0 var(--cyan),
-     1px -1px 0 var(--cyan),
-    -1px  1px 0 var(--cyan),
-     1px  1px 0 var(--cyan)
+    -2px -2px 0 var(--cyan),
+     2px -2px 0 var(--cyan),
+    -2px  2px 0 var(--cyan),
+     2px  2px 0 var(--cyan)
   `;
 });
