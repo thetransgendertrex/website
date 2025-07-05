@@ -1,59 +1,416 @@
-/* ──────────────✦ === Aza'ra Website === ✦────────────── */
-/* Background is AI-generated Moonpunk Settlement image,
-fitting desktop, tablet, and mobile with fixed position and 
-footer fixed at bottom All backgrounds are handled by individual sections.
-// @name         Aza'ra Website 
-// @namespace    https://github.com/thetransgendertrex/website
-// @version      1.0
-// @description  Creates Style For Aza'ra's Trademarked Projects
-// @match        https://www.azara-trademarked-projects.com /*
-/* ──────────────✦ === Google Fonts === ✦────────────── */
+/* ──────────────✦ Global Aesthetic with Moonpunk Image Background ✦──────────────
+Background replaced by AI-generated Moonpunk Settlement image,
+fitting desktop, tablet, and mobile with fixed position and footer fixed at bottom.
+*/
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
 html {
   scroll-behavior: smooth;
 }
-/* ──────────────✦ Reset default margins/padding ✦────────────── */
-* {
+html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+  color: #cceeff;
+  background: transparent;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  font-family: Times New Roman, serif;
-  background-color: transparent;
-}
-
-/* ──────────────✦ Fixed background image (default large desktop) ✦────────────── */
-#page-wraper {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    width: 100%;
-}
-
-/* ──────────────✦ Scrolling radial black overlay ✦────────────── */
-body::after {
+/* Background image fixed behind everything */
+body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.7) 100%);
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; /* cover to fill the screen without distortion */
+  filter: brightness(0.85) contrast(1.05);
+}
+.page-title {
+  position: absolute;
+  top: calc(100% + 10vh); /* 10% below the header */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Times New Roman', serif;
+  font-size: 2rem;
+  color: #2DC5B4;
+  text-align: center;
+  text-shadow:
+    -2px 0 #014d4e,
+     2px 0 #014d4e,
+     0 -2px #014d4e,
+     0 2px #014d4e;
+  z-index: 9;
+}
+/* Overlay for better text contrast */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(11,29,38,0.5) 0%, rgba(4,13,18,0.8) 100%);
   pointer-events: none;
 }
 
-html {
+/* === Section Styling === */
+section {
+  margin-top: calc(2rem + 15vh); /* 15% below the title area */
+  padding: 2rem;
+  min-height: 100vh;
+  overflow-x: none;
+  overflow-y: auto;
+  word-break: break-word;
   scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+/* Example: Section theme using Extra Site Style 1 - Biolume Teal */
+section.section-style-1 {
+  background-color: #2DC5B4; /* Dark */
+  color: #D88EBA;            /* Light */
+}
+
+/* You can duplicate and update the classes below for each unique section style */
+section.section-style-2 {
+  background-color: #78581f;
+  color: #8FE9F0;
+}
+
+section.section-style-3 {
+  background-color: #A63A2C;
+  color: #DCE1E8;
+}
+
+section.section-style-4 {
+  background-color: #1a114b;
+  color: #C5ECFF;
+}
+
+section.section-style-5 {
+  background-color: #572a45;
+  color: #8FE9F0;
+}
+
+section.section-style-6 {
+  background-color: #0075FF;
+  color: #D88EBA;
+}
+
+section.section-style-7 {
+  background-color: #342c61;
+  color: #C1FF8A;
+}
+
+/* === Table Styling Within Sections === */
+section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  background-color: inherit;
+  color: inherit;
+  border: 2px solid currentColor;
+}
+
+section table th,
+section table td {
+  padding: 1rem;
+  border: 1px solid currentColor;
+}
+
+/* === Custom Scrollbar Styling for WebKit Browsers === */
+section::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+section::-webkit-scrollbar-thumb {
+  background: currentColor;
+  border-radius: 6px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+section::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+/* === VARIABLES === */
+:root {
+  --black: #000000;
+  --cyan: #00ffff;
+  --silver: #c0c0c0;
+
+  --copyright: #C1FF8A;
+  --copyright-shadow:
+    -1.2px -1.2px #1a114b,
+     1.2px -1.2px #1a114b,
+    -1.2px  1.2px #1a114b,
+     1.2px  1.2px #1a114b;
+
+  --home: #FBC96D;
+  --home-shadow:
+    -1.2px -1.2px #342c61,
+     1.2px -1.2px #342c61,
+    -1.2px  1.2px #342c61,
+     1.2px  1.2px #342c61;
+
+  --lore: #C5ECFF;
+  --lore-shadow:
+    -1.2px -1.2px #A63A2C,
+     1.2px -1.2px #A63A2C,
+    -1.2px  1.2px #A63A2C,
+     1.2px  1.2px #A63A2C;
+
+  --navigation: #DCE1E8;
+  --navigation-shadow:
+    -1.2px -1.2px #0075FF,
+     1.2px -1.2px #0075FF,
+    -1.2px  1.2px #0075FF,
+     1.2px  1.2px #0075FF;
+
+  --font-project: #8FE9F0;
+  --font-project-shadow:
+    -1.2px -1.2px #0c4530,
+     1.2px -1.2px #0c4530,
+    -1.2px  1.2px #0c4530,
+     1.2px  1.2px #0c4530;
+
+  --mmorpg: #C5ECFF;
+  --mmorpg-shadow:
+    -1.2px -1.2px #572a45,
+     1.2px -1.2px #572a45,
+    -1.2px  1.2px #572a45,
+     1.2px  1.2px #572a45;
+
+  --book-series: #D88EBA;
+  --book-series-shadow:
+    -1.2px -1.2px #2DC5B4,
+     1.2px -1.2px #2DC5B4,
+    -1.2px  1.2px #2DC5B4,
+     1.2px  1.2px #2DC5B4;
+
+  --timekeeping: #8FE9F0;
+  --timekeeping-shadow:
+    -1.2px -1.2px #78581f,
+     1.2px -1.2px #78581f,
+    -1.2px  1.2px #78581f,
+     1.2px  1.2px #78581f;
+
+  --language-rules: #C1FF8A;
+  --language-rules-shadow:
+    -1.2px -1.2px #7A7C86,
+     1.2px -1.2px #7A7C86,
+    -1.2px  1.2px #7A7C86,
+     1.2px  1.2px #7A7C86;
+
+  --lexicon: #FBC96D;
+  --lexicon-shadow:
+    -1.2px -1.2px #342c61,
+     1.2px -1.2px #342c61,
+    -1.2px  1.2px #342c61,
+     1.2px  1.2px #342c61;
+
+  --extra-style-1: #D88EBA;
+  --extra-style-1-shadow:
+    -1.2px -1.2px #2DC5B4,
+     1.2px -1.2px #2DC5B4,
+    -1.2px  1.2px #2DC5B4,
+     1.2px  1.2px #2DC5B4;
+
+  --extra-style-2: #8FE9F0;
+  --extra-style-2-shadow:
+    -1.2px -1.2px #78581f,
+     1.2px -1.2px #78581f,
+    -1.2px  1.2px #78581f,
+     1.2px  1.2px #78581f;
+
+  --extra-style-3: #DCE1E8;
+  --extra-style-3-shadow:
+    -1.2px -1.2px #A63A2C,
+     1.2px -1.2px #A63A2C,
+    -1.2px  1.2px #A63A2C,
+     1.2px  1.2px #A63A2C;
+
+  --extra-style-4: #C5ECFF;
+  --extra-style-4-shadow:
+    -1.2px -1.2px #1a114b,
+     1.2px -1.2px #1a114b,
+    -1.2px  1.2px #1a114b,
+     1.2px  1.2px #1a114b;
+
+  --extra-style-5: #8FE9F0;
+  --extra-style-5-shadow:
+    -1.2px -1.2px #572a45,
+     1.2px -1.2px #572a45,
+    -1.2px  1.2px #572a45,
+     1.2px  1.2px #572a45;
+
+  --extra-style-6: #D88EBA;
+  --extra-style-6-shadow:
+    -1.2px -1.2px #0075FF,
+     1.2px -1.2px #0075FF,
+    -1.2px  1.2px #0075FF,
+     1.2px  1.2px #0075FF;
+
+  --extra-style-7: #C1FF8A;
+  --extra-style-7-shadow:
+    -1.2px -1.2px #342c61,
+     1.2px -1.2px #342c61,
+    -1.2px  1.2px #342c61,
+     1.2px  1.2px #342c61;
+
+  --text-body: #ffffff;
+
+  --heading-shadow:
+    -2px -2px 0 #4a5d23,
+     2px -2px 0 #4a5d23,
+    -2px  2px 0 #4a5d23,
+     2px  2px 0 #4a5d23;
+}
+
+/* === BASE STYLES === */
+body {
+  /* foreground content */
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: var(--text-body);
+  font-family: 'Times New Roman', serif;
+  line-height: 1.6;
+  padding: 2rem;
+  overflow-y: scroll;
+  z-index: 0; /* ensure in front of background */
+}
+
+/* === BASE STYLES === */
+h1, h2, h3, h4 {
+  font-family: serif;
+  margin-bottom: 0.5em;
+  opacity: 1; /* keep text fully opaque */
+}
+
+/* Extra Site Style 1 - Biolume Teal / Leyline Rose */
+h1 {
+  color: #D88EBA;
+  text-shadow:
+    -1.2px -1.2px #2DC5B4,
+     1.2px -1.2px #2DC5B4,
+    -1.2px  1.2px #2DC5B4,
+     1.2px  1.2px #2DC5B4;
+  font-size: 2.75rem;
+  border-bottom: 2px solid #00ffff;
+  padding-bottom: 0.5rem;
+}
+
+/* Extra Site Style 2 - Relic Brass / Dreamlight Cyan */
+h2 {
+  color: #8FE9F0;
+  text-shadow:
+    -1.2px -1.2px #78581f,
+     1.2px -1.2px #78581f,
+    -1.2px  1.2px #78581f,
+     1.2px  1.2px #78581f;
+  font-size: 2rem;
+}
+
+/* Extra Site Style 3 - Duvaen Red / Moonstone Silver */
+h3 {
+  color: #DCE1E8;
+  text-shadow:
+    -1.2px -1.2px #A63A2C,
+     1.2px -1.2px #A63A2C,
+    -1.2px  1.2px #A63A2C,
+     1.2px  1.2px #A63A2C;
+  font-size: 1.5rem;
+}
+
+/* Extra Site Style 4 - Astral Navy / Crystalline Ice */
+h4 {
+  color: #C5ECFF;
+  text-shadow:
+    -1.2px -1.2px #1a114b,
+     1.2px -1.2px #1a114b,
+    -1.2px  1.2px #1a114b,
+     1.2px  1.2px #1a114b;
+  font-size: 1.25rem;
+}
+
+
+/* === LINKS & BUTTONS === */
+a, footer a, .button-link {
+  background-color: rgba(0, 255, 255, 0.6);
+  color: var(--black);
+  font-family: 'Times New Roman', serif;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.35em 0.75em;
+  border-radius: 5px;
+  border: 2px solid var(--silver);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 1rem;
+  user-select: none;
+  margin: 0.3rem 0;
+  display: inline-block;
+}
+
+a:hover, a:focus, .button-link:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--cyan);
+  border: 2px solid var(--silver);
+}
+/* === TABLE WRAPPER === */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* === TABLES === */
+table {
+  min-width: 100%; /* allows horizontal scroll when needed */
+  border-collapse: collapse;
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 2px solid var(--cyan);
+  color: #000000;
+  font-family: 'Times New Roman', serif;
+  border-radius: 8px;
+  backdrop-filter: blur(1px);
+}
+
+th, td {
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  opacity: 1;
+  border-bottom: 1px solid var(--cyan);
+}
+
+/* Column headers */
+th {
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 2px solid var(--cyan);
+  text-transform: uppercase;
+}
+
+/* Table contents */
+td {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 header {
@@ -148,97 +505,6 @@ header nav a.support:hover { color: #2DC5B4; border-color: #D88EBA; }
   font-size: 2rem;
   cursor: pointer;
   color: black;
-}
-
-/* Show toggle on small screens */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  header nav.main-nav {
-    display: none;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-
-  header nav.main-nav.active {
-    display: flex;
-  }
-}
-
-.page-title {
-  position: fixed;
-  top: calc(100px + 10%);
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Times New Roman', serif;
-  font-size: 2rem;
-  color: #2DC5B4;
-  text-align: center;
-  text-shadow:
-    -2px 0 #014d4e,
-     2px 0 #014d4e,
-     0 -2px #014d4e,
-     0 2px #014d4e;
-  z-index: 9;
-}
-
-section.section {
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0;
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-}
-
-h1, h3 {
-  font-family: 'Uncial Antiqua', serif;
-  text-align: center;
-}
-
-h2, h4 {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-}
-
-p, span, li {
-  font-family: serif;
-  color: white;
-  text-align: center;
-}
-
-table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9);
-  border-collapse: collapse;
-}
-
-th {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-  padding: 0.75rem;
-}
-
-td {
-  font-family: 'Pridi', serif;
-  color: black;
-  text-align: center;
-  padding: 0.75rem;
-}
-
-section {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.section-divider {
-  width: 80%;
-  height: 2px;
-  margin: 1rem auto;
 }
 
 /* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
@@ -700,50 +966,6 @@ section.section {
     padding: 2.5rem 0;
   }
 }
-
-/* ──────────────✦ Base heading styles ✦────────────── */
-h1, h3 {
-  font-family: 'Uncial Antiqua', serif;
-  text-align: center;
-}
-
-h2, h4 {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-}
-
-p, span, li {
-  font-family: serif;
-  color: white;
-  text-align: center;
-}
-
-/* ──────────────✦ Tables base ✦────────────── */
-table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9);
-  border-collapse: collapse;
-}
-
-th {
-  font-family: 'Cinzel', serif;
-  text-align: center;
-  padding: 0.75rem;
-}
-
-td {
-  font-family: 'Pridi', serif;
-  color: black;
-  text-align: center;
-  padding: 0.75rem;
-}
-
-section {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   table {
     width: 100%;
@@ -848,2059 +1070,6 @@ section {
     margin: 1.5rem auto;
   }
 }
-
-/* ──────────────✦ HOME ✦────────────── */
-
-/* ==== Main Styling ==== */
-.section.home {
-  color: #fff;
-  width: 55%;
-  left: 35%;
-  right: 10%;
-  position: relative;
-  min-height: 100vh;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #342c61; /* Twilight Indigo */
-}
-
-/* ─────── HOME HEADINGS ─────── */
-
-.section.home-heading {
-  text-align: center;
-  padding: 80px 45px;
-}
-
-.section.home-heading h1,
-.section.home-heading h3 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #FBC96D; /* Emberlight Gold */
-  text-shadow:
-    -2px -2px 0 #342c61,
-     2px -2px 0 #342c61,
-    -2px  2px 0 #342c61,
-     2px  2px 0 #342c61; /* Twilight Indigo */
-}
-
-.section.home-heading h2,
-.section.home-heading h4 {
-  font-size: 26px;
-  font-weight: 700;
-  color: #342c61; /* Twilight Indigo */
-  text-shadow:
-    -2px -2px 0 #FBC96D,
-     2px -2px 0 #FBC96D,
-    -2px  2px 0 #FBC96D,
-     2px  2px 0 #FBC96D; /* Emberlight Gold */
-}
-
-.section.home-heading .line-dec {
-  width: 60px;
-  height: 3px;
-  background-color: transparent;
-  margin: 10px auto;
-}
-
-.section.home-heading span {
-  margin-top: 5px;
-  font-size: 16px;
-  color: #fff;
-  letter-spacing: 0.5px;
-}
-
-/* ────── LEFT IMAGE POST CONTAINER ────── */
-
-.left-image-post {
-  position: fixed;
-  top: 40%;
-  left: 40%;
-  width: 30%;
-  height: 30%;
-  background-color: transparent;
-  box-sizing: border-box;
-  padding: 0;
-  overflow: hidden;
-  z-index: 9998;
-
-  display: flex;
-  flex-direction: column;  /* Stack image + button vertically */
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-  padding-top: 60px;
-  border-top: 2px solid #FBC96D; /* Emberlight Gold */
-}
-
-.left-image-post img {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  object-fit: contain;
-}
-
-.left-image-post h4 {
-  margin-top: 30px;
-}
-
-.left-image-post p {
-  margin-top: 20px;
-}
-
-/* ─────── BUTTON INSIDE LEFT IMAGE POST ─────── */
-
-.left-image-post .button {
-  position: absolute;
-  bottom: 25%;            /* 25% from bottom of container */
-  left: 50%;
-  transform: translate(-50%, 50%);
-  display: inline-block;
-  background-color: black;
-  color: white;
-  border: 2px solid white;
-  padding: 12px 20px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.left-image-post .button:hover {
-  background-color: #FBC96D; /* Emberlight Gold */
-  color: #342c61;            /* Twilight Indigo */
-  border-color: #342c61;
-}
-
-/* ==== RESPONSIVE BREAKPOINTS ==== */
-
-/* Small Mobile (max-width: 480px) */
-@media (max-width: 480px) {
-  .section.home {
-    width: 90%;
-    left: 5%;
-    right: 5%;
-    padding-bottom: 40px;
-  }
-  .section.home-heading h1,
-  .section.home-heading h3 {
-    font-size: 24px;
-  }
-  .section.home-heading h2,
-  .section.home-heading h4 {
-    font-size: 20px;
-  }
-  .left-image-post {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: auto;
-    transform: translate(-50%, -50%);
-    margin-top: 0;
-    padding-top: 0;
-    border-top: none;
-  }
-  .left-image-post .button {
-    position: static;
-    transform: none;
-    margin-top: 20px;
-    bottom: auto;
-    left: auto;
-  }
-}
-
-/* Large Mobile + Small Tablet (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .section.home {
-    width: 80%;
-    left: 10%;
-    right: 10%;
-    padding-bottom: 50px;
-  }
-  .section.home-heading h1,
-  .section.home-heading h3 {
-    font-size: 28px;
-  }
-  .section.home-heading h2,
-  .section.home-heading h4 {
-    font-size: 22px;
-  }
-  .left-image-post {
-    top: 45%;
-    left: 45%;
-    width: 50%;
-    height: 40%;
-  }
-  .left-image-post .button {
-    bottom: 20%;
-  }
-}
-
-/* Medium Tablet + Small Desktop (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.home {
-    width: 70%;
-    left: 20%;
-    right: 10%;
-    padding-bottom: 60px;
-  }
-  .section.home-heading h1,
-  .section.home-heading h3 {
-    font-size: 30px;
-  }
-  .section.home-heading h2,
-  .section.home-heading h4 {
-    font-size: 24px;
-  }
-  .left-image-post {
-    top: 42%;
-    left: 42%;
-    width: 40%;
-    height: 35%;
-  }
-  .left-image-post .button {
-    bottom: 22%;
-  }
-}
-
-/* Large Tablet + Medium Desktop (1025px - 1440px) */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.home {
-    width: 55%;
-    left: 35%;
-    right: 10%;
-    padding-bottom: 80px;
-  }
-  .section.home-heading h1,
-  .section.home-heading h3 {
-    font-size: 32px;
-  }
-  .section.home-heading h2,
-  .section.home-heading h4 {
-    font-size: 26px;
-  }
-  .left-image-post {
-    top: 40%;
-    left: 40%;
-    width: 30%;
-    height: 30%;
-  }
-  .left-image-post .button {
-    bottom: 25%;
-  }
-}
-
-/* Large Desktop (1441px and up) */
-@media (min-width: 1441px) {
-  .section.home {
-    width: 50%;
-    left: 40%;
-    right: 10%;
-    padding-bottom: 90px;
-  }
-  .section.home-heading h1,
-  .section.home-heading h3 {
-    font-size: 36px;
-  }
-  .section.home-heading h2,
-  .section.home-heading h4 {
-    font-size: 28px;
-  }
-  .left-image-post {
-    top: 40%;
-    left: 40%;
-    width: 28%;
-    height: 28%;
-  }
-  .left-image-post .button {
-    bottom: 25%;
-  }
-}
-
-/* ──────────────✦ LORE ✦────────────── */
-.section.lore { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #A63A2C; /* Duvaen Red */
-}
-
-/* Headings */
-.section.lore h1,
-.section.lore h2,
-.section.lore h3,
-.section.lore h4 {
-  color: #1a114b; /* Astral Navy */
-  text-shadow:
-    -2px -2px 0 #342c61,
-     2px -2px 0 #342c61,
-    -2px  2px 0 #342c61,
-     2px  2px 0 #342c61;
-}
-
-/* Table Wrapper */
-.section.lore table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-collapse: collapse;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #1a114b; /* Astral Navy border */
-}
-
-/* Table Header */
-.section.lore th {
-  font-family: 'Cinzel', serif;
-  color: #1a114b; /* Astral Navy */
-  text-shadow:
-    -2px -2px 0 #342c61,
-     2px -2px 0 #342c61,
-    -2px  2px 0 #342c61,
-     2px  2px 0 #342c61;
-  text-align: center;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  background-color: #C5ECFF; /* Crystalline Ice */
-  border-bottom: 2px solid #342c61; /* Twilight Indigo divider */
-}
-
-/* Table Body */
-.section.lore td {
-  font-family: 'Pridi', serif;
-  color: #000; /* Black text */
-  text-align: center;
-  padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 2px solid #342c61; /* Twilight Indigo row divider */
-}
-
-/* Section Dividers */
-.section.lore hr {
-  border: 0;
-  border-top: 2px solid #1a114b; /* Astral Navy divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.lore::-webkit-scrollbar-thumb {
-  background: #342c61; /* Twilight Indigo */
-}
-.section.lore::-webkit-scrollbar-track {
-  background: #FBC96D; /* Emberlight Gold */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.lore {
-    width: 95%;
-    padding: 1.5rem 0;
-  }
-
-  .section.lore h1 { font-size: 26px; }
-  .section.lore h2 { font-size: 22px; }
-  .section.lore h3 { font-size: 20px; }
-  .section.lore h4 { font-size: 18px; }
-
-  .section.lore table {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .section.lore th {
-    font-size: 1rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.lore {
-    width: 90%;
-  }
-
-  .section.lore h1 { font-size: 30px; }
-  .section.lore h2 { font-size: 26px; }
-  .section.lore h3 { font-size: 24px; }
-  .section.lore h4 { font-size: 22px; }
-
-  .section.lore table {
-    width: 100%;
-  }
-
-  .section.lore th {
-    font-size: 1.05rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.lore {
-    width: 85%;
-  }
-
-  .section.lore h1 { font-size: 36px; }
-  .section.lore h2 { font-size: 30px; }
-  .section.lore h3 { font-size: 28px; }
-  .section.lore h4 { font-size: 26px; }
-
-  .section.lore table {
-    width: 95%;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.lore {
-    width: 80%;
-  }
-
-  .section.lore h1 { font-size: 42px; }
-  .section.lore h2 { font-size: 34px; }
-  .section.lore h3 { font-size: 32px; }
-  .section.lore h4 { font-size: 30px; }
-
-  .section.lore table {
-    width: 90%;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.lore {
-    width: 75%;
-  }
-
-  .section.lore h1 { font-size: 48px; }
-  .section.lore h2 { font-size: 38px; }
-  .section.lore h3 { font-size: 36px; }
-  .section.lore h4 { font-size: 34px; }
-
-  .section.lore table {
-    width: 85%;
-  }
-}
-
-
-
-/* ──────────────✦ NAVIGATION ✦────────────── */
-.section.navigation { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #0075FF; /* Arvalla Prime */
-}
-
-/* Headings */
-.section.navigation h1,
-.section.navigation h2,
-.section.navigation h3,
-.section.navigation h4 {
-  color: #0075FF; /* Arvalla Prime */
-  text-shadow:
-    -2px -2px 0 #0075FF,
-     2px -2px 0 #0075FF,
-    -2px  2px 0 #0075FF,
-     2px  2px 0 #0075FF;
-}
-
-/* Table Wrapper */
-.section.navigation table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-collapse: collapse;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #0075FF; /* Arvalla Prime border */
-}
-
-/* Table Header */
-.section.navigation th {
-  font-family: 'Cinzel', serif;
-  color: #DCE1E8; /* Moonstone Silver */
-  text-shadow:
-    -2px -2px 0 #0075FF,
-     2px -2px 0 #0075FF,
-    -2px  2px 0 #0075FF,
-     2px  2px 0 #0075FF;
-  text-align: center;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  background-color: #0075FF; /* Arvalla Prime */
-  border-bottom: 2px solid #DCE1E8; /* Moonstone Silver */
-}
-
-/* Table Body */
-.section.navigation td {
-  font-family: 'Pridi', serif;
-  color: #000; /* Black text */
-  text-align: center;
-  padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 2px solid #0075FF; /* Arvalla Prime row divider */
-}
-
-/* Section Dividers */
-.section.navigation hr {
-  border: 0;
-  border-top: 2px solid #0075FF; /* Arvalla Prime divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.navigation::-webkit-scrollbar-thumb {
-  background: #0075FF; /* Arvalla Prime */
-}
-.section.navigation::-webkit-scrollbar-track {
-  background: #DCE1E8; /* Moonstone Silver */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.navigation {
-    width: 95%;
-    padding: 1.5rem 0;
-  }
-
-  .section.navigation h1 { font-size: 26px; }
-  .section.navigation h2 { font-size: 22px; }
-  .section.navigation h3 { font-size: 20px; }
-  .section.navigation h4 { font-size: 18px; }
-
-  .section.navigation table {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .section.navigation th {
-    font-size: 1rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.navigation {
-    width: 90%;
-  }
-
-  .section.navigation h1 { font-size: 30px; }
-  .section.navigation h2 { font-size: 26px; }
-  .section.navigation h3 { font-size: 24px; }
-  .section.navigation h4 { font-size: 22px; }
-
-  .section.navigation table {
-    width: 100%;
-  }
-
-  .section.navigation th {
-    font-size: 1.05rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.navigation {
-    width: 85%;
-  }
-
-  .section.navigation h1 { font-size: 36px; }
-  .section.navigation h2 { font-size: 30px; }
-  .section.navigation h3 { font-size: 28px; }
-  .section.navigation h4 { font-size: 26px; }
-
-  .section.navigation table {
-    width: 95%;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.navigation {
-    width: 80%;
-  }
-
-  .section.navigation h1 { font-size: 42px; }
-  .section.navigation h2 { font-size: 34px; }
-  .section.navigation h3 { font-size: 32px; }
-  .section.navigation h4 { font-size: 30px; }
-
-  .section.navigation table {
-    width: 90%;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.navigation {
-    width: 75%;
-  }
-
-  .section.navigation h1 { font-size: 48px; }
-  .section.navigation h2 { font-size: 38px; }
-  .section.navigation h3 { font-size: 36px; }
-  .section.navigation h4 { font-size: 34px; }
-
-  .section.navigation table {
-    width: 85%;
-  }
-}
-
-
-
-/* ──────────────✦ FONT PROJECT ✦────────────── */
-section.font-project {
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #0c4530; /* Moss-Vein Green */
-}
-
-.font-project h1,
-.font-project h2,
-.font-project h3,
-.font-project h4 {
-  color: #8FE9F0; /* Dreamlight Cyan */
-  text-shadow:
-    -2px -2px 0 #0c4530,
-     2px -2px 0 #0c4530,
-    -2px  2px 0 #0c4530,
-     2px  2px 0 #0c4530; /* Moss-Vein Green */
-  margin-bottom: 1rem;
-  font-family: 'Times New Roman', serif;
-}
-
-.font-project p,
-.font-project span {
-  line-height: 1.6;
-  color: #8FE9F0; /* Dreamlight Cyan */
-}
-
-.font-project th {
-  color: #8FE9F0; /* Dreamlight Cyan */
-  text-shadow:
-    -2px -2px 0 #0c4530,
-     2px -2px 0 #0c4530,
-    -2px  2px 0 #0c4530,
-     2px  2px 0 #0c4530; /* Moss-Vein Green */
-}
-
-.font-project a {
-  color: #8FE9F0; /* Dreamlight Cyan */
-  text-decoration: underline;
-}
-
-.font-project a:hover {
-  color: #0c4530; /* Moss-Vein Green */
-}
-
-.section.font-project::-webkit-scrollbar-thumb {
-  background: #0c4530; /* Moss-Vein Green */
-}
-
-.section.font-project::-webkit-scrollbar-track {
-  background: #8FE9F0; /* Dreamlight Cyan */
-}
-
-/* DEMO AREA */
-.font-project .pacifico {
-  font-family: 'Pacifico', cursive !important;
-  font-size: 1.6em;
-  color: #8FE9F0; /* Dreamlight Cyan */
-}
-
-.font-project .azaaraan-preview {
-  font-family: 'Comic Sans MS', cursive !important;
-  font-size: 1.2em;
-  color: #8FE9F0; /* Dreamlight Cyan */
-}
-
-/* CLOSING LINES */
-.font-project .closing-lines p {
-  margin: 0.5rem 0;
-  font-family: 'Times New Roman', serif;
-  font-style: italic;
-  color: #8FE9F0; /* Dreamlight Cyan */
-}
-
-/* BUTTONS */
-.font-project .button,
-.font-project button.button {
-  background: #78581f; /* Relic Brass */
-  color: #8FE9F0;      /* Dreamlight Cyan */
-  border: 2px solid #8FE9F0;
-  border-radius: 6px;
-  padding: 0.75rem 1.5rem;
-  font-family: 'Times New Roman', serif;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.font-project .button:hover,
-.font-project button.button:hover {
-  background: #8FE9F0; /* Dreamlight Cyan */
-  color: #78581f;      /* Relic Brass */
-  border-color: #78581f;
-}
-
-/* VERTICAL BUTTONS */
-.section.font-project .vertical-buttons {
-  position: relative;
-  top: 30%;
-  left: 2%;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  z-index: 9999;
-}
-
-.section.font-project .vertical-buttons a {
-  display: inline-block;
-  background-color: #78581f; /* Relic Brass */
-  color: #8FE9F0; /* Dreamlight Cyan */
-  border: 2px solid #8FE9F0;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-family: 'Times New Roman', serif;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.section.font-project .vertical-buttons a:hover {
-  background-color: #8FE9F0; /* Dreamlight Cyan */
-  color: #78581f;            /* Relic Brass */
-  border: 2px solid #78581f;
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  section.font-project {
-    width: 95%;
-    padding: 1.5rem 0;
-  }
-
-  .font-project h1 { font-size: 26px; }
-  .font-project h2 { font-size: 22px; }
-  .font-project h3 { font-size: 20px; }
-  .font-project h4 { font-size: 18px; }
-
-  .section.font-project .vertical-buttons {
-    top: 20%;
-    left: 1%;
-    gap: 1rem;
-  }
-
-  .section.font-project .vertical-buttons a {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  section.font-project {
-    width: 90%;
-  }
-
-  .font-project h1 { font-size: 30px; }
-  .font-project h2 { font-size: 26px; }
-  .font-project h3 { font-size: 24px; }
-  .font-project h4 { font-size: 22px; }
-
-  .section.font-project .vertical-buttons {
-    top: 22%;
-    left: 1.5%;
-    gap: 1.25rem;
-  }
-
-  .section.font-project .vertical-buttons a {
-    padding: 0.65rem 1.25rem;
-    font-size: 1rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  section.font-project {
-    width: 85%;
-  }
-
-  .font-project h1 { font-size: 36px; }
-  .font-project h2 { font-size: 30px; }
-  .font-project h3 { font-size: 28px; }
-  .font-project h4 { font-size: 26px; }
-
-  .section.font-project .vertical-buttons {
-    top: 25%;
-    left: 2%;
-    gap: 1.5rem;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  section.font-project {
-    width: 80%;
-  }
-
-  .font-project h1 { font-size: 42px; }
-  .font-project h2 { font-size: 34px; }
-  .font-project h3 { font-size: 32px; }
-  .font-project h4 { font-size: 30px; }
-
-  .section.font-project .vertical-buttons {
-    top: 28%;
-    left: 2%;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  section.font-project {
-    width: 75%;
-  }
-
-  .font-project h1 { font-size: 48px; }
-  .font-project h2 { font-size: 38px; }
-  .font-project h3 { font-size: 36px; }
-  .font-project h4 { font-size: 34px; }
-}
-
-
-
-/* ──────────────✦ MMORPG ✦────────────── */
-.section.mmorpg { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #572a45; /* Leyline Plum */
-}
-
-/* Headings */
-.section.mmorpg h1,
-.section.mmorpg h2,
-.section.mmorpg h3,
-.section.mmorpg h4 {
-  color: #572a45; /* Leyline Plum */
-  text-shadow:
-    -2px -2px 0 #572a45,
-     2px -2px 0 #572a45,
-    -2px  2px 0 #572a45,
-     2px  2px 0 #572a45; /* Leyline Plum outline shadow */
-}
-
-/* Section Dividers */
-.section.mmorpg hr {
-  border: 0;
-  border-top: 2px solid #572a45; /* Leyline Plum divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.mmorpg::-webkit-scrollbar-thumb {
-  background: #572a45; /* Leyline Plum */
-}
-.section.mmorpg::-webkit-scrollbar-track {
-  background: #C5ECFF; /* Crystalline Ice */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.mmorpg {
-    width: 95%;
-    padding: 1.5rem 0rem;
-  }
-
-  .section.mmorpg h1 {
-    font-size: 26px;
-  }
-
-  .section.mmorpg h2 {
-    font-size: 22px;
-  }
-
-  .section.mmorpg h3 {
-    font-size: 20px;
-  }
-
-  .section.mmorpg h4 {
-    font-size: 18px;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.mmorpg {
-    width: 90%;
-  }
-
-  .section.mmorpg h1 {
-    font-size: 30px;
-  }
-
-  .section.mmorpg h2 {
-    font-size: 26px;
-  }
-
-  .section.mmorpg h3 {
-    font-size: 24px;
-  }
-
-  .section.mmorpg h4 {
-    font-size: 22px;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.mmorpg {
-    width: 85%;
-  }
-
-  .section.mmorpg h1 {
-    font-size: 36px;
-  }
-
-  .section.mmorpg h2 {
-    font-size: 30px;
-  }
-
-  .section.mmorpg h3 {
-    font-size: 28px;
-  }
-
-  .section.mmorpg h4 {
-    font-size: 26px;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.mmorpg {
-    width: 80%;
-  }
-
-  .section.mmorpg h1 {
-    font-size: 42px;
-  }
-
-  .section.mmorpg h2 {
-    font-size: 34px;
-  }
-
-  .section.mmorpg h3 {
-    font-size: 32px;
-  }
-
-  .section.mmorpg h4 {
-    font-size: 30px;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.mmorpg {
-    width: 75%;
-  }
-
-  .section.mmorpg h1 {
-    font-size: 48px;
-  }
-
-  .section.mmorpg h2 {
-    font-size: 38px;
-  }
-
-  .section.mmorpg h3 {
-    font-size: 36px;
-  }
-
-  .section.mmorpg h4 {
-    font-size: 34px;
-  }
-}
-
-/* ──────────────✦ BOOK SERIES ✦────────────── */
-.section.book-series { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #2DC5B4; /* Biolume Teal */
-}
-
-/* Headings */
-.section.book-series h1,
-.section.book-series h2,
-.section.book-series h3,
-.section.book-series h4 {
-  color: #2DC5B4; /* Biolume Teal */
-  text-shadow:
-    -2px -2px 0 #2DC5B4,
-     2px -2px 0 #2DC5B4,
-    -2px  2px 0 #2DC5B4,
-     2px  2px 0 #2DC5B4; /* Biolume Teal outline shadow */
-}
-
-/* Section Dividers */
-.section.book-series hr {
-  border: 0;
-  border-top: 2px solid #2DC5B4; /* Biolume Teal divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.book-series::-webkit-scrollbar-thumb {
-  background: #2DC5B4; /* Biolume Teal */
-}
-.section.book-series::-webkit-scrollbar-track {
-  background: #D88EBA; /* Leyline Rose */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.book-series {
-    width: 95%;
-    padding: 1.5rem 0rem;
-  }
-
-  .section.book-series h1 {
-    font-size: 26px;
-  }
-
-  .section.book-series h2 {
-    font-size: 22px;
-  }
-
-  .section.book-series h3 {
-    font-size: 20px;
-  }
-
-  .section.book-series h4 {
-    font-size: 18px;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.book-series {
-    width: 90%;
-  }
-
-  .section.book-series h1 {
-    font-size: 30px;
-  }
-
-  .section.book-series h2 {
-    font-size: 26px;
-  }
-
-  .section.book-series h3 {
-    font-size: 24px;
-  }
-
-  .section.book-series h4 {
-    font-size: 22px;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.book-series {
-    width: 85%;
-  }
-
-  .section.book-series h1 {
-    font-size: 36px;
-  }
-
-  .section.book-series h2 {
-    font-size: 30px;
-  }
-
-  .section.book-series h3 {
-    font-size: 28px;
-  }
-
-  .section.book-series h4 {
-    font-size: 26px;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.book-series {
-    width: 80%;
-  }
-
-  .section.book-series h1 {
-    font-size: 42px;
-  }
-
-  .section.book-series h2 {
-    font-size: 34px;
-  }
-
-  .section.book-series h3 {
-    font-size: 32px;
-  }
-
-  .section.book-series h4 {
-    font-size: 30px;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.book-series {
-    width: 75%;
-  }
-
-  .section.book-series h1 {
-    font-size: 48px;
-  }
-
-  .section.book-series h2 {
-    font-size: 38px;
-  }
-
-  .section.book-series h3 {
-    font-size: 36px;
-  }
-
-  .section.book-series h4 {
-    font-size: 34px;
-  }
-}
-
-
-
-/* ──────────────✦ TIMEKEEPING ✦────────────── */
-.section.timekeeping { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #78581f; /* Relic Brass */
-}
-
-/* Headings */
-.section.timekeeping h1,
-.section.timekeeping h2,
-.section.timekeeping h3,
-.section.timekeeping h4 {
-  color: #78581f; /* Relic Brass */
-  text-shadow: 
-    -2px -2px 0 #78581f,
-     2px -2px 0 #78581f,
-    -2px  2px 0 #78581f,
-     2px  2px 0 #78581f; /* Relic Brass outline shadow */
-}
-
-/* Table Wrapper */
-.section.timekeeping table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-collapse: collapse;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #78581f; /* Relic Brass border */
-}
-
-/* Table Header */
-.section.timekeeping th {
-  font-family: 'Cinzel', serif;
-  color: #78581f; /* Relic Brass */
-  text-shadow: 
-    -2px -2px 0 #78581f,
-     2px -2px 0 #78581f,
-    -2px  2px 0 #78581f,
-     2px  2px 0 #78581f; /* Relic Brass outline shadow */
-  text-align: center;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  background-color: #8FE9F0; /* Dreamlight Cyan */
-  border-bottom: 2px solid #78581f; /* Relic Brass divider */
-}
-
-/* Table Body */
-.section.timekeeping td {
-  font-family: 'Pridi', serif;
-  color: #000; /* Black text */
-  text-align: center;
-  padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 2px solid #78581f; /* Relic Brass row divider */
-}
-
-/* Section Dividers */
-.section.timekeeping hr {
-  border: 0;
-  border-top: 2px solid #78581f; /* Relic Brass divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.timekeeping::-webkit-scrollbar-thumb {
-  background: #78581f; /* Relic Brass */
-}
-.section.timekeeping::-webkit-scrollbar-track {
-  background: #8FE9F0; /* Dreamlight Cyan */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.timekeeping {
-    width: 95%;
-    padding: 1.5rem 0rem;
-  }
-
-  .section.timekeeping h1 {
-    font-size: 26px;
-  }
-
-  .section.timekeeping h2 {
-    font-size: 22px;
-  }
-
-  .section.timekeeping table {
-    width: 100%;
-    font-size: 0.85rem;
-  }
-
-  .section.timekeeping th {
-    font-size: 1rem;
-  }
-
-  .section.timekeeping td {
-    font-size: 0.85rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.timekeeping {
-    width: 90%;
-  }
-
-  .section.timekeeping h1 {
-    font-size: 30px;
-  }
-
-  .section.timekeeping h2 {
-    font-size: 26px;
-  }
-
-  .section.timekeeping table {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .section.timekeeping th {
-    font-size: 1.05rem;
-  }
-
-  .section.timekeeping td {
-    font-size: 0.9rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.timekeeping {
-    width: 85%;
-  }
-
-  .section.timekeeping h1 {
-    font-size: 36px;
-  }
-
-  .section.timekeeping h2 {
-    font-size: 30px;
-  }
-
-  .section.timekeeping table {
-    width: 95%;
-    font-size: 1rem;
-  }
-
-  .section.timekeeping th {
-    font-size: 1.1rem;
-  }
-
-  .section.timekeeping td {
-    font-size: 1rem;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.timekeeping {
-    width: 80%;
-  }
-
-  .section.timekeeping h1 {
-    font-size: 42px;
-  }
-
-  .section.timekeeping h2 {
-    font-size: 34px;
-  }
-
-  .section.timekeeping table {
-    width: 90%;
-    font-size: 1.05rem;
-  }
-
-  .section.timekeeping th {
-    font-size: 1.15rem;
-  }
-
-  .section.timekeeping td {
-    font-size: 1.05rem;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.timekeeping {
-    width: 75%;
-  }
-
-  .section.timekeeping h1 {
-    font-size: 48px;
-  }
-
-  .section.timekeeping h2 {
-    font-size: 38px;
-  }
-
-  .section.timekeeping table {
-    width: 85%;
-    font-size: 1.1rem;
-  }
-
-  .section.timekeeping th {
-    font-size: 1.2rem;
-  }
-
-  .section.timekeeping td {
-    font-size: 1.1rem;
-  }
-}
-
-/* ──────────────✦ LANGUAGE RULES ✦────────────── */
-.section.language-rules { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #7A7C86; /* Arvalla Beta */
-}
-
-/* Headings */
-.section.language-rules h1,
-.section.language-rules h2,
-.section.language-rules h3,
-.section.language-rules h4 {
-  color: #7A7C86; /* Arvalla Beta */
-  text-shadow: 
-    -2px -2px 0 #7A7C86,
-     2px -2px 0 #7A7C86,
-    -2px  2px 0 #7A7C86,
-     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
-}
-
-/* Table Wrapper */
-.section.language-rules table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-collapse: collapse;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #7A7C86; /* Arvalla Beta border */
-}
-
-/* Table Header */
-.section.language-rules th {
-  font-family: 'Cinzel', serif;
-  color: #7A7C86; /* Arvalla Beta */
-  text-shadow: 
-    -2px -2px 0 #7A7C86,
-     2px -2px 0 #7A7C86,
-    -2px  2px 0 #7A7C86,
-     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
-  text-align: center;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  background-color: #C1FF8A; /* Verdant Glow */
-  border-bottom: 2px solid #7A7C86; /* Arvalla Beta divider */
-}
-
-/* Table Body */
-.section.language-rules td {
-  font-family: 'Pridi', serif;
-  color: #000; /* Black text */
-  text-align: center;
-  padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 2px solid #7A7C86; /* Arvalla Beta row divider */
-}
-
-/* Section Dividers */
-.section.language-rules hr {
-  border: 0;
-  border-top: 2px solid #7A7C86; /* Arvalla Beta divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.language-rules::-webkit-scrollbar-thumb {
-  background: #7A7C86; /* Arvalla Beta */
-}
-.section.language-rules::-webkit-scrollbar-track {
-  background: #C1FF8A; /* Verdant Glow */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.language-rules {
-    width: 95%;
-    padding: 1.5rem 0rem;
-  }
-
-  .section.language-rules h1 {
-    font-size: 26px;
-  }
-
-  .section.language-rules h2 {
-    font-size: 22px;
-  }
-
-  .section.language-rules table {
-    width: 100%;
-    font-size: 0.85rem;
-  }
-
-  .section.language-rules th {
-    font-size: 1rem;
-  }
-
-  .section.language-rules td {
-    font-size: 0.85rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.language-rules {
-    width: 90%;
-  }
-
-  .section.language-rules h1 {
-    font-size: 30px;
-  }
-
-  .section.language-rules h2 {
-    font-size: 26px;
-  }
-
-  .section.language-rules table {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .section.language-rules th {
-    font-size: 1.05rem;
-  }
-
-  .section.language-rules td {
-    font-size: 0.9rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.language-rules {
-    width: 85%;
-  }
-
-  .section.language-rules h1 {
-    font-size: 36px;
-  }
-
-  .section.language-rules h2 {
-    font-size: 30px;
-  }
-
-  .section.language-rules table {
-    width: 95%;
-    font-size: 1rem;
-  }
-
-  .section.language-rules th {
-    font-size: 1.1rem;
-  }
-
-  .section.language-rules td {
-    font-size: 1rem;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.language-rules {
-    width: 80%;
-  }
-
-  .section.language-rules h1 {
-    font-size: 42px;
-  }
-
-  .section.language-rules h2 {
-    font-size: 34px;
-  }
-
-  .section.language-rules table {
-    width: 90%;
-    font-size: 1.05rem;
-  }
-
-  .section.language-rules th {
-    font-size: 1.15rem;
-  }
-
-  .section.language-rules td {
-    font-size: 1.05rem;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.language-rules {
-    width: 75%;
-  }
-
-  .section.language-rules h1 {
-    font-size: 48px;
-  }
-
-  .section.language-rules h2 {
-    font-size: 38px;
-  }
-
-  .section.language-rules table {
-    width: 85%;
-    font-size: 1.1rem;
-  }
-
-  .section.language-rules th {
-    font-size: 1.2rem;
-  }
-
-  .section.language-rules td {
-    font-size: 1.1rem;
-  }
-}
-
-/* ──────────────✦ LEXICON ✦────────────── */
-
-.section.lexicon { 
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem; 
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #342c61; /* Twilight Indigo */
-}
-
-/* Headings */
-.section.lexicon h1,
-.section.lexicon h2,
-.section.lexicon h3,
-.section.lexicon h4 {
-  color: #342c61; /* Twilight Indigo */
-  text-shadow: 
-    -2px -2px 0 #342c61,
-     2px -2px 0 #342c61,
-    -2px  2px 0 #342c61,
-     2px  2px 0 #342c61; /* Twilight Indigo outline shadow */
-}
-
-/* Table Wrapper */
-.section.lexicon table {
-  width: 90%;
-  margin: 2rem auto;
-  background: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-collapse: collapse;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border: 2px solid #342c61; /* Twilight Indigo border */
-}
-
-/* Table Header */
-.section.lexicon th {
-  font-family: 'Cinzel', serif;
-  color: #342c61; /* Twilight Indigo */
-  text-shadow: 
-    -2px -2px 0 #342c61,
-     2px -2px 0 #342c61,
-    -2px  2px 0 #342c61,
-     2px  2px 0 #342c61; /* Twilight Indigo outline shadow */
-  text-align: center;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  background-color: #FBC96D; /* Emberlight Gold */
-  border-bottom: 2px solid #342c61; /* Twilight Indigo divider */
-}
-
-/* Table Body */
-.section.lexicon td {
-  font-family: 'Pridi', serif;
-  color: #000; /* Black text */
-  text-align: center;
-  padding: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.9); /* White with 0.9 opacity */
-  border-bottom: 2px solid #342c61; /* Twilight Indigo row divider */
-}
-
-/* Section Dividers */
-.section.lexicon hr {
-  border: 0;
-  border-top: 2px solid #342c61; /* Twilight Indigo divider */
-  margin: 30px 0;
-}
-
-/* Scrollbar */
-.section.lexicon::-webkit-scrollbar-thumb {
-  background: #342c61; /* Twilight Indigo */
-}
-.section.lexicon::-webkit-scrollbar-track {
-  background: #FBC96D; /* Emberlight Gold */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile: <= 480px */
-@media (max-width: 480px) {
-  .section.lexicon {
-    width: 95%;
-    padding: 1.5rem 0rem;
-  }
-
-  .section.lexicon h1 {
-    font-size: 26px;
-  }
-
-  .section.lexicon h2 {
-    font-size: 22px;
-  }
-
-  .section.lexicon table {
-    width: 100%;
-    font-size: 0.85rem;
-  }
-
-  .section.lexicon th {
-    font-size: 1rem;
-  }
-
-  .section.lexicon td {
-    font-size: 0.85rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.lexicon {
-    width: 90%;
-  }
-
-  .section.lexicon h1 {
-    font-size: 30px;
-  }
-
-  .section.lexicon h2 {
-    font-size: 26px;
-  }
-
-  .section.lexicon table {
-    width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .section.lexicon th {
-    font-size: 1.05rem;
-  }
-
-  .section.lexicon td {
-    font-size: 0.9rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.lexicon {
-    width: 85%;
-  }
-
-  .section.lexicon h1 {
-    font-size: 36px;
-  }
-
-  .section.lexicon h2 {
-    font-size: 30px;
-  }
-
-  .section.lexicon table {
-    width: 95%;
-    font-size: 1rem;
-  }
-
-  .section.lexicon th {
-    font-size: 1.1rem;
-  }
-
-  .section.lexicon td {
-    font-size: 1rem;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.lexicon {
-    width: 80%;
-  }
-
-  .section.lexicon h1 {
-    font-size: 42px;
-  }
-
-  .section.lexicon h2 {
-    font-size: 34px;
-  }
-
-  .section.lexicon table {
-    width: 90%;
-    font-size: 1.05rem;
-  }
-
-  .section.lexicon th {
-    font-size: 1.15rem;
-  }
-
-  .section.lexicon td {
-    font-size: 1.05rem;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.lexicon {
-    width: 75%;
-  }
-
-  .section.lexicon h1 {
-    font-size: 48px;
-  }
-
-  .section.lexicon h2 {
-    font-size: 38px;
-  }
-
-  .section.lexicon table {
-    width: 85%;
-    font-size: 1.1rem;
-  }
-
-  .section.lexicon th {
-    font-size: 1.2rem;
-  }
-
-  .section.lexicon td {
-    font-size: 1.1rem;
-  }
-}
-
-/* ──────────────✦ SUPPORT ✦────────────── */
-.section.support {
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  padding: 2rem 0rem;
-  margin-top: calc(200px + 10%);
-  overflow-y: auto;
-  background-color: transparent; /* Transparent background for section */
-  text-align: center;
-  padding-bottom: 80px;
-  border-bottom: 3px solid #7A7C86; /* Arvalla Beta */
-}
-
-/* Headings */
-.section.support h1,
-.section.support h2,
-.section.support h3,
-.section.support h4 {
-  color: #7A7C86; /* Arvalla Beta */
-  text-shadow:
-    -2px -2px 0 #7A7C86,
-     2px -2px 0 #7A7C86,
-    -2px  2px 0 #7A7C86,
-     2px  2px 0 #7A7C86; /* Arvalla Beta outline shadow */
-}
-
-/* Position buttons absolutely inside .section.support */
-.section.support .vertical-buttons {
-  position: absolute;
-  top: 30%;
-  left: -80px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  z-index: 9999;
-}
-
-/* Buttons themselves stay the same */
-.section.support .vertical-buttons a {
-  display: inline-block;
-  background-color: #0c4530; /* Moss-Vein Green */
-  color: #C5ECFF; /* Crystalline Ice */
-  border: 2px solid #C5ECFF; /* Crystalline Ice */
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-family: 'Times New Roman', serif;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-.section.support .vertical-buttons a:hover {
-  background-color: #C5ECFF; /* Crystalline Ice */
-  color: #0c4530; /* Moss-Vein Green */
-  border: 2px solid #0c4530; /* Moss-Vein Green */
-}
-
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* 1️⃣ Small Mobile Screens: <= 480px */
-@media (max-width: 480px) {
-  .section.support {
-    width: 90%;
-    padding: 1.5rem 0rem;
-  }
-
-  .section.support h1 {
-    font-size: 28px;
-  }
-
-  .section.support h2 {
-    font-size: 24px;
-  }
-
-  .section.support .vertical-buttons {
-    top: 20%;
-    left: -50px;
-    gap: 1rem;
-  }
-
-  .section.support .vertical-buttons a {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
-  }
-}
-
-/* 2️⃣ Larger Mobile + Small Tablets: 482px - 768px */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section.support {
-    width: 85%;
-  }
-
-  .section.support h1 {
-    font-size: 32px;
-  }
-
-  .section.support h2 {
-    font-size: 26px;
-  }
-
-  .section.support .vertical-buttons {
-    top: 22%;
-    left: -60px;
-    gap: 1.2rem;
-  }
-
-  .section.support .vertical-buttons a {
-    padding: 0.65rem 1.2rem;
-    font-size: 0.9rem;
-  }
-}
-
-/* 3️⃣ Medium Tablets + Small Desktops: 769px - 1024px */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section.support {
-    width: 80%;
-  }
-
-  .section.support h1 {
-    font-size: 38px;
-  }
-
-  .section.support h2 {
-    font-size: 30px;
-  }
-
-  .section.support .vertical-buttons {
-    top: 25%;
-    left: -70px;
-    gap: 1.25rem;
-  }
-
-  .section.support .vertical-buttons a {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-  }
-}
-
-/* 4️⃣ Large Tablets + Medium Desktops: 1025px - 1440px */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section.support {
-    width: 75%;
-  }
-
-  .section.support h1 {
-    font-size: 42px;
-  }
-
-  .section.support h2 {
-    font-size: 34px;
-  }
-
-  .section.support .vertical-buttons {
-    top: 28%;
-    left: -80px;
-    gap: 1.5rem;
-  }
-
-  .section.support .vertical-buttons a {
-    padding: 0.85rem 1.75rem;
-    font-size: 1.05rem;
-  }
-}
-
-/* 5️⃣ Large Desktops: 1442px+ */
-@media (min-width: 1442px) {
-  .section.support {
-    width: 70%;
-  }
-
-  .section.support h1 {
-    font-size: 48px;
-  }
-
-  .section.support h2 {
-    font-size: 38px;
-  }
-
-  .section.support .vertical-buttons {
-    top: 30%;
-    left: -90px;
-    gap: 1.75rem;
-  }
-
-  .section.support .vertical-buttons a {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-  }
-}
-
-
-
-/* ──────────────✦ Example page content to test scrolling ✦────────────── */
-main {
-  margin-top: 100px; /* ──────────────✦ adjust based on header height ✦────────────── */
-  padding: 2rem;
-  min-height: 200vh; /* ──────────────✦ for scroll test ✦────────────── */
-}
-
-/* ──────────────✦ Responsive adjustments ✦────────────── */
-
-@media (max-width: 768px) {
-  body::before {
-    background-size: cover;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  body::before {
-    background-size: cover;
-  }
-}
-
-@media (min-width: 1025px) {
-  body::before {
-    background-size: cover;
-  }
-}
-
 /* ──────────────✦ === Comic Sans Override for index.html === ✦────────────── */
 body[data-doc-name*="index"] {
   font-family: 'Comic Sans MS', cursive !important;
