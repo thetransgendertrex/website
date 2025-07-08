@@ -36,6 +36,118 @@ section.section[data-section].visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+/* Header container */
+.tm-header-container {
+  position: relative;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  background: rgba(20, 20, 20, 0.2);
+}
+
+/* Title */
+.tm-site-title {
+  color: #fffeff;
+  text-shadow: 0px 2px 2px rgb(0, 94, 111);
+  font-family: 'Times New Roman', Georgia, serif;
+  font-size: 4.4rem;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+}
+
+/* Subtitle */
+.tm-site-description {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Nav container — permanent */
+.tm-navbar-container {
+  position: relative;
+  z-index: 1000;
+  width: 100%;
+  padding: 0.5rem 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  overflow: hidden;
+}
+
+/* Nav bar layout */
+.navbar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav links */
+.navbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav .nav-item {
+  margin: 0;
+}
+
+.navbar-nav .nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+  color: #000000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link.current {
+  color: #000000;
+}
+
+/* Responsives */
+@media (max-width: 480px) {
+  .tm-site-title {
+    font-size: 3rem;
+  }
+  .tm-site-description {
+    font-size: 1.4rem;
+  }
+  .navbar-nav .nav-link {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    padding: 0.5rem 0.9rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar-nav .nav-link {
+    font-size: 1.3rem;
+    padding: 0.6rem 1.1rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .navbar-nav .nav-link {
+    font-size: 1.5rem;
+    padding: 0.65rem 1.3rem;
+  }
+}
+
+@media (min-width: 1441px) {
+  .navbar-nav .nav-link {
+    font-size: 1.6rem;
+    padding: 0.7rem 1.5rem;
+  }
+}
 
 /* ✦ Navigation Hover Effects (Matching JS Logic) */
 nav a[href="#home"]:hover {
@@ -390,18 +502,6 @@ a:focus,
 	margin-bottom: 4rem;
 }
 
-/* 2. Navigation
--------------------------*/
-.nav {
-	display: inline-block;
-	font-size: 2.1rem;
-	overflow: auto;
-}
-
-.navbar-nav .nav-link {
-	padding-left: 1.5rem;
-	padding-right: 1.5rem;
-}
 
 
 /* 3. Icon and text 2 column block
@@ -594,15 +694,6 @@ span[style*="Comic Sans MS"],
     text-align: center;
   }
 
-  header nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  header nav a {
-    font-size: 0.9rem;
-  }
 
   .page-title {
     font-size: 1.2rem;
@@ -648,15 +739,6 @@ span[style*="Comic Sans MS"],
     font-size: 1.5rem;
   }
 
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-
-  header nav a {
-    font-size: 1rem;
-  }
 
   .page-title {
     font-size: 1.5rem;
@@ -674,24 +756,8 @@ span[style*="Comic Sans MS"],
     height: 1.5px;
     margin: 0.9rem auto;
   }
-
-  .nav {
-    font-size: 1.6rem;
-  }
-
-  .navbar {
-    padding: 0;
-  }
-
-  .navbar-nav .nav-item + .nav-item {
-    margin-left: 0;
-  }
-
-  .tm-header-container {
-    padding-bottom: 3%;
-    margin-bottom: 5%;
-  }
 }
+  
 
 /* 769px–1024px — Medium Tablet + Small Desktop */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -707,46 +773,20 @@ span[style*="Comic Sans MS"],
     font-size: 1.8rem;
   }
 
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
 
-  header nav a {
-    font-size: 1.1rem;
-  }
 
   .page-title {
     font-size: 1.8rem;
     top: calc(95px + 9%);
   }
 
-  section.section {
-    width: 80%;
-    margin-top: calc(190px + 9%);
-    padding: 1.8rem 0;
+    section.section {
+      width: 80%;
+      margin-top: calc(190px + 9%);
+      padding: 1.8rem 0;
+    }
   }
 
-  .tm-navbar-row {
-    height: 88px;
-  }
-
-  .tm-navbar-row.sticky {
-    position: fixed;
-    top: 0;
-    font-size: 0.6em;
-    height: 54px;
-    background-color: rgba(235, 222, 180, 0.86);
-  }
-
-  .tm-navbar-row-absolute {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-}
 
 /* 1025px–1440px — Large Tablet / Medium Desktop */
 @media (min-width: 1025px) and (max-width: 1440px) {
@@ -762,14 +802,7 @@ span[style*="Comic Sans MS"],
     font-size: 2rem;
   }
 
-  header nav {
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  header nav a {
-    font-size: 1.1rem;
-  }
+  
 
   .page-title {
     font-size: 2rem;
@@ -797,14 +830,7 @@ span[style*="Comic Sans MS"],
     font-size: 2.5rem;
   }
 
-  header nav {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-
-  header nav a {
-    font-size: 1.2rem;
-  }
+  
 
   .page-title {
     font-size: 2.5rem;
@@ -833,21 +859,13 @@ span[style*="Comic Sans MS"],
     font-size: 1.8rem;
     margin-bottom: 1rem;
   }
-
-  .tm-2-col-text-description {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    .tm-2-col-text-description {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
   }
 
-  .nav {
-    font-size: 1.6rem;
-  }
-
-  .navbar-nav .nav-link {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-}
+  
 
 /* 1600px and below */
 @media (max-width: 1600px) {
@@ -868,3 +886,4 @@ span[style*="Comic Sans MS"],
     margin-bottom: 4%;
   }
 }
+
