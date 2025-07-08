@@ -1,153 +1,108 @@
 /* ──────────────✦ Global Aesthetic with Moonpunk Image Background ✦──────────────
 Background replaced by AI-generated Moonpunk Settlement image,
-fitting desktop, tablet, and mobile with fixed position and footer fixed at bottom.
-*/
+fitting desktop, tablet, and mobile with fixed position and footer fixed at bottom. 
+Converted Rainbow Theme to Aza'ra Trademarked Projects Website
+
+http://www.templatemo.com/tm-485-rainbow
+/* === Aza'raan Site Styling Overrides from JS Script === */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
 html {
   scroll-behavior: smooth;
 }
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  font-family: 'Segoe UI', sans-serif;
-  color: #cceeff;
-  background: transparent;
-}
-
-/* Background image fixed behind everything */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -2;
-  background-image: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg");
+/* ✦ Dynamic Background from JS Responsive Logic */
+body {
+  background-image: var(--bg-url);
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover; /* cover to fill the screen without distortion */
-  filter: brightness(0.85) contrast(1.05);
-}
-.page-title {
-  position: absolute;
-  top: calc(100% + 10vh); /* 10% below the header */
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Times New Roman', serif;
-  font-size: 2rem;
-  color: #2DC5B4;
-  text-align: center;
-  text-shadow:
-    -2px 0 #014d4e,
-     2px 0 #014d4e,
-     0 -2px #014d4e,
-     0 2px #014d4e;
-  z-index: 9;
-}
-/* Overlay for better text contrast */
-body::after {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background: radial-gradient(ellipse at center, rgba(11,29,38,0.5) 0%, rgba(4,13,18,0.8) 100%);
-  pointer-events: none;
+  background-attachment: fixed;
 }
 
-/* === Section Styling === */
-section {
-  margin-top: calc(2rem + 15vh); /* 15% below the title area */
-  padding: 2rem;
-  min-height: 100vh;
-  overflow-x: none;
-  overflow-y: auto;
-  word-break: break-word;
-  scroll-behavior: smooth;
-  box-sizing: border-box;
+/* ✦ Fade-in Effects for Dividers and Sections */
+.section-divider {
+  opacity: 0;
+  transition: opacity 1s ease-out;
 }
 
-/* Example: Section theme using Extra Site Style 1 - Biolume Teal */
-section.section-style-1 {
-  background-color: #2DC5B4; /* Dark */
-  color: #D88EBA;            /* Light */
+section.section[data-section] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* You can duplicate and update the classes below for each unique section style */
-section.section-style-2 {
-  background-color: #78581f;
-  color: #8FE9F0;
+section.section[data-section].visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-section.section-style-3 {
-  background-color: #A63A2C;
-  color: #DCE1E8;
+/* ✦ Navigation Hover Effects (Matching JS Logic) */
+nav a[href="#home"]:hover {
+  color: #ECEEF1 !important;
+  text-shadow: -1px -1px 0 #1a114b, 1px -1px 0 #1a114b, -1px 1px 0 #1a114b, 1px 1px 0 #1a114b;
+}
+nav a[href="#lore-navigation"]:hover {
+  color: #0075FF !important;
+  text-shadow: -1px -1px 0 #0c4530, 1px -1px 0 #0c4530, -1px 1px 0 #0c4530, 1px 1px 0 #0c4530;
+}
+nav a[href="#font-project"]:hover {
+  color: #C1FF8A !important;
+  text-shadow: -1px -1px 0 #572a45, 1px -1px 0 #572a45, -1px 1px 0 #572a45, 1px 1px 0 #572a45;
+}
+nav a[href="#azara-projects"]:hover {
+  color: #FBC96D !important;
+  text-shadow: -1px -1px 0 #014d4e, 1px -1px 0 #014d4e, -1px 1px 0 #014d4e, 1px 1px 0 #014d4e;
+}
+nav a[href="#timekeeping"]:hover {
+  color: #DCE1E8 !important;
+  text-shadow: -1px -1px 0 #A63A2C, 1px -1px 0 #A63A2C, -1px 1px 0 #A63A2C, 1px 1px 0 #A63A2C;
+}
+nav a[href="#language-rules"]:hover {
+  color: #8FE9F0 !important;
+  text-shadow: -1px -1px 0 #7A7C86, 1px -1px 0 #7A7C86, -1px 1px 0 #7A7C86, 1px 1px 0 #7A7C86;
+}
+nav a[href="#support"]:hover {
+  color: #FBC96D !important;
+  text-shadow: -1px -1px 0 #342c61, 1px -1px 0 #342c61, -1px 1px 0 #342c61, 1px 1px 0 #342c61;
 }
 
-section.section-style-4 {
-  background-color: #1a114b;
-  color: #C5ECFF;
+/* ✦ Table Wrapper Styling (JS adds wrapper div) */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 2rem 0;
 }
 
-section.section-style-5 {
-  background-color: #572a45;
-  color: #8FE9F0;
-}
-
-section.section-style-6 {
-  background-color: #0075FF;
-  color: #D88EBA;
-}
-
-section.section-style-7 {
-  background-color: #342c61;
-  color: #C1FF8A;
-}
-
-/* === Table Styling Within Sections === */
-section table {
+.table-wrapper table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 2rem;
-  background-color: inherit;
-  color: inherit;
-  border: 2px solid currentColor;
 }
 
-section table th,
-section table td {
-  padding: 1rem;
-  border: 1px solid currentColor;
+/* ✦ Mobile Menu Toggle (matches JS toggle class) */
+#menu.open {
+  display: block !important;
 }
-
+#menu {
+  display: none;
+}
 /* === Custom Scrollbar Styling for WebKit Browsers === */
 section::-webkit-scrollbar {
   width: 12px;
   height: 12px;
 }
-
 section::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
-
 section::-webkit-scrollbar-thumb {
   background: currentColor;
   border-radius: 6px;
   border: 2px solid rgba(0, 0, 0, 0.3);
 }
-
 section::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
 }
-/* === VARIABLES === */
+
+/* === VARIABLES (with merged sections) === */
 :root {
   --black: #000000;
   --cyan: #00ffff;
@@ -167,15 +122,8 @@ section::-webkit-scrollbar-thumb:hover {
     -1.2px  1.2px #342c61,
      1.2px  1.2px #342c61;
 
-  --lore: #C5ECFF;
-  --lore-shadow:
-    -1.2px -1.2px #A63A2C,
-     1.2px -1.2px #A63A2C,
-    -1.2px  1.2px #A63A2C,
-     1.2px  1.2px #A63A2C;
-
-  --navigation: #DCE1E8;
-  --navigation-shadow:
+  --lore-navigation: #DCE1E8;
+  --lore-navigation-shadow:
     -1.2px -1.2px #0075FF,
      1.2px -1.2px #0075FF,
     -1.2px  1.2px #0075FF,
@@ -188,15 +136,8 @@ section::-webkit-scrollbar-thumb:hover {
     -1.2px  1.2px #0c4530,
      1.2px  1.2px #0c4530;
 
-  --mmorpg: #C5ECFF;
-  --mmorpg-shadow:
-    -1.2px -1.2px #572a45,
-     1.2px -1.2px #572a45,
-    -1.2px  1.2px #572a45,
-     1.2px  1.2px #572a45;
-
-  --book-series: #D88EBA;
-  --book-series-shadow:
+  --azara-projects: #D88EBA;
+  --azara-projects-shadow:
     -1.2px -1.2px #2DC5B4,
      1.2px -1.2px #2DC5B4,
     -1.2px  1.2px #2DC5B4,
@@ -215,13 +156,6 @@ section::-webkit-scrollbar-thumb:hover {
      1.2px -1.2px #7A7C86,
     -1.2px  1.2px #7A7C86,
      1.2px  1.2px #7A7C86;
-
-  --lexicon: #FBC96D;
-  --lexicon-shadow:
-    -1.2px -1.2px #342c61,
-     1.2px -1.2px #342c61,
-    -1.2px  1.2px #342c61,
-     1.2px  1.2px #342c61;
 
   --extra-style-1: #D88EBA;
   --extra-style-1-shadow:
@@ -282,19 +216,6 @@ section::-webkit-scrollbar-thumb:hover {
 }
 
 /* === BASE STYLES === */
-body {
-  /* foreground content */
-  position: relative;
-  background-color: rgba(0, 0, 0, 0.85);
-  color: var(--text-body);
-  font-family: 'Times New Roman', serif;
-  line-height: 1.6;
-  padding: 2rem;
-  overflow-y: scroll;
-  z-index: 0; /* ensure in front of background */
-}
-
-/* === BASE STYLES === */
 h1, h2, h3, h4 {
   font-family: serif;
   margin-bottom: 0.5em;
@@ -349,7 +270,7 @@ h4 {
 
 
 /* === LINKS & BUTTONS === */
-a, footer a, .button-link {
+a, .button-link {
   background-color: rgba(0, 255, 255, 0.6);
   color: var(--black);
   font-family: 'Times New Roman', serif;
@@ -412,499 +333,143 @@ td {
   font-size: 1.5rem;
   font-weight: bold;
 }
-
-/* ==== Main Styling ==== */
-/* ──────────────✦ HEADER + NAV ✦────────────── */
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  scroll-behavior: smooth; /* Native smooth scroll */
+-----------------------------*/
+body {	
+	color: #ffffff;
+	font-family: Arial, sans-serif;
+	font-size: 22px;
+	font-weight: 300;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: white;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-bottom: 2px solid #9381FF;
-  padding: 1rem 0;
-  box-sizing: border-box;
+.tm-bg-img-header {
+	background-image: url('https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/rainbow-header-bg.jpg');
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: contain;
 }
 
-header h1 {
-  font-family: 'Times New Roman', serif;
-  font-weight: bold;
-  color: black;
-  letter-spacing: 0.1rem;
-  word-spacing: 0.2rem;
-  margin: 0;
+.tm-bg-img-content {
+	background-image: url('https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/rainbow-content-bg.jpg');
+	background-repeat: repeat;
 }
 
-header .divider {
-  width: 80%;
-  height: 2px;
-  background-color: #9381FF;
-  margin: 0.5rem 0;
+a { color: #00ffff;  }
+a, button { transition: all 0.3s ease; }
+button:focus { outline: none; }
+a:hover,
+a:focus,
+.nav-link.active {
+	color: #000000;
+	text-decoration: none;
+	outline: none;
 }
 
-header .copyright {
-  font-family: 'Times New Roman', serif;
-  color: black;
-  margin-top: 10vh;
-  margin-bottom: 5vh; /* ~15% vertical gap before nav line */
-  text-align: center;
+.container { max-width: 1040px; }
+
+/* Sticky header 
+--------------------------*/
+.tm-header-container {
+	position: relative;
+	padding-bottom: 6rem;
+	margin-bottom: 10%;
 }
 
-/* ─────── NAVIGATION ─────── */
-
-header nav.main-nav {
-  display: flex;
-  flex-wrap: nowrap;          /* Prevent wrapping by default */
-  overflow-x: auto;           /* Enable horizontal scroll on small screens */
-  justify-content: center;
-  gap: 2rem;                  /* Horizontal spacing between links */
-  margin-bottom: 0.5rem;
-  padding: 0 1rem;
-  scrollbar-width: thin;
-  scrollbar-color: #9381FF transparent;
+/* 1. Site header 
+--------------------------*/
+.tm-site-title {
+    color: #fffeff;
+    text-shadow: 0px 2px 2px rgb(0, 57, 57);
+    font-family: 'Times New Roman', serif;
+    font-size: 4.4rem;
+    margin-top: 10rem;
+    margin-bottom: 1.5rem;
 }
 
-header nav.main-nav::-webkit-scrollbar {
-  height: 6px;
+.tm-site-description {
+	font-size: 2rem;
+	margin-bottom: 4rem;
 }
 
-header nav.main-nav::-webkit-scrollbar-thumb {
-  background-color: #9381FF;
-  border-radius: 3px;
+/* 2. Navigation
+-------------------------*/
+.nav {
+	display: inline-block;
+	font-size: 2.1rem;
+	overflow: auto;
 }
 
-header nav.main-nav::-webkit-scrollbar-track {
-  background: transparent;
+.navbar-nav .nav-link {
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
 }
 
-header nav.main-nav a {
-  font-family: 'Times New Roman', serif;
-  color: black;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.5rem 0;
-  border-top: 2px solid transparent;
-  border-bottom: 2px solid transparent;
-  transition: all 0.3s ease;
+
+/* 3. Icon and text 2 column block
+---------------------*/
+#tm-section-1 {	padding-top: 5rem; }
+
+
+.tm-2-col-img-text {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding-bottom: 2.5%;
+	padding-top: 2.5%;
+	overflow: auto;
 }
 
-header nav.main-nav a:hover {
-  border-top: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
+.tm-2-col-img {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+    -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 4%;
 }
 
-/* ─────── NAV HOVER COLORS ─────── */
-
-header nav a.home:hover           { color: #342c61; border-color: #FBC96D; }
-header nav a.lore:hover           { color: #A63A2C; border-color: #C5ECFF; }
-header nav a.navigation:hover     { color: #0075FF; border-color: #DCE1E8; }
-header nav a.font-project:hover   { color: #0c4530; border-color: #8FE9F0; }
-header nav a.mmorpg:hover         { color: #572a45; border-color: #C5ECFF; }
-header nav a.book-series:hover    { color: #2DC5B4; border-color: #D88EBA; }
-header nav a.timekeeping:hover    { color: #78581f; border-color: #8FE9F0; }
-header nav a.language-rules:hover { color: #7A7C86; border-color: #C1FF8A; }
-header nav a.lexicon:hover        { color: #342c61; border-color: #FBC96D; }
-header nav a.support:hover        { color: #2DC5B4; border-color: #D88EBA; }
-
-/* ─────── MOBILE NAV TOGGLE ─────── */
-
-.menu-toggle {
-  display: none; /* Hidden by default for desktop */
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
-  color: black;
+.tm-2-col-text {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-right: 8%;
 }
 
-/* ─────── RESPONSIVE NAV ─────── */
-
-@media (max-width: 768px) {
-  header {
-    padding: 0.5rem 0;
-  }
-  header h1 {
-    font-size: 1.2rem;
-    letter-spacing: 0.05rem;
-    word-spacing: 0.1rem;
-    text-align: center;
-  }
-  header nav.main-nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    overflow-x: visible; /* No horizontal scroll needed when stacked */
-  }
-  header nav.main-nav a {
-    font-size: 0.9rem;
-  }
+.tm-2-col-text-title {
+	font-size: 2rem;
+    margin-bottom: 20px;    
 }
 
-/* ──────────────✦ RESPONSIVE BREAKPOINTS ✦────────────── */
-
-/* Small mobile screens */
-@media (max-width: 480px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
-  }
-
-  .page-title {
-    font-size: 1.2rem;
-    top: calc(80px + 8%);
-  }
-  section.section {
-    width: 90%;
-    margin-top: calc(150px + 8%);
-    padding: 1rem 0;
-  }
-  .section-divider {
-    width: 70%;
-    height: 2px;
-    margin: 0.8rem auto;
-  }
-  table {
+.tm-2-col-text-description {
+	font-weight: 300;
+    line-height: 1.8;    
+    margin-bottom: 6%;
     width: 100%;
-  }
 }
 
-/* Larger mobile + small tablet */
-@media (min-width: 482px) and (max-width: 768px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg") center center / cover no-repeat;
-  }
-  header {
-    padding: 0.75rem 0;
-  }
-  header h1 {
-    font-size: 1.5rem;
-  }
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  header nav a {
-    font-size: 1rem;
-  }
-  .page-title {
-    font-size: 1.5rem;
-    top: calc(90px + 9%);
-  }
-  section.section {
-    width: 85%;
-    margin-top: calc(180px + 9%);
-    padding: 1.5rem 0;
-  }
-  .section-divider {
-    width: 75%;
-    height: 1.5px;
-    margin: 0.9rem auto;
-  }
-  table {
-    width: 100%;
-  }
+
+/* 6. footer
+--------------*/
+.tm-footer { margin-top: 15rem; }
+.tm-copyright-text {
+	color: #000000;
+	font-size: 1.3rem;
+	padding-top: 3%;
+	padding-bottom: 3%;
 }
 
-/* Medium tablet + small desktop */
-@media (min-width: 769px) and (max-width: 1024px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg") center center / cover no-repeat;
-  }
-  header {
-    padding: 1rem 0;
-  }
-  header h1 {
-    font-size: 1.8rem;
-  }
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  header nav a {
-    font-size: 1.1rem;
-  }
-  .page-title {
-    font-size: 1.8rem;
-    top: calc(95px + 9%);
-  }
-  section.section {
-    width: 80%;
-    margin-top: calc(190px + 9%);
-    padding: 1.8rem 0;
-  }
-  .section-divider {
-    width: 80%;
-    height: 2px;
-    margin: 1rem auto;
-  }
-  table {
-    width: 95%;
-  }
-}
-
-/* Large tablet + medium desktop */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg") center center / cover no-repeat;
-  }
-  header {
-    padding: 1.2rem 0;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  header nav {
-    justify-content: center;
-    gap: 1rem;
-  }
-  header nav a {
-    font-size: 1.1rem;
-  }
-  .page-title {
-    font-size: 2rem;
-    top: calc(100px + 10%);
-  }
-  section.section {
-    width: 75%;
-    margin-top: calc(200px + 10%);
-    padding: 2rem 0;
-  }
-  .section-divider {
-    width: 80%;
-    height: 2.5px;
-    margin: 1.2rem auto;
-  }
-}
-
-/* Large desktop */
-@media (min-width: 1442px) {
-  body::before {
-    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
-  }
-  header {
-    padding: 1.5rem 0;
-  }
-  header h1 {
-    font-size: 2.5rem;
-  }
-  header nav {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  header nav a {
-    font-size: 1.2rem;
-  }
-  .page-title {
-    font-size: 2.5rem;
-    top: calc(120px + 10%);
-  }
-  section.section {
-    width: 70%;
-    margin-top: calc(220px + 10%);
-    padding: 2.5rem 0;
-  }
-  .section-divider {
-    width: 80%;
-    height: 3px;
-    margin: 1.5rem auto;
-  }
-}
-
-/* ──────────────✦ Hover styles ✦────────────── */ 
-header nav a[href="#home"]:hover {
-  color: #FBC96D;               /* Emberlight Gold */
-  text-shadow: 
-    -2px -2px 0 #342c61, /* Twilight Indigo */
-     2px -2px 0 #342c61, /* Twilight Indigo */
-    -2px  2px 0 #342c61, /* Twilight Indigo */
-     2px  2px 0 #342c61; /* Twilight Indigo */
-}
-
-header nav a[href="#lore"]:hover {
-  color: #C5ECFF;               /* Crystalline Ice */
-    text-shadow:
-   -2px  2px 0 var(#A63A2C), /* Duvaen Red */  
-    2px -2px 0 var(#A63A2C), /* Duvaen Red */
-   -2px  2px 0 var(#A63A2C), /* Duvaen Red */
-    2px  2px 0 var(#A63A2C), /* Duvaen Red */
-}
-
-header nav a[href="#navigation"]:hover {
-  color: #DCE1E8;               /* Moonstone Silver */
-  text-shadow: 
-   -2px  2px 0 var(#0075FF), /* Arvalla Prime */ 
-    2px -2px 0 var(#0075FF), /* Arvalla Prime */
-   -2px  2px 0 var(#0075FF), /* Arvalla Prime */
-    2px  2px 0 var(#0075FF), /* Arvalla Prime */
-}
-
-header nav a[href="#font-project"]:hover {
-  color: #8FE9F0;               /* Dreamlight Cyan */
-  text-shadow: 
-   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
-    2px -2px 0 var(#0c4530), /* Moss-Vein Green */ 
-   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
-    2px  2px 0 var(#0c4530), /* Moss-Vein Green */  
-}
-
-header nav a[href="#mmorpg"]:hover {
-  color: #C5ECFF;               /* Crystalline Ice */
-  text-shadow: 
-   -2px  2px 0 var(#572a45), /* Leyline Plum */
-    2px -2px 0 var(#572a45), /* Leyline Plum */
-   -2px  2px 0 var(#572a45), /* Leyline Plum */ 
-    2px  2px 0 var(#572a45), /* Leyline Plum */
-}
-
-header nav a[href="#book-series"]:hover {
-  color: #D88EBA;               /* Leyline Rose */
-  text-shadow: 
-   -2px  2px 0 var(#2DC5B4), /* Biolume Teal */
-    2px -2px 0 var(#2DC5B4), /* Biolume Teal */
-   -2px  2px 0 var(#2DC5B4), /* Biolume Teal */ 
-    2px  2px 0 var(#2DC5B4), /* Biolume Teal */ 
-}
-
-header nav a[href="#timekeeping"]:hover {
-  color: #8FE9F0;               /* Dreamlight Cyan */
-  text-shadow: 
-   -2px  2px 0 var(#78581f), /* Relic Brass */
-    2px -2px 0 var(#78581f), /* Relic Brass */
-   -2px  2px 0 var(#78581f), /* Relic Brass */
-    2px  2px 0 var(#78581f), /* Relic Brass */ 
-}
-
-header nav a[href="#language-rules"]:hover {
-  color: #C1FF8A;               /* Verdant Glow */
-  text-shadow: 
-   -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
-    2px -2px 0 var(#7A7C86), /* Arvalla Beta */
-   -2px  2px 0 var(#7A7C86), /* Arvalla Beta */
-    2px  2px 0 var(#7A7C86), /* Arvalla Beta */
-}
-
-header nav a[href="#lexicon"]:hover {
-  color: #FBC96D;               /* Emberlight Gold */
-  text-shadow: 
-   -2px  2px 0 var(#342c61), /* Twilight Indigo */
-    2px -2px 0 var(#342c61), /* Twilight Indigo */
-   -2px  2px 0 var(#342c61), /* Twilight Indigo */
-    2px  2px 0 var(#342c61), /* Twilight Indigo */
-}
-
-header nav a[href="#support"]:hover {
-  color: #C5ECFF;               /* Crystalline Ice */
-  text-shadow: 
-   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
-    2px -2px 0 var(#0c4530), /* Moss-Vein Green */
-   -2px  2px 0 var(#0c4530), /* Moss-Vein Green */
-    2px  2px 0 var(#0c4530), /* Moss-Vein Green */ 
-}
-
- /* ──────────────✦ Small mobile screens ✦────────────── */
-@media (max-width: 480px) {
-  header {
-    padding: 0.5rem 0;
-  }
-  header h1 {
-    font-size: 1.2rem;
-    letter-spacing: 0.05rem;
-    word-spacing: 0.1rem;
-    text-align: center;
-  }
-  header nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  header nav a {
-    font-size: 0.9rem;
-  }
-}
-
-/* ──────────────✦ Larger mobile + small tablet ✦────────────── */
-@media (min-width: 482px) and (max-width: 768px) {
-  header {
-    padding: 0.75rem 0;
-  }
-  header h1 {
-    font-size: 1.5rem;
-  }
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  header nav a {
-    font-size: 1rem;
-  }
-}
-
-/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
-@media (min-width: 769px) and (max-width: 1024px) {
-  header {
-    padding: 1rem 0;
-  }
-  header h1 {
-    font-size: 1.8rem;
-  }
-  header nav {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-  }
-  header nav a {
-    font-size: 1.1rem;
-  }
-}
-
-/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  header {
-    padding: 1.2rem 0;
-  }
-  header h1 {
-    font-size: 2rem;
-  }
-  header nav {
-    justify-content: center;
-    gap: 1rem;
-  }
-  header nav a {
-    font-size: 1.1rem;
-  }
-}
-
-/* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1442px) {
-  header {
-    padding: 1.5rem 0;
-  }
-  header h1 {
-    font-size: 2.5rem;
-  }
-  header nav {
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  header nav a {
-    font-size: 1.2rem;
-  }
-}
 /* ──────────────✦ Base styles ✦────────────── */
 .page-title {
   position: fixed;
@@ -932,81 +497,7 @@ section.section {
   overflow-y: auto;
 }
 
-/* ──────────────✦ Small mobile screens ✦────────────── */
-@media (max-width: 480px) {
-  .page-title {
-    font-size: 1.2rem;
-    top: calc(80px + 8%);
-  }
-  section.section {
-    width: 90%;
-    margin-top: calc(150px + 8%);
-    padding: 1rem 0;
-  }
-}
 
-/* ──────────────✦ Larger mobile + small tablets ✦────────────── */
-@media (min-width: 482px) and (max-width: 768px) {
-  .page-title {
-    font-size: 1.5rem;
-    top: calc(90px + 9%);
-  }
-  section.section {
-    width: 85%;
-    margin-top: calc(180px + 9%);
-    padding: 1.5rem 0;
-  }
-}
-
-/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .page-title {
-    font-size: 1.8rem;
-    top: calc(95px + 9%);
-  }
-  section.section {
-    width: 80%;
-    margin-top: calc(190px + 9%);
-    padding: 1.8rem 0;
-  }
-}
-
-/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .page-title {
-    font-size: 2rem;
-    top: calc(100px + 10%);
-  }
-  section.section {
-    width: 75%;
-    margin-top: calc(200px + 10%);
-    padding: 2rem 0;
-  }
-}
-
-/* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1442px) {
-  .page-title {
-    font-size: 2.5rem;
-    top: calc(120px + 10%);
-  }
-  section.section {
-    width: 70%;
-    margin-top: calc(220px + 10%);
-    padding: 2.5rem 0;
-  }
-}
-@media (max-width: 768px) {
-  table {
-    width: 100%;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  table {
-    width: 95%;
-  }
-}
 /* ──────────────✦ Base divider style ✦────────────── */
 .section-divider {
   width: 80%;
@@ -1055,51 +546,6 @@ section.section {
   background-color: #0c4530; /* Moss-Vein Green */
 }
 
-
-/* ──────────────✦ RESPONSIVE - Small mobile screens ✦────────────── */
-@media (max-width: 480px) {
-  .section-divider {
-    width: 70%;
-    height: 2px;
-    margin: 0.8rem auto;
-  }
-}
-
-/* ──────────────✦ Larger mobile + small tablet (Kindle) ✦────────────── */
-@media (min-width: 482px) and (max-width: 768px) {
-  .section-divider {
-    width: 75%;
-    height: 1.5px;
-    margin: 0.9rem auto;
-  }
-}
-
-/* ──────────────✦ Medium tablet + small desktop ✦────────────── */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section-divider {
-    width: 80%;
-    height: 2px;
-    margin: 1rem auto;
-  }
-}
-
-/* ──────────────✦ Large tablet + medium desktop ✦────────────── */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  .section-divider {
-    width: 80%;
-    height: 2.5px;
-    margin: 1.2rem auto;
-  }
-}
-
-/* ──────────────✦ Large desktop ✦────────────── */
-@media (min-width: 1442px) {
-  .section-divider {
-    width: 80%;
-    height: 3px;
-    margin: 1.5rem auto;
-  }
-}
 /* ──────────────✦ === Comic Sans Override for index.html === ✦────────────── */
 body[data-doc-name*="index"] {
   font-family: 'Comic Sans MS', cursive !important;
@@ -1129,5 +575,296 @@ span[style*="Comic Sans MS"],
     -2px  2px 0 var(--cyan),
      2px  2px 0 var(--cyan);
 }
+/* ──────────────✦ RESPONSIVE STYLES ✦────────────── */
 
+/* MAX 480px — Small Mobile */
+@media (max-width: 480px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg") center center / cover no-repeat;
+  }
 
+  header {
+    padding: 0.5rem 0;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+    letter-spacing: 0.05rem;
+    word-spacing: 0.1rem;
+    text-align: center;
+  }
+
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  header nav a {
+    font-size: 0.9rem;
+  }
+
+  .page-title {
+    font-size: 1.2rem;
+    top: calc(80px + 8%);
+  }
+
+  section.section {
+    width: 90%;
+    margin-top: calc(150px + 8%);
+    padding: 1rem 0;
+  }
+
+  .section-divider {
+    width: 70%;
+    height: 2px;
+    margin: 0.8rem auto;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  .tm-2-col-text {
+    padding: 10% 0;
+  }
+
+  #tm-section-1 {
+    padding-top: 5%;
+  }
+}
+
+/* 481px–768px — Larger Mobile / Small Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg") center center / cover no-repeat;
+  }
+
+  header {
+    padding: 0.75rem 0;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  header nav a {
+    font-size: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    top: calc(90px + 9%);
+  }
+
+  section.section {
+    width: 85%;
+    margin-top: calc(180px + 9%);
+    padding: 1.5rem 0;
+  }
+
+  .section-divider {
+    width: 75%;
+    height: 1.5px;
+    margin: 0.9rem auto;
+  }
+
+  .nav {
+    font-size: 1.6rem;
+  }
+
+  .navbar {
+    padding: 0;
+  }
+
+  .navbar-nav .nav-item + .nav-item {
+    margin-left: 0;
+  }
+
+  .tm-header-container {
+    padding-bottom: 3%;
+    margin-bottom: 5%;
+  }
+}
+
+/* 769px–1024px — Medium Tablet + Small Desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-tablet_small_desktop.jpg") center center / cover no-repeat;
+  }
+
+  header {
+    padding: 1rem 0;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  header nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  header nav a {
+    font-size: 1.1rem;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    top: calc(95px + 9%);
+  }
+
+  section.section {
+    width: 80%;
+    margin-top: calc(190px + 9%);
+    padding: 1.8rem 0;
+  }
+
+  .tm-navbar-row {
+    height: 88px;
+  }
+
+  .tm-navbar-row.sticky {
+    position: fixed;
+    top: 0;
+    font-size: 0.6em;
+    height: 54px;
+    background-color: rgba(235, 222, 180, 0.86);
+  }
+
+  .tm-navbar-row-absolute {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/* 1025px–1440px — Large Tablet / Medium Desktop */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_tablet_medium_desktop.jpg") center center / cover no-repeat;
+  }
+
+  header {
+    padding: 1.2rem 0;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header nav {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  header nav a {
+    font-size: 1.1rem;
+  }
+
+  .page-title {
+    font-size: 2rem;
+    top: calc(100px + 10%);
+  }
+
+  section.section {
+    width: 75%;
+    margin-top: calc(200px + 10%);
+    padding: 2rem 0;
+  }
+}
+
+/* 1441px+ — Large Desktop */
+@media (min-width: 1441px) {
+  body::before {
+    background: url("https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-large_desktop.jpg") center center / cover no-repeat;
+  }
+
+  header {
+    padding: 1.5rem 0;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  header nav {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  header nav a {
+    font-size: 1.2rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    top: calc(120px + 10%);
+  }
+
+  section.section {
+    width: 70%;
+    margin-top: calc(220px + 10%);
+    padding: 2.5rem 0;
+  }
+}
+
+/* 991px and below */
+@media (max-width: 991px) {
+  .tm-2-col-img-text {
+    display: block;
+  }
+
+  .tm-2-col-text {
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .tm-2-col-text-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .tm-2-col-text-description {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .nav {
+    font-size: 1.6rem;
+  }
+
+  .navbar-nav .nav-link {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* 1600px and below */
+@media (max-width: 1600px) {
+  .tm-2-col-text {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
+
+/* 1320px and below */
+@media (max-width: 1320px) {
+  .tm-2-col-text {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .tm-2-col-text-description {
+    margin-bottom: 4%;
+  }
+}
