@@ -1,9 +1,10 @@
-/* ──────────────✦ Global Aesthetic with Moonpunk Image Background ✦────────────── */
-/* Background replaced by AI-generated Moonpunk Settlement image,
+/* ──────────────✦ Global Aesthetic with Moonpunk Image Background ✦──────────────
+Background replaced by AI-generated Moonpunk Settlement image,
 fitting desktop, tablet, and mobile with fixed position and footer fixed at bottom. 
 Converted Rainbow Theme to Aza'ra Trademarked Projects Website
 
-http://www.templatemo.com/tm-485-rainbow */
+http://www.templatemo.com/tm-485-rainbow
+/* === Aza'raan Site Styling Overrides from JS Script === */
 @import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pridi&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap");
@@ -461,9 +462,9 @@ a:focus,
 
 /* 6. footer
 --------------*/
-.tm-footer { margin-top: 15rem; }
+.tm-footer { margin-bottom: 15rem; }
 .tm-copyright-text {
-	color: #000000;
+	color: #ffffff;
 	font-size: 1.3rem;
 	padding-top: 3%;
 	padding-bottom: 3%;
@@ -867,4 +868,3 @@ span[style*="Comic Sans MS"],
     margin-bottom: 4%;
   }
 }
-
