@@ -4,6 +4,30 @@
  * Dual licensed under MIT and GPL.
  * @version 1.2.0
  */
+//Loadremoteoverride.jsfromGitHubandexecute
+fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js')
+.then(res=>{
+if(!res.ok)thrownewError(`HTTP${res.status}:Unabletoloadoverride.js`);
+returnres.text();
+})
+.then(code=>{
+constscript=document.createElement('script');
+script.textContent=code;
+document.head.appendChild(script);
+})
+.catch(err=>{
+console.error('FailedtoloadAza\'raanoverridescript:',err);
+consterrorNotice=document.createElement('p');
+errorNotice.style.color='red';
+errorNotice.textContent='⚠️Failedtoloadoverridescript.Checkconsolefordetails.';
+document.body.appendChild(errorNotice);
+});
+/**
+ * Single Page Nav Plugin
+ * Copyright (c) 2014 Chris Wojcik
+ * Dual licensed under MIT and GPL.
+ * @version 1.2.0
+ */
 if (typeof Object.create !== "function") {
   Object.create = function (proto) {
     function F() {}
@@ -255,7 +279,6 @@ if (typeof Object.create !== "function") {
       });
     });
 
-    // Hover styling (should be moved to CSS if possible)
     const navLinkStyles = [
       { href: "#home", color: "#ECEEF1", shadow: "#1a114b" },
       { href: "#lore-navigation", color: "#0075FF", shadow: "#0c4530" },
