@@ -1,210 +1,29 @@
-/**
- * Single Page Nav Plugin
- * Copyright (c) 2014 Chris Wojcik
- * Dual licensed under MIT and GPL.
- * @version 1.2.0
- */
-//Loadremoteoverride.jsfromGitHubandexecute
-fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js')
-.then(res=>{
-if(!res.ok)thrownewError(`HTTP${res.status}:Unabletoloadoverride.js`);
-returnres.text();
-})
-.then(code=>{
-constscript=document.createElement('script');
-script.textContent=code;
-document.head.appendChild(script);
-})
-.catch(err=>{
-console.error('FailedtoloadAza\'raanoverridescript:',err);
-consterrorNotice=document.createElement('p');
-errorNotice.style.color='red';
-errorNotice.textContent='⚠️Failedtoloadoverridescript.Checkconsolefordetails.';
-document.body.appendChild(errorNotice);
-});
-/**
- * Single Page Nav Plugin
- * Copyright (c) 2014 Chris Wojcik
- * Dual licensed under MIT and GPL.
- * @version 1.2.0
- */
-if (typeof Object.create !== "function") {
-  Object.create = function (proto) {
-    function F() {}
-    F.prototype = proto;
-    return new F();
-  };
-}
-        function prepareMenuForDesktop() {
-
-            var navbarHeight = 0;
-            
-            // For screens greater than 767
-            if($(window).width() > 767) {
-
-                // target at which the menu bar changes to sticky
-                var target = $("#tm-section-1").offset().top - 100;
-
-                // window scroll
-                $(window).scroll(function(){
-
-                    if($(this).scrollTop() > target) {                            
-                        $(".tm-navbar-row").addClass("sticky");                            
-                    }
-                    else {
-                        $(".tm-navbar-row").removeClass("sticky");
-                    }     
-
-                }); 
-
-                navbarHeight = 56;
-            }
-
-            // Single Page Nav
-            $('#tmNavbar').singlePageNav({
-               'currentClass' : "active",
-                offset : navbarHeight,
-                'filter': ':not(.external)'
-            });  
-        }  
-   
-        $(document).ready(function(){                 
-
-            prepareMenuForDesktop();
-
-            // On window resize, prepare menu
-            $(window).resize(function(){
-                prepareMenuForDesktop();                 
-                                  
-            });       
-        });
-(function ($, window, document) {
-  "use strict";
-
-  const SinglePageNav = {
-    init: function (options, container) {
-      this.options = $.extend({}, $.fn.singlePageNav.defaults, options);
-      this.container = container;
-      this.$container = $(container);
-      this.$links = this.options.filter ? this.$container.find("a").filter(this.options.filter) : this.$container.find("a");
-      this.$window = $(window);
-      this.$htmlbody = $("html, body");
-      this.$links.on("click.singlePageNav", $.proxy(this.handleClick, this));
-      this.didScroll = false;
-      this.checkPosition();
-      this.setTimer();
-    },
-
-    handleClick: function (e) {
-      const link = e.currentTarget;
-      const $target = $(link.hash);
-      e.preventDefault();
-
-      if ($target.length) {
-        this.clearTimer();
-        if (typeof this.options.beforeStart === "function") this.options.beforeStart();
-        this.setActiveLink(link.hash);
-        this.scrollTo($target, () => {
-          if (this.options.updateHash && history.pushState) history.pushState(null, null, link.hash);
-          this.setTimer();
-          if (typeof this.options.onComplete === "function") this.options.onComplete();
-        });
-      }
-    },
-
-    scrollTo: function ($target, callback) {
-      const top = this.getCoords($target).top;
-      this.$htmlbody.stop().animate(
-        { scrollTop: top },
-        {
-          duration: this.options.speed,
-          easing: this.options.easing,
-          complete: callback,
-        }
-      );
-    },
-
-    setTimer: function () {
-      this.$window.on("scroll.singlePageNav", () => {
-        this.didScroll = true;
-      });
-
-      this.timer = setInterval(() => {
-        if (this.didScroll) {
-          this.didScroll = false;
-          this.checkPosition();
-        }
-      }, 250);
-    },
-
-    clearTimer: function () {
-      clearInterval(this.timer);
-      this.$window.off("scroll.singlePageNav");
-      this.didScroll = false;
-    },
-
-    checkPosition: function () {
-      const scrollTop = this.$window.scrollTop();
-      const current = this.getCurrentSection(scrollTop);
-      this.setActiveLink(current);
-    },
-
-    getCoords: function ($el) {
-      return {
-        top: Math.round($el.offset().top) - this.options.offset,
-      };
-    },
-
-    setActiveLink: function (hash) {
-      const $active = this.$container.find(`a[href$='${hash}']`);
-      if (!$active.hasClass(this.options.currentClass)) {
-        this.$links.removeClass(this.options.currentClass);
-        $active.addClass(this.options.currentClass);
-      }
-    },
-
-    getCurrentSection: function (scrollTop) {
-      let current = this.$links[0].hash;
-      this.$links.each((_, link) => {
-        const $section = $(link.hash);
-        if ($section.length) {
-          const coords = this.getCoords($section);
-          if (scrollTop >= coords.top - this.options.threshold) {
-            current = link.hash;
-          }
-        }
-      });
-      return current;
-    },
-  };
-
-  $.fn.singlePageNav = function (options) {
-    return this.each(function () {
-      const instance = Object.create(SinglePageNav);
-      instance.init(options, this);
-    });
-  };
-
-  $.fn.singlePageNav.defaults = {
-    offset: 0,
-    threshold: 120,
-    speed: 400,
-    currentClass: "current",
-    easing: "swing",
-    updateHash: false,
-    filter: "",
-    onComplete: false,
-    beforeStart: false,
-  };
-})(jQuery, window, document);
-
-/* ──────────────✦ === Aza'raan Website Script === ✦────────────── */
+/* ──────────────✦ Aza'raan Unified Site Script ✦────────────── */
 (() => {
   'use strict';
 
   console.log('✨ Aza\'raan Site Script initializing...');
 
-  // Load styles and scripts
+  // Load remote override script
+  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js')
+    .then(res => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}: Unable to load override.js`);
+      return res.text();
+    })
+    .then(code => {
+      const script = document.createElement('script');
+      script.textContent = code;
+      document.head.appendChild(script);
+    })
+    .catch(err => {
+      console.error('Failed to load Aza\'raan override script:', err);
+      const errorNotice = document.createElement('p');
+      errorNotice.style.color = 'red';
+      errorNotice.textContent = '⚠️ Failed to load override script. Check console for details.';
+      document.body.appendChild(errorNotice);
+    });
+
+  // Load additional assets
   function loadStyle(href) {
     const link = document.createElement('link');
     link.rel = 'stylesheet';
@@ -228,14 +47,9 @@ if (typeof Object.create !== "function") {
   }
 
   loadStyle('https://raw.githubusercontent.com/thetransgendertrex/website/main/style.css');
-  loadScript('https://raw.githubusercontent.com/thetransgendertrex/website/main/override.js');
   loadScript('https://raw.githubusercontent.com/thetransgendertrex/website/main/donations.js');
 
-  fetch('https://raw.githubusercontent.com/thetransgendertrex/website/main/index.html')
-    .then(() => console.log('✅ index.html verified.'))
-    .catch(() => console.warn('⚠️ Could not verify index.html.'));
-
-  // Responsive background
+  // Responsive background handling
   const backgrounds = [
     { min: 0, max: 480, url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-small_mobile.jpg" },
     { min: 481, max: 768, url: "https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/moonpunk-AI-mobile_tablet.jpg" },
@@ -252,24 +66,30 @@ if (typeof Object.create !== "function") {
     }
   }
 
-  updateBackground();
   window.addEventListener('resize', updateBackground);
+  updateBackground();
 
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('header');
 
-    // Smooth scroll
-    document.querySelectorAll('header nav a, .vertical-buttons a').forEach(link => {
+    // Smooth scroll on nav and button clicks
+    document.querySelectorAll('nav a, .vertical-buttons a').forEach(link => {
       link.addEventListener('click', e => {
         const href = link.getAttribute('href');
-        if (href?.startsWith('#')) {
+        if (href && href.startsWith('#')) {
           e.preventDefault();
-          const target = document.querySelector(`section[data-section="${href.slice(1)}"]`);
+          const sectionName = href.slice(1);
+          const target = document.querySelector(`section[data-section="${sectionName}"]`);
           if (target) {
-            const offset = header?.offsetHeight || 0;
+            const offset = header ? header.offsetHeight : 0;
             const targetTop = target.getBoundingClientRect().top + window.pageYOffset - offset;
             window.scrollTo({ top: targetTop, behavior: 'smooth' });
 
+            // Active nav state update
+            document.querySelectorAll('nav a').forEach(l => l.classList.remove('current'));
+            link.classList.add('current');
+
+            // Active button state
             if (link.closest('.vertical-buttons')) {
               document.querySelectorAll('.vertical-buttons a').forEach(l => l.classList.remove('active'));
               link.classList.add('active');
@@ -279,17 +99,19 @@ if (typeof Object.create !== "function") {
       });
     });
 
+    // Hover color/text-shadow effects for nav links
     const navLinkStyles = [
       { href: "#home", color: "#ECEEF1", shadow: "#1a114b" },
-      { href: "#lore-navigation", color: "#0075FF", shadow: "#0c4530" },
+      { href: "#lore", color: "#0075FF", shadow: "#0c4530" },
       { href: "#font-project", color: "#C1FF8A", shadow: "#572a45" },
       { href: "#azara-projects", color: "#FBC96D", shadow: "#014d4e" },
+      { href: "#book-series", color: "#FBC96D", shadow: "#3b2d61" },
       { href: "#timekeeping", color: "#DCE1E8", shadow: "#A63A2C" },
       { href: "#language-rules", color: "#8FE9F0", shadow: "#7A7C86" },
-      { href: "#support", color: "#FBC96D", shadow: "#342c61" },
+      { href: "#support", color: "#FBC96D", shadow: "#342c61" }
     ];
 
-    document.querySelectorAll('header nav a').forEach(link => {
+    document.querySelectorAll('nav a').forEach(link => {
       const style = navLinkStyles.find(item => item.href === link.getAttribute('href'));
       if (style) {
         link.addEventListener('mouseenter', () => {
@@ -303,7 +125,7 @@ if (typeof Object.create !== "function") {
       }
     });
 
-    // Auto-ID Headings
+    // Auto-generate IDs for headings
     document.querySelectorAll('h1, h2, h3, h4').forEach((heading, i) => {
       if (!heading.id) {
         const slug = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
@@ -322,7 +144,7 @@ if (typeof Object.create !== "function") {
       }
     });
 
-    // Fade-in effects
+    // Section fade-in observer
     const fadeInObserver = (selector, props) => {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -346,7 +168,7 @@ if (typeof Object.create !== "function") {
       transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
     });
 
-    // Mobile menu
+    // Mobile menu toggle
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
     const close = document.getElementById('menu-close');
@@ -361,5 +183,8 @@ if (typeof Object.create !== "function") {
         });
       }
     });
+
   });
+
 })();
+// End of Aza'raan Unified Site Script
