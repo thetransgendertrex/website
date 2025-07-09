@@ -76,6 +76,96 @@
 
   window.addEventListener("DOMContentLoaded", enhanceTableCells);
 })();
+(function () {
+  // Define your GitHub base
+  const githubBase = "https://raw.githubusercontent.com/thetransgendertrex/website/main/";
+
+  // Files and their fallbacks
+  const resources = [
+    {
+      type: "css",
+      remote: githubBase + "style.css",
+      fallback: "style.local.css"
+    },
+    {
+      type: "css",
+      remote: githubBase + "bootstrap.min.css",
+      fallback: "bootstrap.local.min.css"
+    },
+    {
+      type: "image",
+      remote: githubBase + "Aza'ra-Moonpunk-AI.jpg",
+      fallback: "background.local.jpg",
+      selector: "#page-wraper",
+      styleProperty: "backgroundImage",
+      format: (url) => `url('${url}')`
+    },
+    {
+      type: "image",
+      remote: githubBase + "icon48.png",
+      fallback: "icon48.local.png",
+      selector: "link[rel='icon'], link[rel='shortcut icon']",
+      attr: "href"
+    },
+    {
+      type: "html",
+      remote: githubBase + "index.html",
+      fallback: "index.local.html" // optional: load into iframe or a div dynamically
+    }
+  ];
+
+  // Check if URL is valid
+  function testURL(url) {
+    return fetch(url, { method: "HEAD" })
+      .then(res => res.ok)
+      .catch(() => false);
+  }
+
+  // Load CSS dynamically
+  function loadCSS(href) {
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
+  // Load fallback images or styles
+  function applyFallback(res) {
+    if (res.type === "css") {
+      loadCSS(res.fallback);
+    } else if (res.type === "image" && res.selector) {
+      const el = document.querySelector(res.selector);
+      if (!el) return;
+      if (res.attr) {
+        el.setAttribute(res.attr, res.fallback);
+      } else if (res.styleProperty) {
+        el.style[res.styleProperty] = res.format(res.fallback);
+      }
+    }
+    // Optional: for HTML you could load content into an element
+  }
+
+  // Iterate over resources
+  resources.forEach(resource => {
+    testURL(resource.remote).then(isAvailable => {
+      if (!isAvailable) {
+        applyFallback(resource);
+        console.warn(`[Fallback] Loaded local version of ${resource.remote}`);
+      } else {
+        if (resource.type === "css") {
+          loadCSS(resource.remote);
+        } else if (resource.type === "image" && resource.selector) {
+          const el = document.querySelector(resource.selector);
+          if (!el) return;
+          if (resource.attr) {
+            el.setAttribute(resource.attr, resource.remote);
+          } else if (resource.styleProperty) {
+            el.style[resource.styleProperty] = resource.format(resource.remote);
+          }
+        }
+      }
+    });
+  });
+})();
 
 })(jQuery);
-
