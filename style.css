@@ -12,11 +12,15 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 #page-wraper {
+    min-height: 100vh; /* full viewport height */
     background: url("background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
     width: 100%;
 }
@@ -152,26 +156,6 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
 /* ✨ Page Glow Effect ✨ */
 /* This effect creates a glowing border around the page content */
 
-/* Azaraan Planet Language Font */
-@font-face {
-    font-family: 'Azaraan Planet Language';
-    src: url('https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Example usage */
-.azaraan-text {
-    font-family: 'Azaraan Planet Language', sans-serif;
-    font-size: 22px;
-    color: #000;
-    text-shadow:
-        -0.5px -0.5px #003737,
-         0.5px -0.5px #003737,
-        -0.5px  0.5px #003737,
-         0.5px  0.5px #003737;
-}
-
 /* Sidebar Menu */
 
 .menu .image {
@@ -256,31 +240,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
 
 .menu {
     text-align: center;
-}
-
-.menu::-webkit-scrollbar {
-    display: none;
-}
-
-.menu {
-    left: 10%;
-  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
-  -webkit-overflow-scrolling: touch;
-  background-color: #004f4f;
-  box-sizing: border-box;
-  height: 100vh;  
-  max-height: 100vh !important;
-  max-width: 80vw !important;
-  min-width: 45px !important;
-  outline: none;
-  overflow-x: hidden !important;
-  overflow-y: auto !important;
-  padding: 0;
-  position: fixed !important;
-  top: calc(0px);  
-  width: 20%;
-  will-change: transform;
-  z-index: 9999 !important;
+    left: 0;  /* changed from left: 10% to left: 0 to align left */
+    -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
+    -webkit-overflow-scrolling: touch;
+    background-color: #004f4f;
+    box-sizing: border-box;
+    height: 100vh;  
+    max-height: 100vh !important;
+    max-width: 80vw !important;
+    min-width: 45px !important;
+    outline: none;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    padding: 0;
+    position: fixed !important;
+    top: calc(0px);  
+    width: 20%;
+    will-change: transform;
+    z-index: 9999 !important;
 }
 
 .menu-toggle {
@@ -322,22 +299,44 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     display: inline-block;
     line-height: 60px;
 }
-/* Home Section */
 
+
+/* Azaraan Planet Language Font */
+@font-face {
+    font-family: 'Azaraan Planet Language';
+    src: url('https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Example usage */
+.azaraan-text {
+    font-family: 'Azaraan Planet Language', sans-serif;
+    font-size: 22px;
+    color: #000;
+    text-shadow:
+        -0.5px -0.5px #003737,
+         0.5px -0.5px #003737,
+        -0.5px  0.5px #003737,
+         0.5px  0.5px #003737;
+}
+/* Home Section */
 .home .section {
     color: #fff;
     position: relative;
-    width: 20vw !important;          /* 20% of viewport width */
+    width: 20vw !important;
     min-width: 45px !important;
-    margin-left: 80vw !important;    /* pushes section right after 80vw nav */
+    margin-left: 80vw !important;
     outline: none;
-    overflow-x: hidden !important;   /* prevent horizontal scroll on section */
-    overflow-y: auto !important;     /* vertical scroll if content overflows */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: transparent !important; /* transparent background */
 }
 
 .home .section-heading {
     text-align: center;
     padding: 80px 45px;
+    background: transparent !important;
 }
 
 .home .section-heading h2 {
@@ -360,8 +359,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
 }
 
-/* Home Buttons (relative positioning) */
-
+/* Home Buttons (kept) */
 .home .white-button a {
     display: inline-block;
     padding: 12px 20px;
@@ -372,7 +370,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: all 0.5s;
-    position: relative; /* relative, not fixed */
+    position: relative;
 }
 
 .home .white-button a:hover {
@@ -393,7 +391,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     border: none;
     outline: none;
     cursor: pointer;
-    position: relative; /* relative, not fixed */
+    position: relative;
 }
 
 .home button:hover {
@@ -402,114 +400,27 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     color: #fff;
 }
 
-/* Home Table Wrapper */
-.home .table-wrapper {
-    width: auto !important;             /* not 100%, so it fits content */
-    max-width: 20vw !important;          /* keep width ~20vw */
-    margin-left: 0 !important;           /* no left margin inside wrapper */
-    overflow-x: auto !important;         /* force horizontal scroll if needed */
-    -webkit-overflow-scrolling: touch;
-}
+/* Removed tables from Home */
+/* Remove the entire table-wrapper and table styles from Home */
 
-/* Home Table Styles */
-.home table {
-    min-width: 20vw !important;          /* fixed to 20% viewport width */
-    border-collapse: collapse;
-    margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.94);
-    border: 2px solid var(--cyan);
-    color: #000000;
-    font-family: 'Times New Roman', serif;
-    border-radius: 8px;
-    backdrop-filter: blur(1px);
-}
 
-.home th, 
-.home td {
-    padding: 1rem;
-    text-align: center;
-    vertical-align: middle;
-    opacity: 1;
-    border-bottom: 1px solid var(--cyan);
-}
-
-.home th {
-    font-size: 2rem;
-    font-weight: bold;
-    border-bottom: 2px solid var(--cyan);
-    text-transform: uppercase;
-}
-
-.home td {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Scrollbar Styling (optional) */
-.home footer::-webkit-scrollbar {
-    width: 12px;
-}
-
-.home footer::-webkit-scrollbar-track {
-    background: silver;
-    border-radius: 8px;
-}
-
-.home footer::-webkit-scrollbar-thumb {
-    background-color: var(--cyan);
-    border-radius: 8px;
-    border: 2px solid silver;
-}
-
-/* Responsive Table */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .home .table-wrapper {
-        overflow-x: auto;
-    }
-
-    .home table th {
-        font-size: 1.6rem;
-    }
-
-    .home table td {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .home .table-wrapper {
-        overflow-x: auto;
-    }
-
-    .home table {
-        font-size: 0.9rem;
-        min-width: 20vw !important;  /* keep consistent width */
-        display: table;
-    }
-
-    .home table th, 
-    .home table td {
-        padding: 0.5rem;
-        min-width: 120px;
-        font-size: 1.1rem;
-    }
-}
 /* Lore Section */
-
 .lore .section {
     color: #fff;
     position: relative;
-    width: 20vw !important;          /* 20% of viewport width */
+    width: 20vw !important;
     min-width: 45px !important;
-    margin-left: 80vw !important;    /* pushes section right after 80vw nav */
+    margin-left: 80vw !important;
     outline: none;
-    overflow-x: hidden !important;   /* prevent horizontal scroll on section */
-    overflow-y: auto !important;     /* vertical scroll if content overflows */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: transparent !important;
 }
 
 .lore .section-heading {
     text-align: center;
     padding: 80px 45px;
+    background: transparent !important;
 }
 
 .lore .section-heading h2 {
@@ -532,60 +443,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
 }
 
-/* Lore Buttons (relative positioning) */
-
-.lore .white-button a {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    position: relative; /* relative, not fixed */
-}
-
-.lore .white-button a:hover {
-    background-color: #00ffff;
-    color: #fff;
-}
-
+/* Removed buttons from Lore */
+.lore .white-button a,
 .lore button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: relative; /* relative, not fixed */
-}
-
-.lore button:hover {
-    outline: none;
-    background-color: #00ffff;
-    color: #fff;
+    display: none !important;
 }
 
 /* Lore Table Wrapper */
 .lore .table-wrapper {
-    width: auto !important;             /* not 100%, so it fits content */
-    max-width: 20vw !important;          /* keep width ~20vw */
-    margin-left: 0 !important;           /* no left margin inside wrapper */
-    overflow-x: auto !important;         /* force horizontal scroll if needed */
+    width: auto !important;
+    max-width: 20vw !important;
+    margin-left: 0 !important;
+    overflow-x: auto !important;
     -webkit-overflow-scrolling: touch;
 }
 
 /* Lore Table Styles */
 .lore table {
-    min-width: 20vw !important;          /* fixed to 20% viewport width */
+    min-width: 20vw !important;
     border-collapse: collapse;
     margin-top: 2rem;
     background-color: rgba(255, 255, 255, 0.94);
@@ -655,7 +530,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
 
     .lore table {
         font-size: 0.9rem;
-        min-width: 20vw !important;  /* keep consistent width */
+        min-width: 20vw !important;
         display: table;
     }
 
@@ -666,22 +541,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
         font-size: 1.1rem;
     }
 }
-/* Azara Projects Section */
 
+/* Azara Projects Section */
 .azara-projects .section {
     color: #fff;
     position: relative;
-    width: 20vw !important;          /* 20% of viewport width */
+    width: 20vw !important;
     min-width: 45px !important;
-    margin-left: 80vw !important;    /* pushes section right after 80vw nav */
+    margin-left: 80vw !important;
     outline: none;
-    overflow-x: hidden !important;   /* prevent horizontal scroll on section */
-    overflow-y: auto !important;     /* vertical scroll if content overflows */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: transparent !important;
 }
 
 .azara-projects .section-heading {
     text-align: center;
     padding: 80px 45px;
+    background: transparent !important;
 }
 
 .azara-projects .section-heading h2 {
@@ -704,156 +581,32 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
 }
 
-/* Azara Projects Buttons (relative positioning) */
-
-.azara-projects .white-button a {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    position: relative; /* relative, not fixed */
-}
-
-.azara-projects .white-button a:hover {
-    background-color: #00ffff;
-    color: #fff;
-}
-
-.azara-projects button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: relative; /* relative, not fixed */
-}
-
-.azara-projects button:hover {
-    outline: none;
-    background-color: #00ffff;
-    color: #fff;
-}
-
-/* Azara Projects Table Wrapper */
-.azara-projects .table-wrapper {
-    width: auto !important;             /* not 100%, so it fits content */
-    max-width: 20vw !important;          /* keep width ~20vw */
-    margin-left: 0 !important;           /* no left margin inside wrapper */
-    overflow-x: auto !important;         /* force horizontal scroll if needed */
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Azara Projects Table Styles */
+/* Removed buttons and tables from Azara Projects */
+.azara-projects .white-button a,
+.azara-projects button,
+.azara-projects .table-wrapper,
 .azara-projects table {
-    min-width: 20vw !important;          /* fixed to 20% viewport width */
-    border-collapse: collapse;
-    margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.94);
-    border: 2px solid var(--cyan);
-    color: #000000;
-    font-family: 'Times New Roman', serif;
-    border-radius: 8px;
-    backdrop-filter: blur(1px);
+    display: none !important;
 }
 
-.azara-projects th, 
-.azara-projects td {
-    padding: 1rem;
-    text-align: center;
-    vertical-align: middle;
-    opacity: 1;
-    border-bottom: 1px solid var(--cyan);
-}
 
-.azara-projects th {
-    font-size: 2rem;
-    font-weight: bold;
-    border-bottom: 2px solid var(--cyan);
-    text-transform: uppercase;
-}
-
-.azara-projects td {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Scrollbar Styling (optional) */
-.azara-projects footer::-webkit-scrollbar {
-    width: 12px;
-}
-
-.azara-projects footer::-webkit-scrollbar-track {
-    background: silver;
-    border-radius: 8px;
-}
-
-.azara-projects footer::-webkit-scrollbar-thumb {
-    background-color: var(--cyan);
-    border-radius: 8px;
-    border: 2px solid silver;
-}
-
-/* Responsive Table */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .azara-projects .table-wrapper {
-        overflow-x: auto;
-    }
-
-    .azara-projects table th {
-        font-size: 1.6rem;
-    }
-
-    .azara-projects table td {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .azara-projects .table-wrapper {
-        overflow-x: auto;
-    }
-
-    .azara-projects table {
-        font-size: 0.9rem;
-        min-width: 20vw !important;  /* keep consistent width */
-        display: table;
-    }
-
-    .azara-projects table th, 
-    .azara-projects table td {
-        padding: 0.5rem;
-        min-width: 120px;
-        font-size: 1.1rem;
-    }
-}
 /* Timekeeping Section */
-
 .timekeeping .section {
     color: #fff;
     position: relative;
-    width: 20vw !important;          /* 20% of viewport width */
+    width: 20vw !important;
     min-width: 45px !important;
-    margin-left: 80vw !important;    /* pushes section right after 80vw nav */
+    margin-left: 80vw !important;
     outline: none;
-    overflow-x: hidden !important;   /* prevent horizontal scroll on section */
-    overflow-y: auto !important;     /* vertical scroll if content overflows */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: transparent !important;
 }
 
 .timekeeping .section-heading {
     text-align: center;
     padding: 80px 45px;
+    background: transparent !important;
 }
 
 .timekeeping .section-heading h2 {
@@ -876,60 +629,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
 }
 
-/* Timekeeping Buttons (relative positioning) */
-
-.timekeeping .white-button a {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    position: relative; /* relative, not fixed */
-}
-
-.timekeeping .white-button a:hover {
-    background-color: #00ffff;
-    color: #fff;
-}
-
+/* Removed buttons from Timekeeping */
+.timekeeping .white-button a,
 .timekeeping button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: relative; /* relative, not fixed */
-}
-
-.timekeeping button:hover {
-    outline: none;
-    background-color: #00ffff;
-    color: #fff;
+    display: none !important;
 }
 
 /* Timekeeping Table Wrapper */
 .timekeeping .table-wrapper {
-    width: auto !important;             /* not 100%, so it fits content */
-    max-width: 20vw !important;          /* keep width ~20vw */
-    margin-left: 0 !important;           /* no left margin inside wrapper */
-    overflow-x: auto !important;         /* force horizontal scroll if needed */
+    width: auto !important;
+    max-width: 20vw !important;
+    margin-left: 0 !important;
+    overflow-x: auto !important;
     -webkit-overflow-scrolling: touch;
 }
 
 /* Timekeeping Table Styles */
 .timekeeping table {
-    min-width: 20vw !important;          /* fixed to 20% viewport width */
+    min-width: 20vw !important;
     border-collapse: collapse;
     margin-top: 2rem;
     background-color: rgba(255, 255, 255, 0.94);
@@ -999,7 +716,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
 
     .timekeeping table {
         font-size: 0.9rem;
-        min-width: 20vw !important;  /* keep consistent width */
+        min-width: 20vw !important;
         display: table;
     }
 
@@ -1010,22 +727,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
         font-size: 1.1rem;
     }
 }
-/* Language-Rules Section */
 
+/* Language-Rules Section */
 .language-rules .section {
     color: #fff;
     position: relative;
-    width: 20vw !important;          /* 20% of viewport width */
+    width: 20vw !important;
     min-width: 45px !important;
-    margin-left: 80vw !important;    /* pushes section right after 80vw nav */
+    margin-left: 80vw !important;
     outline: none;
-    overflow-x: hidden !important;   /* prevent horizontal scroll on section */
-    overflow-y: auto !important;     /* vertical scroll if content overflows */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: transparent !important;
 }
 
 .language-rules .section-heading {
     text-align: center;
     padding: 80px 45px;
+    background: transparent !important;
 }
 
 .language-rules .section-heading h2 {
@@ -1048,60 +767,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
 }
 
-/* Language-Rules Buttons (relative positioning) */
-
-.language-rules .white-button a {
-    display: inline-block;
-    padding: 12px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    position: relative; /* relative, not fixed */
-}
-
-.language-rules .white-button a:hover {
-    background-color: #00ffff;
-    color: #fff;
-}
-
+/* Removed buttons from Language-Rules */
+.language-rules .white-button a,
 .language-rules button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #fff;
-    color: #004f4f;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: all 0.5s;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: relative; /* relative, not fixed */
-}
-
-.language-rules button:hover {
-    outline: none;
-    background-color: #00ffff;
-    color: #fff;
+    display: none !important;
 }
 
 /* Language-Rules Table Wrapper */
 .language-rules .table-wrapper {
-    width: auto !important;             /* not 100%, so it fits content */
-    max-width: 20vw !important;          /* keep width ~20vw */
-    margin-left: 0 !important;           /* no left margin inside wrapper */
-    overflow-x: auto !important;         /* force horizontal scroll if needed */
+    width: auto !important;
+    max-width: 20vw !important;
+    margin-left: 0 !important;
+    overflow-x: auto !important;
     -webkit-overflow-scrolling: touch;
 }
 
 /* Language-Rules Table Styles */
 .language-rules table {
-    min-width: 20vw !important;          /* fixed to 20% viewport width */
+    min-width: 20vw !important;
     border-collapse: collapse;
     margin-top: 2rem;
     background-color: rgba(255, 255, 255, 0.94);
@@ -1171,7 +854,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
 
     .language-rules table {
         font-size: 0.9rem;
-        min-width: 20vw !important;  /* keep consistent width */
+        min-width: 20vw !important;
         display: table;
     }
 
@@ -1182,22 +865,24 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
         font-size: 1.1rem;
     }
 }
-/* Support Section */
 
+/* Support Section */
 .support .section {
     color: #fff;
     position: relative;
-    width: 20vw !important;          /* 20% of viewport width */
+    width: 20vw !important;
     min-width: 45px !important;
-    margin-left: 80vw !important;    /* pushes section right after 80vw nav */
+    margin-left: 80vw !important;
     outline: none;
-    overflow-x: hidden !important;   /* prevent horizontal scroll on section */
-    overflow-y: auto !important;     /* vertical scroll if content overflows */
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    background: transparent !important;
 }
 
 .support .section-heading {
     text-align: center;
     padding: 80px 45px;
+    background: transparent !important;
 }
 
 .support .section-heading h2 {
@@ -1220,8 +905,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
 }
 
-/* Support Buttons (relative positioning) */
-
+/* Support Buttons (kept) */
 .support .white-button a {
     display: inline-block;
     padding: 12px 20px;
@@ -1232,7 +916,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: all 0.5s;
-    position: relative; /* relative, not fixed */
+    position: relative;
 }
 
 .support .white-button a:hover {
@@ -1253,7 +937,7 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     border: none;
     outline: none;
     cursor: pointer;
-    position: relative; /* relative, not fixed */
+    position: relative;
 }
 
 .support button:hover {
@@ -1262,95 +946,3 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     color: #fff;
 }
 
-/* Support Table Wrapper */
-.support .table-wrapper {
-    width: auto !important;             /* not 100%, so it fits content */
-    max-width: 20vw !important;          /* keep width ~20vw */
-    margin-left: 0 !important;           /* no left margin inside wrapper */
-    overflow-x: auto !important;         /* force horizontal scroll if needed */
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Support Table Styles */
-.support table {
-    min-width: 20vw !important;          /* fixed to 20% viewport width */
-    border-collapse: collapse;
-    margin-top: 2rem;
-    background-color: rgba(255, 255, 255, 0.94);
-    border: 2px solid var(--cyan);
-    color: #000000;
-    font-family: 'Times New Roman', serif;
-    border-radius: 8px;
-    backdrop-filter: blur(1px);
-}
-
-.support th, 
-.support td {
-    padding: 1rem;
-    text-align: center;
-    vertical-align: middle;
-    opacity: 1;
-    border-bottom: 1px solid var(--cyan);
-}
-
-.support th {
-    font-size: 2rem;
-    font-weight: bold;
-    border-bottom: 2px solid var(--cyan);
-    text-transform: uppercase;
-}
-
-.support td {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-/* Scrollbar Styling (optional) */
-.support footer::-webkit-scrollbar {
-    width: 12px;
-}
-
-.support footer::-webkit-scrollbar-track {
-    background: silver;
-    border-radius: 8px;
-}
-
-.support footer::-webkit-scrollbar-thumb {
-    background-color: var(--cyan);
-    border-radius: 8px;
-    border: 2px solid silver;
-}
-
-/* Responsive Table */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .support .table-wrapper {
-        overflow-x: auto;
-    }
-
-    .support table th {
-        font-size: 1.6rem;
-    }
-
-    .support table td {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .support .table-wrapper {
-        overflow-x: auto;
-    }
-
-    .support table {
-        font-size: 0.9rem;
-        min-width: 20vw !important;  /* keep consistent width */
-        display: table;
-    }
-
-    .support table th, 
-    .support table td {
-        padding: 0.5rem;
-        min-width: 120px;
-        font-size: 1.1rem;
-    }
-}
