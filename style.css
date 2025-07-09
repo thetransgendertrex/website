@@ -1,221 +1,559 @@
+/*
 
-/* ========================================
-   Aza'ra Moonpunk - style.css
-   Custom styling for the Aza'ra Fantasy Showcase site
-   ======================================== */
+Reflux Template
 
-@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Pridi&family=Cinzel+Decorative:wght@700&display=swap');
+https://templatemo.com/tm-531-reflux
+
+*/
+
+@import url(fontawesome.css);
+@import url("'https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf'");
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+#page-wraper {
+    background: url("background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+}
+
+
+/* Basic */
 
 body {
-  font-family: 'Pridi', serif;
-  color: white;
-  margin: 0;
+    overflow-x: hidden;
+}
+
+input,
+select,
+textarea {
+    outline: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    font-size: 16px;
+    line-height: 24px;
+    color: #fff;
+}
+
+h4 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.25px;
+}
+
+img {
+    width: 100%;
+    overflow: hidden;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ul li {
+    display: inline-block;
+}
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.main-nav {
+    text-align: center;
+}
+
+.main-nav li:last-child a {
+    border-bottom: 2px solid #fff;
+}
+
+.main-nav li {
+    display: block;
+}
+
+.main-nav li a {
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    width: 100%;
+    transition: all 0.5s;
+    border-top: 2px solid #fff;
+}
+
+/* ───── Accent Colors for Each Nav Button ───── */
+header.site-header nav .nav-button.home            { color: #ECEEF1; }
+header.site-header nav .nav-button.lore            { color: #0075FF; }
+header.site-header nav .nav-button.navigation      { color: #C5ECFF; }
+header.site-header nav .nav-button.azaraprojects   { color: #FBC96D; }
+header.site-header nav .nav-button.timekeeping     { color: #DCE1E8; }
+header.site-header nav .nav-button.language-rules  { color: #8FE9F0; }
+header.site-header nav .nav-button.support         { color: #FBC96D; }
+
+header.site-header nav .nav-button:hover {
+  background-color: currentColor;
+  color: #ffffff;
+}
+
+/* Utility: Dark-mode variant for header buttons */
+body.dark-mode header.site-header .nav-button {
+  color: #000000;
+}
+body.dark-mode header.site-header .nav-button.home           { color: #1a114b; }
+body.dark-mode header.site-header .nav-button.lore           { color: #0c4530; }
+body.dark-mode header.site-header .nav-button.navigation     { color: #342c61; }
+body.dark-mode header.site-header .nav-button.azaraprojects  { color: #014d4e; }
+body.dark-mode header.site-header .nav-button.timekeeping    { color: #A63A2C; }
+body.dark-mode header.site-header .nav-button.language-rules { color: #7A7C86; }
+body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
+/* ✨ Page Glow Effect ✨ */
+/* This effect creates a glowing border around the page content */
+
+/* Azaraan Planet Language Font */
+@font-face {
+    font-family: 'Azaraan Planet Language';
+    src: url('https://raw.githubusercontent.com/thetransgendertrex/website/main/Azaraan_Planet_Language.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Example usage */
+.azaraan-text {
+    font-family: 'Azaraan Planet Language', sans-serif;
+    font-size: 22px;
+    color: #000;
+    text-shadow:
+        -0.5px -0.5px #003737,
+         0.5px -0.5px #003737,
+        -0.5px  0.5px #003737,
+         0.5px  0.5px #003737;
+}
+
+/* Sidebar Menu */
+
+.menu .image {
+    margin-top: 60px;
+}
+
+.menu .image img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.menu .author-content {
+    margin: 40px 0px 60px 0px;
+}
+
+.menu .author-content h4 {
+    margin-bottom: 0px;
+}
+
+.menu .author-content span {
+    font-size: 13px;
+    font-style: italic;
+    color: #fff;
+}
+
+.menu .social-network {
+    margin-top: 60px;
+}
+
+.menu .social-network ul li {
+    margin: 0 3px;
+}
+
+.menu .social-network ul li a {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 14px;
+    transition: all 0.5s;
+}
+
+.menu .social-network ul li a:hover {
+    background-color: #000000;
+    color: #00ffff;
+}
+
+.menu .copyright-text {
+    position: relative;
+    margin-top: 60px;
+}
+
+.menu .copyright-text p {
+    border-top: 1px solid rgba(250, 250, 250, 0.1);
+    display: inline-block;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    font-size: 13px;
+}
+
+.menu:before,
+.menu:after {
+    content: "";
+    display: table;
+}
+
+.menu:after {
+    clear: both;
+}
+
+.menu a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu {
+    text-align: center;
+}
+
+.menu::-webkit-scrollbar {
+    display: none;
+}
+
+.menu {
+    left: 10%;
+  -webkit-transition: -webkit-transform 233ms cubic-bezier(0, 0, 0.21, 1);
+  -webkit-overflow-scrolling: touch;
+  background-color: #004f4f;
+  box-sizing: border-box;
+  height: 100vh;  
+  max-height: 100vh !important;
+  max-width: 80vw !important;
+  min-width: 45px !important;
+  outline: none;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
   padding: 0;
-  background-image: url('https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/Aza%27ra-Moonpunk-AI.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: fixed !important;
+  top: calc(0px);  
+  width: 20%;
+  will-change: transform;
+  z-index: 9999 !important;
 }
 
-.overlay {
-  background: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: -1;
-}
-
-/* Section Styling */
-.section {
-  padding: 60px 20px; 
-  min-height: 100vh;
-}
-
-/* Themed Sections */
-.home { accent-color: #342c61; color: #FBC96D; }
-.lore-and-navigation { accent-color: #A63A2C; color: #C5ECFF; }
-.font-project { accent-color: #0c4530; color: #8FE9F0; }
-.azara-projects { accent-color: #572a45; color: #D88EBA; }
-.timekeeping { accent-color: #78581f; color: #8FE9F0; }
-.language-rules { accent-color: #7A7C86; color: #C1FF8A; }
-.support { accent-color: #1a114b; color: #DCE1E8; }
-/* Title */
-.tm-site-title {
-  color: #fffeff;
-  text-shadow: 0px 2px 2px rgb(0, 94, 111);
-  font-family: 'Times New Roman', Georgia, serif;
-  font-size: 4.4rem;
-  margin-top: 6rem;
-  margin-bottom: 1rem;
-}
-
-/* Subtitle */
-.tm-site-description {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-/* === BASE BODY TEXT === */
-body {
-  font-family: "Times New Roman", serif;
-  font-weight: bold;
-  color: var(--text-body);
-  background-color: var(--black);
-}
-/* === LINKS & BUTTONS === */
-a, .button-link {
-  background-color: rgba(0, 255, 255, 0.6);
-  color: var(--black);
-  font-family: 'Times New Roman', serif;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 0.35em 0.75em;
-  border-radius: 5px;
-  border: 2px solid var(--silver);
-  transition: all 0.3s ease;
+.menu-toggle {
+  color: #fff;
   cursor: pointer;
-  font-size: 1rem;
-  user-select: none;
-  margin: 0.3rem 0;
-  display: inline-block;
+  font-size: 25px;
+  position: fixed;
+  right: 25px;
+  top: 25px;
 }
 
-a:hover, a:focus, .button-link:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: var(--cyan);
-  border: 2px solid var(--silver);
+#menu-toggle {
+    z-index: 999;
+    cursor: pointer;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #004f4f;
+    background-color: #fff;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
 }
-/* === HEADINGS === */
-h1, h2, h3, h4, h5, h6, h7 {
-  font-family: "Times New Roman", serif;
-  font-weight: bold;
+
+.menu-close {
+  cursor: pointer;
+}
+
+#menu-close {
+    cursor: pointer;
+    text-align: right;
+    color: #004f4f;
+    background-color: #fff;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    display: inline-block;
+    line-height: 60px;
+}
+
+
+/* Section */
+
+.section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+.section-heading {
+    text-align: center;
+    padding: 80px 45px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.section-heading .line-dec {
+    width: 60px;
+    height: 3px;
+    background-color: #004f4f;
+    margin: 10px auto;
+}
+
+.section-heading span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+
+/* Buttons */
+
+.white-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.white-button a:hover {
+    background-color: #00ffff;
+    color: #fff;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+button:hover {
+    outline: none;
+    background-color: #00ffff;
+    color: #fff;
+}
+/* === VARIABLES === */
+:root {
+  --black: #000000;
+  --cyan: #00ffff;
+  --silver: #c0c0c0;
+
+  --moonpunk-primary: #a8e4ff;
+  --moonpunk-primary-shadow: 1.2px 1.2px #347694;
+
+  --moonpunk-secondary: #ffc0cb;
+  --moonpunk-secondary-shadow: 1px 1px #914452;
+
+  --moonpunk-tertiary: #aaffc3;
+  --moonpunk-tertiary-shadow: 0.8px 0.8px #0a5420;
+
+  --moonpunk-quaternary: #e6ccff;
+  --moonpunk-quaternary-shadow: 0.6px 0.6px #531f63;
+
+  --text-body: #ffffff;
+  --text-body-shadow: 0.4px 0.4px #4a5d23;
+}
+
+/* === BASE STYLES === */
+body {
+  /* foreground content */
+  position: relative;
+  background-color: transparent;
+  color: var(--text-body);
+  font-family: 'Times New Roman', serif;
+  line-height: 1.6;
+  padding: 2rem;
+  overflow-y: scroll;
+  z-index: 0; /* ensure in front of background */
+}
+
+h1, h2, h3, h4 {
+  font-family: serif;
   margin-bottom: 0.5em;
-  opacity: 1;
+  text-shadow: var(--text-body-shadow);
+  opacity: 1; /* keep text fully opaque */
 }
 
-/* Home - Emberlight Gold / Twilight Indigo */
 h1 {
-  color: var(--home);
-  text-shadow: var(--home-shadow);
+  color: var(--moonpunk-primary);
+  text-shadow: var(--moonpunk-primary-shadow);
   font-size: 2.75rem;
   border-bottom: 2px solid var(--cyan);
   padding-bottom: 0.5rem;
 }
 
-/* Font Project - Dreamlight Cyan / Moss-Vein Green */
 h2 {
-  color: var(--font-project);
-  text-shadow: var(--font-project-shadow);
+  color: var(--moonpunk-secondary);
+  text-shadow: var(--moonpunk-secondary-shadow);
   font-size: 2rem;
 }
 
-/* Lore & Navigation - Crystalline Ice / Duvaen Red */
 h3 {
-  color: var(--lore-navigation);
-  text-shadow: var(--lore-navigation-shadow);
+  color: var(--moonpunk-tertiary);
+  text-shadow: var(--moonpunk-tertiary-shadow);
   font-size: 1.5rem;
 }
 
-/* Support - Moonstone Silver / Astral Navy */
 h4 {
-  color: var(--support);
-  text-shadow: var(--support-shadow);
+  color: var(--moonpunk-quaternary);
+  text-shadow: var(--moonpunk-quaternary-shadow);
   font-size: 1.25rem;
 }
-
-/* MMORPG & Book Series - Leyline Rose / Leyline Plum */
-h5 {
-  color: var(--azara-projects);
-  text-shadow: var(--azara-projects-shadow);
-  font-size: 1.125rem;
-}
-
-/* Timekeeping - Dreamlight Cyan / Relic Brass */
-h6 {
-  color: var(--timekeeping);
-  text-shadow: var(--timekeeping-shadow);
-  font-size: 1rem;
-}
-
-/* Language Rules - Verdant Glow / Arvalla Beta */
-h7 {
-  color: var(--language-rules);
-  text-shadow: var(--language-rules-shadow);
-  font-size: 0.95rem;
-}
-
-/* Tables */
-table {
+/* === TABLE WRAPPER === */
+.table-wrapper {
   width: 100%;
-  margin: 20px 0;
-  background: rgba(255,255,255,0.9);
-  color: black;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* === TABLES === */
+table {
+  min-width: 100%; /* allows horizontal scroll when needed */
   border-collapse: collapse;
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 2px solid var(--cyan);
+  color: #000000;
+  font-family: 'Times New Roman', serif;
+  border-radius: 8px;
+  backdrop-filter: blur(1px);
 }
+
 th, td {
-  padding: 10px;
-  border: 1px solid var();
-}
-
-/* Navbar */
-nav {
-  position: sticky;
-  top: 0;
-  background-color: rgba(0,0,0,0.8);
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-around;
-  z-index: 999;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-family: 'Cinzel Decorative', serif;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px #000;
-}
-nav a.active {
-  color: #FBC96D;
-  border-bottom: 2px solid #FBC96D;
-}
-
-/* Transitions and Animations */
-.section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease-out;
-}
-.section.visible {
+  padding: 1rem;
+  text-align: center;
+  vertical-align: middle;
   opacity: 1;
-  transform: translateY(0);
-}
-/* ──────────────✦ === Comic Sans Override for index.html === ✦────────────── */
-body[data-doc-name*="index"] {
-  font-family: 'Comic Sans MS', cursive !important;
+  border-bottom: 1px solid var(--cyan);
 }
 
-/* ──────────────✦ === Force Comic Sans size on all spans or elements === ✦────────────── */
-span[style*="Comic Sans MS"],
-*[style*="Comic Sans MS"] {
-  font-family: 'Comic Sans MS', cursive !important;
-  font-size: 22px !important;
+/* Column headers */
+th {
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 2px solid var(--cyan);
+  text-transform: uppercase;
 }
 
-@media screen and (max-width: 1024px) {
-  span[style*="Comic Sans MS"],
-  *[style*="Comic Sans MS"] {
-    font-size: 18px !important;
+/* Table contents */
+td {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+footer::-webkit-scrollbar {
+  width: 12px;
+}
+
+footer::-webkit-scrollbar-track {
+  background: silver;
+  border-radius: 8px;
+}
+
+footer::-webkit-scrollbar-thumb {
+  background-color: var(--cyan);
+  border-radius: 8px;
+  border: 2px solid silver;
+}
+
+/* === RESPONSIVE === */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table th {
+    font-size: 1.6rem;
+  }
+
+  table td {
+    font-size: 1.3rem;
   }
 }
 
-/* ──────────────✦ === Aza'raan Font Substitution === ✦────────────── */
-.azaraan-word {
-  font-family: 'Azaraan', cursive;
-  color: #014d4e;
-  text-shadow: 
-    -2px -2px 0 var(--cyan),
-     2px -2px 0 var(--cyan),
-    -2px  2px 0 var(--cyan),
-     2px  2px 0 var(--cyan);
-}     
+@media (max-width: 767px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  table {
+    font-size: 0.9rem;
+    min-width: 100%;
+    display: table;
+  }
+
+  table th, table td {
+    padding: 0.5rem;
+    min-width: 120px;
+    font-size: 1.1rem;
+  }
+
+}
