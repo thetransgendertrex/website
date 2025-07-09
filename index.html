@@ -50,9 +50,10 @@ https://templatemo.com/tm-531-reflux
         </ul>
       </nav>
       <div class="social-network">
-        <ul class="soial-icons">
+        <ul class="social-icons">
           <li>
-            <a href="https://www.facebook.com/WorldOfAzara"><i class="fa fa-facebook"></i></a>
+            <a href="https://www.facebook.com/WorldOfAzara">
+            <img src="https://raw.githubusercontent.com/thetransgendertrex/website/refs/heads/main/facebook-icon.png" alt="Facebook" style="width:16px; height:16px;">
           </li>
         </ul>
       </div>
@@ -387,11 +388,9 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     display: inline-block;
     line-height: 60px;
 }
+/* Home Section */
 
-
-/* Section */
-
-.section {
+.home .section {
     color: #fff;
     width: 55%;
     right: 10%;
@@ -402,35 +401,34 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     border-bottom: 3px solid rgba(250, 250, 250, 0.25);
 }
 
-.section-heading {
+.home .section-heading {
     text-align: center;
     padding: 80px 45px;
 }
 
-.section-heading h2 {
+.home .section-heading h2 {
     font-size: 32px;
     font-weight: 700;
     color: #fff;
 }
 
-.section-heading .line-dec {
+.home .section-heading .line-dec {
     width: 60px;
     height: 3px;
     background-color: #004f4f;
     margin: 10px auto;
 }
 
-.section-heading span {
+.home .section-heading span {
     margin-top: 5px;
     font-size: 16px;
     color: #fff;
     letter-spacing: 0.5px;
 }
 
+/* Home Buttons */
 
-/* Buttons */
-
-.white-button a {
+.home .white-button a {
     display: inline-block;
     padding: 12px 20px;
     background-color: #fff;
@@ -442,12 +440,12 @@ body.dark-mode header.site-header .nav-button.support        { color: #342c61; }
     transition: all 0.5s;
 }
 
-.white-button a:hover {
+.home .white-button a:hover {
     background-color: #00ffff;
     color: #fff;
 }
 
-button {
+.home button {
     display: inline-block;
     padding: 10px 20px;
     background-color: #fff;
@@ -462,11 +460,852 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.home button:hover {
     outline: none;
     background-color: #00ffff;
     color: #fff;
 }
+
+/* Home Table Wrapper */
+.home .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Home Table Styles */
+.home table {
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--cyan);
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+    border-radius: 8px;
+    backdrop-filter: blur(1px);
+}
+
+.home th, 
+.home td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 1;
+    border-bottom: 1px solid var(--cyan);
+}
+
+.home th {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--cyan);
+    text-transform: uppercase;
+}
+
+.home td {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Scrollbar Styling (optional) */
+.home footer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.home footer::-webkit-scrollbar-track {
+    background: silver;
+    border-radius: 8px;
+}
+
+.home footer::-webkit-scrollbar-thumb {
+    background-color: var(--cyan);
+    border-radius: 8px;
+    border: 2px solid silver;
+}
+
+/* Responsive Table */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .home .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .home table th {
+        font-size: 1.6rem;
+    }
+
+    .home table td {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .home .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .home table {
+        font-size: 0.9rem;
+        min-width: 100%;
+        display: table;
+    }
+
+    .home table th, 
+    .home table td {
+        padding: 0.5rem;
+        min-width: 120px;
+        font-size: 1.1rem;
+    }
+}
+
+
+/* Lore Section */
+
+.lore .section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+.lore .section-heading {
+    text-align: center;
+    padding: 80px 45px;
+}
+
+.lore .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.lore .section-heading .line-dec {
+    width: 60px;
+    height: 3px;
+    background-color: #004f4f;
+    margin: 10px auto;
+}
+
+.lore .section-heading span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Lore Buttons */
+
+.lore .white-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.lore .white-button a:hover {
+    background-color: #00ffff;
+    color: #fff;
+}
+
+.lore button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.lore button:hover {
+    outline: none;
+    background-color: #00ffff;
+    color: #fff;
+}
+
+/* Lore Table Wrapper */
+.lore .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Lore Table Styles */
+.lore table {
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--cyan);
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+    border-radius: 8px;
+    backdrop-filter: blur(1px);
+}
+
+.lore th, 
+.lore td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 1;
+    border-bottom: 1px solid var(--cyan);
+}
+
+.lore th {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--cyan);
+    text-transform: uppercase;
+}
+
+.lore td {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Scrollbar Styling (optional) */
+.lore footer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.lore footer::-webkit-scrollbar-track {
+    background: silver;
+    border-radius: 8px;
+}
+
+.lore footer::-webkit-scrollbar-thumb {
+    background-color: var(--cyan);
+    border-radius: 8px;
+    border: 2px solid silver;
+}
+
+/* Responsive Table */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .lore .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .lore table th {
+        font-size: 1.6rem;
+    }
+
+    .lore table td {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .lore .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .lore table {
+        font-size: 0.9rem;
+        min-width: 100%;
+        display: table;
+    }
+
+    .lore table th, 
+    .lore table td {
+        padding: 0.5rem;
+        min-width: 120px;
+        font-size: 1.1rem;
+    }
+}
+/* Azara Projects Section */
+
+.azara-projects .section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+.azara-projects .section-heading {
+    text-align: center;
+    padding: 80px 45px;
+}
+
+.azara-projects .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.azara-projects .section-heading .line-dec {
+    width: 60px;
+    height: 3px;
+    background-color: #004f4f;
+    margin: 10px auto;
+}
+
+.azara-projects .section-heading span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Azara Projects Buttons */
+
+.azara-projects .white-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.azara-projects .white-button a:hover {
+    background-color: #00ffff;
+    color: #fff;
+}
+
+.azara-projects button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.azara-projects button:hover {
+    outline: none;
+    background-color: #00ffff;
+    color: #fff;
+}
+
+/* Azara Projects Table Wrapper */
+.azara-projects .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Azara Projects Table Styles */
+.azara-projects table {
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--cyan);
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+    border-radius: 8px;
+    backdrop-filter: blur(1px);
+}
+
+.azara-projects th, 
+.azara-projects td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 1;
+    border-bottom: 1px solid var(--cyan);
+}
+
+.azara-projects th {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--cyan);
+    text-transform: uppercase;
+}
+
+.azara-projects td {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Scrollbar Styling (optional) */
+.azara-projects footer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.azara-projects footer::-webkit-scrollbar-track {
+    background: silver;
+    border-radius: 8px;
+}
+
+.azara-projects footer::-webkit-scrollbar-thumb {
+    background-color: var(--cyan);
+    border-radius: 8px;
+    border: 2px solid silver;
+}
+
+/* Responsive Table */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .azara-projects .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .azara-projects table th {
+        font-size: 1.6rem;
+    }
+
+    .azara-projects table td {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .azara-projects .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .azara-projects table {
+        font-size: 0.9rem;
+        min-width: 100%;
+        display: table;
+    }
+
+    .azara-projects table th, 
+    .azara-projects table td {
+        padding: 0.5rem;
+        min-width: 120px;
+        font-size: 1.1rem;
+    }
+}
+/* Timekeeping Section */
+
+.timekeeping .section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+.timekeeping .section-heading {
+    text-align: center;
+    padding: 80px 45px;
+}
+
+.timekeeping .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.timekeeping .section-heading .line-dec {
+    width: 60px;
+    height: 3px;
+    background-color: #004f4f;
+    margin: 10px auto;
+}
+
+.timekeeping .section-heading span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Timekeeping Buttons */
+
+.timekeeping .white-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.timekeeping .white-button a:hover {
+    background-color: #00ffff;
+    color: #fff;
+}
+
+.timekeeping button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.timekeeping button:hover {
+    outline: none;
+    background-color: #00ffff;
+    color: #fff;
+}
+
+/* Timekeeping Table Wrapper */
+.timekeeping .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Timekeeping Table Styles */
+.timekeeping table {
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--cyan);
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+    border-radius: 8px;
+    backdrop-filter: blur(1px);
+}
+
+.timekeeping th, 
+.timekeeping td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 1;
+    border-bottom: 1px solid var(--cyan);
+}
+
+.timekeeping th {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--cyan);
+    text-transform: uppercase;
+}
+
+.timekeeping td {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Scrollbar Styling (optional) */
+.timekeeping footer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.timekeeping footer::-webkit-scrollbar-track {
+    background: silver;
+    border-radius: 8px;
+}
+
+.timekeeping footer::-webkit-scrollbar-thumb {
+    background-color: var(--cyan);
+    border-radius: 8px;
+    border: 2px solid silver;
+}
+
+/* Responsive Table */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .timekeeping .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .timekeeping table th {
+        font-size: 1.6rem;
+    }
+
+    .timekeeping table td {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .timekeeping .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .timekeeping table {
+        font-size: 0.9rem;
+        min-width: 100%;
+        display: table;
+    }
+
+    .timekeeping table th, 
+    .timekeeping table td {
+        padding: 0.5rem;
+        min-width: 120px;
+        font-size: 1.1rem;
+    }
+}
+/* Language Rules Section */
+
+.language-rules .section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+.language-rules .section-heading {
+    text-align: center;
+    padding: 80px 45px;
+}
+
+.language-rules .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.language-rules .section-heading .line-dec {
+    width: 60px;
+    height: 3px;
+    background-color: #004f4f;
+    margin: 10px auto;
+}
+
+.language-rules .section-heading span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Language Rules Buttons */
+
+.language-rules .white-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.language-rules .white-button a:hover {
+    background-color: #00ffff;
+    color: #fff;
+}
+
+.language-rules button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.language-rules button:hover {
+    outline: none;
+    background-color: #00ffff;
+}
+/* Support Section */
+.support .section {
+    color: #fff;
+    width: 55%;
+    right: 10%;
+    left: 35%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    border-bottom: 3px solid rgba(250, 250, 250, 0.25);
+}
+
+.support .section-heading {
+    text-align: center;
+    padding: 80px 45px;
+}
+
+.support .section-heading h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.support .section-heading .line-dec {
+    width: 60px;
+    height: 3px;
+    background-color: #004f4f;
+    margin: 10px auto;
+}
+
+.support .section-heading span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+/* Support Buttons */
+
+.support .white-button a {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+}
+
+.support .white-button a:hover {
+    background-color: #00ffff;
+    color: #fff;
+}
+
+.support button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #004f4f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.5s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.support button:hover {
+    outline: none;
+    background-color: #00ffff;
+    color: #fff;
+}
+
+/* Support Table Wrapper */
+.support .table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Support Table Styles */
+.support table {
+    min-width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 2px solid var(--cyan);
+    color: #000000;
+    font-family: 'Times New Roman', serif;
+    border-radius: 8px;
+    backdrop-filter: blur(1px);
+}
+
+.support th, 
+.support td {
+    padding: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    opacity: 1;
+    border-bottom: 1px solid var(--cyan);
+}
+
+.support th {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--cyan);
+    text-transform: uppercase;
+}
+
+.support td {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Scrollbar Styling (optional) */
+.support footer::-webkit-scrollbar {
+    width: 12px;
+}
+
+.support footer::-webkit-scrollbar-track {
+    background: silver;
+    border-radius: 8px;
+}
+
+.support footer::-webkit-scrollbar-thumb {
+    background-color: var(--cyan);
+    border-radius: 8px;
+    border: 2px solid silver;
+}
+
+/* Responsive Table */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .support .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .support table th {
+        font-size: 1.6rem;
+    }
+
+    .support table td {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .support .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .support table {
+        font-size: 0.9rem;
+        min-width: 100%;
+        display: table;
+    }
+
+    .support table th, 
+    .support table td {
+        padding: 0.5rem;
+        min-width: 120px;
+        font-size: 1.1rem;
+    }
+}
+
 /* === VARIABLES === */
 :root {
   --black: #000000;
@@ -539,89 +1378,6 @@ h4 {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
-}
-
-/* === TABLES === */
-table {
-  min-width: 100%; /* allows horizontal scroll when needed */
-  border-collapse: collapse;
-  margin-top: 2rem;
-  background-color: rgba(255, 255, 255, 0.94);
-  border: 2px solid var(--cyan);
-  color: #000000;
-  font-family: 'Times New Roman', serif;
-  border-radius: 8px;
-  backdrop-filter: blur(1px);
-}
-
-th, td {
-  padding: 1rem;
-  text-align: center;
-  vertical-align: middle;
-  opacity: 1;
-  border-bottom: 1px solid var(--cyan);
-}
-
-/* Column headers */
-th {
-  font-size: 2rem;
-  font-weight: bold;
-  border-bottom: 2px solid var(--cyan);
-  text-transform: uppercase;
-}
-
-/* Table contents */
-td {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-footer::-webkit-scrollbar {
-  width: 12px;
-}
-
-footer::-webkit-scrollbar-track {
-  background: silver;
-  border-radius: 8px;
-}
-
-footer::-webkit-scrollbar-thumb {
-  background-color: var(--cyan);
-  border-radius: 8px;
-  border: 2px solid silver;
-}
-
-/* === RESPONSIVE === */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .table-wrapper {
-    overflow-x: auto;
-  }
-
-  table th {
-    font-size: 1.6rem;
-  }
-
-  table td {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .table-wrapper {
-    overflow-x: auto;
-  }
-
-  table {
-    font-size: 0.9rem;
-    min-width: 100%;
-    display: table;
-  }
-
-  table th, table td {
-    padding: 0.5rem;
-    min-width: 120px;
-    font-size: 1.1rem;
-  }
-
 }
 </style>
 </section>
@@ -5416,65 +6172,9 @@ you can visit my
 </p>
   </body>
     <!-- Scripts -->
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/custom.js"></script>
-    <script>
-      //according to loftblog tut
-      $(".main-menu li:first").addClass("active");
-
-      var showSection = function showSection(section, isAnimate) {
-        var direction = section.replace(/#/, ""),
-          reqSection = $(".section").filter(
-            '[data-section="' + direction + '"]'
-          ),
-          reqSectionPos = reqSection.offset().top - 0;
-
-        if (isAnimate) {
-          $("body, html").animate(
-            {
-              scrollTop: reqSectionPos
-            },
-            800
-          );
-        } else {
-          $("body, html").scrollTop(reqSectionPos);
-        }
-      };
-
-      var checkSection = function checkSection() {
-        $(".section").each(function() {
-          var $this = $(this),
-            topEdge = $this.offset().top - 80,
-            bottomEdge = topEdge + $this.height(),
-            wScroll = $(window).scrollTop();
-          if (topEdge < wScroll && bottomEdge > wScroll) {
-            var currentId = $this.data("section"),
-              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
-            reqLink
-              .closest("li")
-              .addClass("active")
-              .siblings()
-              .removeClass("active");
-          }
-        });
-      };
-
-      $(".main-menu").on("click", "a", function(e) {
-        e.preventDefault();
-        showSection($(this).attr("href"), true);
-      });
-
-      $(window).scroll(function() {
-        checkSection();
-      });
+ <script>
 /* ──────────────✦ Aza'raan Unified Site Script ✦────────────── */
-(function($) {
+(() => {
   // DOM Elements
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("menu");
@@ -5482,25 +6182,25 @@ you can visit my
 
   // Toggle Sidebar
   if (toggle && menu) {
-    toggle.addEventListener("click", function () {
+    toggle.addEventListener("click", () => {
       menu.classList.toggle("open");
     });
   }
 
   // Close Sidebar
   if (close && menu) {
-    close.addEventListener("click", function () {
+    close.addEventListener("click", () => {
       menu.classList.remove("open");
     });
   }
 
   // Close menu on nav item click on small screens
-  const collapseMenuOnClick = function () {
+  const collapseMenuOnClick = () => {
     if (window.innerWidth < 846) {
       const menuLinks = document.querySelectorAll(".main-nav a");
-      menuLinks.forEach(function (link) {
-        link.addEventListener("click", function () {
-          menu.classList.remove("open");
+      menuLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          if (menu) menu.classList.remove("open");
         });
       });
     }
@@ -5512,20 +6212,17 @@ you can visit my
   // Smooth scrolling for anchor links
   const internalLinks = document.querySelectorAll('a[href^="#"]');
   internalLinks.forEach(link => {
-    link.addEventListener("click", function(e) {
+    link.addEventListener("click", (e) => {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
+      const target = document.querySelector(link.getAttribute("href"));
       if (target) {
-        window.scrollTo({
-          top: target.offsetTop,
-          behavior: "smooth"
-        });
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   });
-(function() {
+
   // Enhance all table wrappers on load
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const tableWrappers = document.querySelectorAll(".table-wrapper");
 
     tableWrappers.forEach(wrapper => {
@@ -5533,117 +6230,20 @@ you can visit my
       wrapper.style.WebkitOverflowScrolling = "touch";
 
       // Optional: Add touch-scroll hint or custom scrollbar indicators
-      wrapper.addEventListener("wheel", function (e) {
+      wrapper.addEventListener("wheel", (e) => {
         if (e.deltaY === 0) return; // only respond to vertical scrolling
-
         e.preventDefault();
         wrapper.scrollLeft += e.deltaY;
       });
     });
-  });
 
-  // Optional: Allow table cells to be keyboard focusable for accessibility
-  const enhanceTableCells = () => {
+    // Optional: Allow table cells to be keyboard focusable for accessibility
     document.querySelectorAll("table td, table th").forEach(cell => {
       cell.setAttribute("tabindex", "0");
     });
-  };
-
-  window.addEventListener("DOMContentLoaded", enhanceTableCells);
-})();
-(function () {
-  // Define your GitHub base
-  const githubBase = "https://raw.githubusercontent.com/thetransgendertrex/website/main/";
-
-  // Files and their fallbacks
-  const resources = [
-    {
-      type: "css",
-      remote: githubBase + "style.css",
-      fallback: "style.local.css"
-    },
-    {
-      type: "css",
-      remote: githubBase + "bootstrap.min.css",
-      fallback: "bootstrap.local.min.css"
-    },
-    {
-      type: "image",
-      remote: githubBase + "Aza'ra-Moonpunk-AI.jpg",
-      fallback: "background.local.jpg",
-      selector: "#page-wraper",
-      styleProperty: "backgroundImage",
-      format: (url) => `url('${url}')`
-    },
-    {
-      type: "image",
-      remote: githubBase + "icon48.png",
-      fallback: "icon48.local.png",
-      selector: "link[rel='icon'], link[rel='shortcut icon']",
-      attr: "href"
-    },
-    {
-      type: "html",
-      remote: githubBase + "index.html",
-      fallback: "index.local.html" // optional: load into iframe or a div dynamically
-    }
-  ];
-
-  // Check if URL is valid
-  function testURL(url) {
-    return fetch(url, { method: "HEAD" })
-      .then(res => res.ok)
-      .catch(() => false);
-  }
-
-  // Load CSS dynamically
-  function loadCSS(href) {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = href;
-    document.head.appendChild(link);
-  }
-
-  // Load fallback images or styles
-  function applyFallback(res) {
-    if (res.type === "css") {
-      loadCSS(res.fallback);
-    } else if (res.type === "image" && res.selector) {
-      const el = document.querySelector(res.selector);
-      if (!el) return;
-      if (res.attr) {
-        el.setAttribute(res.attr, res.fallback);
-      } else if (res.styleProperty) {
-        el.style[res.styleProperty] = res.format(res.fallback);
-      }
-    }
-    // Optional: for HTML you could load content into an element
-  }
-
-  // Iterate over resources
-  resources.forEach(resource => {
-    testURL(resource.remote).then(isAvailable => {
-      if (!isAvailable) {
-        applyFallback(resource);
-        console.warn(`[Fallback] Loaded local version of ${resource.remote}`);
-      } else {
-        if (resource.type === "css") {
-          loadCSS(resource.remote);
-        } else if (resource.type === "image" && resource.selector) {
-          const el = document.querySelector(resource.selector);
-          if (!el) return;
-          if (resource.attr) {
-            el.setAttribute(resource.attr, resource.remote);
-          } else if (resource.styleProperty) {
-            el.style[resource.styleProperty] = resource.format(resource.remote);
-          }
-        }
-      }
-    });
   });
 })();
 
-})(jQuery);
     </script>
   </body>
 </html>
